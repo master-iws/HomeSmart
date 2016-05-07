@@ -1,0 +1,20 @@
+{
+  "name": "homesmart",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/master-iws/HomeSmart.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/master-iws/HomeSmart/issues"
+  },
+  "homepage": "https://github.com/master-iws/HomeSmart#readme",
+  "dependencies": {
+    "angular": "^1.5.5"
+  }
+}

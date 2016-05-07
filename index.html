@@ -1,1 +1,16 @@
-it works
+<html>
+	<head>
+		<!--LIBS-->
+		<script src="node_modules/angular/angular.min.js"></script>
+
+		<!--APP-Controller-->
+		<script src="app/controller/Ctr_Main.js"></script>
+	</head>
+	<body>
+		<div ng-app="HomeSmart">
+			<div ng-controller="MainController">
+				{{greet}}
+			</div>
+		</div>
+	</body>
+</html>
