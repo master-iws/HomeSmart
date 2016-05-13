@@ -2,6 +2,11 @@
 
 var app = angular.module("HomeSmart", ["ng", "ui.router", "ui.router.title"]);
 
+app.run(function ($rootScope, $state, $stateParams) {
+	$rootScope.$state = $state;
+	$rootScope.$stateParams = $stateParams;
+});
+
 //Debugging events
 app.config(['$provide', function ($provide) {
 	$provide.decorator('$rootScope', function ($delegate) {
