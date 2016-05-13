@@ -70,6 +70,18 @@ app.config(
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/houses.htm"}
 			}
+		}).state("houses.floors.detail.room", {
+			url: "/:roomId",
+			resolve: {
+				$title: ['$stateParams', function($stateParams) {
+					return "Room: " + $stateParams.roomId;
+				}]
+			},
+			views: {
+				"Nav1": { templateUrl: "app/views/nav/nav1.houses.htm"},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"Content": { templateUrl: "app/views/content/houses.htm"}
+			}
 		});
 	}]
 );
