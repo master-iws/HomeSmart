@@ -20,6 +20,8 @@
 		
 		<!--APP-Controller-->
 		<script src="app/controller/Ctr_Main.js"></script>
+		<script src="app/controller/Ctr_Houses.js"></script>
+		<script src="app/controller/Ctr_Landing.js"></script>
 	</head>
 	<body ng-controller="MainController">
 		<ol class="breadcrumb">
@@ -30,11 +32,11 @@
 		</ol>
 		<div>
 			<div>
-				{{greet}}
+				{{greet}} <br />
 				<a ui-sref="index">index</a>
 				<a ui-sref="houses">houses</a>
-				<a ui-sref="floors">floors</a>
-				<a ui-sref="floors.detail({floorId: 5})">floors-detail</a>
+				<a ui-sref="houses.floors">floors</a>
+				<a ui-sref="houses.floors.detail({floorId: 5})">floors-detail</a>
 			</div>
 			<div ui-view="Nav1"></div>
 			<div ui-view="Nav2"></div>

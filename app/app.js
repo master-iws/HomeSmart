@@ -22,54 +22,52 @@ app.config(['$provide', function ($provide) {
 	});
 }]);
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(
+	['$stateProvider', '$urlRouterProvider',
+	function($stateProvider, $urlRouterProvider) {
 	
 	$urlRouterProvider.otherwise("index");
 	
 	$stateProvider.state("index", {
-			url: "",
+			url: "/",
 			resolve: {
 				title: function() { return 'index'; }
 			},
-			//controller: 'LandingController',
 			views: {
 				"Nav1": { templateUrl: "app/views/nav/nav1.index.htm"},
 				"Nav2": { templateUrl: "app/views/nav/nav2.index.htm"},
-				"Content": { templateUrl: "app/views/content/index.htm"}
+				"Content": { templateUrl: "app/views/content/index.htm", controller: 'LandingController'}
 			}
 		}).state("houses", {
 			url: "/houses",
 			resolve: {
 				$title: function() { return 'houses'; }
 			},
-			//controller: 'HousesController',
 			views: {
 				"Nav1": { templateUrl: "app/views/nav/nav1.houses.htm"},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
-				"Content": { templateUrl: "app/views/content/houses.htm"}
+				"Content": { templateUrl: "app/views/content/houses.htm", controller: 'HousesController'}
 			}
-		}).state("floors", {
+		}).state("houses.floors", {
 			url: "/floors",
 			resolve: {
 				$title: function() { return 'Floors'; }
-			},
-			//controller: 'FloorsController',
+			},			
 			views: {
 				"Nav1": { templateUrl: "app/views/nav/nav1.houses.htm"},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/houses.htm"}
 			}
-		}).state("floors.detail", {
+		}).state("houses.floors.detail", {
 			url: "/:floorId",
 			resolve: {
 				$title: function() { return 'Floors..'; }
 			},
-			//controller: 'FloorsController',
 			views: {
 				"Nav1": { templateUrl: "app/views/nav/nav1.houses.htm"},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/houses.htm"}
 			}
 		});
-	}
+	}]
 );

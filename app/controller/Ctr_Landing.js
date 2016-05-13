@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('MainController',
+app.controller('LandingController',
 	["$scope", "$rootScope", "$state",
 	function($scope, $rootScope, $state) {
-		$scope.greet = "It work's!";
+		$scope.$parent.greet = "LandingController";
 }]);
