@@ -31,7 +31,7 @@ app.config(
 	$stateProvider.state("index", {
 			url: "/",
 			resolve: {
-				title: function() { return 'index'; }
+				$title: function() { return 'index'; }
 			},
 			views: {
 				"Nav1": { templateUrl: "app/views/nav/nav1.index.htm"},
