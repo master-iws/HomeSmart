@@ -61,7 +61,9 @@ app.config(
 		}).state("houses.floors.detail", {
 			url: "/:floorId",
 			resolve: {
-				$title: function() { return 'Floors..'; }
+				$title: ['$stateParams', function($stateParams) {
+					return "Floor: " + $stateParams.floorId;
+				}]
 			},
 			views: {
 				"Nav1": { templateUrl: "app/views/nav/nav1.houses.htm"},
