@@ -2,9 +2,14 @@
 
 var app = angular.module("HomeSmart", ["ng", "ui.router", "ui.router.title"]);
 
-app.run(function ($rootScope, $state, $stateParams) {
+app.run(function ($rootScope, $state, $stateParams, $log) {
 	$rootScope.$state = $state;
 	$rootScope.$stateParams = $stateParams;
+	
+	$rootScope.$on('$stateChangeSuccess', 
+		function(event, toState, toParams, fromState, fromParams){
+			$log.info(new Date(), fromState.name +" -> "+ toState.name);
+		});
 });
 
 //Debugging events
@@ -14,12 +19,12 @@ app.config(['$provide', function ($provide) {
 		var _broadcast = $delegate.$broadcast;
 
 		$delegate.$emit = function () {
-			console.log("[$emit] " + arguments[0], arguments);
+			console.debug("[$emit] " + arguments[0], arguments);
 			return _emit.apply(this, arguments);
 		};
 
 		$delegate.$broadcast = function () {
-			console.log("[$broadcast] " + arguments[0], arguments);
+			console.debug("[$broadcast] " + arguments[0], arguments);
 			return _broadcast.apply(this, arguments);
 		};
 
