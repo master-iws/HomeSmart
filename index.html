@@ -1,5 +1,6 @@
-<html>
+<html ng-app="HomeSmart">
 	<head>
+		<title ng-bind="($title || 'Home') + ' - HomeSmart'">HomeSmart</title>
 		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 		<!--LIBS-->
 		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
@@ -7,16 +8,28 @@
 		<script src="node_modules/angular/angular.min.js"></script>
 		<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<!--<script src="node_modules/angular-ui-router/release/stateEvents.min.js"></script>-->
+		<script src="node_modules/angular-ui-router-title/angular-ui-router-title.js"></script>
 
 		<!--APP-Config-->
 		<script src="app/app.js"></script>
 		
+		
+		<!--APP-Directive-->
+		
+		
 		<!--APP-Controller-->
 		<script src="app/controller/Ctr_Main.js"></script>
 	</head>
-	<body>
-		<div ng-app="HomeSmart">
-			<div ng-controller="MainController">
+	<body ng-controller="MainController">
+		<ol class="breadcrumb">
+			<li ng-repeat="crumb in $breadcrumbs" ng-class="{ 'active' : $last }">
+				<a ng-if="!$last" href="{{$state.href(crumb.state, crumb.stateParams)}}">{{crumb.title}}</a>
+				<span ng-if="$last">{{crumb.title}}</span>
+			</li>
+		</ol>
+		<div>
+			<div>
 				{{greet}}
 				<a ui-sref="index">index</a>
 				<a ui-sref="houses">houses</a>
