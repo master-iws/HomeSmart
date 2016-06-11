@@ -1,0 +1,34 @@
+<div ng-controller="RegistrationController as registration" >
+	<div class="row row-centered">
+		<div class="col-xs-8 col-sm-8 col-md-7 col-xs-offset-2 col-md-offset-3 col-sm-offset-2 ">
+		 <h1>PIN 	&auml;ndern</h1>
+		<form class="form-horizontal" name="changePinForm" novalidate >
+       <div class="form-group">
+             <label for="oldPin" class="col-sm-3 col-md-3 control-label" id="oldPinLabel">Alters PIN</label>
+			 <div class="col-sm-12 col-md-7 col-xs-12">
+			      <input type="password" ng-model="oldPin" class="form-control" name="oldPin" id="oldPin" 
+			      ng-class="{'has-error': changePinForm.oldPin.$invalid}" required>
+			 </div>
+        </div>
+        <div class="form-group">
+             <label for="password" class="col-sm-3 control-label" id="pinLabel">Neuer PIN</label>
+			    <div class="col-sm-12 col-md-7 col-xs-12">
+			      <input type="password" ng-model="pin" class="form-control" name="pin" 
+			      id="pin" ng-class="{'has-error': changePinForm.pin.$invalid}" required>
+			    </div>
+        </div>
+        <div class="form-group">
+        	<label for="confirmPin" class="col-sm-3 control-label" id="confirmPinLabel">Wiederholung</label>
+			<div class="col-sm-12 col-md-7 col-xs-12">
+			      <input type="password" ng-model="confirmPin" class="form-control" name="confirmPin" id="confirmPin" 
+			      compare-to="pin" ng-class="{'has-error': (changePinForm.confirmPin.$invalid || changePinForm.confirmPin.$error.compareTo) }" required>
+			</div>
+           <span ng-show="changePinForm.confirmPin.$error.compareTo" class="col-sm-5 col-md-5 col-xs-12">Die stimmen nicht &uuml;berein.</span>
+        </div>
+        <div class="form-group col-sm-9">
+            <button ng-disabled="changePinForm.$invalid" class="btn btn-default"  ng-click="changePin()">Speichern</button>
+        </div>
+    </form>
+		</div>
+	</div>
+</div>

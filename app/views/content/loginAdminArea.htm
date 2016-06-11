@@ -1,0 +1,16 @@
+<div ng-controller="LoginAdminAreaController">
+	<form data-toggle="validator" role="form">
+		<div class="form-group">
+			<h1>Login Adminbereich</h1>
+			<div class="row">
+				<label for="adminPin">
+			            PIN <input name="adminPin" class="form-control" id="adminPin" ng-model="adminPin" required>
+			    </label>
+		    </div>
+			<button ng-click="login()">Login</button>
+			<div class="row">
+				<span ng-show="validationMessage">{{validationMessage}}</span>
+			</div>
+		</div>
+	</form>
+</div>

@@ -36,8 +36,8 @@ app.config(
 	['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
 	
-	$urlRouterProvider.otherwise("index");
-	
+	$urlRouterProvider.otherwise("/");
+
 	$stateProvider.state("index", {
 			url: "/",
 			resolve: {
@@ -45,26 +45,24 @@ app.config(
 			},
 			views: {
 				"Nav1": { templateUrl: "app/views/nav/nav1.index.htm"},
-				"Nav2": { templateUrl: "app/views/nav/nav2.index.htm"},
 				"Content": { templateUrl: "app/views/content/index.htm", controller: 'LandingController'}
 			}
 		}).state("houses", {
 			url: "/houses",
 			resolve: {
-				$title: function() { return 'houses'; }
+				$title: function() { return 'Home'; }
 			},
 			views: {
 				"Nav1": { templateUrl: "app/views/nav/nav1.houses.htm"},
-				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/houses.htm", controller: 'HousesController'}
 			}
 		}).state("houses.floors", {
 			url: "/floors",
 			resolve: {
-				$title: function() { return 'Floors'; }
+				$title: function() { return 'Etagen'; }
 			},			
 			views: {
-				"Nav1": { templateUrl: "app/views/nav/nav1.houses.htm"},
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/houses.htm"}
 			}
@@ -72,11 +70,11 @@ app.config(
 			url: "/:floorId",
 			resolve: {
 				$title: ['$stateParams', function($stateParams) {
-					return "Floor: " + $stateParams.floorId;
+					return "Etage: " + $stateParams.floorId;
 				}]
 			},
 			views: {
-				"Nav1": { templateUrl: "app/views/nav/nav1.houses.htm"},
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/houses.htm"}
 			}
@@ -84,13 +82,63 @@ app.config(
 			url: "/:roomId",
 			resolve: {
 				$title: ['$stateParams', function($stateParams) {
-					return "Room: " + $stateParams.roomId;
+					return "Raum: " + $stateParams.roomId;
 				}]
 			},
 			views: {
-				"Nav1": { templateUrl: "app/views/nav/nav1.houses.htm"},
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/houses.htm"}
+			}
+		}).state("settings", {
+			url: "/settings/",
+			resolve: {
+				$title: function() { return 'Einstellungen'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.settings.htm"},
+				"Content": { templateUrl: "app/views/content/settings.htm"}
+			}
+		}).state("settings.pin", {
+			url: "pin",
+			resolve: {
+				$title: function() { return 'PIN ändern'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.settings.htm"},
+				"SettingsContent": { templateUrl: "app/views/content/changeAdminPin.htm", controller: 'RegistrationController'}
+			}
+		}).state("settings.houses", {
+			url: "houses",
+			resolve: {
+				$title: function() { return 'Häuser'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.settings.htm"},
+				"SettingsContent": { templateUrl: "app/views/content/houseSettings.htm", controller: 'HousesSettingsController'}
+			}
+		}).state("houseconfiguration", {
+			url: "/houseconfiguration/",
+			resolve: {
+				$title: function() { return 'Hauskonfiguration'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
+				"Content": { templateUrl: "app/views/content/wlan.htm", controller: 'WLANController'}
+			}
+		}).state("houseconfiguration.wlan", {
+			url: "wlan",
+			resolve: {
+				$title: function() { return 'WLAN'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
+				"Content": { templateUrl: "app/views/content/wlan.htm", controller: 'WLANController'}
 			}
 		});
 	}]

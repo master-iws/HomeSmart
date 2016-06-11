@@ -1,0 +1,23 @@
+<div class="container">
+<div class="row row-centered">
+<div class="col-xs-6 col-centered">
+<form class="form-horizontal">
+	<h1>Login</h1>
+  <div class="form-group">
+    <label for="userName" class="col-sm-3 control-label" id="userNameLabel">Benutzername</label>
+    <div class="col-sm-9">
+      <input ng-model="userName" type="text" class="form-control" name="userName" id="userName" ng-class="{'has-error': loginForm.userName.$invalid}" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-sm-3 control-label" id="passwordLabel">Passwort</label>
+    <div class="col-sm-9">
+      <input type="password" ng-model="password" class="form-control" name="password" id="password" ng-class="{'has-error': loginForm.password.$invalid}" required>
+    </div>
+  </div>
+  <button ng-disabled="loginForm.$invalid" class="btn btn-default"  ng-click="login()">Login</button>
+</form>
+<span>{{validationMessage}}</span>
+</div>
+</div>
+</div>
