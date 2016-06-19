@@ -123,7 +123,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    for(var id in json["floors"]){
 		var floor = new Mod_Floor();
 		floor.parseJSON(json["floors"][id],this);
-		this.addComponent(floor);
+		this.addFloor(floor);
 	    }
 	    
 	};
