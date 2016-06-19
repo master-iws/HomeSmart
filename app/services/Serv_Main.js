@@ -9,7 +9,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     
     function getStored() {
 	if(typeof(Storage) !== undefined){
-	    return localStorage.getItem("homeSmart-houses");
+	    return JSON.parse(localStorage.getItem("homeSmart-houses"));
 	} else {
 	    return false;
 	}
@@ -33,7 +33,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	
 	if(stored){
 	    
-	    for(id in stored){
+	    for(var id in stored){
 		var house = new Mod_House();
 		house.parseJSON(stored[id]);
 		house_arr.push(house);
@@ -69,9 +69,8 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		house_arr.push(house);
 	    }
 	    
-	    return house_arr;
-	    
 	}
+	return house_arr;
 	
     }
     
