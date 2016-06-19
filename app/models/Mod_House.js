@@ -6,6 +6,8 @@
 
 function Mod_House() {
     
+    Mod_Abstract_Entity.call(this);
+    
     var _zip,
 	_city,
 	_components = [],
@@ -82,7 +84,21 @@ function Mod_House() {
 	_floor = _floor.splice(_floor.indexOf(floor),1);
     };
     
-    Mod_Abstract_Entity.call(this);
+    this.toJSON = function() {
+	var json = {
+	    "id":this.getId(),
+	    "name":this.getName(),
+	    "description":this.getDescription(),
+	    "zip":this.getZip(),
+	    "city":this.getCity(),
+	    "components":this.getComponents(),
+	    "floors":this.getFloors()
+	};
+	
+	return json;
+    };
+    
+    Object.seal(this);
 
 }
 

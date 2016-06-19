@@ -6,6 +6,8 @@
 
 function Mod_Category() {
     
+    Mod_Abstract_Entity.call(this);
+    
     var _components = [];
 
     
@@ -44,7 +46,17 @@ function Mod_Category() {
 	_components = _components.splice(_components.indexOf(component),1);
     };
     
-    Mod_Abstract_Entity.call(this);
+    this.toJSON = function() {
+	var json = {
+	    "id":this.getId(),
+	    "name":this.getName(),
+	    "components":this.getComponents()
+	};
+	
+	return json;
+    };
+    
+    Object.seal(this);
 
 }
 

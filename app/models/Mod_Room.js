@@ -6,6 +6,8 @@
 
 function Mod_Room() {
     
+    Mod_Abstract_Entity.call(this);
+    
     var _floor,
 	_components = [];
 
@@ -48,8 +50,19 @@ function Mod_Room() {
 	_components = _components.splice(_components.indexOf(component),1);
     };
     
+    this.toJSON = function() {
+	var json = {
+	    "id":this.getId(),
+	    "name":this.getName(),
+	    "descripton":this.getDescripton(),
+	    "floor":this.getFloor(),
+	    "components":this.getComponents()
+	};
+	
+	return json;
+    };
     
-    Mod_Abstract_Entity.call(this);
+    Object.seal(this);
 
 }
 

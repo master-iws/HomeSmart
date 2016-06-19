@@ -6,6 +6,8 @@
 
 function Mod_Floor() {
     
+    Mod_Abstract_Entity.call(this);
+    
     var _house,
 	_rooms = [];
 
@@ -48,8 +50,19 @@ function Mod_Floor() {
 	_rooms = _rooms.splice(_rooms.indexOf(room),1);
     };
     
+    this.toJSON = function() {
+	var json = {
+	    "id":this.getId(),
+	    "name":this.getName(),
+	    "description":this.getDescription(),
+	    "house":this.getHouse(),
+	    "rooms":this.getRooms()
+	};
+	
+	return json;
+    };
     
-    Mod_Abstract_Entity.call(this);
+    Object.seal(this);
 
 }
 

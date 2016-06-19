@@ -73,7 +73,9 @@
 	}
     };
     
-    Object.seal(this);
+    this.toJSON = function() {
+	throw new Error("Not implemented!");
+    };
     
 }
     

@@ -6,6 +6,8 @@
 
 function Mod_Component() {
     
+    Mod_Abstract_Entity.call(this);
+    
     var _type,
 	_settings = [],
 	_category,
@@ -74,8 +76,22 @@ function Mod_Component() {
 	_house = house;
     };
     
+    this.toJSON = function() {
+	var json = {
+	    "id":this.getId(),
+	    "name":this.getName(),
+	    "description":this.getDescription(),
+	    "type":this.getType(),
+	    "settings":this.getSettings(),
+	    "category":this.getCategory(),
+	    "room":this.getRoom(),
+	    "house":this.getHouse()
+	};
+	
+	return json;
+    };
     
-    Mod_Abstract_Entity.call(this);
+    Object.seal(this);
 
 }
 
