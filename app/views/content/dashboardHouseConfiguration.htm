@@ -1,0 +1,56 @@
+<div >
+	<div class="row row-centered" ng-show="!$state.includes('houseconfiguration.dashboard.editQuicklink')">
+		<h1>Dashboard</h1>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h2>Quick Links</h2>
+			<div dragula='"first-bag"' dragula-model="dashboard.quicklinks">
+				<div ng-repeat="quicklink in dashboard.quicklinks" class="col-md-3 col-sm-3 col-xs-11 card">
+					<div class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
+						<button class="settings-btn" ng-click="editQuickLink($index)">
+							<i class="fa fa-wrench" aria-hidden="true"></i>
+						</button>
+						<button class="settings-btn" ng-click="deleteQuickLink($index)">
+							<i class="fa fa-remove" aria-hidden="true"></i>
+						</button>
+					</div>
+					<div class="col-md-12 col-xs-11 col-sm-12">
+						<div class="col-md-7" style="margin-top:5px;">
+							<span class="card-name-settings col-md-offset-2">{{quicklink.typ}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-11" style="height: 100px;">
+				<button class="add-btn" ng-click="addQuicklink()">
+					<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+				</button>
+			</div>
+		</div>	
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h2>Funktionseinheiten</h2>
+			<div dragula='"second-bag"'>
+				<div ng-repeat="control in dashboard.controls" class="col-md-6 col-sm-6 col-xs-11 card" style="height:50px;">
+					<div class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
+						<button class="settings-btn" ng-click="editControl($index)">
+							<i class="fa fa-wrench" aria-hidden="true"></i>
+						</button>
+						<button class="settings-btn" ng-click="deleteControl($index)">
+							<i class="fa fa-remove" aria-hidden="true"></i>
+						</button>
+					</div>
+					<div class="col-md-12 col-xs-11 col-sm-12">
+						<div class="col-md-7" style="margin-top:5px;">
+							<span class="card-name-settings col-md-offset-2">{{control.name}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-11" style="height: 50px;">
+				<button class="add-btn" ng-click="addControl()">
+					<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+				</button>
+			</div>
+			</div>
+	</div>
+	<div ui-view="DashboardConfigurationContent"></div>
+</div>

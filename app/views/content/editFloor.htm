@@ -1,0 +1,22 @@
+<div>
+	<div class="row row-centered">
+		<div class="col-xs-8 col-sm-8 col-md-7 col-xs-offset-2 col-md-offset-3 col-sm-offset-2 ">
+		 <h1>{{$title}}</h1>
+		<form class="form-horizontal" name="editFloorForm" novalidate >
+       <div class="form-group">
+             <label for="name" class="col-sm-3 col-md-3 control-label" id="name">Name</label>
+			 <div class="col-sm-12 col-md-7 col-xs-12">
+			      <input type="text" ng-model="floor.name" class="form-control" name="name" id="name" 
+			      ng-class="{'has-error': editFloorForm.name.$invalid}" required>
+			 </div>
+			 <div ng-show="validationMessage != null" class="validationMessage">
+			 		<span>{{validationMessage}}</span>
+			 </div>
+        </div>
+        <div class="form-group col-sm-9">
+            <button ng-disabled="editFloorForm.$invalid" class="btn btn-default"  ng-click="save()">Speichern</button>
+        </div>
+    </form>
+		</div>
+	</div>
+</div>

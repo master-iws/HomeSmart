@@ -1,6 +1,8 @@
 'use strict';
 
-app.controller('LoginController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
+app.controller('LoginController',["$scope", "$rootScope", "$state", "$stateParams",	function($scope, $rootScope, $state, $stateParams) {
+	
+	console.log($stateParams);
 	
 	$scope.validationMessage = null;
 	$scope.userName;
@@ -11,7 +13,7 @@ app.controller('LoginController',["$scope", "$rootScope", "$state",	function($sc
 		if($scope.userName == "maxmustermann" && $scope.password == "test12")
         {
 			$rootScope.loggedIn= true;
-        	$state.go("index");
+        	$state.go($stateParams.name);
         }
         else
         	$scope.validationMessage = "Login nicht erfolgreich. Benutzername oder Passwort falsch.";

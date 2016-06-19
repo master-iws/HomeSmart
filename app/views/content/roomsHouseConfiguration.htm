@@ -1,0 +1,29 @@
+<div >
+	<div class="row row-centered" ng-show="!$state.includes('houseconfiguration.rooms.addRoom')">
+		<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">R&auml;me</h1>
+			<div ng-show="floorIdx != null" ng-repeat="floor in houses[houseIdx].floors[floorIdx].rooms" class="col-md-3 col-sm-3 col-xs-11 card" ng-class="{'not-configured': deleted}">
+				<div class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
+					<button class="settings-btn" ng-click="editRoom($index)">
+						<i class="fa fa-wrench" aria-hidden="true"></i>
+					</button>
+					<button class="settings-btn" ng-click="deleteRoom($index)">
+						<i class="fa fa-remove" aria-hidden="true"></i>
+					</button>
+				</div>
+				<div class="col-md-12 col-xs-11 col-sm-12">
+					<div style="color:#ae1414" class="col-md-3 col-sm-4 col-xs-4" ng-show="houses.length">
+						<i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
+					</div>
+					<div class="col-md-7" style="margin-top:5px;">
+						<span class="card-name-settings col-md-offset-2">{{room.name}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-11" style="height: 100px;">
+				<button class="add-btn" ng-click="addRoom()">
+					<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+				</button>
+			</div>
+	</div>
+	<div ui-view="EditRoom"></div>
+</div>

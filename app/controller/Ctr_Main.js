@@ -3,6 +3,8 @@
 app.controller('MainController',
 	["$scope", "$rootScope", "$state",
 	function($scope, $rootScope, $state) {
+		
+		$rootScope.adminPin = "test12";
 		$rootScope.houses = [];
 		$rootScope.houses.push({"name": "test", "city": "95119 Naila"});
 		$rootScope.houses.push({"name": "test1", "city": "95119 Naila"});

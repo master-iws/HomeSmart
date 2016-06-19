@@ -1,0 +1,25 @@
+<div>
+	<div class="row row-centered">
+		<div class="col-xs-8 col-sm-8 col-md-7 col-xs-offset-2 col-md-offset-3 col-sm-offset-2 ">
+			<h1>Alarme testen</h1>
+			<form class="form-horizontal" name="changePinForm" novalidate >
+		        <div class="form-group col-sm-9">
+		            <button class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"  ng-click="$broadcast('washerReady')">Sp&uuml;lmaschine fertig</button>
+		        	<button class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"  ng-click="$broadcast('herdReady')">Herd fertig</button>
+		        	<button class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"  ng-click="$broadcast('washingmaschineReady')">Waschmaschine fertig</button>
+		        	<button class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"  ng-click="$broadcast('washerReady')">Alarmanlage</button>
+					<button class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"  ng-click="$broadcast('washerReady')">Rauchmelder</button>
+		        </div>
+		        <div>
+
+
+    <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
+    <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
+    <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
+    <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
+
+</div>
+	    	</form>
+		</div>
+	</div>
+</div>

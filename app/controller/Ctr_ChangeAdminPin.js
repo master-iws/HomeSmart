@@ -8,32 +8,11 @@ app.controller('RegistrationController',["$scope", "$rootScope", "$state",	funct
 	
 	$scope.changeAdminPin = function() {
 		
-		if($scope.oldPin == $rootScope.adminPin)
+		if($scope.oldPin === $rootScope.adminPin)
         {
 			$scope.validationMessage ="PIN wurde geändert.";
         }
         else
-        	$scope.validationMessage = "Alter PIN stimmt nicht.";
+        	$scope.validationMessage = "Alter PIN ist falsch.";
     };
 }]);
-
-var compareTo = function() {
-  return {
-    require: "ngModel",
-    scope: {
-      otherModelValue: "=compareTo"
-    },
-    link: function(scope, element, attributes, ngModel) {
-
-      ngModel.$validators.compareTo = function(modelValue) {
-        return modelValue == scope.otherModelValue;
-      };
-
-      scope.$watch("otherModelValue", function() {
-        ngModel.$validate();
-      });
-    }
-  };
-};
-
-app.directive("compareTo", compareTo);
