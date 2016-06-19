@@ -37,11 +37,19 @@ function Mod_House() {
      */
     
     this.setZip = function(zip) {
-	_zip = zip;
+	if(this.checkStr(zip)) {
+	    _zip = zip;
+	} else {
+	    throw new TypeError();
+	}
     };
     
     this.setCity = function(city) {
-	_city = city;
+	if(this.checkStr(city)) {
+	    _city = city;
+	} else {
+	    throw new TypeError();
+	}
     };
     
     this.addComponent = function(component) {
@@ -53,7 +61,7 @@ function Mod_House() {
     
     //TODO: remove dosen't work!
     this.removeComponent = function(component) {
-	if(!(component instanceof Mod_Component)) {
+	if(!(component instanceof Mod_Component || this.checkNum(component))) {
 	    throw new TypeError();
 	}
 	_components = _components.splice(_components.indexOf(component),1);
@@ -68,7 +76,7 @@ function Mod_House() {
     
     //TODO: remove dosen't work!
     this.removeFloor = function(floor) {
-	if(!(floor instanceof Mod_Floor)) {
+	if(!(floor instanceof Mod_Floor || this.checkNum(floor))) {
 	    throw new TypeError();
 	}
 	_floor = _floor.splice(_floor.indexOf(floor),1);

@@ -14,6 +14,21 @@
     var _description;
     
     
+    this.checkNum = function(toCheck) {
+	if(typeof toCheck === typeof _numType){
+	    return true;
+	}
+	return false;
+    };
+    
+    this.checkStr = function(toCheck) {
+	if(typeof toCheck === typeof _strType){
+	    return true;
+	}
+	return false;
+    };
+    
+    
     /*
      * getter
      */
@@ -34,16 +49,28 @@
      * setter
      */
     
-    this.setId = function(id) {	
-	_id = id;
+    this.setId = function(id) {
+	if(this.checkNum(id)) {
+	    _id = id;
+	} else {
+	    throw new TypeError();
+	}
     };
 
     this.setName = function(name) {
-	_name = name;
+	if(this.getDescription(name)) {
+	    _name = name;
+	} else {
+	    throw new TypeError();
+	}
     };
 
     this.setDescription = function(description) {
-	_description = description;
+	if(this.checkStr(description)) {
+	    _description = description;
+	} else {
+	    throw new TypeError();
+	}
     };
     
     Object.seal(this);
