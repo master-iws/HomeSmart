@@ -28,15 +28,20 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     }
     
     function getHouses() {
-	var houses = getStored();
+	var stored = getStored();
+	var house_arr=[];
 	
-	if(houses){
-	    return houses;
-	} else {
-	    	
-	    var houses=[];
+	if(stored){
 	    
-	    for(var houses=1;houses<5;houses++){
+	    for(id in stored){
+		var house = new Mod_House();
+		house.parseJSON(stored[id]);
+		house_arr.push(house);
+	    }
+	    
+	} else {
+	    
+	    for(var houses=1;houses<3;houses++){
 		var house = new Mod_House();
 		    house.setId(getNextId());
 		    house.setName("House "+houses);
@@ -44,34 +49,34 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    house.setCity("Naila");
 		    house.setZip("95119");
 
-		    for(var floors=1;floors<5;floors++){
+		    for(var floors=1;floors<3;floors++){
 			var floor = new Mod_Floor();
 			    floor.setId(getNextId());
-			    floor.setName("House 1 - Floor "+floors);
-			    floor.setDescription("Desc: H1-F"+floors);
+			    floor.setName("House "+houses+" - Floor "+floors);
+			    floor.setDescription("Desc: H"+houses+"-F"+floors);
 			    floor.setHouse(house);
 
 			    for(var rooms=1;rooms<5;rooms++){
 				var room = new Mod_Room();
 				    room.setId(getNextId());
-				    room.setName("H1 - F"+floors+" - R"+rooms);
-				    room.setDescription("Desc: H1-F"+floors+"-R"+rooms);
+				    room.setName("H"+houses+" - F"+floors+" - R"+rooms);
+				    room.setDescription("Desc: H"+houses+"-F"+floors+"-R"+rooms);
 
 				floor.addRoom(room);
 			    }
 			house.addFloor(floor);
 		    }
-		houses.push(house);
+		house_arr.push(house);
 	    }
 	    
-	    return houses;
+	    return house_arr;
 	    
 	}
 	
     }
     
     function saveHouses(houses) {
-	store(houses);
+	store(JSON.stringify(houses));
     }
     
     var id=0;
