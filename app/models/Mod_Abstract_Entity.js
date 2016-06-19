@@ -61,7 +61,7 @@ app.factory("Mod_Abstract_Entity",function () {
 	};
 
 	this.setName = function(name) {
-	    if(this.getDescription(name)) {
+	    if(this.checkStr(name)) {
 		_name = name;
 	    } else {
 		throw new TypeError();

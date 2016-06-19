@@ -63,7 +63,7 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 		"id":this.getId(),
 		"name":this.getName(),
 		"description":this.getDescription(),
-		"house":this.getHouse(),
+//		"house":this.getHouse(),
 		"rooms":this.getRooms()
 	    };
 

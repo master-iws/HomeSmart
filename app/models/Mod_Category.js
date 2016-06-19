@@ -57,7 +57,7 @@ app.factory("Mod_Category",["Mod_Abstract_Entity","$injector",
 	    var json = {
 		"id":this.getId(),
 		"name":this.getName(),
-		"components":this.getComponents()
+//		"components":this.getComponents()
 	    };
 
 	    return json;

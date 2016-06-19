@@ -81,7 +81,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    if(!(floor instanceof Mod_Floor)) {
 		throw new TypeError();
 	    }
-
+	    _floors.push(floor);
 	};
 
 	//TODO: remove dosen't work!

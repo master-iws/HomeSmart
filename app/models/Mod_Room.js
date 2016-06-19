@@ -28,7 +28,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	    return _floor;
 	};
 
-	this.getCompnents = function() {
+	this.getComponents = function() {
 	    return _components;
 	};
 
@@ -62,8 +62,8 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	    var json = {
 		"id":this.getId(),
 		"name":this.getName(),
-		"descripton":this.getDescripton(),
-		"floor":this.getFloor(),
+		"descripton":this.getDescription(),
+//		"floor":this.getFloor(),
 		"components":this.getComponents()
 	    };
 

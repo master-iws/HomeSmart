@@ -93,8 +93,8 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 		"type":this.getType(),
 		"settings":this.getSettings(),
 		"category":this.getCategory(),
-		"room":this.getRoom(),
-		"house":this.getHouse()
+//		"room":this.getRoom(),
+//		"house":this.getHouse()
 	    };
 
 	    return json;
