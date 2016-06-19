@@ -41,6 +41,39 @@ function Mod_Component() {
      * setter TODO
      */
     
+    this.setType = function(type) {
+	if(this.checkStr(type)) {
+	    _type = type;
+	} else {
+	    throw new TypeError();
+	}
+    };
+    
+    this.setSettings = function(settings) {
+	return _settings;
+    };
+    
+    this.setCategory = function(category) {
+	if(!(category instanceof Mod_Category)) {
+	    throw new TypeError();
+	}
+	_category = category;
+    };
+    
+    this.setRoom = function(room) {
+	if(!(room instanceof Mod_Room)) {
+	    throw new TypeError();
+	}
+	_room = room;
+    };
+    
+    this.setHouse = function(house) {
+	if(!(house instanceof Mod_House)) {
+	    throw new TypeError();
+	}
+	_house = house;
+    };
+    
     
     Mod_Abstract_Entity.call(this);
 
