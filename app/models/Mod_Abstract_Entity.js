@@ -79,6 +79,10 @@ app.factory("Mod_Abstract_Entity",function () {
 	this.toJSON = function() {
 	    throw new Error("Not implemented!");
 	};
+	
+	this.parseJSON = function(json) {
+	    throw new Error("Not implemented!");
+	};
 
     }
     

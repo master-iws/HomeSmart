@@ -69,6 +69,28 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 
 	    return json;
 	};
+	
+	this.parseJSON = function(json,who) {
+	    if(who === undefined || who === null) {
+		throw new Error("This function cannot be called independently!");
+	    }
+	    
+	    this.setId(json["id"]);
+	    this.setName(json["name"]);
+	    this.setDescription(json["description"]);
+	    
+	    if(who instanceof Mod_House) {
+		this.setHouse(who);
+	    } else {
+		throw new TypeError();
+	    }
+	    
+	    for(var id in json["rooms"]){
+		var room = new Mod_Room();
+		room.parseJSON(json["rooms"][id],this);
+		this.addComponent(room);
+	    }
+	};
 
 	Object.seal(this);
 

@@ -62,6 +62,19 @@ app.factory("Mod_Category",["Mod_Abstract_Entity","$injector",
 
 	    return json;
 	};
+	
+	this.parseJSON = function(json,who) {
+	    if(who === undefined || who === null) {
+		throw new Error("This function cannot be called independently!");
+	    }
+	    
+	    this.setId(json["id"]);
+	    this.setName(json["name"]);
+	    this.setDescription(json["description"]);
+	    
+	    //TODO: set components
+	    
+	};
 
 	Object.seal(this);
 

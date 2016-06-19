@@ -105,6 +105,28 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 
 	    return json;
 	};
+	
+	this.parseJSON = function(json) {
+	    this.setId(json["id"]);
+	    this.setName(json["name"]);
+	    this.setDescription(json["description"]);
+	    
+	    this.setZip(json["zip"]);
+	    this.setCity(json["city"]);
+	    
+	    for(var id in json["components"]){
+		var comp = new Mod_Component();
+		comp.parseJSON(json["components"][id],this);
+		this.addComponent(comp);
+	    }
+	    
+	    for(var id in json["floors"]){
+		var floor = new Mod_Floor();
+		floor.parseJSON(json["floors"][id],this);
+		this.addComponent(floor);
+	    }
+	    
+	};
 
 	Object.seal(this);
 
