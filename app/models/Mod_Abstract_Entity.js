@@ -69,7 +69,7 @@ app.factory("Mod_Abstract_Entity",function () {
 	};
 
 	this.setDescription = function(description) {
-	    if(this.checkStr(description)) {
+	    if(this.checkStr(description) || description === undefined || description === null) {
 		_description = description;
 	    } else {
 		throw new TypeError();
