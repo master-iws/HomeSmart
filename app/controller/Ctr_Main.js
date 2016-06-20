@@ -13,5 +13,6 @@ app.controller('MainController',
 		
 		var test = mainService.getHouses();
 		console.log(JSON.stringify(test));
+		console.log(JSON.stringify(test[0].getRooms()));
 		mainService.saveHouses(test);
 }]);
