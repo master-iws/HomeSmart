@@ -3,17 +3,31 @@
 app.controller('NavigationController',	["$scope", "$rootScope", "$state","MainService",
                                       	 function($scope, $rootScope, $state, mainService) {
 	
-	var test = mainService.getHouses();
-	console.log("navigation controller");
-	console.log(test);
-	$scope.houses = mainService.getHouses();
 	
 	$scope.notificationContainerShow = false;
-	//$rootScope.notifications = ['test','test2'];
+	$rootScope.notifications = ['Spülmaschine fertig','Herd fertig'];
 
+	$rootScope.$watch('houseIndex', function () {
+	    console.log('change currentUser')
+	    console.log($rootScope.houseIndex);
+	  });
 	
 	$scope.showNotifications = function() {
 		
 		$scope.notificationContainerShow = !$scope.notificationContainerShow;
+    };
+    
+    $scope.houseIndexChanged = function($index) {
+		
+		$rootScope.houseIndex = $index;
+    };
+    
+    $scope.changeIndex = function() {
+    	if($rootScope.houseIndex === 0)
+    		$rootScope.houseIndex = 1;
+    	else
+    		$rootScope.houseIndex =0;
+    	
+    	console.log($rootScope.houseIndex);
     };
 }]);

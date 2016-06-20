@@ -6,11 +6,6 @@ app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$sta
 	      copy: true
 	    });
 	
-	$rootScope.dashboard = {};
-	$rootScope.dashboard.quicklinks = [];
-	$rootScope.dashboard.quicklinks.push({category: 'Raum', typ: 'wohnzimmer'},{category: 'Raum', typ: 'esszimmer'});
-	$rootScope.dashboard.controls = [];
-	
     $scope.editQuicklink = function($index) {
     	$state.go("houseconfiguration.dashboard.editQuicklink", {quicklinkId: $index});
     };

@@ -61,6 +61,8 @@ option {
     color: #000000;
     background-color: #FEFEFE;
     border-color: #CCCCCC;
+    border-radius: 4px;
+    
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -275,7 +277,6 @@ input.cmn-toggle-round:checked + label:after {
 	height: 100px;
 	background-color: #1A237E;
 	margin-bottom: 10px;
-	margin-left: 15px;
 }
 
 .settings-btn
@@ -293,6 +294,27 @@ input.cmn-toggle-round:checked + label:after {
 	font-weight: bold;
 	font-size: 12pt;
 	text-align: middle;
+}
+
+.house-description
+{
+	color: #FEFEFE;
+	text-align: middle;
+	margin-bottom:40px;
+}
+
+.house-card-btn
+{
+	padding: 0px;
+    height: 27px;
+    margin: 10px;
+}
+
+.floors-card-btn
+{
+	padding: 0px;
+    height: 27px;
+    margin: 5px;
 }
 
 .add-btn

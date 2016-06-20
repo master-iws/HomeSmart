@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('EditQuicklinkController',["$scope", "$rootScope", "$state", "$stateParams",
+app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$stateParams",
                                       function($scope, $rootScope, $state, $stateParams) {
 	
 	$scope.types = [];
@@ -18,22 +18,15 @@ app.controller('EditQuicklinkController',["$scope", "$rootScope", "$state", "$st
    
    $scope.categoryChanged = function()
    {
+	   console.log($rootScope.houses[$rootScope.houseIndex].getRooms());
 	   if($scope.quicklink.category == 'Kategorie')
-		   $scope.types = $rootScope.categories;
+		   $scope.types = componentService.getCategories();
 	   else if($scope.quicklink.category == 'Etage')
-		   $scope.types = $rootScope.houses[$rootScope.houseIdx].floors;
+	   {
+		   $scope.types = $rootScope.houses[$rootScope.houseIndex].getFloors();
+	   }
 	   else
-		   $scope.types = $scope.getRooms();
-   }
-   
-   $scope.getRooms = function()
-   {
-	   $rooms = [];
-	   
-	   for($floor in $rootScope.houses[$rootScope.houseIdx].floors)
-		   $rooms.push($floor.rooms);
-	   
-	   return $rooms;
-   }
+		   $scope.types = $rootScope.houses[$rootScope.houseIndex].getRooms();
+   };
    
 }]);

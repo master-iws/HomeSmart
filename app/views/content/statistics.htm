@@ -1,116 +1,143 @@
-<div >
+<div>
 	<div class="row row-centered">
 		<h1 class="col-md-12 col-lg-12 col-sm-12 col-xs-12">Statistiken</h1>
-		<div class="actionbar heading center-actionbar">	 
-			<a class="navigation_button" ng-click="periodBack()" >
-				<img src="images/icons/Back-64.png">
-				<span>Zurück</span>
-			</a>
-			<a style="text-align: center;" ng-click="showSelectType()">{{period.display}}</a>
-			<a id="clear-button" ng-click="periodNow()">
-				<img src="images/icons/Cancel-2-100.png">
-			</a>
-			<a class="navigation_button" ng-click="periodForward()" >
-				<span>Weiter</span>
+		<div class="actionbar heading center-actionbar">
+			<a class="navigation_button" ng-click="periodBack()"> <img
+				src="images/icons/Back-64.png"> <span>Zurück</span>
+			</a> <a style="text-align: center;" ng-click="showSelectType()">{{period.display}}</a>
+			<a id="clear-button" ng-click="periodNow()"> <img
+				src="images/icons/Cancel-2-100.png">
+			</a> <a class="navigation_button" ng-click="periodForward()"> <span>Weiter</span>
 				<img src="images/icons/Forward-64.png">
 			</a>
 		</div>
 		<br>
 		<div class="heading actionbar">
-		    <a ng-class="{active: selectTypeVisible}" ng-click="showSelectType()"><img src ="images/icons/Combo-Chart-26.png"/>  Darstellung</a>
-		    <a ng-class="{active: selectAdditionalLoadprofilesVisible}" ng-click="showSelectAdditionalLoadprofiles()"><img src ="images/icons/Add-Row-26.png"/>  Zusätzliche Lastgänge</a>
-		    <a ng-class="{active: selectAdditionalSettingsVisible}" ng-click="showSelectAdditionalSettings()"><img src ="images/icons/Settings-26.png"/>  Optionen</a>
+			<a ng-class="{active: selectTypeVisible}" ng-click="showSelectType()"><img
+				src="images/icons/Combo-Chart-26.png" /> Darstellung</a> <a
+				ng-class="{active: selectAdditionalLoadprofilesVisible}"
+				ng-click="showSelectAdditionalLoadprofiles()"><img
+				src="images/icons/Add-Row-26.png" /> Zusätzliche Lastgänge</a> <a
+				ng-class="{active: selectAdditionalSettingsVisible}"
+				ng-click="showSelectAdditionalSettings()"><img
+				src="images/icons/Settings-26.png" /> Optionen</a>
 		</div>
-		
+
 		<div ng-show="selectTypeVisible">
-			<div  class="infoDiv light" style="">
+			<div class="infoDiv light" style="">
 				<h4>Zeitbereich</h4>
-				<br>
-				<a class="link" ng-class="{link_active:period.type == 'day'}" ng-click="setPeriodType('day')">Tag</a>
-				<a class="link" ng-class="{link_active:period.type == 'week'}" ng-click="setPeriodType('week')">Woche</a>
-				<a class="link" ng-class="{link_active:period.type == 'month'}" ng-click="setPeriodType('month')">Monat</a>
-				<a class="link" ng-class="{link_active:period.type == 'year'}" ng-click="setPeriodType('year')">Jahr</a>
-				<a class="link" ng-class="{link_active:period.type == 'gasyear'}" ng-click="setPeriodType('gasyear')" ng-show="loadprofile.category === 'Gas'">Gasjahr</a>
-				<a class="link" ng-class="{link_active:period.type == 'custom'}" ng-click="displayCustomDateperiodSelection()">Benutzerdefiniert</a>
-		        <br>
-		        <br>
+				<br> <a class="link"
+					ng-class="{link_active:period.type == 'day'}"
+					ng-click="setPeriodType('day')">Tag</a> <a class="link"
+					ng-class="{link_active:period.type == 'week'}"
+					ng-click="setPeriodType('week')">Woche</a> <a class="link"
+					ng-class="{link_active:period.type == 'month'}"
+					ng-click="setPeriodType('month')">Monat</a> <a class="link"
+					ng-class="{link_active:period.type == 'year'}"
+					ng-click="setPeriodType('year')">Jahr</a> <a class="link"
+					ng-class="{link_active:period.type == 'gasyear'}"
+					ng-click="setPeriodType('gasyear')"
+					ng-show="loadprofile.category === 'Gas'">Gasjahr</a> <a
+					class="link" ng-class="{link_active:period.type == 'custom'}"
+					ng-click="displayCustomDateperiodSelection()">Benutzerdefiniert</a>
+				<br> <br>
 				<h4>Darstellungstyp</h4>
-				<br>
-				<a class="link" ng-class="{link_active: type == 'consumption'}" ng-click="setTypeClick('consumption')">
-		            <img alt="" src="images/icons/Bar-Chart-26.png"><br>
-		            Mengen
-		        </a>
-				<a class="link" ng-class="{link_active: type == 'power'}" ng-show="period.powerChartSupported" ng-click="setTypeClick('power')">
-		            <img alt="" src="images/icons/Line-Chart-26.png"><br>
-		            Leistung
-		        </a>
-				<a class="link" ng-class="{link_active: type == 'powerMax'}" ng-show="period.powerMaxChartSupported" ng-click="setTypeClick('powerMax')">
-		            <img alt="" src="images/icons/Line-Chart-26.png"><br>
-		            Tägliche Leistungsspitze
-		        </a>
-				<a class="link" ng-class="{link_active: type == 'powerAvg'}" ng-show="period.powerAvgChartSupported" ng-click="setTypeClick('powerAvg')">
-		            <img alt="" src="images/icons/Line-Chart-26.png"><br>
-		            Täglicher Leistungsdurchschnitt
-		        </a>
+				<br> <a class="link"
+					ng-class="{link_active: type == 'consumption'}"
+					ng-click="setTypeClick('consumption')"> <img alt=""
+					src="images/icons/Bar-Chart-26.png"><br> Mengen
+				</a> <a class="link" ng-class="{link_active: type == 'power'}"
+					ng-show="period.powerChartSupported"
+					ng-click="setTypeClick('power')"> <img alt=""
+					src="images/icons/Line-Chart-26.png"><br> Leistung
+				</a> <a class="link" ng-class="{link_active: type == 'powerMax'}"
+					ng-show="period.powerMaxChartSupported"
+					ng-click="setTypeClick('powerMax')"> <img alt=""
+					src="images/icons/Line-Chart-26.png"><br> Tägliche
+					Leistungsspitze
+				</a> <a class="link" ng-class="{link_active: type == 'powerAvg'}"
+					ng-show="period.powerAvgChartSupported"
+					ng-click="setTypeClick('powerAvg')"> <img alt=""
+					src="images/icons/Line-Chart-26.png"><br> Täglicher
+					Leistungsdurchschnitt
+				</a>
 			</div>
 		</div>
-		
+
 		<div ng-show="selectAdditionalSettingsVisible">
-			<div  class="infoDiv light" style="">
+			<div class="infoDiv light" style="">
 				<div class="tempProfilesInnerHorizontal">
-					<h4>Weitere Optionen</h4><br>
+					<h4>Weitere Optionen</h4>
+					<br>
 					<div>
-						<div class="link meter_selector" ng-click="setShowLastYear(!showLastYear)"  ng-class="{selected: showLastYear == true}">
-							<span style="display: table-cell; vertical-align: middle;">Vergleich mit Vorjahr</span>
+						<div class="link meter_selector"
+							ng-click="setShowLastYear(!showLastYear)"
+							ng-class="{selected: showLastYear == true}">
+							<span style="display: table-cell; vertical-align: middle;">Vergleich
+								mit Vorjahr</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<br>
-		<div id="maincontentLoading" data-ng-show="loading">	</div>
+		<div id="maincontentLoading" data-ng-show="loading"></div>
 		<div id="charts" ng-class="{visibilityHidden: loading}">
-			<button ng-show="periodTypeHistory.length > 1" ng-click="drillUpClick()"  style="background-color: buttonface; border: 2px outset buttonface;"><img src="images/icons/Up-26.png" height="16" width="16"/></button>
+			<button ng-show="periodTypeHistory.length > 1"
+				ng-click="drillUpClick()"
+				style="background-color: buttonface; border: 2px outset buttonface;">
+				<img src="images/icons/Up-26.png" height="16" width="16" />
+			</button>
 			<div>
-				<linechart data="chartData" options="chartOptions" height="450" on-click="onClick"></linechart>
+				<linechart data="chartData" options="chartOptions" height="450"
+					on-click="onClick"></linechart>
 			</div>
 			<div id="statistic" class="dark" ng-show="statistic.length == 1">
 				<div class="section group">
 					<div class="col span_1_of_6">
-				        <div class="statistic_label">Maximum</div>
-						<span class="statistic_value">{{statistic[0].data.max1.value | consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
-				        <div class="statistic_label">Am</div>
+						<div class="statistic_label">Maximum</div>
+						<span class="statistic_value">{{statistic[0].data.max1.value
+							| consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
+						<div class="statistic_label">Am</div>
 						<span class="statistic_value">{{formatDate(statistic[0].data.max1.date)}}</span>
 					</div>
 					<div class="col span_1_of_6">
-				        <div class="statistic_label">2. Maximum</div>
-						<span class="statistic_value">{{statistic[0].data.max2.value | consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
-				        <div class="statistic_label">Am</div>
-						<span class="statistic_value">{{formatDate(statistic[0].data.max2.date) }}</span>
+						<div class="statistic_label">2. Maximum</div>
+						<span class="statistic_value">{{statistic[0].data.max2.value
+							| consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
+						<div class="statistic_label">Am</div>
+						<span class="statistic_value">{{formatDate(statistic[0].data.max2.date)
+							}}</span>
 					</div>
 					<div class="col span_1_of_6">
-				        <div class="statistic_label">3. Maximum</div>
-						<span class="statistic_value">{{statistic[0].data.max3.value | consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>					
-				        <div class="statistic_label">Am</div>
-						<span class="statistic_value">{{formatDate(statistic[0].data.max3.date) }}</span>
+						<div class="statistic_label">3. Maximum</div>
+						<span class="statistic_value">{{statistic[0].data.max3.value
+							| consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
+						<div class="statistic_label">Am</div>
+						<span class="statistic_value">{{formatDate(statistic[0].data.max3.date)
+							}}</span>
 					</div>
 					<div class="col span_1_of_6">
-				        <div class="statistic_label">Minimum</div>
-						<span class="statistic_value">{{statistic[0].data.min.value | consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
-				        <div class="statistic_label">Am</div>
-						<span class="statistic_value">{{formatDate(statistic[0].data.min.date) }}</span>
+						<div class="statistic_label">Minimum</div>
+						<span class="statistic_value">{{statistic[0].data.min.value
+							| consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
+						<div class="statistic_label">Am</div>
+						<span class="statistic_value">{{formatDate(statistic[0].data.min.date)
+							}}</span>
 					</div>
-					<div class="col span_1_of_6">	
-					 	<div class="statistic_label">Durchschnitt</div>
-						<span class="statistic_value">{{statistic[0].data.average | consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
+					<div class="col span_1_of_6">
+						<div class="statistic_label">Durchschnitt</div>
+						<span class="statistic_value">{{statistic[0].data.average |
+							consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
 					</div>
 					<div class="col span_1_of_6">
 						<div class="statistic_label">Summe</div>
-						<span class="statistic_value">{{statistic[0].data.sum | consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
+						<span class="statistic_value">{{statistic[0].data.sum |
+							consumptionFormat }}</span> <span>{{statistic[0].unit}}</span>
 					</div>
 				</div>
 			</div>
 			<br>
-		</div>	
+		</div>
 	</div>
 </div>

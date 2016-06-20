@@ -9,8 +9,29 @@ app.controller('MainController',
 		
 		$rootScope.houses = mainService.getHouses();
 		
+		$rootScope.dashboard = {};
+		$rootScope.dashboard.quicklinks = [];
+		$rootScope.dashboard.quicklinks.push({category: 'Raum', typ: 'wohnzimmer'},{category: 'Raum', typ: 'esszimmer'});
+		$rootScope.dashboard.controls = [];
+		
 		var test = mainService.getHouses();
-		console.log(JSON.stringify(test));
-		console.log(JSON.stringify(test[0].getRooms()));
 		mainService.saveHouses(test);
+		
+		$scope.configureHouse = function($houseIdx) {
+	    	
+	    	$rootScope.houseIndex = $houseIdx;
+	    	$state.go("houseconfiguration.house");
+	    };
+	    
+	    $scope.goStatistic = function($houseIdx) {
+	    	
+	    	$rootScope.houseIndex = $houseIdx;
+	    	$state.go("house.statistic");
+	    };
+	    
+	    $scope.selectHouse = function($houseIdx) {
+	    	
+	    	$rootScope.houseIndex = $houseIdx;
+	    	$state.go("dashboard");
+	    };
 }]);

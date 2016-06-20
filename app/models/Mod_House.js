@@ -45,7 +45,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	this.getRooms = function() {
 	    var rooms = []
 	    for (var f in _floors) {
-		rooms.push(_floors[f].getRooms());
+		rooms = rooms.concat(_floors[f].getRooms());
 	    }
 	    return rooms;
 	};

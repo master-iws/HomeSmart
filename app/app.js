@@ -59,11 +59,11 @@ app.config(
 			authenticate: true,
 			adminArea: false,
 			resolve: {
-				$title: function() { return 'index'; }
+				$title: function() { return 'Home'; }
 			},
 			views: {
 				"Nav1": { templateUrl: "app/views/nav/nav1.index.htm"},
-				"Content": { templateUrl: "app/views/content/index.htm", controller: 'MainController'}
+				"Content": { templateUrl: "app/views/content/houses.htm", controller: 'MainController'}
 			}
 		}).state("houses", {
 			url: "/houses",
@@ -73,10 +73,10 @@ app.config(
 				$title: function() { return 'Home'; }
 			},
 			views: {
-				"Nav1": { templateUrl: "app/views/nav/nav1.houses.htm"},
-				"Content": { templateUrl: "app/views/content/houses.htm", controller: 'HousesController'}
+				"Nav1": { templateUrl: "app/views/nav/nav1.index.htm"},
+				"Content": { templateUrl: "app/views/content/houses.htm", controller: 'MainController'}
 			}
-		}).state("houses.floors", {
+		}).state("floors", {
 			url: "/floors",
 			authenticate: true,
 			adminArea: false,
@@ -86,7 +86,7 @@ app.config(
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
-				"Content": { templateUrl: "app/views/content/houses.htm"}
+				"Content": { templateUrl: "app/views/content/floors.htm", controller: 'FloorsController'}
 			}
 		}).state("houses.floors.detail", {
 			url: "/:floorId",
@@ -100,21 +100,31 @@ app.config(
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
-				"Content": { templateUrl: "app/views/content/houses.htm"}
+				"FloorContent": { templateUrl: "app/views/content/rooms.htm", controller: 'RoomsController'}
 			}
-		}).state("houses.floors.detail.room", {
-			url: "/:roomId",
+		}).state("rooms", {
+			url: "/rooms",
 			authenticate: true,
 			adminArea: false,
 			resolve: {
-				$title: ['$stateParams', function($stateParams) {
-					return "Raum: " + $stateParams.roomId;
-				}]
+				$title: function() { return 'Räume'; }
 			},
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
-				"Content": { templateUrl: "app/views/content/houses.htm"}
+				"Content": { templateUrl: "app/views/content/rooms.htm",controller: 'RoomsController'}
+			}
+		}).state("dashboard", {
+			url: "/dashboard",
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'Räume'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"Content": { templateUrl: "app/views/content/dashboard.htm",controller: 'DashboardController'}
 			}
 		}).state("settings", {
 			url: "/settings/",

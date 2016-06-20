@@ -1,53 +1,56 @@
 
-<nav class="navbar navbar-default headNav " >
-<form>
-	<div>
-		<div class="navbar-header col-xs-2 col-sm-2 col-lg-2">
-			<a ui-sref="index" class="pull-left" style="margin-bottom:10px;">
-				<picture>
-				 <source srcset="app/icons/house_text.svg" media="(min-width: 700px)">
-				 <source srcset="app/icons/house.svg" media="(min-width: 300px)">
-				 <img src="app/icons/house_text.svg" alt="MDN">
-				</picture>
-			</a>
+<nav class="navbar navbar-default headNav ">
+	<form>
+		<div>
+			<div class="navbar-header col-xs-2 col-sm-2 col-lg-2">
+				<a ui-sref="index" class="pull-left" style="margin-bottom: 10px;">
+					<picture>
+					<source srcset="app/icons/house_text.svg"
+						media="(min-width: 700px)">
+					<source srcset="app/icons/house.svg" media="(min-width: 300px)">
+					<img src="app/icons/house_text.svg" alt="MDN"> </picture>
+				</a>
+			</div>
+			<div ng-show="{{houses.length}}"
+				class="nav navbar-nav col-xs-2 col-md-2 col-sm-2 col-lg-2"
+				style="padding-top: 19px;">
+				<select 
+			    ng-model="$root.houseIndex" 
+			    ng-options="houses.indexOf(house) as (house.getName() + ' in '+ house.getZip()+ ' ' + house.city) for house in houses"></select>
+			</div>
+			<ul
+				class="nav navbar-nav navbar-right col-xs-6 col-sm-7 col-md-7 col-lg-7"
+				style="padding-top: 15px;">
+				<li class="pull-right"><a href=""
+					ng-click="showNotifications()" class="head-nav-a"> <i
+						class="fa fa-bell" aria-hidden="true"></i> <span class="hidden-xs">Benachrichtigungen</span>
+
+				</a></li>
+				<li class="pull-right"
+					ng-class="{ headNavActive: $state.includes('settings')}"><a
+					ui-sref="settings" class="head-nav-a"> <i class="fa fa-gears"
+						aria-hidden="true"></i> <span class="hidden-xs">Einstellungen</span>
+				</a></li>
+				<li ng-show="{{houseIndex != null}}" class="pull-right"><a
+					ui-sref="houseconfiguration" class="head-nav-a"
+					ng-class="{ headNavActive: $state.includes('houseconfiguration')}">
+						<i class="fa fa-wrench" aria-hidden="true"></i>
+						<span class="hidden-xs">Hauskonfiguration</span>
+				</a></li>
+			</ul>
 		</div>
-		 <div ng-show="{{houses.length}}" class="nav navbar-nav col-xs-2 col-md-2 col-sm-2 col-lg-2" style="padding-top:19px;">
-			<select ng-model="houseIndex" style="width:100%;" >
-			  <option ng-repeat="house in houses" value="{{$index}}" ng-selected="houseIndex" >{{house.getName()}} in {{house.getZip()}} {{house.getCity()}}</option>
-			</select>
-		</div> 
-		 <ul class="nav navbar-nav navbar-right col-xs-6 col-sm-7 col-md-7 col-lg-7" style="padding-top:15px;">
-			<li class="pull-right">
-				<a href="" ng-click="showNotifications()" class="head-nav-a">
-					<i class="fa fa-bell" aria-hidden="true"></i>
-					<span class="hidden-xs">Benachrichtigungen</span>
-					
-				</a>
-			</li>
-			<li class="pull-right" ng-class="{ headNavActive: $state.includes('settings')}">
-				<a ui-sref="settings" class="head-nav-a">
-					<i class="fa fa-gears" aria-hidden="true"></i>
-					<span class="hidden-xs">Einstellungen</span>
-				</a>
-			</li> 
-			<li ng-show="{{houseIndex != null}}" class="pull-right">
-				<a ui-sref="houseconfiguration" class="head-nav-a" ng-class="{ headNavActive: $state.includes('houseconfiguration')}">
-					<i class="fa fa-wrench" aria-hidden="true"></i>
-					<span class="hidden-xs">Hauskonfiguration</span>
-				</a>
-			</li> 
-		</ul> 
-	</div>
 	</form>
 </nav>
-<div ng-show="notificationContainerShow" >
-<div class="dreieck col-lg-offset-10"></div>
-<div class="notification-popup col-md-5 col-lg-5 col-xs-9  col-sm-9 col-lg-offset-6">
-	<br/>
-	<div>
-	<div ng-repeat="notification in notifications" class="col-lg-12" style="margin-bottom:10px;">
-		<span class="hidden-xs notification-text">{{notification}}</span>
+<div ng-show="notificationContainerShow">
+	<div class="dreieck col-lg-offset-10"></div>
+	<div
+		class="notification-popup col-md-5 col-lg-5 col-xs-9  col-sm-9 col-lg-offset-6">
+		<br />
+		<div>
+			<div ng-repeat="notification in notifications" class="col-lg-12"
+				style="margin-bottom: 10px;">
+				<span class="hidden-xs notification-text">{{notification}}</span>
+			</div>
+		</div>
 	</div>
-	</div>
-</div>
 </div>
