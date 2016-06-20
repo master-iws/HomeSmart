@@ -89,9 +89,10 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	    }
 	    
 	    for(var id in json["components"]){
-//		var comp = new Mod_Component();
-//		comp.parseJSON(json["components"][id],this);
-		this.addComponent(serv_components.getComponentById(json["components"][id].id));
+		var comp = serv_components.getComponentById(json["components"][id].id);
+		comp.setHouse(this.getFloor().getHouse());
+		comp.setRoom(this);
+		this.addComponent(comp);
 	    }
 	    
 	};
