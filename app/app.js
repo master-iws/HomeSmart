@@ -63,7 +63,7 @@ app.config(
 			},
 			views: {
 				"Nav1": { templateUrl: "app/views/nav/nav1.index.htm"},
-				"Content": { templateUrl: "app/views/content/index.htm", controller: 'LandingController'}
+				"Content": { templateUrl: "app/views/content/index.htm", controller: 'MainController'}
 			}
 		}).state("houses", {
 			url: "/houses",

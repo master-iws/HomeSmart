@@ -1,8 +1,17 @@
 'use strict';
 
-app.controller('HousesSettingsController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
+app.controller('HousesSettingsController',["$scope", "$rootScope", "$state", "MainService",	
+                                           function($scope, $rootScope, $state,mainService) {
 	
-	$scope.deleteHouse = function($houseIdx) {
+	console.log(mainService.getHouses());
+	$scope.houses = mainService.getHouses();
+	/*$scope.houses = [];
+	$scope.houses.push({"name": "test", "city": "95119 Naila"});
+	$scope.houses.push({"name": "test1", "city": "95119 Naila"});
+	$rootScope.houseIndex = $scope.houses.length-1;*/
+	console.log("house-settings:"+$scope.houses);
+	
+	/*$scope.deleteHouse = function($houseIdx) {
 		
 		var modalInstance = $uibModal.open({
 		      animation: $scope.animationsEnabled,
@@ -25,5 +34,5 @@ app.controller('HousesSettingsController',["$scope", "$rootScope", "$state",	fun
     	console.log($houseIdx);
     	$rootScope.houseIndex = $houseIdx;
     	$state.go("houseconfiguration.house");
-    };
+    };*/
 }]);
