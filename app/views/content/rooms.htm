@@ -1,0 +1,38 @@
+<div>
+	<div class="row row-centered">
+		<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">R&auml;ume</h1>
+		<div ng-repeat="room in houses[houseIndex].getRooms()"
+			class="col-md-3 col-sm-3 col-lg-3 col-xs-11 card "
+			style="margin-left: 15px; height: 130px;"
+			ng-class="{'not-configured': deleted}">
+
+			<div class="col-md-12 col-xs-11 col-sm-12">
+				<div class="col-md-6 col-lg-6" style="margin-top: 5px;">
+					<span class="card-name-settings col-md-offset-2">{{room.getName()}}</span>
+				</div>
+				<button
+					class="btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2 settings-btn">
+					<i class="fa fa-wrench" aria-hidden="true"></i>
+				</button>
+			</div>
+			<button
+				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
+				Beschattung zu</button>
+			<button
+				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
+				Beschattung auf</button>
+			<button
+				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
+				Licht aus</button>
+			<button
+				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
+				Verbraucher aus</button>
+
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-11" style="height: 130px;">
+			<button class="add-btn" ng-click="addFloor()">
+				<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+			</button>
+		</div>
+	</div>
+</div>
