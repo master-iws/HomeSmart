@@ -3,8 +3,8 @@
  */
 'use strict';
 
-app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Category","Mod_Room",
-    function(Mod_House,Mod_Component,Mod_Floor,Mod_Category,Mod_Room) {
+app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Category","Mod_Room","ComponentService",
+    function(Mod_House,Mod_Component,Mod_Floor,Mod_Category,Mod_Room,componentService) {
     
     function getStored() {
 	if(typeof(Storage) !== undefined){
@@ -34,7 +34,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	    
 	    for(var id in stored){
 		var house = new Mod_House();
-		house.parseJSON(stored[id]);
+		house.parseJSON(stored[id],componentService);
 		house_arr.push(house);
 	    }
 	    
@@ -60,6 +60,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 				    room.setId(getNextId());
 				    room.setName("H"+houses+" - F"+floors+" - R"+rooms);
 				    room.setDescription("Desc: H"+houses+"-F"+floors+"-R"+rooms);
+				    room.addComponent(componentService.getComponentById(7001));
 
 				floor.addRoom(room);
 			    }

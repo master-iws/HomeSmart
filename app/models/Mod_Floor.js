@@ -70,8 +70,11 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	    return json;
 	};
 	
-	this.parseJSON = function(json,who) {
+	this.parseJSON = function(json,who,serv_components) {
 	    if(who === undefined || who === null) {
+		throw new Error("This function cannot be called independently!");
+	    }
+	    if(serv_components === undefined || serv_components === null) {
 		throw new Error("This function cannot be called independently!");
 	    }
 	    
@@ -87,7 +90,7 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	    
 	    for(var id in json["rooms"]){
 		var room = new Mod_Room();
-		room.parseJSON(json["rooms"][id],this);
+		room.parseJSON(json["rooms"][id],this,serv_components);
 		this.addRoom(room);
 	    }
 	};

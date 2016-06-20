@@ -114,7 +114,11 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    return json;
 	};
 	
-	this.parseJSON = function(json) {
+	this.parseJSON = function(json,serv_components) {
+	    if(serv_components === undefined || serv_components === null) {
+		throw new Error("This function cannot be called independently!");
+	    }
+	    
 	    this.setId(json["id"]);
 	    this.setName(json["name"]);
 	    this.setDescription(json["description"]);
@@ -123,14 +127,14 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    this.setCity(json["city"]);
 	    
 	    for(var id in json["components"]){
-		var comp = new Mod_Component();
-		comp.parseJSON(json["components"][id],this);
-		this.addComponent(comp);
+//		var comp = new Mod_Component();
+//		comp.parseJSON(json["components"][id],this);
+		this.addComponent(serv_components.getComponentById(json["components"][id].id));
 	    }
 	    
 	    for(var id in json["floors"]){
 		var floor = new Mod_Floor();
-		floor.parseJSON(json["floors"][id],this);
+		floor.parseJSON(json["floors"][id],this,serv_components);
 		this.addFloor(floor);
 	    }
 	    

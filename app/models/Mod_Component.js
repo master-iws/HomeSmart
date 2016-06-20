@@ -100,30 +100,31 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	    return json;
 	};
 	
-	this.parseJSON = function(json,who) {
-	    if(who === undefined || who === null) {
-		throw new Error("This function cannot be called independently!");
-	    }
-	    
-	    this.setId(json["id"]);
-	    this.setName(json["name"]);
-	    this.setDescription(json["description"]);
-	    
-	    this.setType(json["type"]);
-	    this.setSettings(json["settings"]);
-	    this.setCategory(json["category"]);
-	    
-	    if(who instanceof Mod_Room) {
-		this.setRoom(who);
-		this.setHouse(who.getFloor().getHouse());
-	    } else if(who instanceof Mod_House) {
-		this.setHouse(who);
-		this.setRoom(null);
-	    } else {
-		throw new TypeError();
-	    }
-	    
-	};
+//	this.parseJSON = function(json,who) {
+//	    if(who === undefined || who === null) {
+//		throw new Error("This function cannot be called independently!");
+//	    }
+//	    
+//	    this.setId(json["id"]);
+//	    this.setName(json["name"]);
+//	    this.setDescription(json["description"]);
+//	    
+//	    this.setType(json["type"]);
+//	    this.setSettings(json["settings"]);
+//	    
+//	    
+//	    
+//	    if(who instanceof Mod_Room) {
+//		this.setRoom(who);
+//		this.setHouse(who.getFloor().getHouse());
+//	    } else if(who instanceof Mod_House) {
+//		this.setHouse(who);
+//		this.setRoom(null);
+//	    } else {
+//		throw new TypeError();
+//	    }
+//	    
+//	};
 
 
     }
