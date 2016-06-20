@@ -4,12 +4,10 @@ app.controller('MainController',
 	["$scope", "$rootScope", "$state","MainService",
 	function($scope, $rootScope, $state, mainService) {
 		
-		$rootScope.adminPin = "test12";
-		$rootScope.houses = [];
-		$rootScope.houses.push({"name": "test", "city": "95119 Naila"});
-		$rootScope.houses.push({"name": "test1", "city": "95119 Naila"});
-		$rootScope.houseIndex = $rootScope.houses.length-1;
+		$rootScope.houseIndex = 0;
 		$rootScope.loggedIn = true;
+		
+		$rootScope.houses = mainService.getHouses();
 		
 		var test = mainService.getHouses();
 		console.log(JSON.stringify(test));

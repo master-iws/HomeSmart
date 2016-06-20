@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('DeleteHouseController',["$scope", "$rootScope", "$state", "$stateParams","$uibModalInstance",
+app.controller('DeleteFloorController',["$scope", "$rootScope", "$state", "$stateParams","$uibModalInstance",
                                       function($scope, $rootScope, $state, $stateParams,$uibModalInstance) {
 	
 	$scope.ok = function () {

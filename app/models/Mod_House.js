@@ -20,7 +20,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    _city,
 	    _components = [],
 	    _floors = [];
-
+	this.city;
 
 	/*
 	 * getter
@@ -31,7 +31,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	};
 
 	this.getCity = function() {
-	    return _city;
+	    return this.city;
 	};
 
 	this.getComponents = function() {
@@ -55,6 +55,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	};
 
 	this.setCity = function(city) {
+		this.city = city;
 	    if(this.checkStr(city)) {
 		_city = city;
 	    } else {
@@ -129,5 +130,23 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	};
 
 	
+	this.getSetName= function (value) {
+		  if (angular.isDefined(value)) {
+		    this.setName(value);
+		  } else {        
+		    return this.getName();
+		  }
+	
+    };
+    
+	this.getSetCity= function (value) {
+		  if (angular.isDefined(value)) {
+		    _city=value;
+		  } else {        
+		    return _city;
+		  }
+	
+	};
+    
     }
 

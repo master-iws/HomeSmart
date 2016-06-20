@@ -1,1 +1,45 @@
-nav2-houses
+ <nav class="navbar navbar-default secondNav" >
+  <div class="container-fluid">
+    <div class="navbar-header" >
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        
+    </div>
+    <div class="collapse navbar-collapse in second-nav-collapse">
+      <ul class="nav navbar-nav">
+      	 <li ng-class="{ secondNavActive: $state.includes('house.dashboard')}"><a ui-sref="house.dashboard" class="second-nav-a">
+         <i class="fa fa-star menu-icon" aria-hidden="true"></i>
+					Dashboard
+         </a></li>
+         <li ng-class="{ secondNavActive: $state.includes('house.central')}"><a ui-sref="house.central" class="second-nav-a" style="margin-left:0px;padding-left:0px;">
+         <i class="fa fa-home menu-icon" aria-hidden="true" ></i>
+					Zentral
+         </a></li>
+         <li ng-class="{ secondNavActive: $state.includes('house.floors')}"><a ui-sref="house.floors" class="second-nav-a">
+         <i class="fa fa-home menu-icon" aria-hidden="true"></i>
+					Etagen
+         </a></li>
+         <li ng-class="{ secondNavActive: $state.includes('house.rooms')}"><a ui-sref="house.rooms" class="second-nav-a">
+         <i class="fa fa-codepen menu-icon" aria-hidden="true"></i>
+					R&auml;me
+         </a></li>
+         <li ng-class="{ secondNavActive: $state.includes('house.categories')}"><a ui-sref="house.categories" class="second-nav-a">
+         <i class="fa fa-star menu-icon" aria-hidden="true"></i>
+					Kategorien
+         </a></li>
+         <li ng-class="{ secondNavActive: $state.includes('house.statistic')}"><a ui-sref="house.statistics" class="second-nav-a">
+         <i class="fa fa-bar-chart menu-icon" aria-hidden="true"></i>
+					Statistik
+         </a></li>
+         <li ng-class="{ secondNavActive: $state.includes('house.weather')}"><a ui-sref="house.weather" class="second-nav-a">
+         <i class="fa fa-star menu-icon" aria-hidden="true"></i>
+					Wetter
+         </a></li>
+      </ul>
+    </div>
+  </div>
+</nav> 

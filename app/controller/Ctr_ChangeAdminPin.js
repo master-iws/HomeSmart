@@ -5,6 +5,7 @@ app.controller('RegistrationController',["$scope", "$rootScope", "$state",	funct
 	$scope.oldPin;
 	$scope.pin;
 	$scope.confirmPin;
+	$scope.validationMessage = null;
 	
 	$scope.changeAdminPin = function() {
 		
