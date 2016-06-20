@@ -4,27 +4,27 @@
 		 <h1>{{$title}}</h1>
 		<form class="form-horizontal" name="changePinForm" novalidate >
        <div class="form-group">
-             <label for="oldPin" class="col-sm-3 col-md-3 control-label" id="oldPinLabel">Name</label>
+             <label for="oldPin" class="col-sm-3 col-md-3 control-label" id="nameLabel">Name</label>
 			 <div class="col-sm-12 col-md-7 col-xs-12">
-			      <input type="password" ng-model="oldPin" class="form-control" name="oldPin" id="oldPin" 
-			      ng-class="{'has-error': changePinForm.oldPin.$invalid}" required>
+			      <input ng-model="room.getSetName()" class="form-control" name="name" id="name" 
+			      ng-class="{'has-error': changePinForm.name.$invalid}" required>
 			 </div>
         </div>
         <div class="form-group">
         	<label for="confirmPin" class="col-sm-3 control-label" id="confirmPinLabel">Komponenten</label>
 			<div class="col-sm-12 col-md-12 col-xs-12">
-			     <div class="col-md-3 col-sm-3 col-xs-11 card" ng-repeat="component in room">
+			     <div class="col-md-3 col-sm-3 col-xs-11 card" ng-repeat="component in room.getComponents()">
 					<div class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
-						<button class="settings-btn" ng-click="editComponent($index)">
+						<button class="settings-btn btn-primary" ng-click="editComponent($index)">
 							<i class="fa fa-wrench" aria-hidden="true"></i>
 						</button>
-						<button class="settings-btn" ng-click="deleteComponent($index)">
+						<button class="settings-btn btn-primary" ng-click="deleteComponent($index)">
 							<i class="fa fa-remove" aria-hidden="true"></i>
 						</button>
 					</div>
 					<div class="col-md-12 col-xs-11 col-sm-12">
 						<div class="col-md-7" style="margin-top:5px;">
-							<span class="card-name-settings col-md-offset-2">{{component.name}}</span>
+							<span class="card-name-settings col-md-offset-2">{{component.getName()}}</span>
 						</div>
 					</div>
 				</div>

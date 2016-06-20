@@ -51,14 +51,14 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    for(var floors=1;floors<3;floors++){
 			var floor = new Mod_Floor();
 			    floor.setId(getNextId());
-			    floor.setName("House "+houses+" - Floor "+floors);
+			    floor.setName("Floor "+floors);
 			    floor.setDescription("Desc: H"+houses+"-F"+floors);
 			    floor.setHouse(house);
 
 			    for(var rooms=1;rooms<5;rooms++){
 				var room = new Mod_Room();
 				    room.setId(getNextId());
-				    room.setName("H"+houses+" - F"+floors+" - R"+rooms);
+				    room.setName("R"+rooms);
 				    room.setDescription("Desc: H"+houses+"-F"+floors+"-R"+rooms);
 				    room.addComponent(componentService.getComponentById(7001));
 

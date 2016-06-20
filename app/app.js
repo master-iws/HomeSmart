@@ -157,7 +157,7 @@ app.config(
 			authenticate: true,
 			adminArea: true,
 			resolve: {
-				$title: function() { return 'Häuser'; }
+				$title: function() { return 'Haus anlegen'; }
 			},
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},

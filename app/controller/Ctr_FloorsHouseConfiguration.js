@@ -1,21 +1,18 @@
 'use strict';
 
-app.controller('FloorsHouseConfigurationController',["$scope", "$rootScope", "$state","dragulaService",	function($scope, $rootScope, $state,dragulaService) {
+app.controller('FloorsHouseConfigurationController',["$scope", "$rootScope", "$state","dragulaService","$uibModal",	
+                                                     function($scope, $rootScope, $state,dragulaService,$uibModal) {
 	
 	$scope.deleteFloor = function($floorIdx) {
 		
 		$scope.deleteIdx = $floorIdx;
+		
 		var modalInstance = $uibModal.open({
 		      animation: $scope.animationsEnabled,
 		      templateUrl: 'app/views/dialog/deleteFloorDialog.htm',
-		      controller: 'DeleteFlorrController',
-		      size: size,
-		      resolve: {
-		        items: function () {
-		          return $scope.items;
-		        }
-		      }
-		    });
+		      controller: 'DeleteFloorController',
+		      scope: $scope
+		 });
     };
     
     $scope.addFloor = function() {

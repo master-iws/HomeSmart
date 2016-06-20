@@ -95,5 +95,12 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	    }
 	};
 
-
+	this.getSetName= function (value) {
+		  if (angular.isDefined(value)) {
+		    this.setName(value);
+		  } else {        
+		    return this.getName();
+		  }
+	
+  };
     }

@@ -19,18 +19,18 @@
 			      <input type="password" ng-model="pin" class="form-control" name="pin" 
 			      id="pin" ng-class="{'has-error': changePinForm.pin.$invalid}" pattern="[0-9]{5,10}" required>
 			    </div>
-			    <div ng-show="changePinForm.pin.$invalid">
-			    	<span>Ihr PIN muss eine Länge zwischen 5 und 10 haben und darf nur Zahlen enthalten.</span>
+			    <div ng-show="changePinForm.pin.$invalid" class="col-xs-11 col-sm-11 col-md-12 col-lg-12 animate-show validation-message">
+			    	<span>Ihr PIN muss eine L&auml;nge zwischen 5 und 10 haben und darf nur Zahlen enthalten.</span>
 			    </div>
         </div>
         <div class="form-group">
         	<label for="confirmPin" class="col-sm-3 control-label" id="confirmPinLabel">Wiederholung</label>
 			<div class="col-sm-12 col-md-7 col-xs-12">
 			      <input type="password" ng-model="confirmPin" class="form-control" name="confirmPin" id="confirmPin" 
-			      compare-to="pin" ng-class="{'has-error': (changePinForm.confirmPin.$invalid || changePinForm.confirmPin.$error.compareTo) }" required>
+			      compare-to-test="pin" ng-class="{'has-error': (changePinForm.confirmPin.$invalid) }" required>
 			</div>
-			<div class="validationMessage col-lg-12 animate-show" ng-show="changePinForm.confirmPin.$error.compareTo">
-           		<span>Der neue PIN und dessen Wiederholung stimmen nicht überein.</span>
+			<div class="validation-message col-lg-12 col-md-12 col-xs-11 col-sm-11 animate-show">
+           		<span>Der neue PIN und dessen Wiederholung stimmen nicht &uuml;berein.</span>
            	</div>
         </div>
         <div class="form-group col-sm-9">

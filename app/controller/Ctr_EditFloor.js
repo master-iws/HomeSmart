@@ -2,20 +2,20 @@
 
 app.controller('EditFloorController',["$scope", "$rootScope", "$state", "$stateParams",
                                       function($scope, $rootScope, $state, $stateParams) {
-	$scope.floor = {};
 	
-	$scope.floor.name = $rootScope.houses[$rootScope.houseIdx].floors[$stateParams.floorId].name;
-	
-	$scope.floor.name = $rootScope.
+	$scope.originalFloor = $rootScope.houses[$rootScope.houseIndex].getFloors()[$stateParams.floorId];
+	$scope.floor = new Mod_Floor();
+	$scope.floor.setName($scope.originalFloor.getName());
 	
 	$scope.save = function() {
 		
-		 $rootScope.houses[$rootScope.houseIdx].floors[$stateParams.floorId].name = $scope.floor.name;
+		 $scope.originalFloor.setName($scope.floor.getName());
+		 mainService.saveHouses($rootScope.houses);
     };
     
     $scope.cancel = function() {
 		
-    	 $scope.floor.name = $rootScope.houses[$rootScope.houseIdx].floors[$stateParams.floorId].name;
+    	$scope.floor.setName($scope.originalFloor.getName());
    };
    
 }]);

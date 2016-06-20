@@ -3,10 +3,10 @@
 		<h1 class="col-md-12 col-lg-12 col-sm-12 col-xs-12">H&auml;user</h1>
 			<div ng-repeat="house in houses" class="col-md-3 col-sm-3 col-xs-11 card" ng-class="{'not-configured': deleted}">
 				<div class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
-					<button class="settings-btn" >
+					<button class="btn-primary settings-btn" ng-click="configureHouse($index)" >
 						<i class="fa fa-wrench" aria-hidden="true"></i>
 					</button>
-					<button class="settings-btn" >
+					<button class="btn-primary settings-btn" ng-click="deleteHouse($index)" >
 						<i class="fa fa-remove" aria-hidden="true"></i>
 					</button>
 				</div>
@@ -15,15 +15,14 @@
 						<i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
 					</div>
 					<div class="col-md-6 col-lg-6" style="margin-top:5px;">
-						<span class="card-name-settings col-md-offset-2">{{house.name}}</span>
+						<span class="card-name-settings col-md-offset-2">{{house.getName()}}</span>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-11" style="height: 100px;">
-				<button class="add-btn" >
+				<button class="add-btn" ng-click="addHouse()" >
 					<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 				</button>
 			</div>
-			<span>{{houses[0].getName()}}</span>
 	</div>
 </div>

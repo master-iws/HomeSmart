@@ -1,20 +1,18 @@
 'use strict';
 
-app.controller('RoomsHouseConfigurationController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
+app.controller('RoomsHouseConfigurationController',["$scope", "$rootScope", "$state","$uibModal",	
+                                                    function($scope, $rootScope, $state,$uibModal) {
 	
-	console.log();
-	$scope.deleteRoom = function($floorIdx) {
+	$scope.floorIdx = 0;//ändern
+	
+	$scope.deleteRoom = function($roomIdx) {
 		
+		$scope.deleteIdx = $roomIdx;
 		var modalInstance = $uibModal.open({
 		      animation: $scope.animationsEnabled,
 		      templateUrl: 'app/views/dialog/deleteRoomDialog.htm',
 		      controller: 'DeleteRoomController',
-		      size: size,
-		      resolve: {
-		        items: function () {
-		          return $scope.items;
-		        }
-		      }
+		      scope: $scope
 		    });
     };
     
@@ -23,6 +21,6 @@ app.controller('RoomsHouseConfigurationController',["$scope", "$rootScope", "$st
     };
     
     $scope.editRoom = function($roomIdx) {
-    	$state.go("houseconfiguration.rooms.editRoom",{'roomId':$floorIdx});
+    	$state.go("houseconfiguration.rooms.editRoom",{'roomId':$roomIdx});
     };
 }]);

@@ -2,12 +2,6 @@
 
 app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$stateParams",
                                       function($scope, $rootScope, $state, $stateParams) {
-	$scope.house = {};
-	$scope.house.name = "";
-	$scope.house.city = "";
-	$scope.house.floors = [];
-	$scope.house.components = [];
-	
 	$scope.cities = ["Berlin",
                      "München",
                      "Hamburg",
@@ -20,17 +14,21 @@ app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$statePa
                      "Bremen",
                      "Dresden",
                      "Leipzig",
-                     "Hannover"];
+                     "Hannover"
+                     ,"Naila"];
+	
+	
+	
+	$scope.house = new Mod_House();
 	
 	$scope.save = function() {
-		//etagen anlegen
-		 $rootScope.houses.push($scope.house);
-		 $state.go("settings.houses");
+		
+		 $rootScope.houses[$rootScope.houseIndex].push($scope.hous);
+		 mainService.saveHouses($rootScope.houses);
     };
     
     $scope.cancel = function() {
-		
-    	 $state.go("settings.houses");
+    	$scope.house = new Mod_House();
    };
    
 }]);

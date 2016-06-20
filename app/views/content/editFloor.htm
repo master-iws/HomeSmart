@@ -4,9 +4,9 @@
 		 <h1>{{$title}}</h1>
 		<form class="form-horizontal" name="editFloorForm" novalidate >
        <div class="form-group">
-             <label for="name" class="col-sm-3 col-md-3 control-label" id="name">Name</label>
+             <label for="name" class="col-sm-3 col-md-3 control-label" id="nameLabel">Name</label>
 			 <div class="col-sm-12 col-md-7 col-xs-12">
-			      <input type="text" ng-model="floor.name" class="form-control" name="name" id="name" 
+			      <input type="text" ng-model="floor.getSetName()" ng-model-options="{getterSetter: true }"  class="form-control" name="name" id="name" 
 			      ng-class="{'has-error': editFloorForm.name.$invalid}" required>
 			 </div>
 			 <div ng-show="validationMessage != null" class="validationMessage">
