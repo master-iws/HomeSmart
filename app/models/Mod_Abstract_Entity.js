@@ -47,7 +47,7 @@ app.factory("Mod_Abstract_Entity",function () {
 	this.getDescription = function() {
 	    return _description;
 	};
-
+	
 	/*
 	 * setter
 	 */
@@ -75,7 +75,7 @@ app.factory("Mod_Abstract_Entity",function () {
 		throw new TypeError();
 	    }
 	};
-
+	
 	this.toJSON = function() {
 	    throw new Error("Not implemented!");
 	};

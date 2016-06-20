@@ -6,17 +6,17 @@
 app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Category","Mod_Room","ComponentService",
     function(Mod_House,Mod_Component,Mod_Floor,Mod_Category,Mod_Room,componentService) {
     
-    function getStored() {
+    function getStored(prefix) {
 	if(typeof(Storage) !== undefined){
-	    return JSON.parse(localStorage.getItem("homeSmart-houses"));
+	    return JSON.parse(localStorage.getItem("homeSmart-"+prefix));
 	} else {
 	    return false;
 	}
     }
     
-    function store(houses) {
+    function store(houses,prefix) {
 	if(typeof(Storage) !== undefined){
-	    return localStorage.setItem("homeSmart-houses",houses);
+	    return localStorage.setItem("homeSmart-"+prefix,houses);
 	}
     }
     function reset() {
@@ -27,7 +27,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     }
     
     function getHouses() {
-	var stored = getStored();
+	var stored = getStored("houses");
 	var house_arr=[];
 	
 	if(stored){
@@ -75,7 +75,21 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     }
     
     function saveHouses(houses) {
-	store(JSON.stringify(houses));
+	store(JSON.stringify(houses),"houses");
+    }
+    
+    function getSettings() {
+	var stored = getStored("config");
+	
+	if(stored){
+	    return stored;
+	} else {
+	    
+	}
+    }
+    
+    function saveSettings(settings) {
+	store(JSON.stringify(settings),"config");
     }
     
     var id=0;
@@ -86,6 +100,8 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     return {
 	getHouses:getHouses,
 	saveHouses:saveHouses,
-	reset:reset
+	reset:reset,
+	getSettings:getSettings,
+	saveSettings:saveSettings
     };
 }]);
