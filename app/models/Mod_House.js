@@ -19,7 +19,9 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	var _zip,
 	    _city,
 	    _components = [],
-	    _floors = [];
+	    _floors = [],
+	    _dashboard,
+	    _wlan;
 	this.city;
 
 	/*
@@ -33,6 +35,10 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	this.getCity = function() {
 	    return this.city;
 	};
+	
+	this.getWlan = function() {
+	    return _wlan;
+	};
 
 	this.getComponents = function() {
 	    return _components;
@@ -40,6 +46,10 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 
 	this.getFloors = function() {
 	    return _floors;
+	};
+	
+	this.getDashboard = function() {
+	    return _dashboard;
 	};
 	
 	this.getRooms = function() {
@@ -69,6 +79,14 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    } else {
 		throw new TypeError();
 	    }
+	};
+	
+	this.setDashboard = function(dashboard) {
+	    _dashboard = dashboard;
+	};
+	
+	this.setWlan = function(wlan) {
+	    _wlan = wlan;
 	};
 
 	this.addComponent = function(component) {
@@ -109,7 +127,9 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		"zip":this.getZip(),
 		"city":this.getCity(),
 		"components":this.getComponents(),
-		"floors":this.getFloors()
+		"floors":this.getFloors(),
+		"dashboard": this.getDashboard(),
+		"wlan": this.getWlan()
 	    };
 
 	    return json;
@@ -127,6 +147,10 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    this.setZip(json["zip"]);
 	    this.setCity(json["city"]);
 	    
+	    this.setDashboard(json["dashboard"]);
+	    
+	    this.setWlan(json["wlan"]);
+	    
 	    for(var id in json["components"]){
 		var comp = serv_components.getComponentById(json["components"][id].id);
 		comp.setHouse(this);
@@ -142,7 +166,9 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    
 	};
 
-	
+	/**
+	 * @author Julia Thüroff
+	 */
 	this.getSetName= function (value) {
 		  if (angular.isDefined(value)) {
 		    this.setName(value);
@@ -151,7 +177,9 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		  }
 	
     };
-    
+    /**
+	 * @author Julia Thüroff
+	 */
 	this.getSetCity= function (value) {
 		  if (angular.isDefined(value)) {
 		    _city=value;
@@ -160,6 +188,86 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		  }
 	
 	};
-    
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.getUsedCategorys= function () {
+		  
+		var categorys = []
+	    for (var f in _floors) {
+	    	var rooms = _floors[f].getRooms();
+	    	for(var r in rooms)
+	    	{
+	    		var components = rooms[r].getComponents();
+	    		for(var c in components)
+	    		{
+	    			if(categorys.indexOf(components[c].getCategory()) == -1)
+	    				categorys.push(components[c].getCategory());
+	    		}
+	    	}
+	    }
+		
+		for(var c in this.getComponents())
+	    {
+			if(categorys.indexOf(components[c].getCategory()) == -1)
+				categorys.push(components[c].getCategory());
+	    }
+		
+		
+	    return categorys;
+	
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setLight= function (value) {
+		  
+		this.setComponentsOfCategoryToValu("Beleuchtung", value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setShadowing= function (value) {
+		  
+		this.setComponentsOfCategoryToValu("Beschattung", value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setConsumer= function (value) {
+		  
+		this.setComponentsOfCategoryToValu("Verbraucher", value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setComponentsOfCategoryToValue= function (category, value) {
+		  
+		var categorys = []
+	    for (var f in _floors) {
+	    	var rooms = _floors[f].getRooms();
+	    	for(var r in rooms)
+	    	{
+	    		var components = rooms[r].getComponents();
+	    		for(var c in components)
+	    		{
+	    			if(components[c].getCategory().getName() === category )
+	    				components[c].getSettings()[0]=value;
+	    		}
+	    	}
+	    }
+		
+		for(var c in this.getComponents())
+	    {
+			if(components[c].getCategory().getName() === category )
+				components[c].getSettings()[0]=value;
+	    }	
+	};
+	
     }
 

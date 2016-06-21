@@ -7,8 +7,8 @@
 app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
     function (Mod_Abstract_Entity,$injector) {
 	
-//	var Mod_House = $injector.get("Mod_House");
-//	var Mod_Room = $injector.get("Mod_Room");
+// var Mod_House = $injector.get("Mod_House");
+// var Mod_Room = $injector.get("Mod_Room");
 	
     return Mod_Floor;
 }]);
@@ -50,7 +50,7 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	    _rooms.push(room);
 	};
 
-	//TODO: remove dosen't work!
+	// TODO: remove dosen't work!
 	this.removeRoom = function(room) {
 	    if(!(room instanceof Mod_Room || this.checkNum(room))) {
 		throw new TypeError();
@@ -63,7 +63,7 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 		"id":this.getId(),
 		"name":this.getName(),
 		"description":this.getDescription(),
-//		"house":this.getHouse(),
+// "house":this.getHouse(),
 		"rooms":this.getRooms()
 	    };
 
@@ -103,4 +103,47 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 		  }
 	
   };
+  
+  /**
+	 * @author Julia Thüroff
+	 */
+	this.setLight= function (value) {
+		  
+		this.setComponentsOfCategoryToValu("Beleuchtung", value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setShadowing= function (value) {
+		  
+		this.setComponentsOfCategoryToValu("Beschattung", value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setConsumer= function (value) {
+		  
+		this.setComponentsOfCategoryToValu("Verbraucher", value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setComponentsOfCategoryToValue= function (category, value) {
+		  
+		var rooms = this.getRooms();
+	    	for(var r in rooms)
+	    	{
+	    		var components = rooms[r].getComponents();
+	    		for(var c in components)
+	    		{
+	    			if(components[c].getCategory().getName() === category )
+	    				components[c].getSettings()[0]=value;
+	    		}
+	    	}
+	    	
+	};
+  
     }

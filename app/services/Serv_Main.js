@@ -47,6 +47,18 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    house.setDescription("This is our Home!");
 		    house.setCity("Naila");
 		    house.setZip("95119");
+		    
+		    var dashboard = {};
+			dashboard.quicklinks = [];
+			dashboard.quicklinks.push({category: 'Raum', typ:'1',name: 'wohnzimmer'},{category: 'Raum', typ: '1' ,name: 'esszimmer'});
+			dashboard.controls = [];
+			house.setDashboard(dashboard);
+			
+			var wlan = {};
+			wlan.ssid = "123";
+			wlan.password = "123";
+			wlan.status = true;
+			house.setWlan(wlan);
 
 		    for(var floors=1;floors<3;floors++){
 			var floor = new Mod_Floor();
@@ -67,7 +79,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			house.addFloor(floor);
 		    }
 		house_arr.push(house);
-	    }
+	   }
 	    
 	}
 	return house_arr;

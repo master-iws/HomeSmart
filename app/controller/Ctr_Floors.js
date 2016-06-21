@@ -12,12 +12,25 @@ app.controller('FloorsController',["$scope", "$rootScope", "$state","dragulaServ
     	$state.go("houseconfiguration.floors.editFloor",{'floorId':$floorIdx});
     };
     
-    $scope.changeIndex = function() {
-    	if($rootScope.houseIndex === 0)
-    		$rootScope.houseIndex = 1;
-    	else
-    		$rootScope.houseIndex =0;
+    $scope.lightOff = function($floorIdx) {
+    	$rootScope.houses[$rootScope.houseIndex].getFloors()[$floorIdx].setLight(0);
+    };	
+    
+    $scope.consumerOff = function($floorIdx) {
+    	$rootScope.houses[$rootScope.houseIndex].getFloors()[$floorIdx].setConsumer(0);
+    };	
+	
+    $scope.setShadowing = function($floorIdx, $value) {
+    	$rootScope.houses[$rootScope.houseIndex].getFloors()[$floorIdx].setShadowing($value);
+    };
+    
+    $scope.addFloor = function() {
     	
-    	console.log($rootScope.houseIndex);
+    	$state.go("houseconfiguration.floors.addFloor");
+    };
+    
+    $scope.configureHouse = function($floorIdx) {
+    	
+    	$state.go("houseconfiguration.floors.editFloor",{floorIdx: $floorIdx});
     };
 }]);

@@ -5,9 +5,8 @@ app.controller('WLANController',["$scope", "$rootScope", "$state",	function($sco
 	$rootScope.wlan = {};
 	
 	$scope.wlan = {};
-	$scope.wlan.status = true;
-	$scope.wlan.ssid = $rootScope.wlan.ssid;
-	$scope.wlan.password = $rootScope.wlan.password;
+	$scope.wlan.ssid = $rootScope.houses[$rootScope.houseIndex].getWlan().ssid;
+	$scope.wlan.password = $rootScope.houses[$rootScope.houseIndex].getWlan().password;
 	
 	$scope.cancel = function() {
 		$scope.wlan = $rootScope.wlan;

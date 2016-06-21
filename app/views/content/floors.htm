@@ -1,38 +1,40 @@
-<div>
-	<div class="row row-centered">
-		<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Etagen</h1>
+<div class="row row-centered">
+	<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Etagen</h1>
+	<div>
 		<div ng-repeat="floor in houses[houseIndex].getFloors()"
-				class="col-md-3 col-sm-3 col-xs-11 card "
-				style="margin-left: 15px; height: 130px;"
-				ng-class="{'not-configured': deleted}">
+			class="col-md-3 col-sm-3 col-lg-3 col-xs-11 card "
+			style="margin-left: 15px; height: 130px;"
+			ng-class="{'not-configured': deleted}">
 
-				<div class="col-md-12 col-xs-11 col-sm-12">
-					<div class="col-md-6 col-lg-6" style="margin-top: 5px;">
-						<span class="card-name-settings col-md-offset-2">{{floor.getName()}}</span>
-					</div>
-					<button
-						class="btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2 settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
+			<div class="col-md-12 col-xs-11 col-sm-12" style="padding: 0px;">
+				<div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 card-name"
+					style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+					<span class="card-name">{{floor.getName()}}</span>
 				</div>
-				<button
-					class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
-					Beschattung zu</button>
-				<button
-					class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
-					Beschattung auf</button>
-				<button
-					class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
-					Licht aus</button>
-				<button
-					class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
-					Verbraucher aus</button>
+				<button ng-click="configureFloor($index)"
+					class="btn-primary col-xs-1 col-lg-offset-3 col-xs-offset-6 col-sm-offset-6 col-md-offset-4 col-sm-1 col-md-1 col-lg-1 settings-btn">
+					<i class="fa fa-wrench" aria-hidden="true"></i>
+				</button>
 			</div>
-		<div class="col-md-3 col-sm-3 col-xs-11" style="height: 130px;">
+			<button ng-click="setShadowing($index,0)"
+				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
+				Beschattung zu</button>
+			<button ng-click="setShadowing($index,100)"
+				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
+				Beschattung auf</button>
+			<button ng-click="lightOff($index)"
+				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
+				Licht aus</button>
+			<button ng-click="consumerOff($index)"
+				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
+				Verbraucher aus</button>
+
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-11 add-card col-lg-3"
+			style="height: 120px; margin-left: 15px;">
 			<button class="add-btn" ng-click="addFloor()">
 				<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 			</button>
 		</div>
 	</div>
-	<div ui-view="EditFloor"></div>
 </div>

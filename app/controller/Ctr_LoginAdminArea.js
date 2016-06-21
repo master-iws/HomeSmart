@@ -8,12 +8,12 @@ app.controller('LoginAdminAreaController',["$scope", "$rootScope", "$state", "$s
 	
 	$scope.login = function() {
 		//pin auslesen
-		/*if($scope.adminPin == "Test12")//$rootScope.adminPin)
+		if($scope.adminPin == $rootScope.globalSettings.getAdminPin())//$rootScope.adminPin)
         {
-			*///richtigen state setzen
+			///richtigen state setzen
         	$state.go($stateParams.name);
-       /* }
+        }
         else
-        	$scope.validationMessage = "Admin PIN falsch.";*/
+        	$scope.validationMessage = "Admin PIN falsch.";
     };
 }]);

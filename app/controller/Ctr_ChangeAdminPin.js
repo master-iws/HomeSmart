@@ -9,7 +9,7 @@ app.controller('RegistrationController',["$scope", "$rootScope", "$state",	funct
 	
 	$scope.changeAdminPin = function() {
 		
-		if($scope.oldPin === $rootScope.adminPin)
+		if($scope.oldPin === $rootScope.globalSettings.getAdminPin())
         {
 			$scope.validationMessage ="PIN wurde geändert.";
         }

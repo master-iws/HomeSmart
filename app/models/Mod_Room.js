@@ -97,5 +97,44 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	    
 	};
 
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setLight= function (value) {
+		  
+		this.setComponentsOfCategoryToValu("Beleuchtung",value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setShadowing= function (value) {
+		  
+		this.setComponentsOfCategoryToValu("Beschattung", value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setConsumer= function (value) {
+		  
+		this.setComponentsOfCategoryToValu("Verbraucher", value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setComponentsOfCategoryToValue= function (category, value) {
+		  
+		var components = this.getComponents();
+	    		for(var c in components)
+	    		{
+	    			if(components[c].getCategory().getName() === category )
+	    				components[c].getSettings()[0]=value;
+	    		}
+	    	
+	    	
+	};
 
     }

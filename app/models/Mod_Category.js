@@ -15,7 +15,7 @@ app.factory("Mod_Category",["Mod_Abstract_Entity","$injector",
 
 	Mod_Abstract_Entity.call(this);
 
-	var _components = [];
+	var _components = [],_name;
 
 
 	/*
@@ -24,6 +24,14 @@ app.factory("Mod_Category",["Mod_Abstract_Entity","$injector",
 
 	this.getComponents = function() {
 	    return _components;
+	};
+	
+	this.getName = function() {
+	    return _name;
+	};
+	
+	this.setName = function(value) {
+	    _name = value;
 	};
 
 	this.getDescription = function() {

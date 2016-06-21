@@ -5,10 +5,11 @@ app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$sta
 	
 	$scope.types = [];
 	$scope.categories = ['Kategorie', 'Etage', 'Raum'];
-	$scope.quicklink = {category:'',typ:''};//auf rootScope setzen
+	$scope.quicklink = {category:'',typ:'',name:''};//auf rootScope setzen
 	
 	$scope.save = function() {
 		
+		$scope.quicklink.name = '';
 		 $rootScope.houses[$rootScope.houseIdx].dashboard.quicklinks.push($scope.quicklink);
     };
     

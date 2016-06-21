@@ -8,11 +8,9 @@ app.controller('MainController',
 		$rootScope.loggedIn = true;
 		
 		$rootScope.houses = mainService.getHouses();
-		
-		$rootScope.dashboard = {};
-		$rootScope.dashboard.quicklinks = [];
-		$rootScope.dashboard.quicklinks.push({category: 'Raum', typ: 'wohnzimmer'},{category: 'Raum', typ: 'esszimmer'});
-		$rootScope.dashboard.controls = [];
+		$rootScope.globalSettings = new Mod_GlobalSettings();
+		$rootScope.globalSettings.setAdminPin("123456");
+		$rootScope.globalSettings.setUser({name:'maxmustermann',password:'Test12'});
 		
 		var test = mainService.getHouses();
 		mainService.saveHouses(test);
@@ -33,5 +31,17 @@ app.controller('MainController',
 	    	
 	    	$rootScope.houseIndex = $houseIdx;
 	    	$state.go("dashboard");
+	    };
+	    
+	    $scope.lightOff = function() {
+	    	$rootScope.houses[$rootScope.houseIndex].setLight(0);
+	    };	
+	    
+	    $scope.consumerOff = function() {
+	    	$rootScope.houses[$rootScope.houseIndex].setConsumer(0);
+	    };	
+		
+	    $scope.setShadowing = function($value) {
+	    	$rootScope.houses[$rootScope.houseIndex].setShadowing($value);
 	    };
 }]);

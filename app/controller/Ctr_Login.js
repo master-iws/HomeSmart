@@ -10,7 +10,8 @@ app.controller('LoginController',["$scope", "$rootScope", "$state", "$stateParam
 	
 	$scope.login = function() {
 		
-		if($scope.userName == "maxmustermann" && $scope.password == "test12")
+		if($scope.userName == $rootScope.globalSettings.getUser().name
+				&& $scope.password == $rootScope.globalSettings.getUser().password)
         {
 			$rootScope.loggedIn= true;
         	$state.go($stateParams.name);

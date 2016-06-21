@@ -73,6 +73,7 @@
 		<script src="app/controller/Ctr_Floors.js"></script>
 		<script src="app/controller/Ctr_Rooms.js"></script>
 		<script src="app/controller/Ctr_Dashboard.js"></script>
+		<script src="app/controller/Ctr_Categorys.js"></script>
 
 		
 		<!--APP-Services-->
@@ -89,16 +90,18 @@
 					<div ui-view="Nav1"></div>
 					<div ui-view="Nav2"></div>
 				</header>
-				<ol class="breadcrumb" ng-if="!$state.includes('index')" >
-					<li>
-						<a ui-sref="index" >Start</a>
-					</li>
-					<li ng-repeat="crumb in $breadcrumbs" ng-class="{ 'active' : $last }">
-						<a ng-if="!$last" href="{{$state.href(crumb.state, crumb.stateParams)}}">{{crumb.title}}</a>
-						<span ng-if="$last">{{crumb.title}}</span>
-					</li>
-				</ol>
-				<div ui-view="Content"></div>
+				<main>
+					<ol class="breadcrumb" ng-if="!$state.includes('index')" >
+						<li>
+							<a ui-sref="dashboard" >Start</a>
+						</li>
+						<li ng-repeat="crumb in $breadcrumbs" ng-class="{ 'active' : $last }">
+							<a ng-if="!$last" href="{{$state.href(crumb.state, crumb.stateParams)}}">{{crumb.title}}</a>
+							<span ng-if="$last">{{crumb.title}}</span>
+						</li>
+					</ol>
+					<div ui-view="Content"></div>
+				</main>
 			</div>
 		</div>
 	</body>
