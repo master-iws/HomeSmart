@@ -12,6 +12,7 @@ app.controller('RegistrationController',["$scope", "$rootScope", "$state",	funct
 		if($scope.oldPin === $rootScope.globalSettings.getAdminPin())
         {
 			$scope.validationMessage ="PIN wurde geändert.";
+			//speichern
         }
         else
         	$scope.validationMessage = "Alter PIN ist falsch.";

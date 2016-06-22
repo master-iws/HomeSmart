@@ -21,12 +21,12 @@
 					</div>
 					<div class="col-md-12 col-xs-11 col-sm-12">
 						<div class="col-md-7" style="margin-top: 5px;">
-							<span class="card-name-settings col-md-offset-2">{{quicklink.typ}}</span>
+							<span class="card-name-settings col-md-offset-2">{{quicklink.name}}</span>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-3 col-xs-11" style="height: 100px;">
+			<div class="col-md-3 col-sm-3 col-xs-11 add-card" style="height: 100px;margin-left:15px;">
 				<button class="add-btn" ng-click="addQuicklink()">
 					<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 				</button>
@@ -36,7 +36,7 @@
 			<h2>Funktionseinheiten</h2>
 			<div dragula='"second-bag"'>
 				<div ng-repeat="control in houses[houseIndex].getDashboard().controls"
-					class="col-md-6 col-sm-6 col-xs-11 card" style="height: 50px;">
+					class="col-md-6 col-sm-6 col-xs-11 card" style="height: 50px;margin-left:15px;">
 					<div
 						class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
 						<button class="settings-btn" ng-click="editControl($index)">
@@ -53,7 +53,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 col-sm-6 col-xs-11" style="height: 50px;">
+			<div class="col-md-6 col-sm-6 col-xs-11 add-card" style="height: 50px;">
 				<button class="add-btn" ng-click="addControl()">
 					<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 				</button>
