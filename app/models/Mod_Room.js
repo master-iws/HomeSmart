@@ -17,6 +17,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	Mod_Abstract_Entity.call(this);
 
 	var _floor,
+		_icon,
 	    _components = [];
 
 
@@ -26,6 +27,10 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 
 	this.getFloor = function() {
 	    return _floor;
+	};
+	
+	this.getIcon = function() {
+	    return _icon;
 	};
 
 	this.getComponents = function() {
@@ -41,6 +46,10 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 		throw new TypeError();
 	    }
 	    _floor = floor;
+	};
+	
+	this.setIcon = function(icon) {
+	    _icon = icon;
 	};
 
 	this.addComponent = function(component) {
@@ -64,7 +73,8 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 		"name":this.getName(),
 		"descripton":this.getDescription(),
 //		"floor":this.getFloor(),
-		"components":this.getComponents()
+		"components":this.getComponents(),
+		"icon": this.getIcon()
 	    };
 
 	    return json;
@@ -81,6 +91,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	    this.setId(json["id"]);
 	    this.setName(json["name"]);
 	    this.setDescription(json["description"]);
+	    this.setIcon(json["icon"])
 	    
 	    if(who instanceof Mod_Floor) {
 		this.setFloor(who);
@@ -136,6 +147,41 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	    	
 	    	
 	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.getSetName= function (value) {
+		  if (angular.isDefined(value)) {
+		    this.setName(value);
+		  } else {        
+		    return this.getName();
+		  }
+	
+    };
+    
+    /**
+	 * @author Julia Thüroff
+	 */
+	this.getEnergyData= function (typ, date) {
+		var components = this.getComponents();
+		for(var c in components)
+		{
+			if(components[c].getCategory().getName() === "Stromverbraucher" )//wenn der tag heute ist  muss der verbraucher auch an sein
+			{
+				switch(typ)
+				{
+					case 'day':
+						//werte generieren
+						break;
+					case 'month':
+						break;
+					case 'year':
+						break;
+				}
+			}
+		}
+    };
 
     /**
      * @author Matthias Jakob

@@ -2,24 +2,24 @@
 <nav class="navbar navbar-default headNav ">
 	<form>
 		<div>
-			<div class="navbar-header col-xs-2 col-sm-2 col-lg-2">
+			<div class="navbar-header col-xs-2 col-sm-1 col-md-2 col-lg-2">
 				<a ui-sref="index" class="pull-left" style="margin-bottom: 10px;">
 					<picture>
 					<source srcset="app/icons/house_text.svg"
-						media="(min-width: 700px)">
+						media="(min-width: 780px)">
 					<source srcset="app/icons/house.svg" media="(min-width: 300px)">
 					<img src="app/icons/house_text.svg" alt="MDN"> </picture>
 				</a>
 			</div>
 			<div ng-show="{{houses.length && !$state.includes('index')}}"
-				class="nav navbar-nav col-xs-2 col-md-2 col-sm-4 col-lg-2"
+				class="nav navbar-nav col-xs-2 col-md-2 col-sm-1 col-lg-2"
 				style="padding-top: 19px;">
 				<select style="width:100%;"
 			    ng-model="$root.houseIndex" 
 			    ng-options="houses.indexOf(house) as (house.getName() + ' in '+ house.getZip()+ ' ' + house.city) for house in houses"></select>
 			</div>
 			<ul
-				class="nav navbar-nav navbar-right col-xs-6 col-sm-7 col-md-7 col-lg-7" 
+				class="nav navbar-nav navbar-right col-xs-6 col-sm-9 col-md-7 col-lg-7" 
 				style="padding-top: 15px;float:right;">
 				<li class="pull-right" ng-show="{{houseIndex != null && !$state.includes('index')}}" ><a href=""
 					ng-click="showNotifications()" class="head-nav-a"> <i
