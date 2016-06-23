@@ -12,15 +12,15 @@
 				</a>
 			</div>
 			<div ng-show="{{houses.length && !$state.includes('index')}}"
-				class="nav navbar-nav col-xs-2 col-md-2 col-sm-2 col-lg-2"
+				class="nav navbar-nav col-xs-2 col-md-2 col-sm-4 col-lg-2"
 				style="padding-top: 19px;">
-				<select 
+				<select style="width:100%;"
 			    ng-model="$root.houseIndex" 
 			    ng-options="houses.indexOf(house) as (house.getName() + ' in '+ house.getZip()+ ' ' + house.city) for house in houses"></select>
 			</div>
 			<ul
-				class="nav navbar-nav navbar-right col-xs-6 col-sm-7 col-md-7 col-lg-7"
-				style="padding-top: 15px;">
+				class="nav navbar-nav navbar-right col-xs-6 col-sm-7 col-md-7 col-lg-7" 
+				style="padding-top: 15px;float:right;">
 				<li class="pull-right" ng-show="{{houseIndex != null && !$state.includes('index')}}" ><a href=""
 					ng-click="showNotifications()" class="head-nav-a"> <i
 						class="fa fa-bell" aria-hidden="true"></i> <span class="hidden-xs">Benachrichtigungen</span>

@@ -4,6 +4,7 @@ body
 	background-color: #E8E8E8;
 	font-family: "arial";
 	min-height: 100%;
+	font-wieght: normal;
 }
 
 h1
@@ -165,12 +166,12 @@ option {
 }
 .head-nav-a
 {
-	font-size:13pt;
+	font-size:12pt;
 }
 
 .second-nav-a
 {
-	font-size:12pt;
+	font-size:11pt;
 }
 
 #userNameLabel, #passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
@@ -360,7 +361,7 @@ input.cmn-toggle-round:checked + label:after {
 {
 .col-lg-offset-0-5
 {
-	margin-left: 4.6%;
+	margin-left: 2.6%;
 }
 }
 
@@ -516,6 +517,36 @@ input.cmn-toggle-round:checked + label:after {
   opacity: 0;
   padding: 0 10px;
 }
+.container {
+  width: 888px;
+  height: 400px;
+}
+
+/* Axis */
+.chart .axis > path,
+/* Axis Ticks */
+.chart .axis > .tick line {
+  stroke: rgba(0, 0, 0, 0.5);
+}
+
+/* Axis Tick Labels */
+.chart .axis > .tick text {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+/* Legend */
+.chart-legend .item,
+/* Tooltip */
+.chart-tooltip {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+@media (min-width: 768px){
+.col-sm-offset-0-5 {
+    margin-left:20px;;
+}}
 
 .component
 {

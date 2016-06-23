@@ -88,7 +88,7 @@ app.config(
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/floors.htm", controller: 'FloorsController'}
 			}
-		}).state("houses.floors.detail", {
+		}).state("floors.detail", {
 			url: "/:floorId",
 			authenticate: true,
 			adminArea: false,
@@ -151,6 +151,18 @@ app.config(
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/categorys.htm",controller: 'CategorysController'}
+			}
+		}).state("statistic", {
+			url: "/statistic",
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'Kategorien'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"Content": { templateUrl: "app/views/content/statistic.htm",controller: 'StatisticController'}
 			}
 		}).state("settings", {
 			url: "/settings/",
