@@ -10,6 +10,10 @@ app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal",
     $scope.addRoom = function() {
     	$state.go("houseconfiguration.rooms.addRoom");
     };
+	                                                    
+	$scope.showRoom = function($roomIdx) {
+	    $state.go("room", {'roomId':$roomIdx});
+	};
     
     $scope.editRoom = function($roomIdx) {
     	$state.go("houseconfiguration.rooms.editRoom",{'roomId':$roomIdx});

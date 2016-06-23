@@ -298,6 +298,9 @@ input.cmn-toggle-round:checked + label:after {
 	border-radius: 2px;
 	margin-top:5px;
 	padding: 0px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
 }
 
 .card-name-settings
@@ -512,4 +515,50 @@ input.cmn-toggle-round:checked + label:after {
   line-height: 0;
   opacity: 0;
   padding: 0 10px;
+}
+
+.component
+{
+	background-color: #1A237E;
+}
+
+.click
+{
+	cursor: pointer;
+}
+
+.subnav
+{
+	border-right: thin solid #1A237E;
+	height: 100%;
+}
+
+.subnav-component
+{
+	background-color: lightgrey;
+}
+
+.subnav-active
+{
+	background-color: #1A237E;
+}
+
+.component-text
+{
+	color: #FEFEFE;
+	font-weight: bold;
+	font-size: 10pt;
+	text-align: middle;
+}
+
+.slider .slider-selection {
+	background: #BABABA;
+}
+
+.slider .slider-handle {
+	background: white;
+}
+
+.color {
+	width: 60px;
 }

@@ -137,4 +137,23 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	    	
 	};
 
-    }
+    /**
+     * @author Matthias Jakob
+     */
+    this.getComponentsByCategory = function () {
+
+	    var result = [];
+
+	    var components = this.getComponents();
+
+	    for(var c in components)
+	    {
+		    if(!(components[c].getCategory().getName() in result)) {
+			    result[components[c].getCategory().getName()] = [];
+		    }
+		    result[components[c].getCategory().getName()].push(components[c]);
+	    }
+	    return result;
+    };
+
+}

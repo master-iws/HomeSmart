@@ -114,6 +114,20 @@ app.config(
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/rooms.htm",controller: 'RoomsController'}
 			}
+		}).state("room", {
+			url: "/:roomId",
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: ['$stateParams', function($stateParams) {
+					return "Raum: " + $stateParams.roomId;
+				}]
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"Content": { templateUrl: "app/views/content/room.htm", controller: 'RoomController'}
+			}
 		}).state("dashboard", {
 			url: "/dashboard",
 			authenticate: true,
@@ -212,7 +226,7 @@ app.config(
 			}
 		}).state("houseconfiguration.floors", {
 			url: "floors",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Etagen'; }
@@ -224,7 +238,7 @@ app.config(
 			}
 		}).state("houseconfiguration.floors.addFloor", {
 			url: "/addFloor",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Etage anlegen'; }
@@ -236,7 +250,7 @@ app.config(
 			}
 		}).state("houseconfiguration.floors.editFloor", {
 			url: "/:floorId",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Etage bearbeiten'; }
@@ -248,7 +262,7 @@ app.config(
 			}
 		}).state("houseconfiguration.house", {
 			url: "/house",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Haus konfigurieren'; }
@@ -260,7 +274,7 @@ app.config(
 			}
 		}).state("houseconfiguration.rooms", {
 			url: "rooms",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Räume'; }
@@ -272,7 +286,7 @@ app.config(
 			}
 		}).state("houseconfiguration.rooms.addRoom", {
 			url: "/add",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Raum erstellen'; }
@@ -284,7 +298,7 @@ app.config(
 			}
 		}).state("houseconfiguration.rooms.editRoom", {
 			url: "/:roomId",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Raum bearbeiten'; }
@@ -296,7 +310,7 @@ app.config(
 			}
 		}).state("houseconfiguration.dashboard", {
 			url: "dashboard",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Dashboard'; }
@@ -308,7 +322,7 @@ app.config(
 			}
 		}).state("houseconfiguration.dashboard.editQuicklink", {
 			url: "/quicklinks/:quicklinkId",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Quicklink bearbeiten'; }
@@ -320,7 +334,7 @@ app.config(
 			}
 		}).state("houseconfiguration.dashboard.addQuicklink", {
 			url: "/quicklinks/add",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Quicklink hinzufügen'; }
@@ -332,7 +346,7 @@ app.config(
 			}
 		}).state("houseconfiguration.dashboard.editControl", {
 			url: "/controls/:controls",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Kontrolleinheit bearbeiten'; }
@@ -344,7 +358,7 @@ app.config(
 			}
 		}).state("houseconfiguration.dashboard.addControl", {
 			url: "/controls/add",
-			auhtenticate: true,
+			authenticate: true,
 			adminArea: true,
 			resolve: {
 				$title: function() { return 'Kontrolleinheit hinzufügen'; }
@@ -356,7 +370,7 @@ app.config(
 			}
 		}).state("login", {
 			url: "/:name",
-			auhtenticate: false,
+			authenticate: false,
 			adminArea: false,
 			resolve: {
 				$title: function() { return 'Login'; }
@@ -367,7 +381,7 @@ app.config(
 			}
 		}).state("loginAdminArea", {
 			url: "/:name",
-			auhtenticate: false,
+			authenticate: false,
 			adminArea: false,
 			resolve: {
 				$title: function() { return 'Login zum Adminbereich'; }
@@ -378,7 +392,7 @@ app.config(
 			}
 		}).state("alarmTest", {
 			url: "/alarmTest",
-			auhtenticate: false,
+			authenticate: false,
 			adminArea: false,
 			resolve: {
 				$title: function() { return 'Testen der Alarme'; }
