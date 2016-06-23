@@ -5,16 +5,18 @@
 			class="col-md-3 col-sm-3 col-lg-3 col-xs-11 card "
 			style="margin-left: 15px; height: 130px;"
 			ng-class="{'not-configured': deleted}">
+			
+			<button ng-click="configureFloor($index)"
+					class="btn-primary settings-btn">
+					<i class="fa fa-wrench" aria-hidden="true"></i>
+				</button>
+			
 
 			<div class="col-md-12 col-xs-11 col-sm-12" style="padding: 0px;">
 				<div class="col-md-4 col-lg-6 col-xs-6 col-sm-6 card-name"
 					style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
 					<span class="card-name">{{floor.getName()}}</span>
 				</div>
-				<button ng-click="configureFloor($index)"
-					class="btn-primary col-xs-1 col-lg-offset-3 col-xs-offset-4 col-sm-offset-3 col-md-offset-5 col-sm-1 col-md-1 col-lg-1 settings-btn">
-					<i class="fa fa-wrench" aria-hidden="true"></i>
-				</button>
 			</div>
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<span class="card-text col-lg-4">Beschattung</span>
@@ -28,10 +30,10 @@
 			</button>
 			</div>
 			<button ng-click="lightOff($index)"
-				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
+				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-4 floors-card-btn">
 				Licht aus</button>
 			<button ng-click="consumerOff($index)"
-				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 floors-card-btn">
+				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-6 floors-card-btn">
 				Verbraucher aus</button>
 
 		</div>

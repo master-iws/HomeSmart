@@ -10,7 +10,7 @@ app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams
     };
 	                                      
 	$scope.showRoom = function($roomIdx) {
-		$state.go("room", {'roomId':$roomIdx});
+		$state.go("rooms.detail", {'roomId':$roomIdx});
 	};
    
 }]);

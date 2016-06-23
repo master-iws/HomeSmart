@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('EditHouseController',["$scope", "$rootScope", "$state", "$stateParams",
-                                      function($scope, $rootScope, $state, $stateParams) {
+app.controller('EditHouseController',["$scope", "$rootScope", "$state", "$stateParams", "MainService",
+                                      function($scope, $rootScope, $state, $stateParams, mainService) {
 	$scope.cities = ["Berlin",
                      "München",
                      "Hamburg",

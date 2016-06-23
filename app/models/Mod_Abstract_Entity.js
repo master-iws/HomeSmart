@@ -12,9 +12,9 @@ app.factory("Mod_Abstract_Entity",function () {
 	var _numType = 1,
 	    _strType = "str";
 
-	var _id;
-	var _name;
-	var _description;
+	var _id=1;
+	var _name='';
+	var _description='';
 
 
 	this.checkNum = function(toCheck) {

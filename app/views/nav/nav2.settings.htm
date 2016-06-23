@@ -13,7 +13,7 @@
 		</div>
 		<div class="collapse navbar-collapse in second-nav-collapse">
 			<ul class="nav navbar-nav">
-				<li ng-class="{ secondNavActive: $state.includes('settings.pin')}">
+				<li ng-class="{ secondNavActive: $state.includes('settings.pin.*')}">
 					<a ui-sref="settings.pin" class="second-nav-a"
 					style="margin-left: 0px; padding-left: 0px;"> <i
 						class="fa fa-lock menu-icon" aria-hidden="true"></i> PIN
@@ -21,7 +21,7 @@
 				</a>
 				</li>
 				<li
-					ng-class="{ secondNavActive: $state.includes('settings.houses')}">
+					ng-class="{ secondNavActive: $state.includes('settings.houses.*')}">
 					<a ui-sref="settings.houses" class="second-nav-a"> <i
 						class="fa fa-home menu-icon" aria-hidden="true"></i> H&auml;user
 				</a>

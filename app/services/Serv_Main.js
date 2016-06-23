@@ -26,6 +26,22 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	}
     }
     
+    /**
+     * @author Julia Thüroff
+     */
+    function getGlobalSettings()
+    {
+    	var stored = getStored("config");
+    	var settings = new Mod_GlobalSettings();
+    	if(stored){
+    		settings.parseJSON(stored);
+    	}else{
+    		settings.setUser({name:'maxmustermann',password:'Test12'});
+    		settings.setAdminPin("12345");
+    	}
+    	return settings;
+    }
+    
     function getHouses() {
 	var stored = getStored("houses");
 	var house_arr=[];
@@ -81,23 +97,13 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		house_arr.push(house);
 	   }
 	    
-	}
+    }
 	return house_arr;
 	
     }
     
     function saveHouses(houses) {
 	store(JSON.stringify(houses),"houses");
-    }
-    
-    function getSettings() {
-	var stored = getStored("config");
-	
-	if(stored){
-	    return stored;
-	} else {
-	    
-	}
     }
     
     function saveSettings(settings) {
@@ -113,7 +119,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	getHouses:getHouses,
 	saveHouses:saveHouses,
 	reset:reset,
-	getSettings:getSettings,
+	getSettings:getGlobalSettings,
 	saveSettings:saveSettings
     };
 }]);

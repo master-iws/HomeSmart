@@ -13,6 +13,12 @@ app.run(function ($rootScope, $state, $stateParams, $log) {
 	$rootScope.$on('$stateChangeStart', 
 			function(event, toState, toParams, fromState, fromParams){
 		
+			console.log(toState);
+			if(toState.name === 'settings')
+			{
+				console.log("Tests");
+				$state.go("settings.pin");
+			}
 			/*if (toState.authenticate && !$rootScope.loggedIn){
 			      // User isn’t authenticated
 			      console.log(toState);
@@ -114,7 +120,7 @@ app.config(
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/rooms.htm",controller: 'RoomsController'}
 			}
-		}).state("room", {
+		}).state("rooms.detail", {
 			url: "/:roomId",
 			authenticate: true,
 			adminArea: false,
@@ -126,7 +132,7 @@ app.config(
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
-				"Content": { templateUrl: "app/views/content/room.htm", controller: 'RoomController'}
+				"DetailsContent": { templateUrl: "app/views/content/room.htm", controller: 'RoomController'}
 			}
 		}).state("dashboard", {
 			url: "/dashboard",
@@ -213,7 +219,7 @@ app.config(
 				"SettingsContent": { templateUrl: "app/views/content/addHouse.htm", controller: 'AddHouseController'}
 			}
 		}).state("houseconfiguration", {
-			url: "/houseconfiguration/",
+			url: "/houseconfiguration",
 			authenticate: true,
 			adminArea: true,
 			resolve: {
@@ -225,7 +231,7 @@ app.config(
 				"Content": { templateUrl: "app/views/content/houseconfiguration.htm"}
 			}
 		}).state("houseconfiguration.wlan", {
-			url: "wlan",
+			url: "/wlan",
 			authenticate: true,
 			adminArea: true,
 			resolve: {
@@ -237,7 +243,7 @@ app.config(
 				"HouseConfigurationContent": { templateUrl: "app/views/content/wlan.htm", controller: 'WLANController'}
 			}
 		}).state("houseconfiguration.floors", {
-			url: "floors",
+			url: "/floors",
 			authenticate: true,
 			adminArea: true,
 			resolve: {
@@ -285,7 +291,7 @@ app.config(
 				"HouseConfigurationContent": { templateUrl: "app/views/content/editHouse.htm", controller: 'EditHouseController'}
 			}
 		}).state("houseconfiguration.rooms", {
-			url: "rooms",
+			url: "/rooms",
 			authenticate: true,
 			adminArea: true,
 			resolve: {
@@ -321,7 +327,7 @@ app.config(
 				"EditRoom": { templateUrl: "app/views/content/editRoom.htm", controller: 'EditRoomController'}
 			}
 		}).state("houseconfiguration.dashboard", {
-			url: "dashboard",
+			url: "/dashboard",
 			authenticate: true,
 			adminArea: true,
 			resolve: {
@@ -333,7 +339,7 @@ app.config(
 				"HouseConfigurationContent": { templateUrl: "app/views/content/dashboardHouseConfiguration.htm", controller: 'DashboardConfigurationController'}
 			}
 		}).state("houseconfiguration.dashboard.editQuicklink", {
-			url: "/quicklinks/:quicklinkId",
+			url: "/quicklinks/edit/:quicklinkId",
 			authenticate: true,
 			adminArea: true,
 			resolve: {

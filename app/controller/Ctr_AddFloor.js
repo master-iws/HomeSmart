@@ -6,9 +6,10 @@ app.controller('AddFloorController',["$scope", "$rootScope", "$state", "$statePa
 	$scope.floor = new Mod_Floor();
 	
 	$scope.save = function() {
-		$rootScope.houses[$rootScope.houseIndex].push($scope.floor);
+		console.log($scope.floor.toJSON());
+		$rootScope.houses[$rootScope.houseIndex].addFloor($scope.floor);
 		mainService.saveHouses($rootScope.houses);
-		$state.go("settings.floors");
+		$state.go("houseconfiguration.floors");
     };
     
     $scope.cancel = function() {

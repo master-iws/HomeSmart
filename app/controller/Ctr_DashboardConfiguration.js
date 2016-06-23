@@ -4,7 +4,15 @@ app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$sta
 	
 	 dragulaService.options($scope, 'fifth-bag', {
 	      copy: true
-	    });
+	 });
+	 
+	 $scope.$on("first-bag.drop-model", function (e, el) {
+	    	mainService.saveHouses($rootScope.houses);
+	 });
+	 
+	 $scope.$on("second-bag.drop-model", function (e, el) {
+	    	mainService.saveHouses($rootScope.houses);
+	      });
 	
     $scope.editQuicklink = function($index) {
     	$state.go("houseconfiguration.dashboard.editQuicklink", {quicklinkId: $index});

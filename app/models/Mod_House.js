@@ -16,13 +16,18 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 
 	Mod_Abstract_Entity.call(this);
 
-	var _zip,
-	    _city,
+	var _zip='',
+	    _city='',
 	    _components = [],
 	    _floors = [],
-	    _dashboard,
-	    _wlan;
-	this.city;
+	    _dashboard={},
+	    _wlan={};
+	this.city='';
+	
+	_wlan.ssid='';
+	_wlan.password = '';
+	_dashboard.quicklinks = [];
+	_dashboard.controls = [];
 
 	/*
 	 * getter

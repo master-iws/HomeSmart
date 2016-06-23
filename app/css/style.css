@@ -563,6 +563,11 @@ input.cmn-toggle-round:checked + label:after {
 	cursor: pointer;
 }
 
+.drag
+{
+	cursor: -webkit-grab; cursor: -moz-grab;
+}
+
 .subnav
 {
 	border-right: thin solid #1A237E;

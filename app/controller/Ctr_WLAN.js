@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('WLANController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
+app.controller('WLANController',["$scope", "$rootScope", "$state","MainService",	
+                                 function($scope, $rootScope, $state, mainService) {
 	
 	$rootScope.wlan = {};
 	
@@ -9,10 +10,18 @@ app.controller('WLANController',["$scope", "$rootScope", "$state",	function($sco
 	$scope.wlan.password = $rootScope.houses[$rootScope.houseIndex].getWlan().password;
 	
 	$scope.cancel = function() {
+		
 		$scope.wlan = $rootScope.wlan;
     };
     
+    $scope.statusChanged = function(){
+    	
+    	mainService.saveHouses($rootScope.houses);
+    }
+    
     $scope.save = function(){
-    	$rootScope.wlan = $scope.wlan;
+    	$scope.wlan.status = $rootScope.houses[$rootScope.houseIndex].getWlan().status;
+    	$rootScope.houses[$rootScope.houseIndex].setWlan($scope.wlan);
+    	mainService.saveHouses($rootScope.houses);
     }
 }]);

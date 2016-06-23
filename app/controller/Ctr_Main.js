@@ -8,9 +8,10 @@ app.controller('MainController',
 		$rootScope.loggedIn = true;
 		
 		$rootScope.houses = mainService.getHouses();
-		$rootScope.globalSettings = new Mod_GlobalSettings();
+		$rootScope.gloabelSettings = mainService.getSettings();
+		/*$rootScope.globalSettings = new Mod_GlobalSettings();
 		$rootScope.globalSettings.setAdminPin("123456");
-		$rootScope.globalSettings.setUser({name:'maxmustermann',password:'Test12'});
+		$rootScope.globalSettings.setUser({name:'maxmustermann',password:'Test12'});*/
 		
 		var test = mainService.getHouses();
 		mainService.saveHouses(test);
@@ -24,7 +25,7 @@ app.controller('MainController',
 	    $scope.goStatistic = function($houseIdx) {
 	    	
 	    	$rootScope.houseIndex = $houseIdx;
-	    	$state.go("house.statistic");
+	    	$state.go("statistic");
 	    };
 	    
 	    $scope.selectHouse = function($houseIdx) {

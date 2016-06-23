@@ -1,9 +1,10 @@
 'use strict';
 
-app.controller('EditFloorController',["$scope", "$rootScope", "$state", "$stateParams",
-                                      function($scope, $rootScope, $state, $stateParams) {
+app.controller('EditFloorController',["$scope", "$rootScope", "$state", "$stateParams","MainService",
+                                      function($scope, $rootScope, $state, $stateParams,mainService) {
 	
 	$scope.originalFloor = $rootScope.houses[$rootScope.houseIndex].getFloors()[$stateParams.floorId];
+	
 	$scope.floor = new Mod_Floor();
 	$scope.floor.setName($scope.originalFloor.getName());
 	
@@ -11,6 +12,7 @@ app.controller('EditFloorController',["$scope", "$rootScope", "$state", "$stateP
 		
 		 $scope.originalFloor.setName($scope.floor.getName());
 		 mainService.saveHouses($rootScope.houses);
+		 $state.go("houseconfiguration.floors");
     };
     
     $scope.cancel = function() {

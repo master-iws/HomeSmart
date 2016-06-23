@@ -41,7 +41,7 @@
 							ng-class="{'has-error': (changePinForm.confirmPin.$invalid) }"
 							required>
 					</div>
-					<div
+					<div ng-show="changePinForm.confirmPin.$error.compareToTest"
 						class="validation-message col-lg-12 col-md-12 col-xs-11 col-sm-11 animate-show">
 						<span>Der neue PIN und dessen Wiederholung stimmen nicht
 							&uuml;berein.</span>
