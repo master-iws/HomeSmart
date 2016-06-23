@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('RegistrationController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
+app.controller('RegistrationController',["$scope", "$rootScope", "$state", "MainService",	
+                                         function($scope, $rootScope, $state, mainService) {
 	
 	$scope.oldPin;
 	$scope.pin;
@@ -11,8 +12,9 @@ app.controller('RegistrationController',["$scope", "$rootScope", "$state",	funct
 		
 		if($scope.oldPin === $rootScope.globalSettings.getAdminPin())
         {
+			$rootScope.globalSettings.setAdminPin($scope.pin);
+			mainService.saveSettings($rootScope.globalSettings);
 			$scope.validationMessage ="PIN wurde geändert.";
-			//speichern
         }
         else
         	$scope.validationMessage = "Alter PIN ist falsch.";

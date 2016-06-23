@@ -11,7 +11,6 @@ app.factory("Mod_GlobalSettings",function () {
 
 	var _adminPin;
 	var _user;
-	var _dashboard;
 	var _server;
 
 
@@ -27,9 +26,6 @@ app.factory("Mod_GlobalSettings",function () {
 	    return _user;
 	};
 
-	this.getDashboard = function() {
-	    return _dashboard;
-	};
 	
 	this.getServer = function() {
 	    return _server;
@@ -47,10 +43,6 @@ app.factory("Mod_GlobalSettings",function () {
 	this.setUser = function(user) {
 	    _user = user;
 	};
-
-	this.setDashboard = function(dashboard) {
-	    _dashboard = dashboard;
-	};
 	
 	this.setServer = function(server) {
 	    _server = server;
@@ -62,7 +54,6 @@ app.factory("Mod_GlobalSettings",function () {
 	    var json = {
 		"adminPin":this.getAdminPin(),
 		"user":this.getUser(),
-		"dashboard":this.getDashboard(),
 		"server":this.getServer()
 	    };
 
@@ -72,7 +63,6 @@ app.factory("Mod_GlobalSettings",function () {
 	this.parseJSON = function(json) {
 	    this.setAdminPin(json["adminPin"]);
 	    this.setUser(json["user"]);
-	    this.setDashboard(json["dashboard"]);
 	    this.setServer(json["server"]);
 	};
 

@@ -12,7 +12,7 @@ app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal",
     };
 	                                                    
 	$scope.showRoom = function($roomIdx) {
-	    $state.go("room", {'roomId':$roomIdx});
+	    $state.go("rooms.detail", {'roomId':$roomIdx});
 	};
     
     $scope.editRoom = function($roomIdx) {
@@ -36,8 +36,8 @@ app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal",
     	$state.go("houseconfiguration.rooms.addRoom");
     };
     
-    $scope.configureHouse = function($roomIdx) {
+    $scope.configureRoom = function($roomIdx) {
     	
-    	$state.go("houseconfiguration.floors.editRoom",{roomIdx: $roomIdx});
+    	$state.go("houseconfiguration.rooms.editRoom",{roomIdx: $roomIdx});
     };
 }]);

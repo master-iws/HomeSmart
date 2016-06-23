@@ -6,7 +6,7 @@
 				<div class="row" style="margin-bottom: 30px;">
 					<h1 class="col-xs-3" style="padding: 0px;">WLAN</h1>
 					<div class="switch col-md-offset-2">
-						<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
+						<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" ng-change="statusChanged()"
 							type="checkbox" ng-model="$root.houses[houseIndex].getWlan().status"> <label
 							for="cmn-toggle-1"></label>
 						<div class="on-span">Ein</div>

@@ -1,6 +1,6 @@
 <div>
 	<div class="row row-centered"
-		ng-show="!$state.includes('houseconfiguration.rooms.addRoom')">
+		ng-show="!$state.includes('houseconfiguration.rooms.editRoom.*') && !$state.includes('houseconfiguration.rooms.addRoom')">
 		<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">R&auml;ume</h1>
 		<div ng-show="floorIdx != null"
 			ng-repeat="room in houses[houseIndex].getRooms()"

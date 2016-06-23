@@ -29,8 +29,9 @@ app.controller('FloorsController',["$scope", "$rootScope", "$state","dragulaServ
     	$state.go("houseconfiguration.floors.addFloor");
     };
     
-    $scope.configureHouse = function($floorIdx) {
+    $scope.configureFloor = function($floorIdx) {
     	
-    	$state.go("houseconfiguration.floors.editFloor",{floorIdx: $floorIdx});
+    	console.log($floorIdx);
+    	$state.go("houseconfiguration.floors.editFloor",{floorId: $floorIdx});
     };
 }]);

@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('FloorsHouseConfigurationController',["$scope", "$rootScope", "$state","dragulaService","$uibModal",	
-                                                     function($scope, $rootScope, $state,dragulaService,$uibModal) {
+app.controller('FloorsHouseConfigurationController',["$scope", "$rootScope", "$state","dragulaService","$uibModal","MainService",	
+                                                     function($scope, $rootScope, $state,dragulaService,$uibModal, mainService) {
 	
 	$scope.deleteFloor = function($floorIdx) {
 		
@@ -14,6 +14,11 @@ app.controller('FloorsHouseConfigurationController',["$scope", "$rootScope", "$s
 		      scope: $scope
 		 });
     };
+    
+    $scope.$on("first-bag.drop-model", function (e, el) {
+    	console.log($rootScope.houses[$rootScope.houseIndex].getFloors()[0].toJSON());
+    	mainService.saveHouses($rootScope.houses);
+      });
     
     $scope.addFloor = function() {
     	$state.go("houseconfiguration.floors.addFloor");
