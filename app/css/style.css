@@ -58,6 +58,7 @@ option {
     min-width: 119px;
 }
 
+
 .btn-primary {
     color: #000000;
     background-color: #FEFEFE;
@@ -174,7 +175,7 @@ option {
 	font-size:11pt;
 }
 
-#userNameLabel, #passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
+#userNameLabel, #iconLabel,#passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
 {
 	text-align:left;
 }
@@ -322,6 +323,10 @@ input.cmn-toggle-round:checked + label:after {
 	color: #FEFEFE;
 	text-align: middle;
 	margin-bottom:40px;
+}
+.card-text
+{
+	color: #FEFEFE;
 }
 
 .house-card-btn
@@ -540,7 +545,76 @@ input.cmn-toggle-round:checked + label:after {
 }
 
 
-@media (min-width: 768px){
+@media (min-width: 544px ) and ( max-width: 992px){
 .col-sm-offset-0-5 {
     margin-left:20px;;
 }}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+}
+
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label * {
+    /* pointer-events: none; */
+    /* in case of FastClick lib use */
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+
+/* style 1 */
+
+.inputfile-1 + label {
+    color: #fefefe;
+    background-color: #1A237E;
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+    background-color: #3F51B5;
+}
+
+@media screen and (max-width: 50em) {
+	.inputfile-6 + label strong {
+		display: block;
+	}
+}
