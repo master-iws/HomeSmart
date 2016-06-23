@@ -2,8 +2,8 @@
 	<div class="row row-centered">
 		<h1 class="col-md-12 col-lg-12 col-sm-12 col-xs-12">H&auml;user</h1>
 		<div ng-repeat="house in houses"
-			class="col-md-3 col-sm-3 col-xs-11 card col-lg-offset-1 col-md-offset-1 col-sm-offset-1"
-			ng-class="{'not-configured': deleted}">
+			class="col-md-3 col-sm-3 col-xs-11 card col-md-offset-1 col-sm-offset-1"
+			ng-class="{'not-configured': deleted}" style="margin-left:15px;">
 			<div
 				class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
 				<button class="btn-primary settings-btn"
@@ -25,7 +25,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-11 add-card col-lg-offset-1 col-md-offset-1 col-sm-offset-1" style="height: 100px;">
+		<div class="col-md-3 col-sm-3 col-xs-11 add-card col-md-offset-1 col-sm-offset-1" style="height: 100px;margin-left:15px;">
 			<button class="add-btn" ng-click="addHouse()">
 				<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 			</button>
