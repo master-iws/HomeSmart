@@ -13,7 +13,7 @@
     display: block;
     content: "";
     height: 2px;
-    background: url('http://i.stack.imgur.com/QW5xr.png');
+    background: url('../icons/white_px.png');
     -webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
     -o-transition: all 1s ease-in-out;
@@ -61,7 +61,7 @@
     display: block;
     content: "";
     height: 2px;
-    background: url('http://i.stack.imgur.com/QW5xr.png');
+    background: url('../icons/white_px.png');
     -webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
     -o-transition: all 1s ease-in-out;
@@ -111,7 +111,7 @@
     content: "";
     height: 100%;
     border-radius: 25px/15px;
-    background: url('http://i.stack.imgur.com/QW5xr.png');
+    background: url('../icons/white_px.png');
     -webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
     -o-transition: all 1s ease-in-out;
