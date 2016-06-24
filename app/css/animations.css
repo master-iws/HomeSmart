@@ -1,0 +1,151 @@
+/* 
+    Author     : René Lottes
+*/
+
+.garage {
+    border: solid white 2px;
+    border-bottom: 0px;
+    margin:0;
+    padding:1px;
+    padding-bottom: 0;
+}
+.garage::after {
+    display: block;
+    content: "";
+    height: 2px;
+    background: url('http://i.stack.imgur.com/QW5xr.png');
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+}
+.garage[data-index="0"]::after {
+    height: 0;
+}
+.garage[data-index="1"]::after {
+    height: 10%;
+}
+.garage[data-index="2"]::after {
+    height: 20%;
+}
+.garage[data-index="3"]::after {
+    height: 30%;
+}
+.garage[data-index="4"]::after {
+    height: 40%;
+}
+.garage[data-index="5"]::after {
+    height: 50%;
+}
+.garage[data-index="6"]::after {
+    height: 60%;
+}
+.garage[data-index="7"]::after {
+    height: 70%;
+}
+.garage[data-index="8"]::after {
+    height: 80%;
+}
+.garage[data-index="9"]::after {
+    height: 90%;
+}
+.garage[data-index="10"]::after {
+    height: 100%;
+}
+
+.shutters {
+    border: solid white 2px;
+    margin:0;
+    padding:1px;
+}
+.shutters::after {
+    display: block;
+    content: "";
+    height: 2px;
+    background: url('http://i.stack.imgur.com/QW5xr.png');
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+}
+.shutters[data-index="0"]::after {
+    height: 0;
+}
+.shutters[data-index="1"]::after {
+    height: 10%;
+}
+.shutters[data-index="2"]::after {
+    height: 20%;
+}
+.shutters[data-index="3"]::after {
+    height: 30%;
+}
+.shutters[data-index="4"]::after {
+    height: 40%;
+}
+.shutters[data-index="5"]::after {
+    height: 50%;
+}
+.shutters[data-index="6"]::after {
+    height: 60%;
+}
+.shutters[data-index="7"]::after {
+    height: 70%;
+}
+.shutters[data-index="8"]::after {
+    height: 80%;
+}
+.shutters[data-index="9"]::after {
+    height: 90%;
+}
+.shutters[data-index="10"]::after {
+    height: 100%;
+}
+
+.pool {
+    border: solid white 2px;
+    margin:0;
+    padding:1px;
+    border-radius: 25px/15px;
+}
+.pool::after {
+    display: block;
+    content: "";
+    height: 100%;
+    border-radius: 25px/15px;
+    background: url('http://i.stack.imgur.com/QW5xr.png');
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+}
+.pool[data-index="0"]::after {
+    width: 0;
+}
+.pool[data-index="1"]::after {
+    width: 10%;
+}
+.pool[data-index="2"]::after {
+    width: 20%;
+}
+.pool[data-index="3"]::after {
+    width: 30%;
+}
+.pool[data-index="4"]::after {
+    width: 40%;
+}
+.pool[data-index="5"]::after {
+    width: 50%;
+}
+.pool[data-index="6"]::after {
+    width: 60%;
+}
+.pool[data-index="7"]::after {
+    width: 70%;
+}
+.pool[data-index="8"]::after {
+    width: 80%;
+}
+.pool[data-index="9"]::after {
+    width: 90%;
+}
+.pool[data-index="10"]::after {
+    width: 100%;
+}
