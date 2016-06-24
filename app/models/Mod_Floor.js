@@ -28,12 +28,17 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	    return _house;
 	};
 
-	this.getRooms = function() {
+	this.getRoomsInKeyValueArray = function() {
 	    var rooms = [];
 	    for (var r in _rooms) {
 		rooms[_rooms[r].getId()] = _rooms[r];
 	    }
+	    console.log("F-r key value: "+rooms);
 	    return rooms;
+	};
+	
+	this.getRooms = function() {
+	    return _rooms;
 	};
 
 	/*

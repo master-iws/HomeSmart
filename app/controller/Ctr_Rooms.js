@@ -5,8 +5,7 @@ app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal",
 	
 	
 	$scope.rooms = $rootScope.houses[$rootScope.houseIndex].getRooms();
-	console.log("Eäume"+$scope.rooms);
-	
+
     $scope.addRoom = function() {
     	$state.go("houseconfiguration.rooms.addRoom");
     };
@@ -36,8 +35,8 @@ app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal",
     	$state.go("houseconfiguration.rooms.addRoom");
     };
     
-    $scope.configureRoom = function($roomIdx) {
+    $scope.configureRoom = function($roomId) {
     	
-    	$state.go("houseconfiguration.rooms.editRoom",{roomIdx: $roomIdx});
+    	$state.go("houseconfiguration.rooms.editRoom",{roomId: $roomId});
     };
 }]);

@@ -188,16 +188,17 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
      */
     this.getComponentsByCategory = function () {
 
-	    var result = [];
+	   var result ={};
 
 	    var components = this.getComponents();
 
 	    for(var c in components)
 	    {
-		    if(!(components[c].getCategory().getName() in result)) {
-			    result[components[c].getCategory().getName()] = [];
+	    	var categoryName = components[c].getCategory().getName();
+		    if(!result.hasOwnProperty(categoryName)) {
+			    result[categoryName] = [];
 		    }
-		    result[components[c].getCategory().getName()].push(components[c]);
+		    result[categoryName].push(components[c]);
 	    }
 	    return result;
     };

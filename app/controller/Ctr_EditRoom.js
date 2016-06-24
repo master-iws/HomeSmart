@@ -2,7 +2,9 @@
 
 app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$stateParams",
                                       function($scope, $rootScope, $state, $stateParams) {
-	$scope.room;//auf rootScope setzen
+	
+	$scope.roomId = $stateParams.roomId;
+	$scope.room = $rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId);
 	
 	$scope.save = function() {
 		
