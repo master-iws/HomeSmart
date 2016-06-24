@@ -29,7 +29,11 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	};
 
 	this.getRooms = function() {
-	    return _rooms;
+	    var rooms = [];
+	    for (var r in _rooms) {
+		rooms[_rooms[r].getId()] = _rooms[r];
+	    }
+	    return rooms;
 	};
 
 	/*
@@ -64,7 +68,7 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 		"name":this.getName(),
 		"description":this.getDescription(),
 // "house":this.getHouse(),
-		"rooms":this.getRooms()
+		"rooms":_rooms
 	    };
 
 	    return json;
