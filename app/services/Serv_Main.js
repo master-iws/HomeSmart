@@ -44,9 +44,10 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     
     function getHouses() {
 	var stored = getStored("houses");
+	var floorId=1;
 	var house_arr=[];
 	
-	if(stored){
+	/*if(stored){
 	    
 	    for(var id in stored){
 		var house = new Mod_House();
@@ -54,11 +55,11 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		house_arr.push(house);
 	    }
 	    
-	} else {
+	} else {*/
 	    
 	    for(var houses=1;houses<3;houses++){
 		var house = new Mod_House();
-		    house.setId(getNextId());
+		    house.setId(houses);
 		    house.setName("House "+houses);
 		    house.setDescription("This is our Home!");
 		    house.setCity("Naila");
@@ -78,24 +79,32 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 
 		    for(var floors=1;floors<3;floors++){
 			var floor = new Mod_Floor();
-			    floor.setId(getNextId());
+			    floor.setId(floorId);
+			    floorId++;
 			    floor.setName("Floor "+floors);
 			    floor.setDescription("Desc: H"+houses+"-F"+floors);
 			    floor.setHouse(house);
+			    
 
 			    for(var rooms=1;rooms<5;rooms++){
 				var room = new Mod_Room();
 				    room.setId(getNextId());
 				    room.setName("R"+rooms);
 				    room.setDescription("Desc: H"+houses+"-F"+floors+"-R"+rooms);
-				    room.addComponent(componentService.getComponentById(7001));
+				    var c = componentService.getComponentById(7001);
+				    c.setName("Wohnzimmerleuchte");
+				    room.addComponent(c);
+				    
+				    var s = componentService.getComponentById(6003);
+				    s.setName("Balkonbeschattung");
+				    room.addComponent(s);
 
 				floor.addRoom(room);
 			    }
 			house.addFloor(floor);
 		    }
 		house_arr.push(house);
-	   }
+	   //}
 	    
     }
 	return house_arr;

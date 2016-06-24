@@ -20,7 +20,7 @@ app.controller('RoomsHouseConfigurationController',["$scope", "$rootScope", "$st
     	$state.go("houseconfiguration.rooms.addRoom");
     };
     
-    $scope.editRoom = function($roomIdx) {
-    	$state.go("houseconfiguration.rooms.editRoom",{'roomId':$roomIdx});
+    $scope.editRoom = function($roomId) {
+    	$state.go("houseconfiguration.rooms.editRoom",{'roomId':$roomId});
     };
 }]);

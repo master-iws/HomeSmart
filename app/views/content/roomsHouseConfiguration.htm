@@ -8,11 +8,11 @@
 			ng-class="{'not-configured': deleted}">
 			<div
 				class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
-				<button class="settings-btn btn-primary" ng-click="editRoom($index)">
+				<button class="settings-btn btn-primary" ng-click="editRoom(room.getId())">
 					<i class="fa fa-wrench" aria-hidden="true"></i>
 				</button>
 				<button class="settings-btn btn-primary"
-					ng-click="deleteRoom($index)">
+					ng-click="deleteRoom(room.getId())">
 					<i class="fa fa-remove" aria-hidden="true"></i>
 				</button>
 			</div>
