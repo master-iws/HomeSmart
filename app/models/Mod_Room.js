@@ -188,7 +188,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
      */
     this.getComponentsByCategory = function () {
 
-	    var result = {};
+	   var result ={};
 
 	    var components = this.getComponents();
 
