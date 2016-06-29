@@ -122,11 +122,14 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     }
     
     function getCategoryById(id) {
-	console.log(id);
     }
     
     function getComponentsByCategory(id) {
-	
+    	for(var cat in cats) {
+    	   if(cats[cat].getId() == id)
+    		   return cats[cat].getComponents();
+    	}
+    	return [];
     }
     
     function getComponentById(id) {

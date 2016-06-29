@@ -4,6 +4,8 @@ app.controller('WLANController',["$scope", "$rootScope", "$state","MainService",
                                  function($scope, $rootScope, $state, mainService) {
 	
 	$rootScope.wlan = {};
+	$scope.showPassword = false;
+	$scope.inputType = 'password';
 	
 	$scope.wlan = {};
 	$scope.wlan.ssid = $rootScope.houses[$rootScope.houseIndex].getWlan().ssid;
@@ -11,8 +13,15 @@ app.controller('WLANController',["$scope", "$rootScope", "$state","MainService",
 	
 	$scope.cancel = function() {
 		
-		$scope.wlan = $rootScope.wlan;
+		$scope.wlan = $rootScope.houses[$rootScope.houseIndex].getWlan();
     };
+    
+    $scope.hideShowPassword = function(){
+    	if ($scope.inputType == 'password')
+          $scope.inputType = 'text';
+        else
+          $scope.inputType = 'password';
+      };
     
     $scope.statusChanged = function(){
     	

@@ -33,7 +33,6 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	    for (var r in _rooms) {
 		rooms[_rooms[r].getId()] = _rooms[r];
 	    }
-	    console.log("F-r key value: "+rooms);
 	    return rooms;
 	};
 	
@@ -61,9 +60,8 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 
 	// TODO: remove dosen't work!
 	this.removeRoom = function(room) {
-	    if(!(room instanceof Mod_Room || this.checkNum(room))) {
-		throw new TypeError();
-	    }
+	    
+		
 	    _rooms = _rooms.splice(_rooms.indexOf(room),1);
 	};
 
@@ -112,6 +110,21 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 		  }
 	
   };
+  
+  
+  /**
+	 * @author Julia Thüroff
+	 */
+	this.isConfigured= function () {
+		  
+		for(var r in this.getRooms())
+		{
+			if(!this.getRooms()[r].isConfigured())
+				return false;
+		}
+		
+		return true;
+	};
   
   /**
 	 * @author Julia Thüroff

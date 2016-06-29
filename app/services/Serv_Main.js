@@ -3,8 +3,8 @@
  */
 'use strict';
 
-app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Category","Mod_Room","ComponentService",
-    function(Mod_House,Mod_Component,Mod_Floor,Mod_Category,Mod_Room,componentService) {
+app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Category","Mod_Room","ComponentService","$rootScope",
+    function(Mod_House,Mod_Component,Mod_Floor,Mod_Category,Mod_Room,componentService,$rootScope) {
     
     function getStored(prefix) {
 	if(typeof(Storage) !== undefined){
@@ -47,16 +47,22 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	var floorId=1;
 	var house_arr=[];
 	
-	/*if(stored){
-	    
+	if(stored){
+	    $rootScope.nextHouseId = -1;
 	    for(var id in stored){
-		var house = new Mod_House();
-		house.parseJSON(stored[id],componentService);
-		house_arr.push(house);
+			var house = new Mod_House();
+			house.parseJSON(stored[id],componentService);
+			if(house.getId() > $rootScope.nextHouseId)
+				$rootScope.nextHouseId = house.getId();
+			house_arr.push(house);
 	    }
+	    $rootScope.nextHouseId++;
 	    
-	} else {*/
+	} else {
 	    
+		$rootScope.nextHouseId = 3;
+		$rootScope.nextFloorId = 3;
+		$rootScope.nextRoomId = 5;
 	    for(var houses=1;houses<3;houses++){
 		var house = new Mod_House();
 		    house.setId(houses);
@@ -67,7 +73,6 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    
 		    var dashboard = {};
 			dashboard.quicklinks = [];
-			dashboard.quicklinks.push({category: 'Raum', typ:'1',name: 'wohnzimmer'},{category: 'Raum', typ: '1' ,name: 'esszimmer'});
 			dashboard.controls = [];
 			house.setDashboard(dashboard);
 			
@@ -104,7 +109,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			house.addFloor(floor);
 		    }
 		house_arr.push(house);
-	   //}
+	   }
 	    
     }
 	return house_arr;
@@ -121,10 +126,12 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     
     var id=0;
     function getNextId() {
-	return id++;
+    	$rootScope.nextId = id;
+    	return id++;
     }
     
     return {
+    getNextId:getNextId,
 	getHouses:getHouses,
 	saveHouses:saveHouses,
 	reset:reset,

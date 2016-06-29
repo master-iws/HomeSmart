@@ -16,7 +16,6 @@ app.controller('FloorsHouseConfigurationController',["$scope", "$rootScope", "$s
     };
     
     $scope.$on("first-bag.drop-model", function (e, el) {
-    	console.log($rootScope.houses[$rootScope.houseIndex].getFloors()[0].toJSON());
     	mainService.saveHouses($rootScope.houses);
       });
     
@@ -26,5 +25,9 @@ app.controller('FloorsHouseConfigurationController',["$scope", "$rootScope", "$s
     
     $scope.editFloor = function($floorIdx) {
     	$state.go("houseconfiguration.floors.editFloor",{'floorId':$floorIdx});
+    };
+    
+    $scope.editRooms = function() {
+    	$state.go("houseconfiguration.rooms");
     };
 }]);

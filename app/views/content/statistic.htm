@@ -1,48 +1,74 @@
 <div>
+	<div class="row row-centerd">
+		<h1>Aktivit&auml;ten</h1>
+		<span>Letze Aktivit&auml;t: {{lastActivity}}</span>
+		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+			<div ng-repeat="activity in lastActivitys">
+				<span>{{activity.ts}}: {{activity.text	}}</span>
+				<span></span>
+			</div>
+		</div>
+	</div>
 	<div class="row row-centered">
 		<h1 class="col-md-12 col-lg-12 col-sm-12 col-xs-12">Statistiken</h1>
-		<div class="actionbar heading center-actionbar">
-			<a class="navigation_button" ng-click="periodBack()"> <span>Zurück</span>
-			</a> <a style="text-align: center;" ng-click="showSelectType()">{{period.display}}</a>
-			<a id="clear-button" ng-click="periodNow()">
-			</a> <a class="navigation_button" ng-click="periodForward()"> <span>Weiter</span>
-				
-			</a>
-		</div>
-		<br>
 
-		<div ng-show="selectTypeVisible">
-			<div class="infoDiv light" style="">
-				<h4>Zeitbereich</h4>
-				<br> <a class="link"
-					ng-class="{link_active:period.type == 'day'}"
-					ng-click="setPeriodType('day')">Tag</a> <a class="link"
-					ng-class="{link_active:period.type == 'week'}"
-					ng-click="setPeriodType('week')">Woche</a> <a class="link"
-					ng-class="{link_active:period.type == 'month'}"
-					ng-click="setPeriodType('month')">Monat</a> <a class="link"
-					ng-class="{link_active:period.type == 'year'}"
-					ng-click="setPeriodType('year')">Jahr</a> <a
-					class="link" ng-class="{link_active:period.type == 'custom'}"
-					ng-click="displayCustomDateperiodSelection()">Benutzerdefiniert</a>
-				<br> <br>
-			</div>
+		<!-- Räume auflisten -->
+		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+			<span class="col-lg-3 col-md-3 col-xs-6 col-sm-6"></span> <span
+				class="col-lg-3 col-md-3 col-xs-6 col-sm-6">Stromverbrauch</span> <span
+				class="col-lg-3 col-md-3 col-xs-6 col-sm-6">Wasserverbrauch</span>
 		</div>
-
-		
-		<br>
-		<div id="maincontentLoading" data-ng-show="loading"></div>
-		<div id="charts" ng-class="{visibilityHidden: loading}">
-			<button ng-show="periodTypeHistory.length > 1"
-				ng-click="drillUpClick()"
-				style="background-color: buttonface; border: 2px outset buttonface;">
-				<img src="images/icons/Up-26.png" height="16" width="16" />
-			</button>
-			<div>
-				<linechart data="data" options="options" height="450"
-					on-click="onClick"></linechart>
+		<div ng-repeat="room in houses[houseIndex].getRooms()"
+			class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+			<span class="col-lg-3 col-md-3 col-xs-6 col-sm-6">{{room.getName()}}</span>
+			<span class="col-lg-3 col-md-3 col-xs-6 col-sm-6" ng-click="loadRoomChartData($index)">12</span>
+			<span class="col-lg-3 col-md-3 col-xs-6 col-sm-6"  ng-click="loadRoomWaterChartData($index)">12</span>
+		</div>
+		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+			<span class="col-lg-3 col-md-3 col-xs-6 col-sm-6">Gesamt</span> <span
+				class="col-lg-3 col-md-3 col-xs-6 col-sm-6"
+				ng-click="loadChartData()">12</span> <span
+				class="col-lg-3 col-md-3 col-xs-6 col-sm-6"
+				ng-click="loadWaterChartData()">12</span>
+		</div>
+		<div ng-show="showChart">
+			<div class="actionbar heading center-actionbar">
+				<a class="navigation_button" ng-click="periodBack()"> <img
+					src="images/icons/Back-64.png"> <span>Zur&uuml;ck</span>
+				</a> <a style="text-align: center;" ng-click="showSelectType()">{{period.display}}</a>
+				<a id="clear-button" ng-click="periodNow()"> Jetzt </a> <a
+					class="navigation_button" ng-click="periodForward()"> <span>Weiter</span>
+					<img src="images/icons/Forward-64.png">
+				</a>
 			</div>
 			<br>
+
+			<div>
+				<div class="infoDiv light" style="">
+					<h4>Zeitbereich</h4>
+					<br> <a class="link"
+						ng-class="{link_active:period.type == 'day'}"
+						ng-click="setPeriodType('day')">Tag</a> <a class="link"
+						ng-class="{link_active:period.type == 'month'}"
+						ng-click="setPeriodType('month')">Monat</a> <a class="link"
+						ng-class="{link_active:period.type == 'year'}"
+						ng-click="setPeriodType('year')">Jahr</a> <br> <br>
+				</div>
+			</div>
+			<br>
+			<div id="maincontentLoading" data-ng-show="loading"></div>
+			<div id="charts" ng-class="{visibilityHidden: loading}">
+				<button ng-show="periodTypeHistory.length > 1"
+					ng-click="drillUpClick()"
+					style="background-color: buttonface; border: 2px outset buttonface;">
+					<img src="images/icons/Up-26.png" height="16" width="16" />
+				</button>
+				<div style="height:500px;">
+					<linechart data="chartData" options="chartOptions" height="450"
+						on-click="onClick"></linechart>
+				</div>
+				<br>
+			</div>
 		</div>
 	</div>
 </div>

@@ -7,16 +7,17 @@ app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$sta
 	$scope.categories = ['Kategorie', 'Etage', 'Raum'];
 	$scope.quicklink = {};//auf rootScope setzen
 	$scope.quicklink.category='Kategorie';
-	$scope.quicklink.typ='';
-	$scope.quicklink.name='';
+	$scope.quicklink.typ={};
+	$scope.typ;
 	
 	$scope.types = componentService.getCategorys();
 	
 	$scope.save = function() {
-		
-		$scope.quicklink.name = '';
+		$scope.quicklink.typ.id = $scope.typ.getId();
+		$scope.quicklink.typ.name = $scope.typ.getName();
 		$rootScope.houses[$rootScope.houseIndex].getDashboard().quicklinks.push($scope.quicklink);
 		mainService.saveHouses($rootScope.houses);
+		$state.go("houseconfiguration.dashboard");
     };
     
     $scope.cancel = function() {
@@ -25,7 +26,6 @@ app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$sta
    
    $scope.categoryChanged = function()
    {
-	   console.log($rootScope.houses[$rootScope.houseIndex].getRooms());
 	   if($scope.quicklink.category == 'Kategorie')
 		   $scope.types = componentService.getCategorys();
 	   else if($scope.quicklink.category == 'Etage')

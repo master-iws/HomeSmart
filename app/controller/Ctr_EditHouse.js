@@ -24,6 +24,7 @@ app.controller('EditHouseController',["$scope", "$rootScope", "$state", "$stateP
     $scope.house.setName($rootScope.houses[$rootScope.houseIndex].getName());
     $scope.house.setCity($rootScope.houses[$rootScope.houseIndex].getCity());
     $scope.house.setZip($rootScope.houses[$rootScope.houseIndex].getZip());
+    $scope.house.components = $rootScope.houses[$rootScope.houseIndex].components;
 	
 	$scope.save = function() {
 		

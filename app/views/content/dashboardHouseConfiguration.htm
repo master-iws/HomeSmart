@@ -6,27 +6,28 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<h2>Quick Links</h2>
 			<div dragula='"first-bag"' dragula-model="dashboard.quicklinks">
-				<div ng-repeat="quicklink in houses[houseIndex].getDashboard().quicklinks"
+				<div
+					ng-repeat="quicklink in houses[houseIndex].getDashboard().quicklinks track by $index"
 					style="margin-left: 15px;" class="col-md-3 col-sm-3 col-xs-11 card">
-					<div
-						class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
-						<button class="settings-btn btn-primary"
+					<div style="height: 40px;"
+						class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
+						<button class="edit-btn btn-primary class" style="z-index: 3000;"
 							ng-click="editQuicklink($index)">
 							<i class="fa fa-wrench" aria-hidden="true"></i>
 						</button>
-						<button class="settings-btn btn-primary"
+						<button class="settings-btn btn-primary" style="z-index: 3000;"
 							ng-click="deleteQuicklink($index)">
 							<i class="fa fa-remove" aria-hidden="true"></i>
 						</button>
 					</div>
-					<div class="col-md-12 col-xs-11 col-sm-12">
-						<div class="col-md-7" style="margin-top: 5px;">
-							<span class="card-name-settings col-md-offset-2">{{quicklink.name}}</span>
-						</div>
+					<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
+						style="padding: 0px;">
+						<span class="card-name-settings">{{quicklink.typ.name}}</span>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-3 col-xs-11 add-card" style="height: 100px;margin-left:15px;">
+			<div class="col-md-3 col-sm-3 col-xs-11 add-card"
+				style="height: 100px; margin-left: 15px;">
 				<button class="add-btn" ng-click="addQuicklink()">
 					<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 				</button>
@@ -35,14 +36,18 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<h2>Funktionseinheiten</h2>
 			<div dragula='"second-bag"'>
-				<div ng-repeat="control in houses[houseIndex].getDashboard().controls"
-					class="col-md-6 col-sm-6 col-xs-11 card" style="height: 50px;margin-left:15px;">
-					<div
-						class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
-						<button class="settings-btn" ng-click="editControl($index)">
+				<div
+					ng-repeat="control in houses[houseIndex].getDashboard().controls"
+					class="col-md-6 col-sm-6 col-xs-11 card"
+					style="height: 50px; margin-left: 15px;">
+					<div style="height: 40px;"
+						class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
+						<button class="edit-btn btn-primary class" style="z-index: 3000;"
+							ng-click="editControl($index)">
 							<i class="fa fa-wrench" aria-hidden="true"></i>
 						</button>
-						<button class="settings-btn" ng-click="deleteControl($index)">
+						<button class="settings-btn btn-primary" style="z-index: 3000;"
+							ng-click="deleteControl($index)">
 							<i class="fa fa-remove" aria-hidden="true"></i>
 						</button>
 					</div>
@@ -53,7 +58,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 col-sm-6 col-xs-11 add-card" style="height: 50px;">
+			<div class="col-md-6 col-sm-6 col-xs-11 add-card"
+				style="height: 50px;">
 				<button class="add-btn" ng-click="addControl()">
 					<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 				</button>

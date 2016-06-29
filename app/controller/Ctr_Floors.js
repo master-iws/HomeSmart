@@ -31,7 +31,6 @@ app.controller('FloorsController',["$scope", "$rootScope", "$state","dragulaServ
     
     $scope.configureFloor = function($floorIdx) {
     	
-    	console.log($floorIdx);
     	$state.go("houseconfiguration.floors.editFloor",{floorId: $floorIdx});
     };
 }]);

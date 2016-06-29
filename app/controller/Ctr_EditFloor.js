@@ -3,9 +3,11 @@
 app.controller('EditFloorController',["$scope", "$rootScope", "$state", "$stateParams","MainService",
                                       function($scope, $rootScope, $state, $stateParams,mainService) {
 	
-	$scope.originalFloor = $rootScope.houses[$rootScope.houseIndex].getFloors()[$stateParams.floorId];
+	$scope.originalFloor = $rootScope.houses[$rootScope.houseIndex].getFloorById($stateParams.floorId);
 	
 	$scope.floor = new Mod_Floor();
+	$scope.floor.setId($scope.originalFloor.getId());
+	$scope.floor.setHouse($scope.originalFloor.getHouse());
 	$scope.floor.setName($scope.originalFloor.getName());
 	
 	$scope.save = function() {

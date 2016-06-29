@@ -3,15 +3,12 @@
     return {
       require: "ngModel",
       scope: {
-        otherModelValue: "=compareTopin"
+        otherModelValue: "=compareToOtherPin"
       },
       link: function(scope, element, attributes, ngModel) {
 
         ngModel.$validators.compareTo = function(modelValue) {
-        	console.log(modelValue);
-        	console.log(scope.otherModelValue);
-        	console.log(modelValue == scope.otherModelValue);
-        	 ngModel.$setValidity('nxEqual', modelValue == scope.otherModelValue);
+        	ngModel.$setValidity('nxEqual', modelValue == scope.otherModelValue);
         	 
           return modelValue == scope.otherModelValue;
         };
@@ -23,4 +20,4 @@
     };
   };
 
-  app.directive("compareToTest", compareTo);
+  app.directive("compareToOtherPin", compareTo);

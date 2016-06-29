@@ -13,22 +13,18 @@ app.run(function ($rootScope, $state, $stateParams, $log) {
 	$rootScope.$on('$stateChangeStart', 
 			function(event, toState, toParams, fromState, fromParams){
 		
-			console.log(toState);
 			if(toState.name === 'settings')
 			{
-				console.log("Tests");
 				$state.go("settings.pin");
 			}
 			/*if (toState.authenticate && !$rootScope.loggedIn){
 			      // User isn’t authenticated
-			      console.log(toState);
 					$state.go("login",{name: toState.name});
 			      event.preventDefault(); 
 		    }*/
 				
 			/*if (toState.adminArea && (!fromState.adminArea && fromState.name != "loginAdminArea")){
 			      // User isn’t authenticated
-				  $state.go("loginAdminArea",{name: toState.name});
 			      event.preventDefault(); 
 		  	}*/
 	});
@@ -312,7 +308,7 @@ app.config(
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
-				"EditRoom": { templateUrl: "app/views/content/editRoom.htm", controller: 'AddRoomController'}
+				"EditRoom": { templateUrl: "app/views/content/addRoom.htm", controller: 'AddRoomController'}
 			}
 		}).state("houseconfiguration.rooms.editRoom", {
 			url: "/:roomId",

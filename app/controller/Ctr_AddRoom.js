@@ -7,8 +7,12 @@ app.controller('AddRoomController',["$scope", "$rootScope", "$state", "$statePar
 	$scope.room.setIcon(undefined);
 
 	$scope.save = function() {
-		
-		 $rootScope.houses[$rootScope.houseIdx].floors[$stateParams.floorId].push($scope.room);
+
+		 $scope.room.setId($rootScope.nextRoomId);
+		 $rootScope.nextRoomId++;
+		 $scope.floorIdx = $rootScope.houses[$rootScope.houseIndex].getFloors().indexOf($scope.room.getFloor());
+		 $rootScope.houses[$rootScope.houseIndex].getFloors()[$scope.floorIdx].addRoom($scope.room);
+		 mainService.saveHouses($rootScope.houses);
 		 $state.go("houseconfiguration.rooms");
     };
     

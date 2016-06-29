@@ -126,5 +126,28 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 //	    
 //	};
 
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.getSetName= function (value) {
+		  if (angular.isDefined(value)) {
+		    this.setName(value);
+		  } else {        
+		    return this.getName();
+		  }
+	
+    };
+    
+    /**
+	 * @author Julia Thüroff
+	 */
+	this.getSetType= function (value) {
+		  if (angular.isDefined(value)) {
+		    this.setType(value);
+		  } else {        
+		    return this.getType();
+		  }
+	
+    };
 
     }

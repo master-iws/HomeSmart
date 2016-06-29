@@ -6,6 +6,32 @@ app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$sta
 	      copy: true
 	 });
 	 
+	 $scope.deleteQuicklink = function($quicklinkIdx) {
+			
+			var size = 0;
+			$scope.deleteIdx = $quicklinkIdx;
+			
+			var modalInstance = $uibModal.open({
+			      animation: $scope.animationsEnabled,
+			      templateUrl: 'app/views/dialog/deleteQuicklinkDialog.htm',
+			      controller: 'DeleteQuicklinkController',
+			      scope: $scope
+			});
+	    };
+	    
+ $scope.deleteControl = function($controlIdx) {
+			
+			var size = 0;
+			$scope.deleteIdx = $quicklinkIdx;
+			
+			var modalInstance = $uibModal.open({
+			      animation: $scope.animationsEnabled,
+			      templateUrl: 'app/views/dialog/deleteControlDialog.htm',
+			      controller: 'DeleteControlController',
+			      scope: $scope
+			});
+	    };
+	 
 	 $scope.$on("first-bag.drop-model", function (e, el) {
 	    	mainService.saveHouses($rootScope.houses);
 	 });
@@ -19,7 +45,6 @@ app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$sta
     };
     
     $scope.addQuicklink = function() {
-    	console.log("addQuicklink");
     	$state.go("houseconfiguration.dashboard.addQuicklink");
     };
     
@@ -38,8 +63,5 @@ app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$sta
     $scope.deleteControl = function($houseIdx) {
     	//löschen
     };
-    
-    $scope.save = function() {
-    	console.log($rootScope.dashboard.quicklinks);
-    };
+
 }]);
