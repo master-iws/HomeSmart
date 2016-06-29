@@ -30,34 +30,47 @@
 					<div class="row" style="margin-bottom: 10px;">
 						<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
 						     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="component-name">Pool</span>
+							<span class="component-name">Fernseher</span>
+						</div>
+						<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+							<div class="switch">
+								<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
+								       type="checkbox"> <label
+									for="cmn-toggle-1"></label>
+								<div class="on-span">Ein</div>
+								<div class="off-span">Aus</div>
+							</div>
 						</div>
 					</div>
 					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-9 col-lg-9 col-xs-11 col-sm-9" style="margin-top: 15px;">
-							<span class="component-text">Abdeckung:&nbsp;</span>
-							<button class="btn btn-primary"><i class="fa fa-arrow-down fa-rotate-90"></i> </button>
-							<button class="btn btn-primary"><i class="fa fa-square"></i> </button>
+						<div class="col-md-11 col-lg-11 col-xs-11 col-sm-11" style="margin-top: 15px;">
+							<span class="component-text">Lautstärke:&nbsp;&nbsp;</span>
+							<button id="buttonVolumeMute"  class="btn btn-primary">
+								<i id="iconVolumeOn" class="fa fa-volume-up fa-2x"></i>
+								<span id="iconVolumeMute" class="fa-stack fa-lg hidden">
+								  <i class="fa fa-volume-up fa-stack-1x"></i>
+								  <i class="fa fa-ban fa-stack-2x text-danger"></i>
+								</span>
+							</button>
+							&nbsp;&nbsp;
+							<input id="slider" data-slider-class='slider' type="text" data-slider-min="0" data-slider-max="50" data-slider-step="1" data-slider-value="20"/>
+							<span id="ist-sound" class="component-text">&nbsp;&nbsp;20</span>
+						</div>
+					</div>
+					<div class="row" style="margin-bottom: 10px;">
+						<div class="col-md-11 col-lg-11 col-xs-11 col-sm-11" style="margin-top: 15px;">
+							<span class="component-text">Programm:&nbsp;&nbsp;</span>
+							<button class="btn btn-primary"><i class="fa fa-arrow-down fa-rotate-90"></i></button>
+							<select>
+								<option>--Bitte wählen--</option>
+								<option>Das Erste</option>
+								<option>ZDF</option>
+								<option>RTL</option>
+								<option>SAT1</option>
+								<option>Pro7</option>
+								<option>DMAX</option>
+							</select>
 							<button class="btn btn-primary"><i class="fa fa-arrow-up fa-rotate-90"></i> </button>
-							<span class="component-text">&nbsp;&nbsp;&nbsp;Status:&nbsp;</span>
-							<!--<div class="btn btn-primary"><i class="shutters" data-index="5"></i></div>-->
-						</div>
-					</div>
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="margin-top: 15px;">
-							<span class="component-text">Soll Temperatur:&nbsp;&nbsp;</span>
-							<input id="slider" data-slider-class='slider' type="text" data-slider-min="15" data-slider-max="40" data-slider-step="1" data-slider-value="26"/>
-							<span id="ist-temp" class="component-text">&nbsp;&nbsp;28 °C</span>
-						</div>
-						<div class="col-md-4 col-lg-4 col-xs-11 col-sm-4" style="margin-top: 15px;">
-							<span class="component-text">Ist Temperatur: 20°C</span>
-						</div>
-					</div>
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="margin-top: 15px;">
-							<span class="component-text">Gegenstromanlage:&nbsp;&nbsp;</span>
-							<input id="slider2" data-slider-class='slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="10"/>
-							<span id="ist-percent" class="component-text">&nbsp;&nbsp;10 %</span>
 						</div>
 					</div>
 					<button ng-click="configureComponent($index)"
@@ -81,14 +94,19 @@
 <script>
 	var slider = new Slider('#slider', {
 		formatter: function(value) {
-			$('#ist-temp').html('&nbsp;&nbsp;' + value + ' °C');
-			return 'Gewünschte Temperatur: ' + value + ' °C';
+			$('#ist-sound').html('&nbsp;&nbsp;' + value);
+			return value;
 		}
 	});
-	var slider2 = new Slider('#slider2', {
-		formatter: function(value) {
-			$('#ist-percent').html('&nbsp;&nbsp;' + value + ' %');
-			return 'Gewünschte Temperatur: ' + value + ' %';
+	$('#buttonVolumeMute').click(function(){
+		var iconVolumeMute = $('#iconVolumeMute');
+		var iconVolumeOn = $('#iconVolumeOn');
+		if(iconVolumeMute.hasClass('hidden')){
+			iconVolumeMute.removeClass('hidden');
+			iconVolumeOn.addClass('hidden');
+		} else {
+			iconVolumeOn.removeClass('hidden');
+			iconVolumeMute.addClass('hidden');
 		}
 	});
 </script>
