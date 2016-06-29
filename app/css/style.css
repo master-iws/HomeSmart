@@ -674,6 +674,14 @@ input.cmn-toggle-round:checked + label:after {
 	background-color: #1A237E;
 }
 
+.component-name
+{
+	color: #FEFEFE;
+	font-weight: bold;
+	font-size: 15pt;
+	text-align: center;
+}
+
 .click
 {
 	cursor: pointer;
@@ -705,7 +713,6 @@ input.cmn-toggle-round:checked + label:after {
 	color: #FEFEFE;
 	font-weight: bold;
 	font-size: 10pt;
-	text-align: middle;
 }
 
 .slider .slider-selection {

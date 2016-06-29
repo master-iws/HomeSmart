@@ -1,0 +1,69 @@
+<div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
+		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+			<span class="component-name">Backofen</span>
+		</div>
+		<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+			<div class="switch">
+				<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
+				       type="checkbox"> <label
+					for="cmn-toggle-1"></label>
+				<div class="on-span">Ein</div>
+				<div class="off-span">Aus</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-6 col-xs-12 col-sm-6" style="margin-top: 20px;">
+			<span class="component-text"><i class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Verbleibende Zeit:&nbsp;&nbsp; 60 Minuten</span>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col-md-3 col-lg-3 col-xs-12 col-sm-3" style="margin-top: 15px;">
+			<span class="component-text">Modus:&nbsp;&nbsp;</span>
+			<select>
+				<option>--Bitte wählen--</option>
+				<option>Umluft</option>
+				<option>Oberhitze</option>
+				<option>Unterhitze</option>
+				<option>Ober/Unterhitze</option>
+				<option>Heißluft</option>
+				<option>Grill</option>
+				<option>Selbstreinigung</option>
+			</select>
+		</div>
+		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 20px;">
+			<span class="component-text">Temperatur:&nbsp;&nbsp;</span>
+			<input id="slider" data-slider-class='slider' type="text" data-slider-tooltip="hide" data-slider-min="50" data-slider-max="280" data-slider-step="10" data-slider-value="180" />
+			<span id="ovenTemp" class="component-text">&nbsp;&nbsp;50 %</span>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 20px;">
+			<span class="component-text">Zeit:&nbsp;&nbsp;</span>
+			<input id="slider2" data-slider-class='slider' type="text" data-slider-tooltip="hide" data-slider-min="1" data-slider-max="120" data-slider-step="1" data-slider-value="40" />
+			<span id="ovenTime" class="component-text">&nbsp;&nbsp;40 Minuten</span>
+		</div>
+		<div class="col-md-1 col-lg-1 col-xs-12 col-sm-1" style="margin-top: 15px;">
+			<button class="btn btn-primary" id="start">Start</button>
+		</div>
+	</div>
+	<button ng-click="configureComponent($index)"
+	        class="btn-primary settings-btn">
+		<i class="fa fa-wrench" aria-hidden="true"></i>
+	</button>
+</div>
+
+<script>
+	var slider = new Slider('#slider', {
+		formatter: function(value) {
+			$('#ovenTemp').html('&nbsp;&nbsp;' + value + ' °C');
+			return 'Gewünschte Temperatur: ' + value + ' °C';
+		}
+	});
+	var slider2 = new Slider('#slider2', {
+		formatter: function(value) {
+			$('#ovenTime').html('&nbsp;&nbsp;' + value + ' Minuten');
+			return 'Gewünschte Temperatur: ' + value + ' Minuten';
+		}
+	});
+</script>

@@ -4,8 +4,8 @@ app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams
                                       function($scope, $rootScope, $state, $stateParams) {
 
 	$scope.roomId = $stateParams.roomId;
-	$scope.selectedRoom = $rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId);
-	console.log($scope.selectedRoom.getComponentsByCategory());
+	//$scope.selectedRoom = $rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId);
+	//console.log('KOMPONENTEN: '+$scope.selectedRoom.getComponentsByCategory());
 	
 	                                      
 	$scope.addRoom = function() {

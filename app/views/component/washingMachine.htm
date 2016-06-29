@@ -2,9 +2,9 @@
 	<div class="row" style="margin-bottom: 10px;">
 		<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
 		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-			<span class="component-name">Kaffeemaschine</span>
+			<span class="component-name">Waschmaschine</span>
 		</div>
-		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
+		<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
 			<div class="switch">
 				<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
 				       type="checkbox"> <label
@@ -13,22 +13,24 @@
 				<div class="off-span">Aus</div>
 			</div>
 		</div>
+		<div class="col-md-6 col-lg-6 col-xs-12 col-sm-6" style="margin-top: 20px;">
+			<span class="component-text"><i class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Verbleibende Zeit:&nbsp;&nbsp; 60 Minuten</span>
+		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-3 col-lg-3 col-xs-12 col-sm-3" style="margin-top: 15px;">
-			<span class="component-text">Getränk:&nbsp;&nbsp;</span>
+		<div class="col-md-4 col-lg-4 col-xs-12 col-sm-4" style="margin-top: 15px;">
+			<span class="component-text">Modus:&nbsp;&nbsp;</span>
 			<select>
 				<option>--Bitte wählen--</option>
-				<option>Kaffee</option>
-				<option>Cappuccino</option>
-				<option>Espresso</option>
-				<option>Milchkaffee</option>
+				<option>Baumwolle</option>
+				<option>Koch/Buntwäsche</option>
+				<option>Pflegeleicht</option>
 			</select>
 		</div>
 		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 20px;">
-			<span class="component-text">Stärke:&nbsp;&nbsp;</span>
-			<input id="slider" data-slider-class='slider' type="text" data-slider-tooltip="hide" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
-			<span id="coffeeStrength" class="component-text">&nbsp;&nbsp;50 %</span>
+			<span class="component-text">Temperatur:&nbsp;&nbsp;</span>
+			<input id="slider" data-slider-class='slider' type="text" data-slider-tooltip="hide" data-slider-min="30" data-slider-max="90" data-slider-step="10" data-slider-value="60" />
+			<span id="washingTemp" class="component-text">&nbsp;&nbsp;50 °C</span>
 		</div>
 		<div class="col-md-1 col-lg-1 col-xs-12 col-sm-1" style="margin-top: 15px;">
 			<button class="btn btn-primary" id="start">Start</button>
@@ -43,8 +45,8 @@
 <script>
 	var slider = new Slider('#slider', {
 		formatter: function(value) {
-			$('#ist-temp').html('&nbsp;&nbsp;' + value + ' %');
-			return 'Gewünschte Temperatur: ' + value + ' %';
+			$('#washingTemp').html('&nbsp;&nbsp;' + value + ' °C');
+			return 'Gewünschte Temperatur: ' + value + ' °C';
 		}
 	});
 </script>

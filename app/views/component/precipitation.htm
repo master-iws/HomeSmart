@@ -1,17 +1,20 @@
 <div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
+		<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
 		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-			<span class="card-name">{{component.getName()}}</span>
+			<span class="component-name">Niederschlag</span>
 		</div>
-		<div class="col-md-8 col-lg-8 col-xs-6 col-sm-8">
+		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
 			<div class="switch">
 				<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
-				       type="checkbox" ng-model="component.settings.onoff"> <label
+				       type="checkbox"> <label
 					for="cmn-toggle-1"></label>
 				<div class="on-span">Ein</div>
 				<div class="off-span">Aus</div>
 			</div>
+		</div>
+		<div class="col-md-6 col-lg-6 col-xs-4 col-sm-6" style="margin-top: 20px;">
+			<span class="component-text">Niederschlag:&nbsp;0,5&nbsp;&nbsp;L&nbsp;/&nbsp;m²</span>
 		</div>
 	</div>
 	<button ng-click="configureComponent($index)"
