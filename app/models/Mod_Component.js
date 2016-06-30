@@ -53,7 +53,7 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	 */
 
 	this.setType = function(type) {
-	    if(this.checkStr(type)) {
+	    if(this.checkNum(type)) {
 		_type = type;
 	    } else {
 		throw new TypeError();
@@ -61,7 +61,7 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	};
 
 	this.setSettings = function(settings) {
-	    return _settings;
+	    _settings = settings;
 	};
 
 	this.setCategory = function(category) {
