@@ -134,12 +134,15 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    _components.push(component);
 	};
 
-	//TODO: remove dosen't work!
 	this.removeComponent = function(component) {
 	    if(!(component instanceof Mod_Component || this.checkNum(component))) {
 		throw new TypeError();
 	    }
-	    _components = _components.splice(_components.indexOf(component),1);
+	    for(var comp in _components){
+		if(_components[comp].getId() === component || _components[comp].getId() === component.getId()){
+		    _components = _components.splice(comp,1);
+		}
+	    }
 	};
 
 	this.addFloor = function(floor) {
@@ -149,12 +152,15 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    _floors.push(floor);
 	};
 
-	//TODO: remove dosen't work!
 	this.removeFloor = function(floor) {
 	    if(!(floor instanceof Mod_Floor || this.checkNum(floor))) {
 		throw new TypeError();
 	    }
-	    _floors = _floors.splice(_floors.indexOf(floor),1);
+	    for(var f in _floors){
+		if(_floors[f].getId() === floor || _floors[f].getId() === floor.getId()){
+		    _floors = _floors.splice(f,1);
+		}
+	    }
 	};
 
 	this.toJSON = function() {

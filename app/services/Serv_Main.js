@@ -26,21 +26,6 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	}
     }
     
-    /**
-     * @author Julia Thüroff
-     */
-    function getGlobalSettings()
-    {
-    	var stored = getStored("config");
-    	var settings = new Mod_GlobalSettings();
-    	if(stored){
-    		settings.parseJSON(stored);
-    	}else{
-    		settings.setUser({name:'maxmustermann',password:'Test12'});
-    		settings.setAdminPin("12345");
-    	}
-    	return settings;
-    }
     
     function getHouses() {
 	var stored = getStored("houses");
@@ -120,6 +105,19 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	store(JSON.stringify(houses),"houses");
     }
     
+    function getSettings()
+    {
+    	var stored = getStored("config");
+    	var settings = new Mod_GlobalSettings();
+    	if(stored){
+    		settings.parseJSON(stored);
+    	}else{
+    		settings.setUser({name:'maxmustermann',password:'Test12'});
+    		settings.setAdminPin("12345");
+    	}
+    	return settings;
+    }
+    
     function saveSettings(settings) {
 	store(JSON.stringify(settings),"config");
     }
@@ -135,7 +133,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	getHouses:getHouses,
 	saveHouses:saveHouses,
 	reset:reset,
-	getSettings:getGlobalSettings,
+	getSettings:getSettings,
 	saveSettings:saveSettings
     };
 }]);

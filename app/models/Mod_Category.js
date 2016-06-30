@@ -53,12 +53,15 @@ app.factory("Mod_Category",["Mod_Abstract_Entity","$injector",
 	    _components.push(component);
 	};
 
-	//TODO: remove dosen't work!
 	this.removeComponent = function(component) {
 	    if(!(component instanceof Mod_Component || this.checkNum(component))) {
 		throw new TypeError();
 	    }
-	    _components = _components.splice(_components.indexOf(component),1);
+	    for(var comp in _components){
+		if(_components[comp].getId() === component || _components[comp].getId() === component.getId()){
+		    _components = _components.splice(comp,1);
+		}
+	    }
 	};
 
 	this.toJSON = function() {

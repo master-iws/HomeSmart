@@ -58,11 +58,15 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	    _rooms.push(room);
 	};
 
-	// TODO: remove dosen't work!
 	this.removeRoom = function(room) {
-	    
-		
-	    _rooms = _rooms.splice(_rooms.indexOf(room),1);
+	    if(!(room instanceof Mod_Room || this.checkNum(room))) {
+		throw new TypeError();
+	    }
+	    for(var r in _rooms){
+		if(_rooms[r].getId() === room || _rooms[r].getId() === room.getId()){
+		    _rooms = _rooms.splice(r,1);
+		}
+	    }
 	};
 
 	this.toJSON = function() {
@@ -71,7 +75,7 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 		"name":this.getName(),
 		"description":this.getDescription(),
 // "house":this.getHouse(),
-		"rooms":_rooms
+		"rooms":this.getRooms()
 	    };
 
 	    return json;
