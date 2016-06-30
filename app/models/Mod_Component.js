@@ -72,14 +72,14 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	};
 
 	this.setRoom = function(room) {
-	    if(!(room instanceof Mod_Room)) {
+	    if(!(room instanceof Mod_Room || room === null)) {
 		throw new TypeError();
 	    }
 	    _room = room;
 	};
 
 	this.setHouse = function(house) {
-	    if(!(house instanceof Mod_House)) {
+	    if(!(house instanceof Mod_House || house === null)) {
 		throw new TypeError();
 	    }
 	    _house = house;
