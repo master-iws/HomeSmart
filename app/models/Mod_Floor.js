@@ -33,7 +33,6 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	    for (var r in _rooms) {
 		rooms[_rooms[r].getId()] = _rooms[r];
 	    }
-	    console.log("F-r key value: "+rooms);
 	    return rooms;
 	};
 	
@@ -59,12 +58,15 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	    _rooms.push(room);
 	};
 
-	// TODO: remove dosen't work!
 	this.removeRoom = function(room) {
 	    if(!(room instanceof Mod_Room || this.checkNum(room))) {
 		throw new TypeError();
 	    }
-	    _rooms = _rooms.splice(_rooms.indexOf(room),1);
+	    for(var r in _rooms){
+		if(_rooms[r].getId() === room || _rooms[r].getId() === room.getId()){
+		    _rooms = _rooms.splice(r,1);
+		}
+	    }
 	};
 
 	this.toJSON = function() {
@@ -73,7 +75,7 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 		"name":this.getName(),
 		"description":this.getDescription(),
 // "house":this.getHouse(),
-		"rooms":_rooms
+		"rooms":this.getRooms()
 	    };
 
 	    return json;
@@ -112,6 +114,21 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 		  }
 	
   };
+  
+  
+  /**
+	 * @author Julia Thüroff
+	 */
+	this.isConfigured= function () {
+		  
+		for(var r in this.getRooms())
+		{
+			if(!this.getRooms()[r].isConfigured())
+				return false;
+		}
+		
+		return true;
+	};
   
   /**
 	 * @author Julia Thüroff

@@ -13,10 +13,17 @@
 					</div>
 				</div>
 				<div class="form-group">
-				
-				
-				
-				
+					<label for="oldPin" class="col-sm-3 col-md-3 col-lg-1 control-label"
+						id="nameLabel">Name</label>
+					<div class="col-sm-12 col-md-7 col-xs-12 col-lg-2">
+						<select style="width:100%;" ng-model-options=" {getterSetter: true }"
+						    ng-model="room.getSetFloor" ng-change="categoryChanged()"
+						    ng-options="floor as floor.getName() for floor in houses[houseIndex].getFloors()"></select>
+					</div>
+				</div>
+						    
+						    
+				<div class="form-group">
 					<label id="iconLabel"  name="iconLabel" for="icon" class="col-sm-3 col-md-3 col-lg-1 control-label">Icon</label>
   					<div class="col-sm-12 col-md-7 col-xs-12">
 	  					<div class="box">

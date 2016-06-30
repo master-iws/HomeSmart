@@ -3,27 +3,18 @@
 app.controller('EditControlController',["$scope", "$rootScope", "$state", "$stateParams",
                                       function($scope, $rootScope, $state, $stateParams) {
 	
-	$scope.types = [];
-	$scope.rooms = $scope.getRooms();
-	$scope.control = $rootScope.dashboard.quicklinks[$stateParams.controlId];//auf rootScope setzen
+	$scope.originalControl = $rootScope.dashboard.controls[$stateParams.controlId];
+	$scope.control = {};
+	$scope.control.roomId = $scope.orginalControl.roomId;
+	$scope.control.componentId = $scope.originalControl.componentId;	
 	
 	$scope.save = function() {
 		
-		 $rootScope.houses[$rootScope.houseIdx].dashboard.controls[$stateParams.quicklinkId] = $scope.control;
-    };
+		 $rootScope.houses[$rootScope.houseIndex].dashboard.controls[$stateParams.controlId] = $scope.control;
+		 mainService.saveHouses($rootScope.houses);
+	};
     
     $scope.cancel = function() {
-		$state.go("houseconfiguration.dashboard");
+    	$state.go("houseconfiguration.dashboard");
    };
-   
-   $scope.getRooms = function()
-   {
-	   $rooms = [];
-	   
-	   for($floor in $rootScope.houses[$rootScope.houseIdx].floors)
-		   $rooms.push($floor.rooms);
-	   
-	   return $rooms;
-   }
-   
 }]);

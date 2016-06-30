@@ -53,7 +53,7 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	 */
 
 	this.setType = function(type) {
-	    if(this.checkStr(type)) {
+	    if(this.checkNum(type)) {
 		_type = type;
 	    } else {
 		throw new TypeError();
@@ -61,7 +61,7 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	};
 
 	this.setSettings = function(settings) {
-	    return _settings;
+	    _settings = settings;
 	};
 
 	this.setCategory = function(category) {
@@ -72,14 +72,14 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	};
 
 	this.setRoom = function(room) {
-	    if(!(room instanceof Mod_Room)) {
+	    if(!(room instanceof Mod_Room || room === null)) {
 		throw new TypeError();
 	    }
 	    _room = room;
 	};
 
 	this.setHouse = function(house) {
-	    if(!(house instanceof Mod_House)) {
+	    if(!(house instanceof Mod_House || house === null)) {
 		throw new TypeError();
 	    }
 	    _house = house;
@@ -126,5 +126,28 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 //	    
 //	};
 
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.getSetName= function (value) {
+		  if (angular.isDefined(value)) {
+		    this.setName(value);
+		  } else {        
+		    return this.getName();
+		  }
+	
+    };
+    
+    /**
+	 * @author Julia Thüroff
+	 */
+	this.getSetType= function (value) {
+		  if (angular.isDefined(value)) {
+		    this.setType(value);
+		  } else {        
+		    return this.getType();
+		  }
+	
+    };
 
     }

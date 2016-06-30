@@ -9,9 +9,6 @@ app.controller('MainController',
 		
 		$rootScope.houses = mainService.getHouses();
 		$rootScope.gloabelSettings = mainService.getSettings();
-		/*$rootScope.globalSettings = new Mod_GlobalSettings();
-		$rootScope.globalSettings.setAdminPin("123456");
-		$rootScope.globalSettings.setUser({name:'maxmustermann',password:'Test12'});*/
 		
 		var test = mainService.getHouses();
 		mainService.saveHouses(test);
@@ -27,6 +24,44 @@ app.controller('MainController',
 	    	$rootScope.houseIndex = $houseIdx;
 	    	$state.go("statistic");
 	    };
+
+	    $scope.setNextIds = function() {
+	    	$rootScope.nextHouseId = -1;
+	    	$rootScope.nextFloorId = -1;
+	    	$rootScope.nextRoomId = -1;
+	    	
+	    	for(h in $rootScope.houses)
+	    	{
+	    		var house = $rootScope.houses[h];
+	    		if(house.getId() > $rootScope.nextHouseId)
+	    			$rootScope.nextHouseId = house.getId();
+	    		
+	    		for(f in $rootScope.houses[h].getFloors())
+	    		{
+	    			var floor = $rootScope.houses[h].getFloors()[f];
+	    			
+	    			if(floor.getId() > $rootScope.nextFloorId)
+	    				$rootScope.nextFloorId = floor.getId();
+	    			
+	    			for(r in floor.getRooms())
+	    			{
+	    				var room = floor.getRooms()[r];
+	    				
+	    				if(room.getId() > $rootScope.nextRoomId)
+	    					$rootScope.nextRoomId = room.getId();
+	    			}
+	    		}
+	    	}
+	    	console.log($rootScope.nextHouseId++);
+	    	$rootScope.nextFloorId++;
+	    	$rootScope.nextRoomId++;
+	    };
+	    
+		$scope.setNextIds();
+		console.log("houseid"+$rootScope.nextHouseId);
+		console.log("floorid"+$rootScope.nextFloorId);
+		console.log("roomid"+$rootScope.nextRoomId);
+	    
 	    
 	    $scope.selectHouse = function($houseIdx) {
 	    	

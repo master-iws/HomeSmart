@@ -24,6 +24,8 @@ app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$statePa
 	
 	$scope.save = function() {
 		
+		$scope.house.setId($rootScope.nextHouseId);
+		$rootScope.nextHouseId++;
 		for(var count=0; count < $scope.floorCount; count++)
 		{
 			$scope.floor = new Mod_Floor();
@@ -31,13 +33,12 @@ app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$statePa
 		}
 		
 		 $rootScope.houses.push($scope.house);
-		 console.log($scope.house.toJSON());
 		 mainService.saveHouses($rootScope.houses);
 		 $state.go("settings.houses");
     };
     
     $scope.cancel = function() {
-    	$scope.house = new Mod_House();
+    	$state.go("settings.houses");
    };
    
 }]);

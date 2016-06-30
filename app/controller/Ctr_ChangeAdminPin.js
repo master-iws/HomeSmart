@@ -7,9 +7,7 @@ app.controller('RegistrationController',["$scope", "$rootScope", "$state", "Main
 	$scope.pin;
 	$scope.confirmPin;
 	$scope.validationMessage = null;
-	
-	console.log($rootScope.houses[$rootScope.houseIndex].getRooms());
-	
+
 	$scope.changeAdminPin = function() {
 		
 		if($scope.oldPin === $rootScope.globalSettings.getAdminPin())

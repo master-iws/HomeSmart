@@ -2,36 +2,52 @@
 
 app.controller('StatisticController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
 	
+	$scope.period = {};
+	$scope.period.typ = "year";
+	$scope.period.startDate = moment().startOf('year');
 	
-	$scope.period;
+	$scope.showChart = false;
 	
-	$scope.periodBack() = function() {
-    	if($scope.period.typ == 'year')
-    		$scope.period.startDate = $scope.period.startDate.subtract(1, 'years');
-    	else if($scope.period.typ == 'month')
+	$scope.start =  moment().subtract(7,'hour');
+	
+	$scope.lastActivitys = [];
+	$scope.names = ['Anna','Max','Robert','Katrin'];
+	$scope.doorType =['betreten','verlassen'];
+	
+	for(var i=0; i < 4; i++)
+	{
+		var activity = {};
+		activity.ts = ($scope.start.add(1,'hour')).format('DD.MM.YYYY HH:mm.ss');
+		activity.text = $scope.names[i] +" hat das Haus "+$scope.doorType[i%2]+".";
+		$scope.lastActivitys.push(activity);
+	}
+	
+	$scope.lastActivity =$scope.start.format('DD.MM.YYYY HH:mm.ss');
+	
+	$scope.periodBack = function() {
+    	if($scope.period.typ === 'year'){
+    		$scope.period.startDate = $scope.period.startDate.subtract(1, 'years').startOf('year');
+    	}else if($scope.period.typ == 'month'){
     		$scope.period.startDate = $scope.period.startDate.subtract(1, 'months');
-    	else if($scope.period.typ == 'week')
-    		$scope.period.startDate = $scope.period.startDate.subtract(7, 'days');
-    	else if($scope.period.typ == 'day')
+    	}else if($scope.period.typ == 'day'){
     		$scope.period.startDate = $scope.period.startDate.subtract(1, 'days');
-    	
-    	//$scope.loadChartData();
+    	}
+    	console.log($scope.period.startDate);
+    	$scope.loadChartData();
     };
 
-    $scope.periodForward() = function() {
+    $scope.periodForward = function() {
     	if($scope.period.typ == 'year')
-    		$scope.period.startDate = $scope.period.startDate.add(1, 'years');
+    		$scope.period.startDate = $scope.period.startDate.add(1, 'years').startOf('year');
     	else if($scope.period.typ == 'month')
     		$scope.period.startDate = $scope.period.startDate.add(1, 'months');
-    	else if($scope.period.typ == 'week')
-    		$scope.period.startDate = $scope.period.startDate.add(7, 'days');
     	else if($scope.period.typ == 'day')
     		$scope.period.startDate = $scope.period.startDate.add(1, 'days');
     	
-    	//$scope.loadChartData();
+    	$scope.loadChartData();
     };
     
-    $scope.periodNow() = function() {
+    $scope.periodNow = function() {
     	if($scope.period.typ == 'year')
     		$scope.period.startDate = moment().startOf('year');
     	else if($scope.period.typ == 'month')
@@ -41,8 +57,24 @@ app.controller('StatisticController',["$scope", "$rootScope", "$state",	function
     	else if($scope.period.typ == 'day')
     		$scope.period.startDate = moment().startOf('day');
     	
-    	//$scope.loadChartData();
+    	$scope.loadChartData();
     };
+    
+    $scope.setPeriodType = function (newPeriodTypeString) {
+    	console.log($scope.period.startDate);
+		if(newPeriodTypeString === 'year'){
+			$scope.period.startDate.startOf('year');
+        } else if (newPeriodTypeString === 'month'){
+        	$scope.period.startDate.startOf('month');
+        } else if (newPeriodTypeString === 'day'){
+        	$scope.period.startDate.hour(0);
+        }
+		
+		$scope.period.typ = newPeriodTypeString;
+		console.log($scope.period.startDate);
+        $scope.loadChartData();
+	};
+	
     
     $scope.drillUpClick = function(){
 		//drill up
@@ -54,7 +86,8 @@ app.controller('StatisticController',["$scope", "$rootScope", "$state",	function
     
     $scope.onClick = function(d, i){
 		//drill down
-		var pt = $scope.period.type;
+    	console.log(d);
+		/*var pt = $scope.period.type;
 			
 			if(pt === 'year') {
 				$scope.period.type = 'month';
@@ -62,68 +95,35 @@ app.controller('StatisticController',["$scope", "$rootScope", "$state",	function
 			} else if (pt === 'month') {
 				$scope.period.type = 'day';
 				$scope.period.startDate= moment(d.raw.date);
-			}
+			}*/
 	};
 	
-	$scope.loadChartData = function()
-	{
-		//room.getEnergyData()
-		//response.label -> räume
-		//response.dataset
-		
-		for (var i = 0; i < response.dataset.length; i++) {
-			var newSeries = Object.create(seriesTemplate); 
-			newSeries.unit = respDB[i].data.unit;
-			newSeries.y = "value_" + i;
-			newSeries.id = "series_" + i;
-			newSeries.type ="line";
-			newSeries.color = $scope.getSeriesColor(i);
-			newSeries.label = getLabel(response.label[i]);
-			
-									
-			series.push(newSeries);
-			//statistics.push({unit: respDB[i].data.unit, data: respDB[i].data.statistic});
-		}
-		
-		$scope.chartData = data;
-		//$scope.statistic = statistics;
-		
-		var newChartOptions = Object.create(chartOptionsTemplate); 
-		
-		newChartOptions.axes.x = chartOptionsXAxesDate;
-					
-		newChartOptions.series = series;
-		
-		$scope.chartOptions = newChartOptions;
-	}
-    
-    //konvertieren der geladenen daten bei load chartdata
-			
-	 $scope.data = {
-		      dataset: [
-		        {x: new Date("2016-02-02"), y: 0, other_y: 0, val_2: 0, val_3: 0},
-		        {x:  new Date("2016-02-03"), y: 0.993, other_y: 3.894, val_2: 8.47, val_3: 14.347},
-		        {x:  new Date("2016-02-04"), y: 1.947, other_y: 7.174, val_2: 13.981, val_3: 19.991},
-		        {x:  new Date("2016-02-05"), y: 2.823, other_y: 9.32, val_2: 14.608, val_3: 13.509},
-		        {x:  new Date("2016-02-06"), y: 3.587, other_y: 9.996, val_2: 10.132, val_3: -1.167},
-		        {x:  new Date("2016-02-07"), y: 4.207, other_y: 9.093, val_2: 2.117, val_3: -15.136},
-		        {x:  new Date("2016-02-08"), y: 4.66, other_y: 6.755, val_2: -6.638, val_3: -19.923},
-		        {x:  new Date("2016-02-09"), y: 4.927, other_y: 3.35, val_2: -13.074, val_3: -12.625},
-		        {x:  new Date("2016-02-10"), y: 4.998, other_y: -0.584, val_2: -14.942, val_3: 2.331},
-		        {x:  new Date("2016-02-11"), y: 4.869, other_y: -4.425, val_2: -11.591, val_3: 15.873},
-		        {x:  new Date("2016-02-12"), y: 4.546, other_y: -7.568, val_2: -4.191, val_3: 19.787},
-		        {x:  new Date("2016-02-13"), y: 4.042, other_y: -9.516, val_2: 4.673, val_3: 11.698},
-		        {x:  new Date("2016-02-14"), y: 3.377, other_y: -9.962, val_2: 11.905, val_3: -3.487},
-		        {x:  new Date("2016-02-15"), y: 2.578, other_y: -8.835, val_2: 14.978, val_3: -16.557}
-		       ]
-		     };
+	
+	var seriesTemplate = {
+            type: "column",
+            color: "#0000FF",
+            axis: "y",
+			id: "series_1",
+			label: "xxx",
+			drawDots: true
+        };
+	
+	$scope.color = ['#314DFF', '#36E24E', '#DB2118', '#FF67E3', '#FF9329','#EBEBEB','#000000'];
 
-		    $scope.options = {
+	$scope.getSeriesColor = function(i) {
+		var idx = i - (parseInt(i / $scope.color.length) *  $scope.color.length);
+		
+		return $scope.color[idx];
+	};
+	
+	var chartOptionsXAxesDate = {type: "date", key: "x", ticksRotate: 90};
+    
+	$scope.options = {
 		      axes: {
 		        x: {
 		          key: "x",
 		          type: "date",
-	              labelFunction: function(d) {console.log(d); return d3.time.format("%Y-%m-%d").parse(d); }
+	              labelFunction: function(d) {return d3.time.format("%Y-%m-%d").parse(d); }
 		        }
 		      },
 		      tooltipHook: function(d){
@@ -142,27 +142,167 @@ app.controller('StatisticController',["$scope", "$rootScope", "$state",	function
 		      series: [
 		        {
 		          dataset: "dataset", 
-		          key: 'val_2', 
+		          key: 'series_0', 
 		          label: 'One', 
 		          type: ['line', 'dot', 'line', 'area'],
 		          color: "rgb(126, 181, 63)",
 		          interpolation: {mode: 'cardinal', tension: 0.7}
-		        },
-		        {
-		          dataset: "dataset",
-		          key: 'y',
-		          type: ['line', 'dot', 'area'],
-		          label: 'Two',
-		          color: "rgb(200, 96, 69)",
-		          interpolation: {mode: 'cardinal', tension: 0.7}
-		        },
-		        {
-		          dataset: "dataset",
-		          key: 'other_y',
-		          type: ['line', 'dot', 'area'],
-		          label: 'Three',
-		          color: "rgb(119, 48, 131)",
-		          interpolation: {mode: 'cardinal', tension: 0.7}
 		        }
 		      ]};
+	
+	
+	$scope.loadChartData = function()
+	{
+		$scope.showChart = true;
+		var date = moment();
+		date.year($scope.period.startDate.year());
+		date.month($scope.period.startDate.month());
+		date.date($scope.period.startDate.date());
+		date.hour($scope.period.startDate.hour());
+		var response = $rootScope.houses[$rootScope.houseIndex].getEnergyData($scope.period.typ,date);
+		console.log(response);
+		
+		var series = [];
+		
+		for (var i = 0; i <  response.label.length; i++) {
+			var newSeries = Object.create(seriesTemplate); 
+			newSeries.key = "series_" + i;
+			newSeries.dataset = "dataset";
+			newSeries.type ="line";
+			newSeries.color = $scope.getSeriesColor(i);
+			newSeries.label = response.label[i];
+			
+			series.push(newSeries);
+		}
+		
+		var newChartOptions = {}; 
+		newChartOptions.axes = {};
+		newChartOptions.tooltip= {};
+		newChartOptions.tooltip.mode= "scrubber";
+		newChartOptions.axes.x = chartOptionsXAxesDate;
+		//newChartOptions.axes.x.labelFunction = function(d) {console.log(d); return d.format('MMMM Do YYYY');};
+					
+		newChartOptions.series = series;
+		$scope.chartOptions = newChartOptions;
+		
+		$scope.chartData = {};
+		$scope.chartData.dataset = response.dataset;
+	}
+	
+	$scope.loadWaterChartData = function()
+	{
+		$scope.showChart = true;
+		var date = moment();
+		date.year($scope.period.startDate.year());
+		date.month($scope.period.startDate.month());
+		date.date($scope.period.startDate.date());
+		date.hour($scope.period.startDate.hour());
+		var response = $rootScope.houses[$rootScope.houseIndex].getWaterData($scope.period.typ,date);
+		console.log(response);
+		
+		var series = [];
+		
+		for (var i = 0; i <  response.label.length; i++) {
+			var newSeries = Object.create(seriesTemplate); 
+			newSeries.key = "series_" + i;
+			newSeries.dataset = "dataset";
+			newSeries.type ="line";
+			newSeries.color = $scope.getSeriesColor(i);
+			newSeries.label = response.label[i];
+			
+			series.push(newSeries);
+		}
+		
+		var newChartOptions = {}; 
+		newChartOptions.axes = {};
+		newChartOptions.tooltip= {};
+		newChartOptions.tooltip.mode= "scrubber";
+		newChartOptions.axes.x = chartOptionsXAxesDate;
+		//newChartOptions.axes.x.labelFunction = function(d) {console.log(d); return d.format('MMMM Do YYYY');};
+					
+		newChartOptions.series = series;
+		$scope.chartOptions = newChartOptions;
+		
+		$scope.chartData = {};
+		$scope.chartData.dataset = response.dataset;
+	};
+	
+	$scope.loadRoomChartData = function(roomId)
+	{
+		$scope.showChart = true;
+		var date = moment();
+		date.year($scope.period.startDate.year());
+		date.month($scope.period.startDate.month());
+		date.date($scope.period.startDate.date());
+		date.hour($scope.period.startDate.hour());
+		var response = $rootScope.houses[$rootScope.houseIndex].getRooms()[roomId].getEnergyData($scope.period.typ,date);
+		console.log(response);
+		
+		var series = [];
+		
+		for (var i = 0; i <  response.label.length; i++) {
+			var newSeries = Object.create(seriesTemplate); 
+			newSeries.key = "series_" + i;
+			newSeries.dataset = "dataset";
+			newSeries.type ="line";
+			newSeries.color = $scope.getSeriesColor(i);
+			newSeries.label = response.label[i];
+			
+			series.push(newSeries);
+		}
+		
+		var newChartOptions = {}; 
+		newChartOptions.axes = {};
+		newChartOptions.tooltip= {};
+		newChartOptions.tooltip.mode= "scrubber";
+		newChartOptions.axes.x = chartOptionsXAxesDate;
+		//newChartOptions.axes.x.labelFunction = function(d) {console.log(d); return d.format('MMMM Do YYYY');};
+					
+		newChartOptions.series = series;
+		$scope.chartOptions = newChartOptions;
+		$scope.chartData = {};
+		$scope.chartData.dataset = response.dataset;
+	};
+	
+	$scope.loadRoomWaterChartData = function(roomId)
+	{
+		$scope.showChart = true;
+		var date = moment();
+		date.year($scope.period.startDate.year());
+		date.month($scope.period.startDate.month());
+		date.date($scope.period.startDate.date());
+		date.hour($scope.period.startDate.hour());
+		var response = $rootScope.houses[$rootScope.houseIndex].getRooms()[roomId].getWaterData($scope.period.typ,date);
+		console.log(response);
+		
+		var series = [];
+		
+		for (var i = 0; i <  response.label.length; i++) {
+			var newSeries = Object.create(seriesTemplate); 
+			newSeries.key = "series_" + i;
+			newSeries.dataset = "dataset";
+			newSeries.type ="line";
+			newSeries.color = $scope.getSeriesColor(i);
+			newSeries.label = response.label[i];
+			
+			series.push(newSeries);
+		}
+		
+		var newChartOptions = {}; 
+		newChartOptions.axes = {};
+		newChartOptions.tooltip= {};
+		newChartOptions.tooltip.mode= "scrubber";
+		newChartOptions.axes.x = chartOptionsXAxesDate;
+		//newChartOptions.axes.x.labelFunction = function(d) {console.log(d); return d.format('MMMM Do YYYY');};
+					
+		newChartOptions.series = series;
+		$scope.chartOptions = newChartOptions;
+		$scope.chartData = {};
+		$scope.chartData.dataset = response.dataset;
+	};
+	
+	$scope.loadChartData();
+	//wie dieselben daten??
+    
+		
 }]);

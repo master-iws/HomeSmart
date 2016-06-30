@@ -8,17 +8,27 @@
 					<label class="col-sm-3 col-md-3 control-label" id="categoryLabel">Kategorie</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
 						<select style="width:100%;"
-						    ng-model="quicklink.category" ng-change="categoryChanged()"
-						    ng-options="category for category in categories"></select>
+						    ng-model="category" ng-change="categoryChanged()"
+						    ng-options="category for category in categorys"></select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="oldPin" class="col-sm-3 col-md-3 control-label"
-						id="typLabel">Typ</label>
+						id="typLabel">Komponente</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
 						<select style="width:100%;"
-						    ng-model="typ" 
-						    ng-options="typ as typ.getName() for typ in types"></select>
+						    ng-model="component.getSetType"  ng-model-options="{getterSetter: true }"
+						    ng-options="component.getType() for component in components"></select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="oldPin" class="col-sm-3 col-md-3 control-label"
+						id="typLabel">Name</label>
+					<div class="col-sm-12 col-md-7 col-xs-12">
+						<input type="text" ng-model="component.getSetName"
+							ng-model-options="{getterSetter: true }" class="form-control"
+							name="name" id="name"
+							ng-class="{'has-error': editFloorForm.name.$invalid}" required>
 					</div>
 				</div>
 				<div class="form-group col-sm-9">

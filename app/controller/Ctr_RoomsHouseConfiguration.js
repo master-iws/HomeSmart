@@ -3,8 +3,6 @@
 app.controller('RoomsHouseConfigurationController',["$scope", "$rootScope", "$state","$uibModal",	
                                                     function($scope, $rootScope, $state,$uibModal) {
 	
-	$scope.floorIdx = 0;//ändern
-	
 	$scope.deleteRoom = function($roomIdx) {
 		
 		$scope.deleteIdx = $roomIdx;

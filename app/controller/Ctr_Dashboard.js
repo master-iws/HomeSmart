@@ -10,8 +10,8 @@ app.controller('DashboardController',["$scope", "$rootScope", "$state","dragulaS
 		  if($quicklink.category() === 'Etage')
 			  $state.go('floors.detail',{floorIdx: quicklink.typ});
 		  else if($quicklink.category() === 'Raum')
-			  $state.go('roomsfloors.detail',{roomIdx: quicklink.typ});
+			  $state.go('roomsfloors.detail',{roomId: quicklink.typ.getId()});
 		  else if($quicklink.category() === 'Kategorie')
-			  $state.go('categories.detail',{categoryIdx: quicklink.typ});
+			  $state.go('categories.detail',{categoryId: quicklink.typ.getId()});
 	   };
 }]);

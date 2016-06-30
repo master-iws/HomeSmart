@@ -37,11 +37,11 @@
 						id="confirmPinLabel">Wiederholung</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
 						<input type="password" ng-model="confirmPin" class="form-control"
-							name="confirmPin" id="confirmPin" compare-to-test="pin"
+							name="confirmPin" id="confirmPin" compare-to-other-pin="pin"
 							ng-class="{'has-error': (changePinForm.confirmPin.$invalid) }"
 							required>
 					</div>
-					<div ng-show="changePinForm.confirmPin.$error.compareToTest"
+					<div ng-show="changePinForm.confirmPin.$error.compareTo"
 						class="validation-message col-lg-12 col-md-12 col-xs-11 col-sm-11 animate-show">
 						<span>Der neue PIN und dessen Wiederholung stimmen nicht
 							&uuml;berein.</span>
@@ -50,6 +50,8 @@
 				<div class="form-group col-sm-9">
 					<button ng-disabled="changePinForm.$invalid"
 						class="btn btn-default" ng-click="changePin()">Speichern</button>
+					<button class="btn btn-default"
+						ng-click="cancel()">Abbrechen</button>
 				</div>
 			</form>
 		</div>

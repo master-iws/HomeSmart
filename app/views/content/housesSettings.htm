@@ -3,29 +3,31 @@
 		<h1 class="col-md-12 col-lg-12 col-sm-12 col-xs-12">H&auml;user</h1>
 		<div ng-repeat="house in houses"
 			class="col-md-3 col-sm-3 col-xs-11 card col-md-offset-1 col-sm-offset-1"
-			ng-class="{'not-configured': deleted}" style="margin-left:15px;">
-			<div
-				class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7" style="z-index:3000;">
-				<button class="btn-primary"
+			ng-class="{'not-configured': deleted}" style="margin-left: 15px;">
+			<div style="height: 40px;"
+				class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
+				<button class="edit-btn btn-primary class" style="z-index: 3000;"
 					ng-click="configureHouse($index)">
 					<i class="fa fa-wrench" aria-hidden="true"></i>
 				</button>
-				<button class="btn-primary"
+				<button class="settings-btn btn-primary" style="z-index: 3000;"
 					ng-click="deleteHouse($index)">
 					<i class="fa fa-remove" aria-hidden="true"></i>
 				</button>
 			</div>
-			<div class="col-md-12 col-xs-11 col-sm-12 col-lg-11">
-				<div style="color: #ae1414"
-					class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-					<i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
-				</div>
-				<div class="col-md-6 col-lg-6" style="margin-top: 5px;">
-					<span class="card-name-settings col-md-offset-2">{{house.getName()}}</span>
-				</div>
+			<div ng-show="!house.isConfigured()"
+				style="color: #ae1414; padding: 0px; margin-top: 30px; position: absolute;"
+				class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+				<i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
+			</div>
+			<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
+				style="padding: 0px;">
+				<span class="card-name-settings">{{house.getName()}}</span>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-11 add-card col-md-offset-1 col-sm-offset-1" style="height: 100px;margin-left:15px;">
+		<div
+			class="col-md-3 col-sm-3 col-xs-11 add-card col-md-offset-1 col-sm-offset-1"
+			style="height: 100px; margin-left: 15px;">
 			<button class="add-btn" ng-click="addHouse()">
 				<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 			</button>

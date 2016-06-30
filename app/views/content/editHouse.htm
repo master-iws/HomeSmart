@@ -3,7 +3,7 @@
 	<div class="row row-centered">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<h1>Haus konfigurieren</h1>
-			<form class="form-horizontal" name="changePinForm" novalidate>
+			<form class="form-horizontal" name="editHouseForm" novalidate>
 				<div class="form-group">
 					<label for="name"
 						class="col-sm-1 col-md-1 col-xs-1 col-lg-1 control-label"
@@ -51,8 +51,10 @@
 					</div>
 				</div>
 				<div class="form-group col-sm-9">
-					<button ng-disabled="changePinForm.$invalid"
+					<button ng-disabled="editHouseForm.$invalid"
 						class="btn btn-default" ng-click="save()">Speichern</button>
+					<button class="btn btn-default"
+						ng-click="cancel()">Abbrechen</button>
 				</div>
 			</form>
 		</div>

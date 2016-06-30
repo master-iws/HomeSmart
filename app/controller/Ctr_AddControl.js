@@ -1,29 +1,18 @@
 'use strict';
 
-app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$stateParams",
-                                      function($scope, $rootScope, $state, $stateParams) {
+app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$stateParams", "MainService",
+                                      function($scope, $rootScope, $state, $stateParams, mainService) {
 	
-	$scope.types = [];
-	$scope.rooms = $scope.getRooms();
-	$scope.quicklink = {room:'',component:''};//auf rootScope setzen
+	$scope.control = {roomId:'',componentId:''};
 	
 	$scope.save = function() {
 		
-		 $rootScope.houses[$rootScope.houseIdx].dashboard.controls.push($scope.quicklink);
+		 $rootScope.houses[$rootScope.houseIndex].dashboard.controls.push($scope.control);
+		 mainService.saveHouses($rootScope.houses);
     };
     
     $scope.cancel = function() {
 		$state.go("houseconfiguration.dashboard");
    };
-   
-   $scope.getRooms = function()
-   {
-	   $rooms = [];
-	   
-	   for($floor in $rootScope.houses[$rootScope.houseIdx].floors)
-		   $rooms.push($floor.rooms);
-	   
-	   return $rooms;
-   }
    
 }]);

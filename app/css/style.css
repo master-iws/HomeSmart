@@ -194,6 +194,10 @@ option {
 	margin-top:10px;
 	width:100px;
 	height:40px;
+	    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* ============================================================
@@ -263,6 +267,8 @@ input.cmn-toggle-round:checked + label:after {
 	position:absolute;
 	top:29%;
 	margin-left:10px;
+	cursor: pointer;
+    display: inline-block !important;
 	font-weight: bold;
 	
 }
@@ -305,6 +311,31 @@ input.cmn-toggle-round:checked + label:after {
 	top: 5px;
 	right: 5px;
 }
+
+.edit-btn
+{
+	width: 21;
+	height: 27;
+	border-radius: 2px;
+	margin-top:5px;
+	padding: 0px;
+	position: absolute;
+	top: 5px;
+	right:40px;
+}
+
+
+.room-config-btn
+{
+	height: 27;
+	border-radius: 2px;
+	margin-top:5px;
+	padding: 0px;
+	position: absolute;
+	top: 5px;
+	right: 75px;
+}
+
 
 .card-name-settings
 {
@@ -726,3 +757,10 @@ input.cmn-toggle-round:checked + label:after {
 .color {
 	width: 60px;
 }
+
+
+
+
+
+
+

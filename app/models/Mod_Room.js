@@ -40,11 +40,17 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	/*
 	 * setter TODO
 	 */
+	this.setComponents = function(components) {
+	    //if(!(floor instanceof Mod_Floor)) {
+		//throw new TypeError();
+	    //}
+	    _components = components;
+	};
 
 	this.setFloor = function(floor) {
-	    if(!(floor instanceof Mod_Floor)) {
-		throw new TypeError();
-	    }
+	    //if(!(floor instanceof Mod_Floor)) {
+		//throw new TypeError();
+	    //}
 	    _floor = floor;
 	};
 	
@@ -59,12 +65,15 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	    _components.push(component);
 	};
 
-	//TODO: remove dosen't work!
 	this.removeComponent = function(component) {
 	    if(!(component instanceof Mod_Component || this.checkNum(component))) {
 		throw new TypeError();
 	    }
-	    _components = _components.splice(_components.indexOf(component),1);
+	    for(var comp in _components){
+		if(_components[comp].getId() === component || _components[comp].getId() === component.getId()){
+		    _components = _components.splice(comp,1);
+		}
+	    }
 	};
 
 	this.toJSON = function() {
@@ -108,6 +117,15 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	    
 	};
 
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.isConfigured= function () {
+		  
+		if(this.getComponents().length == 0)
+			return false;
+		return true;
+	};
 	
 	/**
 	 * @author Julia Thüroff
@@ -163,6 +181,18 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
     /**
 	 * @author Julia Thüroff
 	 */
+	this.getSetFloor= function (value) {
+		  if (angular.isDefined(value)) {
+		    this.setFloor(value);
+		  } else {        
+		    return this.getFloor();
+		  }
+	
+    };
+    
+    /**
+	 * @author Julia Thüroff
+	 */
 	this.getEnergyData= function (typ, date) {
 		var components = this.getComponents();
 		for(var c in components)
@@ -202,5 +232,79 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	    }
 	    return result;
     };
+    
+    this.getDataset = function(typ, startDate)
+    {
+    	var response = {};
+		response.dataset = [];
+		response.label = [];
+		
+		if(typ === 'year')
+		{
+			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),startDate.minute(),startDate.second(),startDate.millisecond())});
+			for(var i=0; i < 11; i++)
+			{
+				var date = startDate.add(1,'month');
+				response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
+			}
+		}
+		
+		if(typ === 'month')
+		{
+			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),startDate.minute(),startDate.second(),startDate.millisecond())});
+			var beginMonth = startDate.month();
+			for(var i=0; i < 31; i++)
+			{
+				var date = startDate.add(1,'days');
+				if(date.month() === beginMonth)
+					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
+				console.log(new Date(date.year(),date.month(),date.day(),0,0,0,0));
+			}
+		}
+		
+		if(typ === 'day')
+		{
+			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),startDate.minute(),startDate.second(),startDate.millisecond())});
+			for(var i=0; i < 24; i++)
+			{
+				var date = startDate.add(1,'hours');
+				response.dataset.push({x: new Date(date.year(),date.month(),date.date(),date.hour(),0,0,0)});
+			}
+		}
+		
+		return response;
+    }
+    
+    this.getEnergyData = function(typ, startDate)
+	{
+		var response = this.getDataset(typ,startDate);
+		
+		for(var c in this.getComponents())
+		{
+			for(var d in response.dataset)
+			{
+				var name = "series_"+c;
+				response.dataset[d][name] = Math.round(((Math.random() * (4 - 2)) + 2)*5);
+			}
+			response.label.push(this.getComponents()[c].getName());
+		}
+		return response;
+	};
+	
+	this.getWaterData = function(typ, startDate)
+	{
+		var response = this.getDataset(typ,startDate);
+		
+		for(var c in this.getComponents())
+		{
+			for(var d in response.dataset)
+			{
+				var name = "series_"+c;
+				response.dataset[d][name] = Math.round(((Math.random() * (4 - 2)) + 2)*5);
+			}
+			response.label.push(this.getComponents()[c].getName());
+		}
+		return response;
+	};
 
 }

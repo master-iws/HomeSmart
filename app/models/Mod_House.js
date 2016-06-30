@@ -69,6 +69,27 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		return undefined;
 	}
 	
+	this.getFloorById = function(floorId) {
+		var floors = this.getFloors();
+		
+		for(var f in floors)
+		{
+			if(floors[f].getId() == floorId)
+				return floors[f];
+		}
+		return undefined;
+	}
+	
+	this.updateRoom = function(roomId, room) {
+		var rooms = this.getRooms();
+		
+		for(var r in rooms)
+		{
+			if(rooms[r].getId() == roomId)
+				rooms[r] = room;
+		}
+	}
+	
 	this.getRooms = function() {
 	    var rooms = []
 	    for (var f in _floors) {
@@ -113,12 +134,15 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    _components.push(component);
 	};
 
-	//TODO: remove dosen't work!
 	this.removeComponent = function(component) {
 	    if(!(component instanceof Mod_Component || this.checkNum(component))) {
 		throw new TypeError();
 	    }
-	    _components = _components.splice(_components.indexOf(component),1);
+	    for(var comp in _components){
+		if(_components[comp].getId() === component || _components[comp].getId() === component.getId()){
+		    _components = _components.splice(comp,1);
+		}
+	    }
 	};
 
 	this.addFloor = function(floor) {
@@ -128,12 +152,15 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    _floors.push(floor);
 	};
 
-	//TODO: remove dosen't work!
 	this.removeFloor = function(floor) {
 	    if(!(floor instanceof Mod_Floor || this.checkNum(floor))) {
 		throw new TypeError();
 	    }
-	    _floors = _floors.splice(_floors.indexOf(floor),1);
+	    for(var f in _floors){
+		if(_floors[f].getId() === floor || _floors[f].getId() === floor.getId()){
+		    _floors = _floors.splice(f,1);
+		}
+	    }
 	};
 
 	this.toJSON = function() {
@@ -181,6 +208,23 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		this.addFloor(floor);
 	    }
 	    
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.isConfigured= function () {
+		  
+		if(this.getFloors().length == 0)
+			return false;
+		
+		for(var f in this.getFloors())
+		{
+			if(!this.getFloors()[f].isConfigured())
+				return false;
+		}
+		
+		return true;
 	};
 
 	/**
@@ -284,6 +328,91 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			if(components[c].getCategory().getName() === category )
 				components[c].getSettings()[0]=value;
 	    }	
+	};
+	
+	this.getDataset = function(typ,startDate)
+	{
+		var response = {};
+		response.dataset = [];
+		response.label = [];
+		
+		// je nach typ generieren lassen
+		if(typ === 'year')
+		{
+			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),startDate.minute(),startDate.second(),startDate.millisecond())});
+			for(var i=0; i < 11; i++)
+			{
+				var date = startDate.add(1,'month');
+				response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
+				console.log(new Date(date.year(),date.month(),date.day(),0,0,0,0));
+			}
+		}
+		
+		if(typ === 'month')
+		{
+			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),startDate.minute(),startDate.second(),startDate.millisecond())});
+			var beginMonth = startDate.month();
+			for(var i=0; i < 31; i++)
+			{
+				var date = startDate.add(1,'days');
+				if(date.month() === beginMonth)
+					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
+				console.log(new Date(date.year(),date.month(),date.day(),0,0,0,0));
+			}
+		}
+		
+		if(typ === 'day')
+		{
+			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),startDate.minute(),startDate.second(),startDate.millisecond())});
+			for(var i=0; i < 24; i++)
+			{
+				var date = startDate.add(1,'hours');
+				response.dataset.push({x: new Date(date.year(),date.month(),date.date(),date.hour(),0,0,0)});
+			}
+		}
+		return response;
+	}
+	
+	this.getEnergyData = function(typ, startDate)
+	{
+		var response = this.getDataset();	
+		
+		for(var r in this.getRooms())
+		{
+			var roomCount =0;
+			
+			for(var d in response.dataset)
+			{
+				var name = "series_"+r;
+				response.dataset[d][name] = Math.round(((Math.random() * (4 - 2)) + 2)*5);
+			}
+			roomCount++;
+			
+			response.label.push(this.getRooms()[r].getName());
+			
+		}
+		return response;
+	};
+	
+	this.getWaterData = function(typ, startDate)
+	{
+		var response = this.getDataset();	
+		
+		for(var r in this.getRooms())
+		{
+			var roomCount =0;
+			
+			for(var d in response.dataset)
+			{
+				var name = "series_"+r;
+				response.dataset[d][name] = Math.round(((Math.random() * (4 - 2)) + 2)*5);
+			}
+			roomCount++;
+			
+			response.label.push(this.getRooms()[r].getName());
+			
+		}
+		return response;
 	};
 	
     }
