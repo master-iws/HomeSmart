@@ -5,21 +5,21 @@
 			<h1>Alarme testen</h1>
 			<form class="form-horizontal" name="changePinForm" novalidate>
 				<div class="form-group col-sm-9">
-					<button
+					<button 
 						class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"
 						ng-click="$broadcast('washerReady')">Sp&uuml;lmaschine
 						fertig</button>
-					<button
+					<button 
 						class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"
 						ng-click="$broadcast('herdReady')">Herd fertig</button>
-					<button
+					<button 
 						class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"
 						ng-click="$broadcast('washingmaschineReady')">Waschmaschine
 						fertig</button>
-					<button
+					<button ng-audio="app/sounds/notificationSound.mp3"
 						class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"
 						ng-click="$broadcast('washerReady')">Alarmanlage</button>
-					<button
+					<button ng-audio="app/sounds/notificationSound.mp3"
 						class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"
 						ng-click="$broadcast('washerReady')">Rauchmelder</button>
 				</div>

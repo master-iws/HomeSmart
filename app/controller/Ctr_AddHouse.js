@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$stateParams", "MainService",
-                                      function($scope, $rootScope, $state, $stateParams, mainService) {
+app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","vibrator",
+                                      function($scope, $rootScope, $state, $stateParams, mainService,vibrator) {
 	$scope.cities = ["Berlin",
                      "München",
                      "Hamburg",
@@ -23,7 +23,7 @@ app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$statePa
 	$scope.floorCount=1;
 	
 	$scope.save = function() {
-		
+		vibrator.vibrate(10);
 		$scope.house.setId($rootScope.nextHouseId);
 		$rootScope.nextHouseId++;
 		for(var count=0; count < $scope.floorCount; count++)
@@ -38,6 +38,7 @@ app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$statePa
     };
     
     $scope.cancel = function() {
+    	vibrator.vibrate(10);
     	$state.go("settings.houses");
    };
    

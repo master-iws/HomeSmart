@@ -21,7 +21,8 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	    _settings = [],
 	    _category,
 	    _room,
-	    _house;
+	    _house,
+	    _serialId;
 
 
 	/*
@@ -30,6 +31,10 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 
 	this.getType = function() {
 	    return _type;
+	};
+	
+	this.getSerialId = function() {
+	    return _serialId;
 	};
 
 	this.getSettings = function() {
@@ -60,6 +65,14 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	    }
 	};
 
+	this.setSerialId = function(serialId) {
+	    if(this.checkStr(serialId)) {
+		_serialId = serialId;
+	    } else {
+		throw new TypeError();
+	    }
+	};
+	
 	this.setSettings = function(settings) {
 	    _settings = settings;
 	};
@@ -93,6 +106,7 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 		"type":this.getType(),
 		"settings":this.getSettings(),
 		"category":this.getCategory(),
+		"serialId":this.getSerialId()
 //		"room":this.getRoom(),
 //		"house":this.getHouse()
 	    };
@@ -146,6 +160,18 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 		    this.setType(value);
 		  } else {        
 		    return this.getType();
+		  }
+	
+    };
+    
+    /**
+	 * @author Julia Thüroff
+	 */
+	this.getSetSerialId= function (value) {
+		  if (angular.isDefined(value)) {
+		    this.setSerialId(value);
+		  } else {        
+		    return this.getSerialId();
 		  }
 	
     };

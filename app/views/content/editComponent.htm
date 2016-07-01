@@ -3,7 +3,27 @@
 		<div
 			class="col-xs-8 col-sm-8 col-md-7 col-xs-offset-2 col-md-offset-3 col-sm-offset-2 ">
 			<h1>{{$title}}</h1>
-			<form class="form-horizontal" name="editQuicklinkForm" novalidate>
+			<form class="form-horizontal" name="editComponentForm" novalidate>
+				<div class="form-group">
+					<label for="oldPin" class="col-sm-3 col-md-3 control-label"
+						id="typLabel">Name</label>
+					<div class="col-sm-12 col-md-7 col-xs-12">
+						<input type="text" ng-model="component.getSetName"
+							ng-model-options="{getterSetter: true }" class="form-control"
+							name="name" id="name"
+							ng-class="{'has-error': editComponentForm.name.$invalid}" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="serialId" class="col-sm-3 col-md-3 control-label"
+						id="typLabel">Seriennummer</label>
+					<div class="col-sm-12 col-md-7 col-xs-12">
+						<input type="text" ng-model="component.getSetSerialId"
+							ng-model-options="{getterSetter: true }" class="form-control"
+							name="name" id="name"
+							ng-class="{'has-error': editComponentForm.serialId.$invalid}" required>
+					</div>
+				</div>
 				<div class="form-group">
 					<label class="col-sm-3 col-md-3 control-label" id="categoryLabel">Kategorie</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
@@ -21,18 +41,8 @@
 						    ng-options="component.getType() for component in components"></select>
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="oldPin" class="col-sm-3 col-md-3 control-label"
-						id="typLabel">Name</label>
-					<div class="col-sm-12 col-md-7 col-xs-12">
-						<input type="text" ng-model="component.getSetName"
-							ng-model-options="{getterSetter: true }" class="form-control"
-							name="name" id="name"
-							ng-class="{'has-error': editFloorForm.name.$invalid}" required>
-					</div>
-				</div>
 				<div class="form-group col-sm-9">
-					<button ng-disabled="editQuicklinkForm.$invalid"
+					<button ng-disabled="eeditComponentForm.$invalid"
 						class="btn btn-default" ng-click="save()">Speichern</button>
 					<button class="btn btn-default"
 						ng-click="cancel()">Abbrechen</button>

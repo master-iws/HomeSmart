@@ -5,7 +5,10 @@ app.controller('NavigationController',	["$scope", "$rootScope", "$state","MainSe
 	
 	
 	$scope.notificationContainerShow = false;
-	$rootScope.notifications = ['Spülmaschine fertig','Herd fertig'];
+	$scope.date = moment().subtract(1,'hour');
+	$scope.notification = $scope.date.format("DD.MM.YYYY HH:mm")+': Spülmaschine fertig.'
+	$rootScope.notifications = [];
+	$rootScope.notifications.push($scope.notification);
 	
 	$scope.showNotifications = function() {
 		
