@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module("HomeSmart", ["ng", "ui.router", "ui.router.title","autocomplete","n3-line-chart","ngToast","ngAnimate","ui.bootstrap","angular-vibrator",angularDragula(angular)]);
+var app = angular.module("HomeSmart", ["ng", "ui.router", "ui.router.title","autocomplete","n3-line-chart","ngToast","ngAnimate","ui.bootstrap","angular-vibrator","ngAudio",angularDragula(angular)]);
 
 app.run(function ($rootScope, $state, $stateParams, $log) {
 	$rootScope.$state = $state;
@@ -129,6 +129,30 @@ app.config(
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"DetailsContent": { templateUrl: "app/views/content/room.htm", controller: 'RoomController'}
+			}
+		}).state("rooms.detail.heatingAutopilot", {
+			url: "/heatingAutopilot",
+			authenticate: false,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'Autoppilot Heizung'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": {templateUrl: "app/views/nav/nav2.houses.htm"},
+				"AutopilotContent": { templateUrl: "app/views/content/heatingAutopilot.htm", controller: 'HeatingAutopilotController'}
+			}
+		}).state("rooms.detail.addTimePeriod", {
+			url: "/addTimePeriod",
+			authenticate: false,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'Autoppilot Heizung'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": {templateUrl: "app/views/nav/nav2.houses.htm"},
+				"AutopilotContent": { templateUrl: "app/views/content/addTimePeriod.htm", controller: 'AddTimePeriodController'}
 			}
 		}).state("dashboard", {
 			url: "/dashboard",

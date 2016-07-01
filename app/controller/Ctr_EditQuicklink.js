@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('EditQuicklinkController',["$scope", "$rootScope", "$state", "$stateParams","ComponentService","MainService",
-                                      function($scope, $rootScope, $state, $stateParams,componentService,mainService) {
+app.controller('EditQuicklinkController',["$scope", "$rootScope", "$state", "$stateParams","ComponentService","MainService","vibrator",
+                                      function($scope, $rootScope, $state, $stateParams,componentService,mainService,vibrator) {
 	
 	$scope.quicklinkIdx = $stateParams.quicklinkId;
 	$scope.types = [];
@@ -14,6 +14,7 @@ app.controller('EditQuicklinkController',["$scope", "$rootScope", "$state", "$st
 	$scope.typ ;
 	
 	$scope.save = function() {
+		vibrator.vibrate(10);
 		$scope.quicklink.typ.id = $scope.typ.getId();
 		$scope.quicklink.typ.name = $scope.typ.getName();
 		 $rootScope.houses[$rootScope.houseIdx].getDashboard().quicklinks[$scope.quicklinkId] = $scope.quicklink;
@@ -21,7 +22,8 @@ app.controller('EditQuicklinkController',["$scope", "$rootScope", "$state", "$st
 	};
     
     $scope.cancel = function() {
-		
+    	vibrator.vibrate(10);
+    	$state.go("houseconfiguration.dashboard")
    };
    
    $scope.categoryChanged = function()

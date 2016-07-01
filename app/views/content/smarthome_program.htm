@@ -1,0 +1,85 @@
+<div class="heading actionbar">
+    <!--<a data-ng-click="newProfile()"><img src="images/icons/plus-26.png">-->
+    <a data-ng-click="showNewProfileDiv()" data-ng-class="{active: newProgramDivVisible}"><img src ="images/icons/add_list-32.png"/>  Neues Wochenprogramm</a>
+    <a data-ng-show="currentProfile != null" data-ng-click="saveChange()"><img data-ng-src ="{{saveIcon}}"/> Speichern</a>
+    <!--<a data-ng-show="currentProfile != null" data-ng-click="setStandard(currentProfile)"> <img src ="images/icons/star-32.png"/> Aktivieren</a>-->
+    <a data-ng-show="currentProfile != null" data-ng-click="renameProfile()"> <img src ="images/icons/keyboard-48.png"/> Umbenennen</a>
+    <a data-ng-show="currentProfile != null" data-ng-click="deleteProfile()"> <img src ="images/icons/delete-32.png"/> Löschen</a>
+    <!--<a href=""> <img src="images/icons/copy_file-64.png" width="16"> Raumstruktur kopieren</a>-->
+    <a data-ng-click="showIntro()"> <img src ="images/icons/help-32.png"/> Anleitung</a>
+  <!--  <a data-ng-click="showHelpVideo()" data-ng-class="{active: showHelp}"> <img src ="images/icons/help-32.png"/> Videoanleitung</a>-->
+</div>
+<!-- NEUES WOCHENPROGRAMM -->
+<div id="newProgrammDivContent" data-ng-show="newProgramDivVisible">
+    <div class="infoDiv light">
+        <h4>Neues Wochenprogramm</h4><BR>
+        <input id="newProfileName" style="margin-bottom: 1em;" type="text" placeholder="Programmname" data-ng-model="newProfileName">
+        <a class="link" data-ng-click="createProgram(1)" title="Neues Wochenprogramm">
+            <img alt="" src="images/icons/plus-invert-64.png"><br>
+            Neues Wochenprogramm
+        </a>
+        <a class="link" data-ng-click="createProgram(2)" title="Dupliziert das aktuell ausgewählte Wochenprogramm">
+            <img alt="" src="images/icons/copy_file-64.png"><br>
+            Aktuelles Pro&shy;gramm duplizieren
+        </a>
+        <a class="link tip" data-ng-click="createProgram(3)" title="Modus Komfort an allen Tagen in allen Räumen">
+            <img alt="" src="images/icons/sun-64.png"><br>
+            Standardprogramm<BR>Alles Warm
+        </a>
+        <a class="link tip" data-ng-click="createProgram(4)" title="Modus Eco an allen Tagen in allen Räumen">
+            <img alt="" src="images/icons/winter-64.png"><br>
+            Standardprogramm<BR>Alles Kalt
+        </a>
+
+        <BR>
+    </div>
+</div>
+
+<div class="section group" ng-intro-options="HelpOptions" ng-intro-method="showIntro"><!-- ng-intro-autostart="{{shallShowProgramIntro()}}">-->
+    <aside id="profileOverview" class="dark tempProfiles col span_1_of_4">
+        <div class="tempProfilesInner">
+            <a data-ng-repeat="profile in profiles" data-ng-class="{active:currentProfile == profile}" data-ng-click="editProfile(profile)"><img  class="tip" id="activateProfile" title="Dieses Profil für Räume mit eingeschaltetem Wochenprogramm auswählen" data-ng-click="setStandard(profile)" data-ng-if="!profile.active" src ="images/icons/program_false.png"/><img class="tip" id="activateProfile" data-ng-if="profile.active" title="Dieses Profil ist für Räume mit eingeschaltetem Wochenprogramm ausgewählt" src ="images/icons/star-32.png"/>{{profile.profileLabel}}</a>
+        </div>
+    </aside>
+    
+    <div class="screenToSmallWarning light col span_3_of_4">
+        <h4>Ihr Bildschirm ist für die Darstellung des Wochenprogramms leider zu klein!</h4>
+    </div>
+    <div class="profileContent light col span_3_of_4">
+        <video data-ng-show="showHelp" style="width:100%" controls>
+            <source src="video/wochenprogramm_erstellen.ogv" type="video/ogg">
+            <source src="video/wochenprogramm_erstellen.mp4" type="video/mp4">
+            Leider unterstützt Ihr Browser keine Videos.
+        </video>
+        <div class="profileHeading light">
+            <!-- Wochenprogrammüberschrift <h3 data-ng-show="currentProfile != null">{{currentProfile.profileLabel}}</h3>-->
+            <h3 data-ng-show="currentProfile == null">Kein Wochenprogramm ausgewählt</h3>
+            <p data-ng-show="currentProfile == null"><BR>Zum Bearbeiten links ein Wochenprogramm auswählen oder ein neues Wochenprogramm erstellen.</p>
+            <!--<div class="heading actionbar">
+                <a data-ng-show="currentProfile != null" data-ng-click="saveChange()"><img data-ng-src ="{{saveIcon}}"/> Speichern</a>
+                <a data-ng-show="currentProfile != null" data-ng-click="renameProfile()"> <img src ="images/icons/keyboard-48.png"/> Umbenennen</a>
+                <a data-ng-show="currentProfile != null" data-ng-click="deleteProfile()"> <img src ="images/icons/delete-32.png"/> Löschen</a>
+            </div>-->
+        </div>
+        <div id="blockOverview" class="actionbar" style="text-align: center;">
+            <a class="block" data-ng-repeat="block in currentProfile.facilityProfiles[0].blocks|orderBy: sortByDay|filter:filterBlocks" data-ng-click="filterBlock(block.blockId)" data-ng-class="{active:currentBlock =={{block.blockId}}}" data-drop="true" ng-model='block.days' jqyoui-droppable="{multiple:true,onDrop:$scope.showAdd}">
+                <span data-ng-repeat="day in block.days|orderBy: 'toString()'" ng-model="block.days" data-ng-bind="getDayByInt(day)" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: {{getDayIndex(block.days, day)}}, placeholder: false, onStart:'saveBlock(block.blockId)'}"> </span>
+            </a><a class="addblock tip" data-ng-show="showAdd()" ng-model="newBlockArray" data-drop="true" jqyoui-droppable="{multiple:true}" title="Tag hierher ziehen, um ihn von einer bestehenden Gruppe zu trennen."><img style="height:1em;" src="images/icons/cut-32.png"></a>
+        </div><hr class="wohnprogram"><br>
+        <div id="step4" class="dayProgram" data-ng-show="currentProfile != null">
+            <div class="scaleDiv">
+                <div class="roomNameDiv">&nbsp;</div>
+                <div class="scaleElementsNew"><div><span>00:00&nbsp;</span></div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div><span>06:00&nbsp;&nbsp;</span></div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div><span>12:00&nbsp;&nbsp;</span></div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div><span>18:00&nbsp;&nbsp;</span></div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div><span>&nbsp;24:00</span></div></div>
+                <div class="scaleElements"><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div><div> &nbsp;</div></div>
+                <div class="addDiv"></div>
+            </div>
+        </div>
+        <div id="roomSetting" class="dayProgram" data-ng-repeat="facility in currentProfile.facilityProfiles|filter: filterFacilities| orderBy:'facLabel':false">
+            <div class="roomProfileDiv" data-ng-repeat="block in facility.blocks| filter:{ blockId: currentBlock }">
+                <div class="roomNameDiv" style="margin-top:0;margin-bottom:0;" data-ng-bind="facility.facLabel"></div>
+                <div program></div>
+                <div class="addDiv">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+</div>

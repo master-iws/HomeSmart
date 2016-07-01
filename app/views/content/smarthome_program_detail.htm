@@ -1,0 +1,43 @@
+<p>
+    <a title="Interval an der aktuellen Stelle teilen, um zwei Intervalle zu erhalten." class="lightLink" href="javascript:void(0);" data-ng-click="splitInterval(currentInterval, %index)">
+        <img style="height:1em;" src="images/icons/cut-32.png"> teilen
+    </a>
+    <a title="Aktuelles Intervall löschen, das vorhergehende Interval wird anschließend verlängert." class="lightLink" href="javascript:void(0);" data-ng-click="deleteInterval(currentInterval)" >
+        <img style="height:1em;" src="images/icons/delete-32.png"> löschen
+    </a><br><br> <!-- Anzeige VB-Button  -->
+    <a title="variiert die Schaltzzeitpunkte der einzelnen Wochentage nach dem Zufallsprinzip um bis zu 60 Minuten" class="lightLink" href="javascript:void(0);" data-ng-click="shuffleSwitchpoints()" data-ng-if="isPlug(currentInterval)">
+        <img style="height:1em;" src="images/icons/arrow-both-32.png"> Urlaubsvertretung</a>
+</p>
+<div class="modi" ng-if="isPlug(currentInterval)">
+    <!-- Anzeige Modi-Icons -->
+    <a class="socketStateOn centeredIcon tip socketOnOff" data-ng-class="{active: (currentInterval.powerOn&&!currentInterval.powerOff)}" data-ng-click="changeSwitchMode(true)" title="ON"><BR>ON</a>
+    <a class="socketStateOff centeredIcon tip socketOnOff" data-ng-class="{active: (!currentInterval.powerOn&&currentInterval.powerOff)}" data-ng-click="changeSwitchMode(false)" title="OFF"><BR>OFF</a>
+</div>
+
+<div class="modi" ng-if="!isPlug(currentInterval)">
+    <a class="redish centeredIcon man tip2" data-ng-class="{active: currentInterval.mode == 103}" data-ng-click="changeTempMode(103)" title="BENUTZERDEFINIERT">&nbsp;</a>
+    <a class="green centeredIcon eco tip2" data-ng-class="{active: currentInterval.mode == 101}" data-ng-click="changeTempMode(101)" title="ECO">&nbsp;</a>
+    <a class="yellowish centeredIcon comfort tip2" data-ng-class="{active: currentInterval.mode == 102}" data-ng-click="changeTempMode(102)" title="KOMFORT">&nbsp;</a>
+    <a class="lightblue centeredIcon frost tip2" data-ng-class="{active: currentInterval.mode == 100}" data-ng-click="changeTempMode(100)" title="ABSENKUNG">&nbsp;</a>
+    <br>
+    <!-- Anzeige Modi-Temperatur -->
+    <span class="modiTemperatures" data-ng-bind="getTemperatureByMode(103)"></span>
+    <span class="modiTemperatures" data-ng-bind="getTemperatureByMode(101)"></span>
+    <span class="modiTemperatures" data-ng-bind="getTemperatureByMode(102)"></span>
+    <span class="modiTemperatures" data-ng-bind="getTemperatureByMode(100)"></span>
+    <BR>
+    <div class="sliderwrap" data-ng-show="currentInterval.mode == 103">
+        <p>Manuell</p>
+        <div slider class="slider" temp-value="currentInterval.manualTemp" temperature-mode="1" temp-min="4.5" temp-max="30.5">
+
+        </div>
+
+    </div>
+</div>
+
+<div class="close"><a title="Schließen" data-ng-click="clean()" href="javascript:void(0)">
+        <img src="../images/icons/close-32.png"></a>
+</div>
+
+<!--{{}}-{{}} Uhr
+-->
