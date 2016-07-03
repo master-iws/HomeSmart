@@ -103,8 +103,9 @@ app.config(
 			authenticate: true,
 			adminArea: false,
 			resolve: {
-				$title: ['$stateParams', function($stateParams) {
-					return "Etage: " + $stateParams.floorId;
+				$title: ['$stateParams','$rootScope', function($stateParams,$rootScope) {
+					var name = $rootScope.houses[$rootScope.houseIndex].getFloorById($stateParams.floorId).getName();
+					return "Etage: " + name;
 				}]
 			},
 			views: {
@@ -129,8 +130,9 @@ app.config(
 			authenticate: true,
 			adminArea: false,
 			resolve: {
-				$title: ['$stateParams', function($stateParams) {
-					return "Raum: " + $stateParams.roomId;
+				$title: ['$stateParams','$rootScope', function($stateParams,$rootScope) {
+					var name = $rootScope.houses[$rootScope.houseIndex].getRoomById($stateParams.roomId).getName();
+					return "Raum: " + name;
 				}]
 			},
 			views: {
