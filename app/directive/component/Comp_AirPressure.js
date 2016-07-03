@@ -2,8 +2,8 @@ app.directive('compAirPressure', function() {
 
 	function link(scope, element, attrs) {
 
-		scope.componentId = scope.component.id;
-		scope.componentName = scope.component.name;
+		scope.componentId = scope.component.getId();
+		scope.componentName = scope.component.getName();
 		
 	}
 
