@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('EditHouseController',["$scope", "$rootScope", "$state", "$stateParams", "MainService",
-                                      function($scope, $rootScope, $state, $stateParams, mainService) {
+app.controller('EditHouseController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","vibrator",
+                                      function($scope, $rootScope, $state, $stateParams, mainService,vibrator) {
 	$scope.cities = ["Berlin",
                      "München",
                      "Hamburg",
@@ -27,12 +27,13 @@ app.controller('EditHouseController',["$scope", "$rootScope", "$state", "$stateP
     $scope.house.components = $rootScope.houses[$rootScope.houseIndex].components;
 	
 	$scope.save = function() {
-		
+		vibrator.vibrate(10);
 		 $rootScope.houses[$rootScope.houseIndex] = $scope.house;
 		 mainService.saveHouses($rootScope.houses);
     };
     
     $scope.cancel = function() {
+    	vibrator.vibrate(10);
     	$scope.house ={};// = $rootScope.houses[$rootScope.houseIndex];
     	$scope.house.name = $rootScope.houses[$rootScope.houseIndex].name;
     	$scope.house.city = $rootScope.houses[$rootScope.houseIndex].city;

@@ -161,6 +161,7 @@ app.controller('StatisticController',["$scope", "$rootScope", "$state",	function
 		date.hour($scope.period.startDate.hour());
 		var response = $rootScope.houses[$rootScope.houseIndex].getEnergyData($scope.period.typ,date);
 		console.log(response);
+		console.log("loadchartdata");
 		
 		var series = [];
 		
@@ -302,7 +303,7 @@ app.controller('StatisticController',["$scope", "$rootScope", "$state",	function
 	};
 	
 	$scope.loadChartData();
-	//wie dieselben daten??
+	
     
 		
 }]);

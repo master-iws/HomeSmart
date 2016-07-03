@@ -1,13 +1,13 @@
 'use strict';
 
 
-app.controller('AddRoomController',["$scope", "$rootScope", "$state", "$stateParams", "fileReader","MainService",
-                                      function($scope, $rootScope, $state, $stateParams, fileReader, mainService) {
+app.controller('AddRoomController',["$scope", "$rootScope", "$state", "$stateParams", "fileReader","MainService","vibrator",
+                                      function($scope, $rootScope, $state, $stateParams, fileReader, mainService,vibrator) {
 	$scope.room = new Mod_Room();
 	$scope.room.setIcon(undefined);
 
 	$scope.save = function() {
-
+		vibrator.vibrate(10);
 		 $scope.room.setId($rootScope.nextRoomId);
 		 $rootScope.nextRoomId++;
 		 $scope.floorIdx = $rootScope.houses[$rootScope.houseIndex].getFloors().indexOf($scope.room.getFloor());
@@ -17,7 +17,7 @@ app.controller('AddRoomController',["$scope", "$rootScope", "$state", "$statePar
     };
     
     $scope.cancel = function() {
-		
+    	vibrator.vibrate(10);
     	 $state.go("houseconfiguration.rooms");
    };
    

@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$stateParams","MainService",
-                                      function($scope, $rootScope, $state, $stateParams,mainService) {
+app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$stateParams","MainService","vibrator",
+                                      function($scope, $rootScope, $state, $stateParams,mainService,vibrator) {
 	
 	$scope.roomId = $stateParams.roomId;
 	$scope.originalRoom = $rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId);
@@ -15,7 +15,7 @@ app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$statePa
 	
 	$scope.save = function() {
 		
-		
+		vibrator.vibrate(10);
 		$rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId) = $scope.room;
 		mainService.saveHouses($rootScope.houses);
 		//$rootScope.houses[$rootScope.houseIdx].floors[$stateParams.floorId] = $scope.room;
@@ -23,7 +23,7 @@ app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$statePa
     };
     
     $scope.cancel = function() {
-		
+    	vibrator.vibrate(10);
     	 
     };
    

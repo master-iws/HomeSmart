@@ -336,6 +336,8 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		response.dataset = [];
 		response.label = [];
 		
+		console.log(typ);
+		
 		// je nach typ generieren lassen
 		if(typ === 'year')
 		{
@@ -375,7 +377,8 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	
 	this.getEnergyData = function(typ, startDate)
 	{
-		var response = this.getDataset();	
+		var response = this.getDataset(typ,startDate);
+		console.log(this.getDataset(typ,startDate));
 		
 		for(var r in this.getRooms())
 		{
@@ -391,6 +394,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			response.label.push(this.getRooms()[r].getName());
 			
 		}
+		console.log(response);
 		return response;
 	};
 	

@@ -15,4 +15,12 @@ app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams
 		$state.go("rooms.detail", {'roomId':$roomId});
 	};
    
+	$scope.configureHeatingAutopilot = function()
+	{
+		$state.go("rooms.detail.heatingAutopilot");
+	}
+	
+	
+	//heizungssacchen
+	$scope.heatingMode=1;
 }]);

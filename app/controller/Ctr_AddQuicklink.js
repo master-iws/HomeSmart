@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$stateParams","ComponentService", "MainService",
-                                      function($scope, $rootScope, $state, $stateParams, componentService, mainService) {
+app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$stateParams","ComponentService", "MainService","vibrator",
+                                      function($scope, $rootScope, $state, $stateParams, componentService, mainService,vibrator) {
 	
 	$scope.types = [];
 	$scope.categories = ['Kategorie', 'Etage', 'Raum'];
@@ -13,6 +13,7 @@ app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$sta
 	$scope.types = componentService.getCategorys();
 	
 	$scope.save = function() {
+		vibrator.vibrate(10);
 		$scope.quicklink.typ.id = $scope.typ.getId();
 		$scope.quicklink.typ.name = $scope.typ.getName();
 		$rootScope.houses[$rootScope.houseIndex].getDashboard().quicklinks.push($scope.quicklink);
@@ -21,6 +22,7 @@ app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$sta
     };
     
     $scope.cancel = function() {
+    	vibrator.vibrate(10);
 		$state.go("houseconfiguration.dashboard");
    };
    
