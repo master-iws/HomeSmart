@@ -15,6 +15,11 @@ app.run(function ($rootScope, $state, $stateParams, $log) {
 	
 	$rootScope.$on('$stateChangeStart', 
 			function(event, toState, toParams, fromState, fromParams){
+			    
+			    $rootScope.previousState = fromState;
+			    $rootScope.currentState = toState;
+			    $rootScope.previousState.params = fromParams;
+			    $rootScope.currentState.params = toParams;
 		
 			if(toState.name === 'settings')
 			{
