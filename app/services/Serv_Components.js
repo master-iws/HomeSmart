@@ -14,9 +14,9 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Garten");
-	fillComponents(cat,[["Rasenroboter",6,[0,null]],
+	fillComponents(cat,[["Rasenroboter",6,[0,null,null]],
 			    ["Zisterne",5,[0]],
-			    ["Sprenkelanlage",7,[0,null]]]);
+			    ["Sprenkelanlage",7,[0,null,null]]]);
 	cats.push(cat);
 	increaseId();
 	
@@ -60,18 +60,19 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Verbraucher");
-	fillComponents(cat,[["Stromverbraucher",21,[0]],
-			    ["Wasserverbraucher",22,[0]]]);
+	fillComponents(cat,[["Stromverbraucher - aktiv",21,[0]],
+			    ["Stromverbraucher - passiv",22,[0]],
+			    ["Wasserverbraucher",23,[0]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Klima");
-	fillComponents(cat,[["Termometer",23,[0,0]],
-			    ["Niederschlagsmesser",24,[0,0]],
-			    ["Luftdruck",25,[0,0]],
-			    ["Windgeschwindigkeit",26,[0,0]]]);
+	fillComponents(cat,[["Termometer",24,[0,0]],
+			    ["Niederschlagsmesser",25,[0,0]],
+			    ["Luftdruck",26,[0,0]],
+			    ["Windgeschwindigkeit",27,[0,0]]]);
 	cats.push(cat);
 	increaseId();
 	
@@ -88,47 +89,48 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Fenster, Türen & Tore");
-	fillComponents(cat,[["Garagentor",34,[0]],
-			    ["Fensterkontakt",35,null],
-			    ["Haustür",36,[0,null]]]);
+	fillComponents(cat,[["Garagentor",35,[0]],
+			    ["Fensterkontakt",36,null],
+			    ["Haustür",37,[0,null]],
+			    ["Beschattung",38,[0,null]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Kamera");
-	fillComponents(cat,[["Innenkamera",27,null],
-			    ["Außenkamera",28,null]]);
+	fillComponents(cat,[["Innenkamera",28,null],
+			    ["Außenkamera",29,null]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Bewegunsmelder");
-	fillComponents(cat,[["Bewegunsmelder innen",29,[0]],
-			    ["Bewegunsmelder außen",30,[0]]]);
+	fillComponents(cat,[["Bewegunsmelder innen",30,[0]],
+			    ["Bewegunsmelder außen",31,[0]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Multi Room Audio");
-	fillComponents(cat,[["Multi Room Audio",37,null]]);
+	fillComponents(cat,[["Multi Room Audio",39,null]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Heizung");
-	fillComponents(cat,[["Heizung",31,[23,null]]]);
+	fillComponents(cat,[["Heizung",32,[23,null,null,null]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Sicherheit");
-	fillComponents(cat,[["Alarmanlage",32,[0]],
-			    ["Rauchmelder",33,[0,0]]]);
+	fillComponents(cat,[["Alarmanlage",33,[0]],
+			    ["Rauchmelder",34,[0,0]]]);
 	cats.push(cat);
 	increaseId();
 

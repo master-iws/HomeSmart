@@ -1,6 +1,9 @@
 <nav class="navbar navbar-default secondNav">
 	<div>
 		<div class="navbar-header">
+		    <div ng-click="goPrevState()" class="visible-xs" style="float:left;color:white;padding:12px;font-size: 2em;cursor: pointer;">
+			    <i class="fa fa-reply menu-icon" aria-hidden="true"></i>
+		    </div>
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navCollapse"
 				aria-expanded="false">
@@ -10,15 +13,14 @@
 			</button>
 
 		</div>
-		<div class="collapse navbar-collapse in second-nav-collapse" id="navCollapse">
+		<div class="collapse navbar-collapse second-nav-collapse" id="navCollapse">
 			<ul class="nav navbar-nav col-lg-12">
 				<li ng-class="{ secondNavActive: $state.includes('dashboard')}"><a
 					ui-sref="dashboard" class="second-nav-a"> <i
 						class="fa fa-star menu-icon" aria-hidden="true"></i> Dashboard
 				</a></li>
 				<li ng-class="{ secondNavActive: $state.includes('central')}"><a
-					ui-sref="central" class="second-nav-a"
-					style="margin-left: 0px; padding-left: 0px;"> <i
+					ui-sref="central" class="second-nav-a"> <i
 						class="fa fa-bullseye menu-icon" aria-hidden="true"></i> Zentral
 				</a></li>
 				<li ng-class="{ secondNavActive: $state.includes('floors')}"><a

@@ -1,5 +1,8 @@
 'use strict';
-var app = angular.module("HomeSmart", ["ng", "ui.router", "ui.router.title","autocomplete","n3-line-chart","ngToast","ngAnimate","ui.bootstrap","angular-vibrator","ngAudio",angularDragula(angular)]);
+var app = angular.module("HomeSmart", ["ng", "ui.router", "ui.router.title","autocomplete",
+					"n3-line-chart","ngToast","ngAnimate","ui.bootstrap",
+					"angular-vibrator","ngAudio",angularDragula(angular),
+					"ngTouch"]);
 
 app.run(function ($rootScope, $state, $stateParams, $log) {
 	$rootScope.$state = $state;
@@ -12,6 +15,11 @@ app.run(function ($rootScope, $state, $stateParams, $log) {
 	
 	$rootScope.$on('$stateChangeStart', 
 			function(event, toState, toParams, fromState, fromParams){
+			    
+			    $rootScope.previousState = fromState;
+			    $rootScope.currentState = toState;
+			    $rootScope.previousState.params = fromParams;
+			    $rootScope.currentState.params = toParams;
 		
 			if(toState.name === 'settings')
 			{
@@ -95,8 +103,9 @@ app.config(
 			authenticate: true,
 			adminArea: false,
 			resolve: {
-				$title: ['$stateParams', function($stateParams) {
-					return "Etage: " + $stateParams.floorId;
+				$title: ['$stateParams','$rootScope', function($stateParams,$rootScope) {
+					var name = $rootScope.houses[$rootScope.houseIndex].getFloorById($stateParams.floorId).getName();
+					return "Etage: " + name;
 				}]
 			},
 			views: {
@@ -121,8 +130,9 @@ app.config(
 			authenticate: true,
 			adminArea: false,
 			resolve: {
-				$title: ['$stateParams', function($stateParams) {
-					return "Raum: " + $stateParams.roomId;
+				$title: ['$stateParams','$rootScope', function($stateParams,$rootScope) {
+					var name = $rootScope.houses[$rootScope.houseIndex].getRoomById($stateParams.roomId).getName();
+					return "Raum: " + name;
 				}]
 			},
 			views: {
@@ -177,6 +187,18 @@ app.config(
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/categorys.htm",controller: 'CategorysController'}
+			}
+		}).state("weather", {
+			url: "/weather",
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'Kategorien'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"Content": { templateUrl: "app/views/content/weather.htm",controller: 'WeatherController'}
 			}
 		}).state("statistic", {
 			url: "/statistic",
