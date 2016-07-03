@@ -50,7 +50,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	    house_arr.push(getDemoHome());
 	}
 	console.groupCollapsed("House Array");
-	console.info(JSON.stringify(house_arr,null,2));
+	console.info(JSON.parse(JSON.stringify(house_arr)));
 	console.groupEnd();
 	console.groupEnd();
 	return house_arr;
@@ -79,69 +79,69 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.setId($rootScope.nextRoomId++);
 		    room.setName("Küche");
 		    room.setFloor(floor);
-		    var c = componentService.getComponentById(11001); //MutiRoomaudio
+		    var c = componentService.getNewComponentInstanceById(11001); //MutiRoomaudio
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(12001); //Heizung
+		    var c = componentService.getNewComponentInstanceById(12001); //Heizung
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(13002); //Rauchmelder
+		    var c = componentService.getNewComponentInstanceById(13002); //Rauchmelder
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Fenster spüle");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Fenster Garten");
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Fenster spüle");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Fenster Garten");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Mixer");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Toaster");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Thermomix");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Wasserkocher");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Kühlschrank");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Spülmaschine");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Kaffeemaschine");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Herd");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Spüle");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Spülmaschine");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7001); //Licht normal
+		    var c = componentService.getNewComponentInstanceById(7001); //Licht normal
 			c.setName("Spüle");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7001); //Licht normal
+		    var c = componentService.getNewComponentInstanceById(7001); //Licht normal
 			c.setName("Herd");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7002); //Licht dimmer
+		    var c = componentService.getNewComponentInstanceById(7002); //Licht dimmer
 			c.setName("Hauptlicht");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(1004); //Kühlschrank
+		    var c = componentService.getNewComponentInstanceById(1004); //Kühlschrank
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(1003); //Spülmaschine
+		    var c = componentService.getNewComponentInstanceById(1003); //Spülmaschine
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(1001); //Kaffeemaschine
+		    var c = componentService.getNewComponentInstanceById(1001); //Kaffeemaschine
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(1002); //Herd
+		    var c = componentService.getNewComponentInstanceById(1002); //Herd
 		    room.addComponent(c);
 		floor.addRoom(room);
 		// </editor-fold>
@@ -150,52 +150,52 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.setId($rootScope.nextRoomId++);
 		    room.setName("Wohnzimmer");
 		    room.setFloor(floor);
-		    var c = componentService.getComponentById(11001); //MutiRoomaudio
+		    var c = componentService.getNewComponentInstanceById(11001); //MutiRoomaudio
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(12001); //Heizung
+		    var c = componentService.getNewComponentInstanceById(12001); //Heizung
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(13002); //Rauchmelder
+		    var c = componentService.getNewComponentInstanceById(13002); //Rauchmelder
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Terassentür");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Terassenfenster");
 		    room.addComponent(c);
-		     var c = componentService.getComponentById(8002); //Fensterkontakt
+		     var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Straßenfenster");
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Terassentür");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Terassenfenster");
 		    room.addComponent(c);
-		     var c = componentService.getComponentById(8004); //Beschattung
+		     var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Straßenfenster");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("TV");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Beamer");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Ladegerät");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Zimmerbrunnen");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7004); //Licht Komplett
+		    var c = componentService.getNewComponentInstanceById(7004); //Licht Komplett
 			c.setName("Hauptlicht");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7002); //Licht dimmer
+		    var c = componentService.getNewComponentInstanceById(7002); //Licht dimmer
 			c.setName("Leselampe");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(4002); //TV
+		    var c = componentService.getNewComponentInstanceById(4002); //TV
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(4001); //Beamer
+		    var c = componentService.getNewComponentInstanceById(4001); //Beamer
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(4003); //Leinwand
+		    var c = componentService.getNewComponentInstanceById(4003); //Leinwand
 		    room.addComponent(c);
 		floor.addRoom(room);
 		// </editor-fold>
@@ -204,92 +204,92 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.setId($rootScope.nextRoomId++);
 		    room.setName("Badezimmer EG");
 		    room.setFloor(floor);
-		    var c = componentService.getComponentById(11001); //MutiRoomaudio
+		    var c = componentService.getNewComponentInstanceById(11001); //MutiRoomaudio
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(12001); //Heizung
+		    var c = componentService.getNewComponentInstanceById(12001); //Heizung
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(13002); //Rauchmelder
+		    var c = componentService.getNewComponentInstanceById(13002); //Rauchmelder
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Fenster");
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Fenster");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Fön");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Waschmaschine");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Wäschetrockner");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Badewanne");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Dusche");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Waschbecken links");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Waschbecken rechts");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Waschmaschine");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7004); //Licht Komplett
+		    var c = componentService.getNewComponentInstanceById(7004); //Licht Komplett
 			c.setName("Hauptlicht");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7002); //Licht dimmer
+		    var c = componentService.getNewComponentInstanceById(7002); //Licht dimmer
 			c.setName("Baspiegel Links");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7002); //Licht dimmer
+		    var c = componentService.getNewComponentInstanceById(7002); //Licht dimmer
 			c.setName("Baspiegel Rechts");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(2001); //Badewanne
+		    var c = componentService.getNewComponentInstanceById(2001); //Badewanne
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(1001); //Waschmaschine
+		    var c = componentService.getNewComponentInstanceById(1001); //Waschmaschine
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(1006); //Wäschetrockner
+		    var c = componentService.getNewComponentInstanceById(1006); //Wäschetrockner
 		    room.addComponent(c);
 		floor.addRoom(room);
 		// </editor-fold>
 		// <editor-fold defaultstate="collapsed" desc="Garten">
 		var room = new Mod_Room();
 		    room.setId($rootScope.nextRoomId++);
-		    room.setName("Badezimmer EG");
+		    room.setName("Garten");
 		    room.setFloor(floor);
-		    var c = componentService.getComponentById(11001); //MutiRoomaudio
+		    var c = componentService.getNewComponentInstanceById(11001); //MutiRoomaudio
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(12001); //Heizung
+		    var c = componentService.getNewComponentInstanceById(12001); //Heizung
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromrverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromrverbraucher
 			c.setName("Pool");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromrverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromrverbraucher
 			c.setName("Rasenroboter");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Sprenkelanlage");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Pool");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7001); //Licht normal
+		    var c = componentService.getNewComponentInstanceById(7001); //Licht normal
 			c.setName("Garten");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7004); //Licht Komplett
+		    var c = componentService.getNewComponentInstanceById(7004); //Licht Komplett
 			c.setName("Terrasse");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(2002); //Pool
+		    var c = componentService.getNewComponentInstanceById(2002); //Pool
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(1002); //Zisterne
+		    var c = componentService.getNewComponentInstanceById(1002); //Zisterne
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(1003); //Sprenkelanlage
+		    var c = componentService.getNewComponentInstanceById(1003); //Sprenkelanlage
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(1001); //Rasenroboter
+		    var c = componentService.getNewComponentInstanceById(1001); //Rasenroboter
 		    room.addComponent(c);
 		floor.addRoom(room);
 		// </editor-fold>
@@ -298,42 +298,42 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.setId($rootScope.nextRoomId++);
 		    room.setName("Garage");
 		    room.setFloor(floor);
-		    var c = componentService.getComponentById(11001); //MutiRoomaudio
+		    var c = componentService.getNewComponentInstanceById(11001); //MutiRoomaudio
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(12001); //Heizung
+		    var c = componentService.getNewComponentInstanceById(12001); //Heizung
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(13002); //Rauchmelder
+		    var c = componentService.getNewComponentInstanceById(13002); //Rauchmelder
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Fenster Garten");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Fenster Links");
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Fenster Garten");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Fenster Links");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Ladegerät");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Lötstation");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Kompressor");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Waschbecken");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7001); //Licht normal
+		    var c = componentService.getNewComponentInstanceById(7001); //Licht normal
 			c.setName("Hauptlicht");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7002); //Licht dimmer
+		    var c = componentService.getNewComponentInstanceById(7002); //Licht dimmer
 			c.setName("Werkstattlicht");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8001); //Garagentor
+		    var c = componentService.getNewComponentInstanceById(8001); //Garagentor
 		    room.addComponent(c);
 		floor.addRoom(room);
 		// </editor-fold>
@@ -342,12 +342,12 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.setId($rootScope.nextRoomId++);
 		    room.setName("Sauna");
 		    room.setFloor(floor);
-		    var c = componentService.getComponentById(2003); //Sauna
+		    var c = componentService.getNewComponentInstanceById(2003); //Sauna
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Sauna");
 		    room.addComponent(c);
-		     var c = componentService.getComponentById(7004); //Licht Komplett
+		     var c = componentService.getNewComponentInstanceById(7004); //Licht Komplett
 			c.setName("Hauptlicht");
 		    room.addComponent(c);
 		floor.addRoom(room);
@@ -364,39 +364,39 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.setId($rootScope.nextRoomId++);
 		    room.setName("Kinderzimmer Max");
 		    room.setFloor(floor);
-		    var c = componentService.getComponentById(11001); //MutiRoomaudio
+		    var c = componentService.getNewComponentInstanceById(11001); //MutiRoomaudio
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(12001); //Heizung
+		    var c = componentService.getNewComponentInstanceById(12001); //Heizung
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(13002); //Rauchmelder
+		    var c = componentService.getNewComponentInstanceById(13002); //Rauchmelder
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Fenster Groß");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Fenster Klein");
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Fenster Groß");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Fenster Klein");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("TV");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("PlayStation");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Ladegerät");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7004); //Lciht Komplett
+		    var c = componentService.getNewComponentInstanceById(7004); //Lciht Komplett
 			c.setName("Hauptlicht");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7002); //Lciht dimmer
+		    var c = componentService.getNewComponentInstanceById(7002); //Lciht dimmer
 			c.setName("Leselampe");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(4002); //TV
+		    var c = componentService.getNewComponentInstanceById(4002); //TV
 		    room.addComponent(c);
 		floor.addRoom(room);
 		// </editor-fold>
@@ -405,39 +405,39 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.setId($rootScope.nextRoomId++);
 		    room.setName("Kinderzimmer Anna");
 		    room.setFloor(floor);
-		    var c = componentService.getComponentById(11001); //MutiRoomaudio
+		    var c = componentService.getNewComponentInstanceById(11001); //MutiRoomaudio
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(12001); //Heizung
+		    var c = componentService.getNewComponentInstanceById(12001); //Heizung
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(13002); //Rauchmelder
+		    var c = componentService.getNewComponentInstanceById(13002); //Rauchmelder
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Fenster Groß");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Fenster Klein");
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Fenster Groß");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Fenster Klein");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("TV");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("WiiU");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Ladegerät");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7004); //Lciht Komplett
+		    var c = componentService.getNewComponentInstanceById(7004); //Lciht Komplett
 			c.setName("Hauptlicht");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7002); //Lciht dimmer
+		    var c = componentService.getNewComponentInstanceById(7002); //Lciht dimmer
 			c.setName("Leselampe");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(4002); //TV
+		    var c = componentService.getNewComponentInstanceById(4002); //TV
 		    room.addComponent(c);
 		floor.addRoom(room);
 		// </editor-fold>
@@ -446,45 +446,45 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.setId($rootScope.nextRoomId++);
 		    room.setName("Elternschlafzimmer");
 		    room.setFloor(floor);
-		    var c = componentService.getComponentById(11001); //MutiRoomaudio
+		    var c = componentService.getNewComponentInstanceById(11001); //MutiRoomaudio
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(12001); //Heizung
+		    var c = componentService.getNewComponentInstanceById(12001); //Heizung
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(13002); //Rauchmelder
+		    var c = componentService.getNewComponentInstanceById(13002); //Rauchmelder
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Balkontür");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Balkonfenster");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Straßenfenster");
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Balkontür");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Balkonfenster");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Straßenfenster");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("TV");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Ladegerät");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7004); //Lciht Komplett
+		    var c = componentService.getNewComponentInstanceById(7004); //Lciht Komplett
 			c.setName("Hauptlicht");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7002); //Lciht dimmer
+		    var c = componentService.getNewComponentInstanceById(7002); //Lciht dimmer
 			c.setName("Leselampe");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7003); //Lciht Effekt
+		    var c = componentService.getNewComponentInstanceById(7003); //Lciht Effekt
 			c.setName("Balkon");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(4002); //TV
+		    var c = componentService.getNewComponentInstanceById(4002); //TV
 		    room.addComponent(c);
 		floor.addRoom(room);
 		// </editor-fold>
@@ -493,95 +493,95 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.setId($rootScope.nextRoomId++);
 		    room.setName("Badezimmer OG");
 		    room.setFloor(floor);
-		    var c = componentService.getComponentById(11001); //MutiRoomaudio
+		    var c = componentService.getNewComponentInstanceById(11001); //MutiRoomaudio
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(12001); //Heizung
+		    var c = componentService.getNewComponentInstanceById(12001); //Heizung
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(13002); //Rauchmelder
+		    var c = componentService.getNewComponentInstanceById(13002); //Rauchmelder
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(8002); //Fensterkontakt
+		    var c = componentService.getNewComponentInstanceById(8002); //Fensterkontakt
 			c.setName("Fenster");
-		    var c = componentService.getComponentById(8004); //Beschattung
+		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setName("Fenster");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(5001); //Stromverbraucher
 			c.setName("Fön");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Badewanne");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Waschbecken links");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(5002); //Wasserverbraucher
+		    var c = componentService.getNewComponentInstanceById(5002); //Wasserverbraucher
 			c.setName("Waschbecken rechts");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7004); //Lciht Komplett
+		    var c = componentService.getNewComponentInstanceById(7004); //Lciht Komplett
 			c.setName("Hauptlicht");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7002); //Lciht dimmer
+		    var c = componentService.getNewComponentInstanceById(7002); //Lciht dimmer
 			c.setName("Badspiegel Links");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(7002); //Lciht dimmer
+		    var c = componentService.getNewComponentInstanceById(7002); //Lciht dimmer
 			c.setName("Badspiegel Rechts");
 		    room.addComponent(c);
-		    var c = componentService.getComponentById(2001); //Badewanne
+		    var c = componentService.getNewComponentInstanceById(2001); //Badewanne
 		    room.addComponent(c);
 		floor.addRoom(room);
 		// </editor-fold>
 	    home.addFloor(floor);
 	    // <editor-fold defaultstate="collapsed" desc="Haus Komponenten">
-	    var c = componentService.getComponentById(8003); //Haustür
+	    var c = componentService.getNewComponentInstanceById(8003); //Haustür
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(13001); //Alarmanlage
+	    var c = componentService.getNewComponentInstanceById(13001); //Alarmanlage
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(3001); //PV Anlage
+	    var c = componentService.getNewComponentInstanceById(3001); //PV Anlage
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(7001); //Licht normal
+	    var c = componentService.getNewComponentInstanceById(7001); //Licht normal
 		c.setName("Außenbeleichtung");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(10001); //Bewegunsmelder innen
+	    var c = componentService.getNewComponentInstanceById(10001); //Bewegunsmelder innen
 		c.setName("Flur EG");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(10001); //Bewegunsmelder innen
+	    var c = componentService.getNewComponentInstanceById(10001); //Bewegunsmelder innen
 		c.setName("Flur OG");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(10002); //Bewegunsmelder außen
+	    var c = componentService.getNewComponentInstanceById(10002); //Bewegunsmelder außen
 		c.setName("Vorne");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(10002); //Bewegunsmelder außen
+	    var c = componentService.getNewComponentInstanceById(10002); //Bewegunsmelder außen
 		c.setName("Links");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(10002); //Bewegunsmelder außen
+	    var c = componentService.getNewComponentInstanceById(10002); //Bewegunsmelder außen
 		c.setName("Hinten");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(10002); //Bewegunsmelder außen
+	    var c = componentService.getNewComponentInstanceById(10002); //Bewegunsmelder außen
 		c.setName("Rechts");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(6001); //Thermometer
+	    var c = componentService.getNewComponentInstanceById(6001); //Thermometer
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(6002); //Niederschlagsmesser
+	    var c = componentService.getNewComponentInstanceById(6002); //Niederschlagsmesser
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(6003); //Luftdruck
+	    var c = componentService.getNewComponentInstanceById(6003); //Luftdruck
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(6004); //Windgeschwindigkeit
+	    var c = componentService.getNewComponentInstanceById(6004); //Windgeschwindigkeit
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(9002); //Außenkamera
+	    var c = componentService.getNewComponentInstanceById(9002); //Außenkamera
 		c.setName("Vorne");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(9002); //Außenkamera
+	    var c = componentService.getNewComponentInstanceById(9002); //Außenkamera
 		c.setName("Links");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(9002); //Außenkamera
+	    var c = componentService.getNewComponentInstanceById(9002); //Außenkamera
 		c.setName("Hinten");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(9002); //Außenkamera
+	    var c = componentService.getNewComponentInstanceById(9002); //Außenkamera
 		c.setName("Rechts");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(9001); //Innenkamera
+	    var c = componentService.getNewComponentInstanceById(9001); //Innenkamera
 		c.setName("Flur EG");
 	    home.addComponent(c);
-	    var c = componentService.getComponentById(9001); //Innenkamera
+	    var c = componentService.getNewComponentInstanceById(9001); //Innenkamera
 		c.setName("Flur OG");
 	    home.addComponent(c);
 	    // </editor-fold>

@@ -196,7 +196,8 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    this.setWlan(json["wlan"]);
 	    
 	    for(var id in json["components"]){
-		var comp = serv_components.getComponentById(json["components"][id].id);
+		var comp = serv_components.getNewComponentInstanceById(json["components"][id].id);
+		comp.setName(json["components"][id].name);
 		comp.setHouse(this);
 		comp.setRoom(null);
 		this.addComponent(comp);

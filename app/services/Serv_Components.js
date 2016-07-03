@@ -174,6 +174,10 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	}
     }
     
+    function getNewComponentInstanceById(id) {
+	return getComponentById(id).new();
+    }
+    
     function getNextId() {
 	return id++;
     }
@@ -188,6 +192,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	getCategorys:getCategorys,
 	getCategoryById:getCategoryById,
 	getComponentsByCategory:getComponentsByCategory,
-	getComponentById:getComponentById
+	getComponentById:getComponentById,
+	getNewComponentInstanceById:getNewComponentInstanceById
     };
 }]);
