@@ -48,58 +48,6 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	    
 	} else {
 	    house_arr.push(getDemoHome());
-	    /*
-		$rootScope.nextHouseId = 3;
-		$rootScope.nextFloorId = 3;
-		$rootScope.nextRoomId = 5;
-	    for(var houses=1;houses<3;houses++){
-		var house = new Mod_House();
-		    house.setId(houses);
-		    house.setName("House "+houses);
-		    house.setDescription("This is our Home!");
-		    house.setCity("Naila");
-		    house.setZip("95119");
-		    
-		    var dashboard = {};
-			dashboard.quicklinks = [];
-			dashboard.controls = [];
-			house.setDashboard(dashboard);
-			
-			var wlan = {};
-			wlan.ssid = "123";
-			wlan.password = "123";
-			wlan.status = true;
-			house.setWlan(wlan);
-
-		    for(var floors=1;floors<3;floors++){
-			var floor = new Mod_Floor();
-			    floor.setId(floorId);
-			    floorId++;
-			    floor.setName("Floor "+floors);
-			    floor.setDescription("Desc: H"+houses+"-F"+floors);
-			    floor.setHouse(house);
-			    
-
-			    for(var rooms=1;rooms<5;rooms++){
-				var room = new Mod_Room();
-				    room.setId(getNextId());
-				    room.setName("R"+rooms);
-				    room.setDescription("Desc: H"+houses+"-F"+floors+"-R"+rooms);
-				    var c = componentService.getComponentById(7001);
-				    c.setName("Wohnzimmerleuchte");
-				    room.addComponent(c);
-				    
-				    var s = componentService.getComponentById(6003);
-				    s.setName("Balkonbeschattung");
-				    room.addComponent(s);
-
-				floor.addRoom(room);
-			    }
-			house.addFloor(floor);
-		    }
-		house_arr.push(house);
-	   }*/
-	    
 	}
 	console.groupCollapsed("House Array");
 	console.info(JSON.stringify(house_arr,null,2));
@@ -141,6 +89,11 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			c.setName("Fenster spüle");
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(8002); //Fensterkontakt
+			c.setName("Fenster Garten");
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Fenster spüle");
+		    room.addComponent(c);
+		    var c = componentService.getComponentById(8004); //Beschattung
 			c.setName("Fenster Garten");
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(5001); //Stromverbraucher
@@ -211,6 +164,14 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.addComponent(c);
 		     var c = componentService.getComponentById(8002); //Fensterkontakt
 			c.setName("Straßenfenster");
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Terassentür");
+		    room.addComponent(c);
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Terassenfenster");
+		    room.addComponent(c);
+		     var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Straßenfenster");
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(5001); //Stromverbraucher
 			c.setName("TV");
@@ -250,6 +211,8 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    var c = componentService.getComponentById(13002); //Rauchmelder
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(8002); //Fensterkontakt
+			c.setName("Fenster");
+		    var c = componentService.getComponentById(8004); //Beschattung
 			c.setName("Fenster");
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(5001); //Stromverbraucher
@@ -346,6 +309,11 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(8002); //Fensterkontakt
 			c.setName("Fenster Links");
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Fenster Garten");
+		    room.addComponent(c);
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Fenster Links");
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(5001); //Stromverbraucher
 			c.setName("Ladegerät");
@@ -407,6 +375,11 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(8002); //Fensterkontakt
 			c.setName("Fenster Klein");
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Fenster Groß");
+		    room.addComponent(c);
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Fenster Klein");
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(5001); //Stromverbraucher
 			c.setName("TV");
@@ -442,6 +415,11 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			c.setName("Fenster Groß");
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(8002); //Fensterkontakt
+			c.setName("Fenster Klein");
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Fenster Groß");
+		    room.addComponent(c);
+		    var c = componentService.getComponentById(8004); //Beschattung
 			c.setName("Fenster Klein");
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(5001); //Stromverbraucher
@@ -482,6 +460,14 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(8002); //Fensterkontakt
 			c.setName("Straßenfenster");
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Balkontür");
+		    room.addComponent(c);
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Balkonfenster");
+		    room.addComponent(c);
+		    var c = componentService.getComponentById(8004); //Beschattung
+			c.setName("Straßenfenster");
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(5001); //Stromverbraucher
 			c.setName("TV");
@@ -514,6 +500,8 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    var c = componentService.getComponentById(13002); //Rauchmelder
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(8002); //Fensterkontakt
+			c.setName("Fenster");
+		    var c = componentService.getComponentById(8004); //Beschattung
 			c.setName("Fenster");
 		    room.addComponent(c);
 		    var c = componentService.getComponentById(5001); //Stromverbraucher

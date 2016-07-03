@@ -1,8 +1,8 @@
 'use strict';
 
 
-app.controller('AddRoomComponentController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","ComponentService",
-                                      function($scope, $rootScope, $state, $stateParams, mainService,componentService) {
+app.controller('AddRoomComponentController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","ComponentService","vibrator",
+                                      function($scope, $rootScope, $state, $stateParams, mainService,componentService,vibrator) {
 	
 	$scope.roomId = $stateParams.roomId;
 	
@@ -12,7 +12,7 @@ app.controller('AddRoomComponentController',["$scope", "$rootScope", "$state", "
 	$scope.components;
 
 	$scope.save = function() {
-
+		vibrator.vibrate(10);
 		 //$scope.room.setId($rootScope.nextId);
 		 $rootScope.houses[$rootScope.houseIndex].getFloors();
 		 mainService.saveHouses($rootScope.houses);
@@ -20,6 +20,7 @@ app.controller('AddRoomComponentController',["$scope", "$rootScope", "$state", "
     };
     
     $scope.cancel = function() {
+    	vibrator.vibrate(10);
 		$state.go("houseconfiguration.rooms.detail",{roomId:$scope.roomId});
    };
    

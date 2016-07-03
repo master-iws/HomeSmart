@@ -24,6 +24,10 @@ app.controller('MainController',
 	    	$rootScope.houseIndex = $houseIdx;
 	    	$state.go("statistic");
 	    };
+	    
+	    $scope.goPrevState = function() {
+		$state.go($rootScope.previousState.name,$rootScope.previousState.params);
+	    }
 
 	    $scope.setNextIds = function() {
 	    	$rootScope.nextHouseId = -1;
