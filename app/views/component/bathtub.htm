@@ -5,13 +5,13 @@
 			<span class="component-name">{{componentName}}</span>
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
-			<div class="switch">
-				<input id="cmn-toggle-{{componentId}}" class="cmn-toggle cmn-toggle-round"
-				       type="checkbox"> <label
-					for="cmn-toggle-{{componentId}}"></label>
-				<div class="on-span">Ein</div>
-				<div class="off-span">Aus</div>
-			</div>
+			<slider
+					ng-model="component.getSettings()[0]"
+					value="component.getSettings()[0]"
+					min="1"
+					max="100"
+					step="1"
+			></slider>
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">

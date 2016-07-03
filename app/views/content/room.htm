@@ -1,4 +1,4 @@
-<div class="row row-centered">
+<div class="row row-centered" ng-swipe-right="prevRoom()" ng-swipe-left="nextRoom()">
 	<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">R&auml;ume</h1>
 	<div class="col-md-2 col-sm-2 col-lg-2 hidden-xs subnav">
 
@@ -43,9 +43,8 @@
 			</div>
 			<div ng-repeat="component in components"
 					class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
-				{{component.getName()}}
-				<!--<comp-bathtub component="{id: '1', name: 'Badewanne'}"></comp-bathtub>
-				<comp-bathtub component="{id: '2', name: 'Fenster'}"></comp-bathtub>-->
+				<comp-light-dimmer component="component"></comp-light-dimmer>
+				<!--<comp-bathtub component="{id: '2', name: 'Fenster'}"></comp-bathtub>-->
 				<!--<div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
 					<div class="row" style="margin-bottom: 10px;">
 						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"

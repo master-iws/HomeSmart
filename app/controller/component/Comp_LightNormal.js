@@ -1,18 +1,10 @@
-app.directive('compBathtub', function($timeout) {
+app.directive('compLightNormal', function() {
 
 	function link(scope, element, attrs) {
 
-		scope.componentId = scope.component.id;
-		scope.componentName = scope.component.name;
-
-		$timeout(function(){
-			scope.slider = new Slider('#slider-' + scope.componentId, {
-				formatter: function (value) {
-					$('#ist-temp-' + scope.componentId).html('&nbsp;&nbsp;' + value + ' °C');
-					return 'Gewünschte Temperatur: ' + value + ' °C';
-				}
-			});
-		});
+		scope.componentId = scope.component.getId();
+		scope.componentName = scope.component.getName();
+		
 	}
 
 	return {
@@ -20,7 +12,7 @@ app.directive('compBathtub', function($timeout) {
 			component: '=component'
 		},
 		transclude: true,
-		templateUrl: 'app/views/component/bathtub.htm',
+		templateUrl: 'app/views/component/lightNormal.htm',
 		link: link
 	};
 });
