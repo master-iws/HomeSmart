@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module("HomeSmart", ["ng", "ui.router", "ui.router.title","autocomplete","n3-line-chart","ngToast","ngAnimate","ui.bootstrap","angular-vibrator",angularDragula(angular)]);
+var app = angular.module("HomeSmart", ["ng", "ui.router", "ui.router.title","autocomplete","n3-line-chart","ngToast","ngAnimate","ui.bootstrap","angular-vibrator", "toggle-switch", "ui.bootstrap-slider", "colorpicker.module",angularDragula(angular)]);
 
 app.run(function ($rootScope, $state, $stateParams, $log) {
 	$rootScope.$state = $state;

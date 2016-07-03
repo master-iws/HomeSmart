@@ -1,8 +1,18 @@
-function AirPressureController($scope, $element, $attrs) {
-	
-}
+app.directive('compAirPressure', function() {
 
-app.component('compAirPressure', {
-	templateUrl: 'app/views/component/airPressure.htm',
-	controller: AirPressureController
+	function link(scope, element, attrs) {
+
+		scope.componentId = scope.component.id;
+		scope.componentName = scope.component.name;
+		
+	}
+
+	return {
+		scope: {
+			component: '=component'
+		},
+		transclude: true,
+		templateUrl: 'app/views/component/airPressure.htm',
+		link: link
+	};
 });

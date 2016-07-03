@@ -2,22 +2,19 @@
 	<div class="row" style="margin-bottom: 10px;">
 		<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
 		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-			<span class="component-name">Luftdruck</span>
+			<span class="component-name">{{componentName}}</span>
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
-			<div class="switch">
-				<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
-				       type="checkbox"> <label
-					for="cmn-toggle-1"></label>
-				<div class="on-span">Ein</div>
-				<div class="off-span">Aus</div>
-			</div>
+			<toggle-switch
+					ng-model="component.settings.0" on-label="Ein"
+					off-label="Aus">
+			</toggle-switch>
 		</div>
 		<div class="col-md-6 col-lg-6 col-xs-4 col-sm-6" style="margin-top: 20px;">
 			<span class="component-text">Luftdruck:&nbsp;1&nbsp;&nbsp;hPa</span>
 		</div>
 	</div>
-	<button ng-click="configureComponent($index)"
+	<button ng-click="configureComponent(componentId)"
 	        class="btn-primary settings-btn">
 		<i class="fa fa-wrench" aria-hidden="true"></i>
 	</button>
