@@ -25,7 +25,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	cat.setName("Haushaltsgeräte");
 	fillComponents(cat,[["Kaffeemaschine",8,[1,2,4]],
 			    ["Herd",9,[0,null,0,0]],
-			    ["Spülmaschine",10,[0,null,0]],
+			    ["Spülmaschine",10,[1,2,45]],
 			    ["Kühlschrank",11,[0]],
 			    ["Waschmaschine",12,[0,null,0]],
 			    ["Wäschetrockner",13,[0,null,0]]]);
