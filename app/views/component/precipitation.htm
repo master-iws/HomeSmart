@@ -5,13 +5,11 @@
 			<span class="component-name">{{componentName}}</span>
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
-			<div class="switch">
-				<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
-				       type="checkbox"> <label
-					for="cmn-toggle-1"></label>
-				<div class="on-span">Ein</div>
-				<div class="off-span">Aus</div>
-			</div>
+			<toggle-switch
+					on-label="Ein"
+					off-label="Aus"
+					style="height: 30px; margin-top: 10px;">
+			</toggle-switch>
 		</div>
 		<div class="col-md-6 col-lg-6 col-xs-4 col-sm-6" style="margin-top: 20px;">
 			<span class="component-text">Niederschlag:&nbsp;0,5&nbsp;&nbsp;L&nbsp;/&nbsp;m²</span>

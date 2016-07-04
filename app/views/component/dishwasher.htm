@@ -5,32 +5,32 @@
 			<span class="component-name">{{componentName}}</span>
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-			<div class="switch">
-				<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
-				       type="checkbox"> <label
-					for="cmn-toggle-1"></label>
-				<div class="on-span">Ein</div>
-				<div class="off-span">Aus</div>
-			</div>
+			<toggle-switch
+					ng-model="component.getSetSettings[0]"
+					ng-model-options="{getterSetter: true }"
+					on-label="Ein"
+					off-label="Aus"
+					style="height: 30px; margin-top: 10px;">
+			</toggle-switch>
 		</div>
-		<div class="col-md-6 col-lg-6 col-xs-12 col-sm-6" style="margin-top: 20px;">
-			<span class="component-text"><i class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Verbleibende Zeit:&nbsp;&nbsp; 60 Minuten</span>
+		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 20px;">
+			<span class="component-text" id="timeLeft-{{componentId}}" hidden="hidden"><i class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Verbleibende Zeit:&nbsp;&nbsp; 60 Minuten</span>
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
 		<div class="col-md-4 col-lg-4 col-xs-12 col-sm-4" style="margin-top: 15px;">
 			<span class="component-text">Modus:&nbsp;&nbsp;</span>
-			<select>
-				<option>--Bitte wählen--</option>
-				<option>Automatik</option>
-				<option>Hygiene-Funktion</option>
-				<option>Multi-Tab</option>
-				<option>Beschleunigung</option>
-				<option>Halbe Beladung</option>
+			<select ng-model="modus" ng-change="updateModus()">
+				<option value="0">--Bitte wählen--</option>
+				<option value="1">Automatik</option>
+				<option value="2">Hygiene-Funktion</option>
+				<option value="3">Multi-Tab</option>
+				<option value="4">Beschleunigung</option>
+				<option value="5">Halbe Beladung</option>
 			</select>
 		</div>
 		<div class="col-md-1 col-lg-1 col-xs-12 col-sm-1" style="margin-top: 15px;">
-			<button class="btn btn-primary" id="start">Start</button>
+			<button class="btn btn-primary" id="start-{{componentId}}" ng-click="start()">Start</button>
 		</div>
 	</div>
 	<button ng-click="configureComponent($index)"

@@ -5,23 +5,31 @@
 			<span class="component-name">{{componentName}}</span>
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
-			<slider
-					ng-model="component.getSettings()[0]"
-					value="component.getSettings()[0]"
-					min="1"
-					max="100"
-					step="1"
-			></slider>
+			<toggle-switch
+					on-label="Ein"
+					off-label="Aus"
+					style="height: 30px; margin-top: 10px;">
+			</toggle-switch>
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="margin-top: 15px;">
-			<span class="component-text">Soll Temperatur:&nbsp;&nbsp;</span>
-			<input id="{{'slider-' + componentId}}" data-slider-class='slider' type="text" data-slider-tooltip="hide" data-slider-min="20" data-slider-max="35" data-slider-step="1" data-slider-value="28"/>
-			<span id="{{'ist-temp-' + componentId}}" class="component-text">&nbsp;&nbsp;28 °C</span>
+		<div class="col-md-11 col-lg-6 col-xs-11 col-sm-11" style="margin-top: 15px;">
+			<span class="component-text">Soll Temp.:&nbsp;&nbsp;</span>
+			<input id="slider-{{componentId}}" data-slider-class='slider' type="text" data-slider-tooltip="hide" data-slider-min="20" data-slider-max="45" data-slider-step="1" data-slider-value="30"/>
+			<span id="soll-temp-{{componentId}}" class="component-text">&nbsp;&nbsp;30 °C</span>
 		</div>
-		<div class="col-md-4 col-lg-4 col-xs-11 col-sm-4" style="margin-top: 15px;">
-			<span class="component-text">Ist Temperatur: 25°C</span>
+		<div class="col-md-11 col-lg-3 col-xs-11 col-sm-11" style="margin-top: 15px;">
+			<span class="component-text">Ist Temp.: 25°C</span>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col-md-11 col-lg-11 col-xs-11 col-sm-11" style="margin-top: 15px;">
+			<span class="component-text">Whirl-Funktion:&nbsp;&nbsp;</span>
+			<toggle-switch
+					on-label="Ein"
+					off-label="Aus"
+					style="height: 30px; margin-top: 10px;">
+			</toggle-switch>
 		</div>
 	</div>
 	<button ng-click="configureComponent($index)"

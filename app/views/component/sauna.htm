@@ -5,13 +5,12 @@
 			<span class="component-name">{{componentName}}</span>
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
-			<div class="switch">
-				<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
-				       type="checkbox"> <label
-					for="cmn-toggle-1"></label>
-				<div class="on-span">Ein</div>
-				<div class="off-span">Aus</div>
-			</div>
+			<toggle-switch
+					ng-model="component.getSetSettings()[0]"
+					on-label="Ein"
+					off-label="Aus"
+					style="height: 30px; margin-top: 10px;">
+			</toggle-switch>
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">

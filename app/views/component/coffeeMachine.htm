@@ -5,17 +5,15 @@
 			<span class="component-name">{{componentName}}</span>
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
-			<div class="switch">
-				<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
-				       type="checkbox"> <label
-					for="cmn-toggle-1"></label>
-				<div class="on-span">Ein</div>
-				<div class="off-span">Aus</div>
-			</div>
+			<toggle-switch
+					on-label="Ein"
+					off-label="Aus"
+					style="height: 30px; margin-top: 10px;">
+			</toggle-switch>
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-3 col-lg-3 col-xs-12 col-sm-3" style="margin-top: 15px;">
+		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 15px;">
 			<span class="component-text">Getränk:&nbsp;&nbsp;</span>
 			<select>
 				<option>--Bitte wählen--</option>
@@ -25,13 +23,15 @@
 				<option>Milchkaffee</option>
 			</select>
 		</div>
-		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 20px;">
+		<div class="col-md-12 col-lg-5 col-xs-12 col-sm-12" style="margin-top: 22px;">
 			<span class="component-text">Stärke:&nbsp;&nbsp;</span>
-			<input id="slider" data-slider-class='slider' type="text" data-slider-tooltip="hide" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
-			<span id="coffeeStrength" class="component-text">&nbsp;&nbsp;50 %</span>
+			<input id="slider-{{componentId}}" data-slider-class='slider' type="text" data-slider-tooltip="hide" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+			<span id="coffeeStrength-{{componentId}}" class="component-text">&nbsp;&nbsp;5</span>
 		</div>
-		<div class="col-md-1 col-lg-1 col-xs-12 col-sm-1" style="margin-top: 15px;">
-			<button class="btn btn-primary" id="start">Start</button>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col-md-11 col-lg-11 col-xs-12 col-sm-11" style="margin-top: 15px;">
+			<button class="btn btn-primary" id="start-{{componentId}}">Start</button>
 		</div>
 	</div>
 	<button ng-click="configureComponent($index)"
@@ -39,12 +39,3 @@
 		<i class="fa fa-wrench" aria-hidden="true"></i>
 	</button>
 </div>
-
-<script>
-	var slider = new Slider('#slider', {
-		formatter: function(value) {
-			$('#ist-temp').html('&nbsp;&nbsp;' + value + ' %');
-			return 'Gewünschte Temperatur: ' + value + ' %';
-		}
-	});
-</script>
