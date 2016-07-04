@@ -5,7 +5,6 @@ app.controller('MainController',
 	function($scope, $rootScope, $state, mainService) {
 		
 		$rootScope.houseIndex = 0;
-		$rootScope.loggedIn = true;
 		
 		$rootScope.houses = mainService.getHouses();
 		$rootScope.gloabelSettings = mainService.getSettings();

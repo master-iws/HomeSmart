@@ -2,22 +2,22 @@
 	<div class="row row-centered">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<h1>{{$title}}</h1>
-			<form class="form-horizontal" name="editRoomForm" novalidate>
+			<form class="form-horizontal" name="addRoomForm" novalidate>
 				<div class="form-group">
-					<label for="oldPin" class="col-sm-3 col-md-3 col-lg-1 control-label"
+					<label for="name" class="col-sm-3 col-md-3 col-lg-1 control-label"
 						id="nameLabel">Name</label>
 					<div class="col-sm-12 col-md-7 col-xs-12 col-lg-2">
 						<input ng-model="room.getSetName" class="form-control"
 							name="name" id="name" ng-model-options=" {getterSetter: true }"
-							ng-class="{'has-error': changePinForm.name.$invalid}" required>
+							ng-class="{'has-error': addRoomForm.name.$invalid}" required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="oldPin" class="col-sm-3 col-md-3 col-lg-1 control-label"
-						id="nameLabel">Name</label>
+					<label for="floor" class="col-sm-3 col-md-3 col-lg-1 control-label"
+						id="floorLabel">Etage</label>
 					<div class="col-sm-12 col-md-7 col-xs-12 col-lg-2">
 						<select style="width:100%;" ng-model-options=" {getterSetter: true }"
-						    ng-model="room.getSetFloor" ng-change="categoryChanged()"
+						    ng-model="room.getSetFloor" ng-change="categoryChanged()" id="floor" name="floor"
 						    ng-options="floor as floor.getName() for floor in houses[houseIndex].getFloors()"></select>
 					</div>
 				</div>
@@ -27,12 +27,12 @@
 					<label id="iconLabel"  name="iconLabel" for="icon" class="col-sm-3 col-md-3 col-lg-1 control-label">Icon</label>
   					<div class="col-sm-12 col-md-7 col-xs-12">
 	  					<div class="box">
-							<input type="file" name="file-1[]" id="file-1" ng-file-select="onFileSelect($files)" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple />
+							<input type="file" name="icon" id="icon" ng-file-select="onFileSelect($files)" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple />
 							<label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Icon ausw&auml;hlen&hellip;</span></label>
 						</div>
 	  					
 	  					<i ng-show="room.getIcon() === undefined">Kein Icon ausgew&auml;hlt</i>
-						<img ng-src="{{room.getIcon()}}" ng-show="room.getIcon() !== undefined" width="50" height="50"/> 
+						<img ng-src="{{room.getIcon()}}" ng-show="room.getIcon() !== undefined" width="50" height="50" alt="Icon für den Raum"/> 
 					</div>
 				</div>
 				<div class="form-group">
@@ -43,11 +43,11 @@
 							ng-repeat="component in room.getComponents()">
 							<div
 								class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
-								<button class="settings-btn btn-primary"
+								<button class="settings-btn btn-primary" aria-label="Komponente bearbeiten"
 									ng-click="editComponent($index)">
 									<i class="fa fa-wrench" aria-hidden="true"></i>
 								</button>
-								<button class="settings-btn btn-primary"
+								<button class="settings-btn btn-primary" aria-label="Komponente löschen"
 									ng-click="deleteComponent($index)">
 									<i class="fa fa-remove" aria-hidden="true"></i>
 								</button>
@@ -59,16 +59,16 @@
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-11 add-card" style="height: 100px;">
-							<button class="add-btn" ng-click="addComponent()">
+							<button class="add-btn" ng-click="addComponent()" aria-label="Komponente hinzufügen">
 								<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 							</button>
 						</div>
 					</div>
 				</div>
 				<div class="form-group col-sm-9">
-					<button ng-disabled="editRoomForm.$invalid"
-						class="btn btn-default" ng-click="save()">Speichern</button>
-					<button class="btn btn-default"
+					<button ng-disabled="addRoomForm.$invalid"
+						class="btn btn-default" ng-click="save()" aria-label="Speichern">Speichern</button>
+					<button class="btn btn-default" aria-label="Abbrechen"
 						ng-click="cancel()">Abbrechen</button>
 				</div>
 			</form>

@@ -15,8 +15,28 @@ app.controller('NavigationController',	["$scope", "$rootScope", "$state","MainSe
 		$scope.notificationContainerShow = !$scope.notificationContainerShow;
     };
     
-    $scope.houseIndexChanged = function($index) {
+    $scope.houseIndexChanged = function() {
 		
-		$rootScope.houseIndex = $index;
+		if($state.includes('rooms.detail'))
+			$state.go("rooms");
+		else if($state.includes('floors.detail'))
+			$state.go("floors");
+		else if($state.includes('houseconfiguration.floors.addFloor'))
+			$state.go("houseconfiguration.floors");
+		else if($state.includes('houseconfiguration.floors.editFloor'))
+			$state.go("houseconfiguration.floors");
+		else if($state.includes('houseconfiguration.floors.addRoom'))
+			$state.go("houseconfiguration.rooms");
+		else if($state.includes('houseconfiguration.floors.editRoom'))
+			$state.go("houseconfiguration.rooms");
+		else if($state.includes('houseconfiguration.dashboard.addQuicklink'))
+			$state.go("houseconfiguration.dashboard");
+		else if($state.includes('houseconfiguration.dashboard.editQuicklink'))
+			$state.go("houseconfiguration.dashboard");
+		else if($state.includes('houseconfiguration.dashboard.addControl'))
+			$state.go("houseconfiguration.dashboard");
+		else if($state.includes('houseconfiguration.dashboard.editControl'))
+			$state.go("houseconfiguration.dashboard");
+		
     };
 }]);

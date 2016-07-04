@@ -133,7 +133,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setLight= function (value) {
 		  
-		this.setComponentsOfCategoryToValu("Beleuchtung",value);
+		this.setComponentsOfCategoryToValue("Beleuchtung", value);
 	};
 	
 	/**
@@ -141,7 +141,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setShadowing= function (value) {
 		  
-		this.setComponentsOfCategoryToValu("Beschattung", value);
+		this.setComponentsOfTypeToValue(37, value);
 	};
 	
 	/**
@@ -149,7 +149,22 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setConsumer= function (value) {
 		  
-		this.setComponentsOfCategoryToValu("Verbraucher", value);
+		this.setComponentsOfTypeToValue(21, value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setComponentsOfTypeToValue= function (type, value) {
+		  
+		var components = this.getComponents();
+	    		for(var c in components)
+	    		{
+	    			if(components[c].getType() === type )
+	    				components[c].getSettings()[0]=value;
+	    		}
+	    	
+	    	
 	};
 	
 	/**
@@ -279,15 +294,29 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
     this.getEnergyData = function(typ, startDate)
 	{
 		var response = this.getDataset(typ,startDate);
+		var cnt = 0;
 		
 		for(var c in this.getComponents())
 		{
-			for(var d in response.dataset)
+			if(this.getComponents()[c].getType() == 21 || this.getComponents()[c].getType() == 22)
 			{
-				var name = "series_"+c;
-				response.dataset[d][name] = Math.round(((Math.random() * (4 - 2)) + 2)*5);
+				for(var d in response.dataset)
+				{
+					var name = "series_"+cnt;
+					if(response.dataset[d].x <= new Date())
+					{
+					if(typ === "year")
+						response.dataset[d][name] = Math.round(Math.random() * (125 - 120) + 120);
+					else if(typ === "month")
+						response.dataset[d][name] = Math.round((Math.random() * (4 - 3.5) + 3.5)*100)/100;
+					else if(typ === "day")
+						response.dataset[d][name] = Math.round((Math.random() * (170 - 150) + 150)*100)/100;
+					}
+					
+				}
+				response.label.push(this.getComponents()[c].getName());
+				cnt++;
 			}
-			response.label.push(this.getComponents()[c].getName());
 		}
 		return response;
 	};
@@ -295,15 +324,29 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	this.getWaterData = function(typ, startDate)
 	{
 		var response = this.getDataset(typ,startDate);
+		var cnt = 0;
 		
 		for(var c in this.getComponents())
 		{
-			for(var d in response.dataset)
+			if(this.getComponents()[c].getType() == 23)
 			{
-				var name = "series_"+c;
-				response.dataset[d][name] = Math.round(((Math.random() * (4 - 2)) + 2)*5);
+				for(var d in response.dataset)
+				{
+					var name = "series_"+cnt;
+					if(response.dataset[d].x <= new Date())
+					{
+					if(typ === "year")
+						response.dataset[d][name] = Math.round(Math.random() * (125 - 120) + 120);
+					else if(typ === "month")
+						response.dataset[d][name] = Math.round((Math.random() * (4 - 3.5) + 3.5)*100)/100;
+					else if(typ === "day")
+						response.dataset[d][name] = Math.round((Math.random() * (170 - 150) + 150)*100)/100;
+					}
+					
+				}
+				response.label.push(this.getComponents()[c].getName());
+				cnt++;
 			}
-			response.label.push(this.getComponents()[c].getName());
 		}
 		return response;
 	};

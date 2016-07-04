@@ -1,4 +1,4 @@
-<div class="container">
+<div >
 	<div class="row row-centered">
 		<div class="col-xs-6 col-centered">
 			<form class="form-horizontal">
@@ -21,7 +21,7 @@
 							ng-class="{'has-error': loginForm.password.$invalid}" required>
 					</div>
 				</div>
-				<button ng-disabled="loginForm.$invalid" class="btn btn-default"
+				<button ng-disabled="loginForm.$invalid" class="btn btn-default" aria-label="Login"
 					ng-click="login()">Login</button>
 			</form>
 			<span>{{validationMessage}}</span>

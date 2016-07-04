@@ -5,8 +5,8 @@
 			<h1>{{$title}}</h1>
 			<form class="form-horizontal" name="editComponentForm" novalidate>
 				<div class="form-group">
-					<label for="oldPin" class="col-sm-3 col-md-3 control-label"
-						id="typLabel">Name</label>
+					<label for="name" class="col-sm-3 col-md-3 control-label"
+						id="nameLabel">Name</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
 						<input type="text" ng-model="component.getSetName"
 							ng-model-options="{getterSetter: true }" class="form-control"
@@ -16,35 +16,35 @@
 				</div>
 				<div class="form-group">
 					<label for="serialId" class="col-sm-3 col-md-3 control-label"
-						id="typLabel">Seriennummer</label>
+						id="serialIdLabel">Seriennummer</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
 						<input type="text" ng-model="component.getSetSerialId"
 							ng-model-options="{getterSetter: true }" class="form-control"
-							name="name" id="name"
+							name="serialId" id="serialId"
 							ng-class="{'has-error': editComponentForm.serialId.$invalid}" required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 col-md-3 control-label" id="categoryLabel">Kategorie</label>
+					<label class="col-sm-3 col-md-3 control-label" id="categoryLabel" for="category">Kategorie</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
-						<select style="width:100%;"
+						<select style="width:100%;" id="category" name="category"
 						    ng-model="category" ng-change="categoryChanged()"
 						    ng-options="category for category in categorys"></select>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="oldPin" class="col-sm-3 col-md-3 control-label"
-						id="typLabel">Komponente</label>
+					<label for="component" class="col-sm-3 col-md-3 control-label"
+						id="componentLabel">Komponente</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
-						<select style="width:100%;"
+						<select style="width:100%;" id="component" name="component"
 						    ng-model="component.getSetType"  ng-model-options="{getterSetter: true }"
 						    ng-options="component.getType() for component in components"></select>
 					</div>
 				</div>
 				<div class="form-group col-sm-9">
-					<button ng-disabled="eeditComponentForm.$invalid"
+					<button ng-disabled="eeditComponentForm.$invalid" aria-label="Speichern"
 						class="btn btn-default" ng-click="save()">Speichern</button>
-					<button class="btn btn-default"
+					<button class="btn btn-default" aria-label="Abbrechen"
 						ng-click="cancel()">Abbrechen</button>
 				</div>
 			</form>

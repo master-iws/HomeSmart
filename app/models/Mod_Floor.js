@@ -130,12 +130,12 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 		return true;
 	};
   
-  /**
+	/**
 	 * @author Julia Thüroff
 	 */
 	this.setLight= function (value) {
 		  
-		this.setComponentsOfCategoryToValu("Beleuchtung", value);
+		this.setComponentsOfCategoryToValue("Beleuchtung", value);
 	};
 	
 	/**
@@ -143,7 +143,7 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setShadowing= function (value) {
 		  
-		this.setComponentsOfCategoryToValu("Beschattung", value);
+		this.setComponentsOfTypeToValue(37, value);
 	};
 	
 	/**
@@ -151,7 +151,25 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setConsumer= function (value) {
 		  
-		this.setComponentsOfCategoryToValu("Verbraucher", value);
+		this.setComponentsOfTypeToValue(21, value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setComponentsOfTypeToValue= function (type, value) {
+		  
+		var rooms = this.getRooms();
+	    	for(var r in rooms)
+	    	{
+	    		var components = rooms[r].getComponents();
+	    		for(var c in components)
+	    		{
+	    			if(components[c].getType() === type )
+	    				components[c].getSettings()[0]=value;
+	    		}
+	    	}
+	    	
 	};
 	
 	/**

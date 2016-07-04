@@ -4,34 +4,36 @@
 			<h1>{{$title}}</h1>
 			<form class="form-horizontal" name="editRoomForm" novalidate>
 				<div class="form-group">
-					<label for="oldPin" class="col-sm-3 col-md-3 col-lg-1 control-label"
-						id="nameLabel">Begin</label>
+					<label for="start"
+						class="col-sm-3 col-md-3 col-lg-1 control-label" id="startLabel">Begin</label>
 					<div class="col-sm-12 col-md-7 col-xs-12 col-lg-2">
-						<uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+						<uib-timepicker ng-model="mytime" ng-change="changed()" id="start" name="start" ng-model="time.start"
+							hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="oldPin" class="col-sm-3 col-md-3 col-lg-1 control-label"
-						id="nameLabel">Ende</label>
+					<label for="end"
+						class="col-sm-3 col-md-3 col-lg-1 control-label" id="endLabel">Ende</label>
 					<div class="col-sm-12 col-md-7 col-xs-12 col-lg-2">
-						<uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+						<uib-timepicker ng-model="mytime" ng-change="changed()" id="end" name="end" ng-model="time.end"
+							hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="oldPin" class="col-sm-3 col-md-3 col-lg-1 control-label"
-						id="nameLabel">Temperatur</label>
+					<label for="temp"
+						class="col-sm-3 col-md-3 col-lg-1 control-label" id="tempLabel">Temperatur</label>
 					<div class="col-sm-12 col-md-7 col-xs-12 col-lg-2">
-						<select style="width:100%;" ng-model-options=" {getterSetter: true }"
-						    ng-model="room.getSetFloor" ng-change="categoryChanged()"
-						    ng-options="floor as floor.getName() for floor in houses[houseIndex].getFloors()"></select>
+						 <input type="number" name="temp" id="temp" ng-model="time.temp" step="1">
 					</div>
 				</div>
-
+				<div ng-show="validationMessage != null"
+					class="validationMessage check-element animate-show">
+					<span>{{validationMessage}}</span>
+				</div>
 				<div class="form-group col-sm-9">
-					<button ng-disabled="editRoomForm.$invalid"
-						class="btn btn-default" ng-click="save()">Speichern</button>
-					<button class="btn btn-default"
-						ng-click="cancel()">Abbrechen</button>
+					<button ng-disabled="editRoomForm.$invalid" class="btn btn-default"
+						ng-click="save()">Speichern</button>
+					<button class="btn btn-default" ng-click="cancel()">Abbrechen</button>
 				</div>
 			</form>
 		</div>

@@ -1,25 +1,31 @@
-<div class="row row-centered" ng-swipe-right="prevRoom()" ng-swipe-left="nextRoom()">
-	<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12" ng-show="!$state.includes('rooms.detail.heatingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">R&auml;ume</h1>
-	<div class="col-md-2 col-sm-2 col-lg-2 hidden-xs subnav" ng-show="!$state.includes('rooms.detail.heatingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">
+<div class="row row-centered" ng-swipe-right="prevRoom()"
+	ng-swipe-left="nextRoom()">
+	<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12"
+		ng-show="!$state.includes('rooms.detail.heatingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">R&auml;ume</h1>
+	<aside>
+		<div class="col-md-2 col-sm-2 col-lg-2 hidden-xs subnav"
+			ng-show="!$state.includes('rooms.detail.heatingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">
 
-		<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-			<button class="btn btn-default" ng-click="addRoom()">Raum
-				hinzufügen</button>
+			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+				<button class="btn btn-default" ng-click="addRoom()">Raum
+					hinzufügen</button>
+			</div>
+			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12"
+				style="padding: 0px;">
+				<hr />
+			</div>
+			<div ng-repeat="room in houses[houseIndex].getRooms()"
+				class="col-md-12 col-lg-12 col-sm-12 click subnav-component"
+				style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;"
+				ng-click="showRoom(room.getId())"
+				ng-class="{'subnav-active': room.getId() == roomId}">
+				<span ng-class="{'component-text': room.getId() == roomId}">{{room.getName()}}</span>
+			</div>
 		</div>
-		<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12"
-			style="padding: 0px;">
-			<hr />
-		</div>
-		<div ng-repeat="room in houses[houseIndex].getRooms()"
-			class="col-md-12 col-lg-12 col-sm-12 click subnav-component"
-			style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;"
-			ng-click="showRoom(room.getId())"
-			ng-class="{'subnav-active': room.getId() == roomId}">
-			<span ng-class="{'component-text': room.getId() == roomId}">{{room.getName()}}</span>
-		</div>
-	</div>
+	</aside>
 
-	<div class="col-md-8 col-sm-8 col-lg-8 col-xs-11" style="padding: 0px;" ng-show="!$state.includes('rooms.detail.heatingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">
+	<div class="col-md-8 col-sm-8 col-lg-8 col-xs-11" style="padding: 0px;"
+		ng-show="!$state.includes('rooms.detail.heatingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">
 		<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12"
 			style="padding: 0px;">
 			<!-- ng-repeat="(category, components) in houses[houseIndex].getRooms()[roomId].getComponentsByCategory()" -->
@@ -28,48 +34,45 @@
 			</div>
 			<div
 				class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
-			<div class="col-md-12 col-xs-12 col-sm-12 component"
-				style="padding: 0px;">
-				<div class="row" style="margin-bottom: 10px;">
-					<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
-						style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-						<span class="component-name">Heizung</span>
+				<div class="col-md-12 col-xs-12 col-sm-12 component"
+					style="padding: 0px;">
+					<div class="row" style="margin-bottom: 10px;">
+						<div class="col-md-3 col-lg-2 col-xs-6 col-sm-3 card-name"
+							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+							<span class="component-name">Heizung</span>
+						</div>
+						<div class="col-md-2 col-lg-5 col-xs-6 col-sm-2"
+							style="margin-top: 15px;">
+							<span class="component-text" style="padding: 0px;">Modus</span> <select
+								style="width: 50%;" ng-model="component.getSettings()[1]"
+								ng-selected="component.getSettings()[1]"
+								ng-options="modes.indexOf(mode) as mode for mode in modes"></select>
+						</div>
+						<div class="col-md-6 col-lg-8 col-lg-offset-2 col-xs-7 col-sm-6"
+							style="margin-top: 15px;"
+							ng-show="component.getSettings()[1] == 1">
+							<span class="component-text">Temperatur:&nbsp;&nbsp;</span> <input
+								id="slider9" data-slider-class='slider' type="text"
+								data-slider-tooltip="hide" data-slider-min="10"
+								data-slider-max="30" data-slider-step="1" data-slider-value="22" />
+							<span id="heating-temp" class="component-text">&nbsp;&nbsp;50</span>
+						</div>
+						<div class="col-md-6 col-lg-8 col-lg-offset-2 col-xs-7 col-sm-6"
+							style="margin-top: 15px;"
+							ng-show="component.getSettings()[1] == 0">
+							<button ng-click="configureHeatingAutopilot()"
+								class="btn btn-primary">Autopilot
+								konfigurieren&nbsp;&nbsp;</button>
+						</div>
 					</div>
-					<div class="col-md-2 col-lg-4 col-xs-4 col-sm-2">
-						<span class="component-text">Modus</span>
-						<select style="width: 50%;" ng-model="heatingMode">
-							<option value="0">Autopilot</option>
-							<option value="1">Manueller Betrieb</option>
-						</select>
-					</div>
-					<div class="col-lg-4">
-						<span class="component-text">Ist Temperatur: 23Grad</span>
-					</div>
-				</div>
-				<div class="row" style="margin-bottom: 10px;">
-					<div class="col-md-7 col-lg-8 col-xs-12 col-sm-7"
-						style="margin-top: 15px;" ng-show="heatingMode == 1">
-						<span class="component-text">Temperatur:&nbsp;&nbsp;</span> <input
-							id="slider9" data-slider-class='slider' type="text"
-							data-slider-tooltip="hide" data-slider-min="10"
-							data-slider-max="30" data-slider-step="1" data-slider-value="22" />
-						<span id="heating-temp" class="component-text">&nbsp;&nbsp;50</span>
-					</div>
-				</div>
-				<div class="row" style="margin-bottom: 10px;">
-					<div class="col-md-7 col-lg-8 col-xs-12 col-sm-7"
-						style="margin-top: 15px;" ng-show="heatingMode == 0">
-						<button ng-click="configureHeatingAutopilot()">Autopilot konfigurieren&nbsp;&nbsp;</button>
-						<span class="component-text">Soll Temperatur</span>
-					</div>
-				</div>
-				<button ng-click="configureComponent($index)"
-					class="btn-primary settings-btn">
-					<i class="fa fa-wrench" aria-hidden="true"></i>
-				</button>
-			</div>
-			</div>
 
+					<button ng-click="configureComponent($index)"
+						class="btn-primary settings-btn">
+						<i class="fa fa-wrench" aria-hidden="true"></i>
+					</button>
+				</div>
+			</div>
+			<div class="col-md-12 col-xs-12 col-sm-12"></div>
 			<div
 				class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
 				<div class="col-md-12 col-xs-12 col-sm-12 component"
@@ -482,7 +485,7 @@
 			return 'Gewünschte Temperatur: ' + value + ' °C';
 		}
 	});
-	
+
 	var slider9 = new Slider('#slider9', {
 		formatter : function(value) {
 			$('#heating-temp').html(value + ' °C');

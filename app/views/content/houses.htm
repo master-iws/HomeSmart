@@ -3,11 +3,11 @@
 	<div ng-repeat="house in houses" 
 		class="col-md-4 col-sm-5 col-lg-4 col-xs-11 card col-lg-offset-1 col-sm-offset-0-5 col-md-offset-1"
 		style="height: 220px;" ng-class="{'not-configured': deleted}">
-		<div class="col-md-12 col-xs-11 col-sm-11 col-lg-11 click" ng-click="selectHouse($index)"
+		<div class="col-md-12 col-xs-11 col-sm-11 col-lg-11" 
 			style="margin-top: 20px;">
-			<span
-				class="card-name col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-offset-2">
-				{{house.getName()}} in {{house.getZip()}} {{house.getCity()}} </span>
+			<button ng-click="selectHouse($index)" aria-label="Haus anzeigen" style="border-style:none ! important; background-color: transparent ! important; text-overflow: ellipsis;white-space: nowrap;margin-left:0px;"
+				class="card-name noBackground click col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-offset-2">
+				{{house.getName()}} in {{house.getZip()}} {{house.getCity()}} </button>
 		</div>
 		<div class="col-md-12 col-xs-11 col-sm-12 col-lg-11 click" ng-click="selectHouse($index)">
 			<span
@@ -17,22 +17,21 @@
 		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:0px;">
 			<div class="col-md-9 col-lg-9 col-xs-11 col-sm-9" style="margin-top: 15px;">
 			<span class="component-text">Beschattung: </span>
-			<button class="btn btn-primary"><i class="fa fa-arrow-down"></i> </button>
-			<div class="btn btn-primary"><i class="fa fa-square"></i> </div>
-			<button class="btn btn-primary"><i class="fa fa-arrow-up"></i> </button>
+			<button class="btn btn-primary" aria-label="Beschattung zu"><i class="fa fa-arrow-down"></i> </button>
+			<button class="btn btn-primary" aria-label="Beschattung auf"><i class="fa fa-arrow-up"></i> </button>
 			</div>
-			<button ng-click="lightOff()"
+			<button ng-click="lightOff()" aria-label="Licht aus" 
 				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 house-card-btn">
 				Licht aus</button>
-			<button ng-click="consumerOff()"
+			<button ng-click="consumerOff()" aria-label="Verbraucher aus"
 				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 house-card-btn">
 				Verbraucher aus</button>
-			<button
+			<button aria-label="Haus konfigurieren"
 				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 house-card-btn"
 				ng-click="configureHouse($index)">
 				<i class="fa fa-wrench" aria-hidden="true"></i> Konfigurieren
 			</button>
-			<button
+			<button aria-label="Statistik des Hauses"
 				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 house-card-btn"
 				ng-click="goStatistic($index)">
 				<i class="fa fa-bar-chart" aria-hidden="true"></i> Statistik
@@ -42,8 +41,8 @@
 	<div
 		class="col-md-4 col-sm-5 col-lg-4 col-xs-11 add-card col-lg-offset-1 col-md-offset-1 col-sm-offset-0-5"
 		style="height: 200px;">
-		<button class="add-btn" ng-click="addHouse()">
-			<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+		<button class="add-btn" ng-click="addHouse()" aria-label="Haus hinzufügen" >
+			<i class="fa fa-plus fa-3x"></i>
 		</button>
 	</div>
 </div>
