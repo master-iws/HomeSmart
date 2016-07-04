@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('HeatingAutopilotController',["$scope", "$rootScope", "$state", "MainService",	
+app.controller('CoolingAutopilotController',["$scope", "$rootScope", "$state", "MainService",	
                                          function($scope, $rootScope, $state, mainService) {
 	
 	//$scope.room = $rootScope.houses[$rootScope.houseIndex].getRoomById($rootScope.roomId);
@@ -29,14 +29,10 @@ app.controller('HeatingAutopilotController',["$scope", "$rootScope", "$state", "
 	
 	$scope.deleteTime = function(day, timeIdx)
 	{
-		$scope.component.getSettings()[2].times[day].splice(timeIdx,1)
-	}
-	
-	$scope.deleteColdTime = function(day, timeIdx)
-	{
 		$scope.component.getSettings()[3].times[day].splice(timeIdx,1)
 	}
 	
+
 	$scope.addTime = function(day)
 	{
 		//console.log($scope.heatTimes);
@@ -44,9 +40,9 @@ app.controller('HeatingAutopilotController',["$scope", "$rootScope", "$state", "
 		$state.go("rooms.detail.addTimePeriod");
 	};
 	
-	$scope.nextTab = function()
+	$scope.prevTab = function()
 	{
-		$state.go("coolingAutopilot");
+		$state.go("heatingAutopilot");
 	}
 	
 }]);

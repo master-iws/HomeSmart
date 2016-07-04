@@ -285,7 +285,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setLight= function (value) {
 		  
-		this.setComponentsOfCategoryToValu("Beleuchtung", value);
+		this.setComponentsOfCategoryToValue("Beleuchtung", value);
 	};
 	
 	/**
@@ -293,7 +293,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setShadowing= function (value) {
 		  
-		this.setComponentsOfCategoryToValu("Beschattung", value);
+		this.setComponentsOfTypeToValue(37, value);
 	};
 	
 	/**
@@ -301,7 +301,34 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setConsumer= function (value) {
 		  
-		this.setComponentsOfCategoryToValu("Verbraucher", value);
+		this.setComponentsOfTypeToValue(21, value);
+	};
+	
+	/**
+	 * @author Julia Thüroff
+	 */
+	this.setComponentsOfTypeToValue= function (typ, value) {
+		  
+		var categorys = []
+	    for (var f in _floors) {
+	    	var rooms = _floors[f].getRooms();
+	    	for(var r in rooms)
+	    	{
+	    		var components = rooms[r].getComponents();
+	    		for(var c in components)
+	    		{
+	    			if(components[c].getType() === type )
+	    				components[c].getSettings()[0]=value;
+	    		}
+	    	}
+	    }
+		
+		var components = this.getComponents();
+		for(var c in components)
+	    {
+			if(components[c].getType() === type )
+				components[c].getSettings()[0]=value;
+	    }	
 	};
 	
 	/**
@@ -315,15 +342,18 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    	for(var r in rooms)
 	    	{
 	    		var components = rooms[r].getComponents();
+	    		
 	    		for(var c in components)
 	    		{
+	    			console.log(components[c].getCategory())
 	    			if(components[c].getCategory().getName() === category )
 	    				components[c].getSettings()[0]=value;
 	    		}
 	    	}
 	    }
 		
-		for(var c in this.getComponents())
+		var components = this.getComponents();
+		for(var c in components)
 	    {
 			if(components[c].getCategory().getName() === category )
 				components[c].getSettings()[0]=value;
@@ -336,8 +366,6 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		response.dataset = [];
 		response.label = [];
 		
-		console.log(typ);
-		
 		// je nach typ generieren lassen
 		if(typ === 'year')
 		{
@@ -345,8 +373,8 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			for(var i=0; i < 11; i++)
 			{
 				var date = startDate.add(1,'month');
-				response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
-				console.log(new Date(date.year(),date.month(),date.day(),0,0,0,0));
+				//if(date <= moment())
+					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
 			}
 		}
 		
@@ -359,7 +387,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 				var date = startDate.add(1,'days');
 				if(date.month() === beginMonth)
 					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
-				console.log(new Date(date.year(),date.month(),date.day(),0,0,0,0));
+				
 			}
 		}
 		
@@ -369,7 +397,8 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			for(var i=0; i < 24; i++)
 			{
 				var date = startDate.add(1,'hours');
-				response.dataset.push({x: new Date(date.year(),date.month(),date.date(),date.hour(),0,0,0)});
+				//if(date <= moment())
+					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),date.hour(),0,0,0)});
 			}
 		}
 		return response;
@@ -378,42 +407,93 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	this.getEnergyData = function(typ, startDate)
 	{
 		var response = this.getDataset(typ,startDate);
-		console.log(this.getDataset(typ,startDate));
-		
+		console.log("Test2");
 		for(var r in this.getRooms())
 		{
 			var roomCount =0;
+			var room = this.getRooms()[r];
+			var cCount = 0;
+			
+			for(var c in room.getComponents())
+			{
+				if(room.getComponents()[c].getType() == 21 || room.getComponents()[c].getType() == 22 )
+					cCount++;
+			}console.log("Test");
 			
 			for(var d in response.dataset)
 			{
 				var name = "series_"+r;
-				response.dataset[d][name] = Math.round(((Math.random() * (4 - 2)) + 2)*5);
+				//if(response.dataset[d].x <= new Date())
+				//{
+				if(typ === "year")
+					response.dataset[d][name] = Math.round((Math.random() * (125 - 120) + 120)*cCount);
+				else if(typ === "month")
+					response.dataset[d][name] = Math.round((Math.random() * (4 - 3.5) + 3.5)*100*cCount)/100;
+				else if(typ === "day")
+					response.dataset[d][name] = Math.round((Math.random() * (170 - 150) + 150)*100*cCount)/100;
+				//}	
+				console.log(cCount);
+				console.log(response.dataset[d][name]);
 			}
-			roomCount++;
-			
-			response.label.push(this.getRooms()[r].getName());
+			response.label.push(room.getName());
 			
 		}
-		console.log(response);
+		return response;
+	};
+	
+	this.getPvData = function(typ, startDate)
+	{
+		var response = this.getDataset(typ,startDate);
+		
+		
+			for(var d in response.dataset)
+			{
+				var name = "series_0";
+				if(response.dataset[d].x <= new Date())
+				{
+				if(typ === "year")
+					response.dataset[d][name] = Math.round((Math.random() * (4.3 - 3.9) + 3.9));
+				else if(typ === "month")
+					response.dataset[d][name] = Math.round((Math.random() * (140 - 120) + 120)*100)/100;
+				else if(typ === "day")
+					response.dataset[d][name] = Math.round((Math.random() * (6 - 5) + 5)*100)/100;
+				}	
+			}
+			response.label.push("PV-Anlage");
+			
 		return response;
 	};
 	
 	this.getWaterData = function(typ, startDate)
 	{
-		var response = this.getDataset();	
+		var response = this.getDataset(typ,startDate);
 		
 		for(var r in this.getRooms())
 		{
 			var roomCount =0;
+			var room = this.getRooms()[r];
+			var cCount = 0;
+			
+			for(var c in room.getComponents())
+			{
+				if(room.getComponents()[c].getType() == 23 )
+					cCount++;
+			}
 			
 			for(var d in response.dataset)
 			{
 				var name = "series_"+r;
-				response.dataset[d][name] = Math.round(((Math.random() * (4 - 2)) + 2)*5);
+				//if(response.dataset[d].x <= new Date())
+				//{
+				if(typ === "year")
+					response.dataset[d][name] = Math.round((Math.random() * (125 - 120) + 120)*cCount);
+				else if(typ === "month")
+					response.dataset[d][name] = Math.round((Math.random() * (4 - 3.5) + 3.5)*100*cCount)/100;
+				else if(typ === "day")
+					response.dataset[d][name] = Math.round((Math.random() * (170 - 150) + 150)*100*cCount)/100;
+				//}	
 			}
-			roomCount++;
-			
-			response.label.push(this.getRooms()[r].getName());
+			response.label.push(room.getName());
 			
 		}
 		return response;

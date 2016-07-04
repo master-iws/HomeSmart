@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal",	
-                                                    function($scope, $rootScope, $state,$uibModal) {
+app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal","vibrator",	
+                                                    function($scope, $rootScope, $state,$uibModal,vibrator) {
 	
 	
 	$scope.rooms = $rootScope.houses[$rootScope.houseIndex].getRooms();
@@ -19,14 +19,17 @@ app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal",
     };
     
     $scope.lightOff = function($roomIdx) {
+    	vibrator.vibrate(1000);
     	$rootScope.houses[$rootScope.houseIndex].getRooms()[$roomIdx].setLight(0);
     };	
     
     $scope.consumerOff = function($roomIdx) {
+    	vibrator.vibrate(1000);
     	$rootScope.houses[$rootScope.houseIndex].getRooms()[$roomIdx].setConsumer(0);
     };	
 	
     $scope.setShadowing = function($roomIdx, $value) {
+    	vibrator.vibrate(1000);
     	$rootScope.houses[$rootScope.houseIndex].getRooms()[$roomIdx].setShadowing($value);
     };
     

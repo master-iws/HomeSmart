@@ -16,16 +16,38 @@ app.run(function ($rootScope, $state, $stateParams, $log) {
 			if(toState.name === 'settings')
 			{
 				$state.go("settings.pin");
+				event.preventDefault();
 			}
-			/*if (toState.authenticate && !$rootScope.loggedIn){
+			
+			if(toState.name === 'houseconfiguration')
+			{
+				$state.go("houseconfiguration.house");
+				event.preventDefault();
+			}
+			
+			if(toState.name === 'statistic')
+			{
+				$state.go("activities");
+				event.preventDefault();
+			}
+		
+			if (toState.authenticate && !$rootScope.loggedIn){
 			      // User isn’t authenticated
-					$state.go("login",{name: toState.name});
-			      event.preventDefault(); 
-		    }*/
+				$state.go("login",{name: toState.name});
+				event.preventDefault();
+		    }
+			
+			if(toState.name === "login" && $rootScope.loggedIn){
+				$state.go(toParams.name);
+				event.preventDefault();
+			}
 				
-			/*if (toState.adminArea && (!fromState.adminArea && fromState.name != "loginAdminArea")){
+			/*console.log("adminarea:"+toState.adminArea+"from"+fromState.adminArea+"from"+fromState.name);
+			if (toState.adminArea && (!fromState.adminArea && fromState.name !== "loginAdminArea")){
 			      // User isn’t authenticated
-			      event.preventDefault(); 
+				console.log("gotoadmin");
+				$state.go("loginAdminArea",{name: toState.name});
+				event.preventDefault();
 		  	}*/
 	});
 });
@@ -132,7 +154,7 @@ app.config(
 			}
 		}).state("rooms.detail.heatingAutopilot", {
 			url: "/heatingAutopilot",
-			authenticate: false,
+			authenticate: true,
 			adminArea: false,
 			resolve: {
 				$title: function() { return 'Autoppilot Heizung'; }
@@ -142,9 +164,21 @@ app.config(
 				"Nav2": {templateUrl: "app/views/nav/nav2.houses.htm"},
 				"AutopilotContent": { templateUrl: "app/views/content/heatingAutopilot.htm", controller: 'HeatingAutopilotController'}
 			}
+		}).state("rooms.detail.coolingAutopilot", {
+			url: "/heatingAutopilot",
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'Autoppilot Heizung'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": {templateUrl: "app/views/nav/nav2.houses.htm"},
+				"AutopilotContent": { templateUrl: "app/views/content/coolingAutopilot.htm", controller: 'CoolingAutopilotController'}
+			}
 		}).state("rooms.detail.addTimePeriod", {
 			url: "/addTimePeriod",
-			authenticate: false,
+			authenticate: true,
 			adminArea: false,
 			resolve: {
 				$title: function() { return 'Autoppilot Heizung'; }
@@ -189,6 +223,54 @@ app.config(
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/statistic.htm",controller: 'StatisticController'}
+			}
+		}).state("activities", {
+			
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'Aktivitäten'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"Content": { templateUrl: "app/views/content/activity.htm",controller: 'ActivityController'}
+			}
+		}).state("powerconsumption", {
+			
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'Stromverbrauch'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"Content": { templateUrl: "app/views/content/powerconsumption.htm",controller: 'PowerConsumptionController'}
+			}
+		}).state("pv", {
+			
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'PV-Anlage'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"Content": { templateUrl: "app/views/content/pvconsumption.htm",controller: 'PVController'}
+			}
+		}).state("water", {
+			
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'Wasserverbrauch'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"Content": { templateUrl: "app/views/content/waterconsumption.htm",controller: 'WaterConsumptionController'}
 			}
 		}).state("settings", {
 			url: "/settings/",

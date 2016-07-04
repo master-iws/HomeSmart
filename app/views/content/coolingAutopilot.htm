@@ -1,28 +1,27 @@
 <div>
 	<div class="row row-centered">
-	
 		<div class="col-lg-12">
 <ul class="nav nav-tabs">
-    <li class="active" ng-swipe-left="nextTab()"><a showtab="" ui-sref="rooms.detail.heatingAutopilot">Heizen</a></li>
-    <li ><a showtab="" ui-sref="rooms.detail.coolingAutopilot">Kühlen</a></li>
+    <li class="active"><a showtab="" ui-sref="rooms.detail.heatingAutopilot">Heizen</a></li>
+    <li ng-swipe-right="prevTab()"><a showtab="" ui-sref="rooms.detail.coolingAutopilot">Kühlen</a></li>
 </ul>
 
-			<h1>Heizzeiten</h1>
+			
 			<form class="form-horizontal" name="changePinForm" novalidate>
 				<div class="form-group">
-					<h2 class="col-lg-2">Heizen</h2>
+					<h2 class="col-lg-2">Kühlen</h2>
 					<div class="col-lg-12">
-						<span class="col-lg-1" style="padding-left: 0px;">Heizperiode</span>
+						<span class="col-lg-1" style="padding-left: 0px;">Kühlperiode</span>
 						<div class="col-lg-2">
 							<span>Von: </span> <select style="width: 50%;"
-								ng-model="component.getSettings()[2].start"
-								ng-selected="component.getSettings()[2].start"
+								ng-model="component.getSettings()[3].start"
+								ng-selected="component.getSettings()[3].start"
 								ng-options="months.indexOf(month) as month for month in months"></select>
 						</div>
 						<div class="col-lg-2">
 							<span>Bis: </span> <select style="width: 50%;"
-								ng-model="component.getSettings()[2].start"
-								ng-selected="component.getSettings()[2].start"
+								ng-model="component.getSettings()[3].start"
+								ng-selected="component.getSettings()[3].start"
 								ng-options="months.indexOf(month) as month for month in months"></select>
 						</div>
 					</div>
@@ -34,7 +33,7 @@
 						<div>
 							<span class="col-lg-1">Montag</span>
 							<div
-								ng-repeat="time in component.getSettings()[2].times[0] track by $index"
+								ng-repeat="time in component.getSettings()[3].times[0] track by $index"
 								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
@@ -67,7 +66,7 @@
 						<div>
 							<span class="col-lg-1">Dienstag</span>
 							<div
-								ng-repeat="time in component.getSettings()[2].times[1] track by $index"
+								ng-repeat="time in component.getSettings()[3].times[1] track by $index"
 								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
@@ -100,7 +99,7 @@
 						<div>
 							<span class="col-lg-1">Mittwoch</span>
 							<div
-								ng-repeat="time in component.getSettings()[2].times[2] track by $index"
+								ng-repeat="time in component.getSettings()[3].times[2] track by $index"
 								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
@@ -133,7 +132,7 @@
 						<div>
 							<span class="col-lg-1">Donnerstag</span>
 							<div
-								ng-repeat="time in component.getSettings()[2].times[3] track by $index"
+								ng-repeat="time in component.getSettings()[3].times[3] track by $index"
 								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
@@ -166,7 +165,7 @@
 						<div>
 							<span class="col-lg-1">Freitag</span>
 							<div
-								ng-repeat="time in component.getSettings()[2].times[4] track by $index"
+								ng-repeat="time in component.getSettings()[3].times[4] track by $index"
 								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
@@ -199,7 +198,7 @@
 						<div>
 							<span class="col-lg-1">Samstag</span>
 							<div
-								ng-repeat="time in component.getSettings()[2].times[5] track by $index"
+								ng-repeat="time in component.getSettings()[3].times[5] track by $index"
 								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
@@ -232,7 +231,7 @@
 						<div>
 							<span class="col-lg-1">Sonntag</span>
 							<div
-								ng-repeat="time in component.getSettings()[2].times[6] track by $index"
+								ng-repeat="time in component.getSettings()[3].times[6] track by $index"
 								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"

@@ -8,8 +8,10 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     
     function getStored(prefix) {
 	if(typeof(Storage) !== undefined){
+		$rootScope.loggedIn = true;
 	    return JSON.parse(localStorage.getItem("homeSmart-"+prefix));
 	} else {
+		$rootScope.loggedIn = false;
 	    return false;
 	}
     }

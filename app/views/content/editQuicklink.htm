@@ -5,26 +5,26 @@
 			<h1>{{$title}}</h1>
 			<form class="form-horizontal" name="editQuicklinkForm" novalidate>
 				<div class="form-group">
-					<label class="col-sm-3 col-md-3 control-label" id="categoryLabel">Kategorie</label>
+					<label class="col-sm-3 col-md-3 control-label" for="category" id="categoryLabel">Kategorie</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
-						<select style="width:100%;"
+						<select style="width:100%;" id="category" name="category"
 						    ng-model="quicklink.category" ng-change="categoryChanged()"
 						    ng-options="category for category in categories"></select>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="oldPin" class="col-sm-3 col-md-3 control-label"
+					<label for="typ" class="col-sm-3 col-md-3 control-label"
 						id="typLabel">Typ</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
-						<select style="width:100%;"
+						<select style="width:100%;" name="typ" id="typ"
 						    ng-model="typ" 
 						    ng-options="typ as typ.getName() for typ in types"></select>
 					</div>
 				</div>
 				<div class="form-group col-sm-9">
-					<button ng-disabled="editQuicklinkForm.$invalid"
+					<button ng-disabled="editQuicklinkForm.$invalid" aria-label="Speichern"
 						class="btn btn-default" ng-click="save()">Speichern</button>
-					<button class="btn btn-default"
+					<button class="btn btn-default" aria-label="Abbrechen"
 						ng-click="cancel()">Abbrechen</button>
 				</div>
 			</form>
