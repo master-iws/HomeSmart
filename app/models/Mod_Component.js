@@ -30,6 +30,7 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	    comp.setName(this.getName());
 	    comp.setType(this.getType());
 	    comp.setCategory(this.getCategory());
+	    comp.setSettings(this.getSettings());
 	    return comp;
 	};
 
