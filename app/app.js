@@ -50,6 +50,12 @@ app.run(function ($rootScope, $state, $stateParams, $log) {
 				event.preventDefault();
 			}
 				
+			/*if((toState.name === "houses" || toState.name === "index") && $rootScope.houses.length == 1)
+			{
+				$state.go("dashboard");
+				event.preventDefault();
+			}*/
+			
 			/*console.log("adminarea:"+toState.adminArea+"from"+fromState.adminArea+"from"+fromState.name);
 			if (toState.adminArea && (!fromState.adminArea && fromState.name !== "loginAdminArea")){
 			      // User isn’t authenticated
@@ -175,7 +181,7 @@ app.config(
 				"AutopilotContent": { templateUrl: "app/views/content/heatingAutopilot.htm", controller: 'HeatingAutopilotController'}
 			}
 		}).state("rooms.detail.coolingAutopilot", {
-			url: "/heatingAutopilot",
+			url: "/coolingAutopilot",
 			authenticate: true,
 			adminArea: false,
 			resolve: {
@@ -203,7 +209,7 @@ app.config(
 			authenticate: true,
 			adminArea: false,
 			resolve: {
-				$title: function() { return 'Räume'; }
+				$title: function() { return 'Dashboard'; }
 			},
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
@@ -247,7 +253,7 @@ app.config(
 				"Content": { templateUrl: "app/views/content/statistic.htm",controller: 'StatisticController'}
 			}
 		}).state("activities", {
-			
+			url: "/activities",
 			authenticate: true,
 			adminArea: false,
 			resolve: {
@@ -259,7 +265,7 @@ app.config(
 				"Content": { templateUrl: "app/views/content/activity.htm",controller: 'ActivityController'}
 			}
 		}).state("powerconsumption", {
-			
+			url: "/powerconsumption",
 			authenticate: true,
 			adminArea: false,
 			resolve: {
@@ -271,7 +277,7 @@ app.config(
 				"Content": { templateUrl: "app/views/content/powerconsumption.htm",controller: 'PowerConsumptionController'}
 			}
 		}).state("pv", {
-			
+			url: "/pv",
 			authenticate: true,
 			adminArea: false,
 			resolve: {
@@ -283,7 +289,7 @@ app.config(
 				"Content": { templateUrl: "app/views/content/pvconsumption.htm",controller: 'PVController'}
 			}
 		}).state("water", {
-			
+			url: "/water",
 			authenticate: true,
 			adminArea: false,
 			resolve: {
@@ -414,6 +420,30 @@ app.config(
 				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
 				"HouseConfigurationContent": { templateUrl: "app/views/content/editHouse.htm", controller: 'EditHouseController'}
 			}
+		}).state("houseconfiguration.house.addComponent", {
+			url: "/component/add",
+			authenticate: true,
+			adminArea: true,
+			resolve: {
+				$title: function() { return 'Komponente hinzufügen'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
+				"ComponentContent": { templateUrl: "app/views/content/addComponent.htm", controller: 'AddHouseComponentController'}
+			}
+		}).state("houseconfiguration.house.editComponent", {
+			url: "/component/edit/:componentIdx",
+			authenticate: true,
+			adminArea: true,
+			resolve: {
+				$title: function() { return 'Komponente bearbeiten'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
+				"ComponentContent": { templateUrl: "app/views/content/editComponent.htm", controller: 'EditHouseComponentController'}
+			}
 		}).state("houseconfiguration.rooms", {
 			url: "/rooms",
 			authenticate: true,
@@ -449,6 +479,30 @@ app.config(
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
 				"EditRoom": { templateUrl: "app/views/content/editRoom.htm", controller: 'EditRoomController'}
+			}
+		}).state("houseconfiguration.rooms.addComponent", {
+			url: "/component/add",
+			authenticate: true,
+			adminArea: true,
+			resolve: {
+				$title: function() { return 'Komponente hinzufügen'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
+				"ComponentContent": { templateUrl: "app/views/content/addComponent.htm", controller: 'AddRoomComponentController'}
+			}
+		}).state("houseconfiguration.rooms.editComponent", {
+			url: "/component/edit/:componentId",
+			authenticate: true,
+			adminArea: true,
+			resolve: {
+				$title: function() { return 'Komponente bearbeiten'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
+				"ComponentContent": { templateUrl: "app/views/content/editComponent.htm", controller: 'EditRoomComponentController'}
 			}
 		}).state("houseconfiguration.dashboard", {
 			url: "/dashboard",
@@ -487,7 +541,7 @@ app.config(
 				"DashboardConfigurationContent": { templateUrl: "app/views/content/editQuicklink.htm", controller: 'AddQuicklinkController'}
 			}
 		}).state("houseconfiguration.dashboard.editControl", {
-			url: "/controls/:controls",
+			url: "/controls/edit/:controlId",
 			authenticate: true,
 			adminArea: true,
 			resolve: {
@@ -496,7 +550,7 @@ app.config(
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
-				"DashboardConfigurationContent": { templateUrl: "app/views/content/editControl.htm", controller: 'EditQuicklinkController'}
+				"DashboardConfigurationContent": { templateUrl: "app/views/content/editControl.htm", controller: 'EditControlController'}
 			}
 		}).state("houseconfiguration.dashboard.addControl", {
 			url: "/controls/add",

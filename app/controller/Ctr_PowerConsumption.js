@@ -2,7 +2,16 @@
 
 app.controller('PowerConsumptionController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
 	
-console.log(d3.time.format);
+
+	$scope.roomId = -1;
+	
+	$scope.rooms = [];
+	$scope.fakeRoom = new Mod_Room();
+	$scope.fakeRoom.setId(-1);
+	$scope.fakeRoom.setName("Alle Räume");
+	$scope.rooms.push($scope.fakeRoom);
+	$scope.rooms = $scope.rooms.concat($rootScope.houses[$rootScope.houseIndex].getRooms());
+	
 	var d3_locale_deDE = d3.locale({
 	  decimal: ",",
 	  thousands: ".",
@@ -22,8 +31,7 @@ console.log(d3.time.format);
 	$scope.period = {};
 	$scope.period.typ = "month";
 	$scope.period.startDate = moment().startOf('month');
-	
-	$scope.roomId = -1;
+
 	
 	
 	$scope.periodBack = function() {
@@ -113,6 +121,7 @@ console.log(d3.time.format);
 	
 	$scope.roomChanged = function()
 	{
+		console.log($scope.roomId);
 		if($scope.period.typ === "year")
 			$scope.unit = "kWh";
 		else if($scope.period.typ === "month")

@@ -1,14 +1,14 @@
 
 <div>
-	<div class="row row-centered">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<h1>Haus konfigurieren</h1>
-			<form class="form-horizontal" name="editHouseForm" novalidate>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px;" ng-show="!$state.includes('houseconfiguration.house.addComponent') && !$state.includes('houseconfiguration.house.editComponent')">
+			<h1 class="col-xs-11" style="padding-right:0px;">Haus konfigurieren</h1>
+			<form class="form-horizontal col-xs-10" name="editHouseForm"  novalidate>
 				<div class="form-group">
 					<label for="name"
 						class="col-sm-1 col-md-1 col-xs-1 col-lg-1 control-label"
 						id="nameLabel">Name</label>
-					<div class="col-sm-12 col-md-4 col-lg-4 col-xs-12">
+					<div class="col-sm-9 col-md-4 col-lg-4 col-xs-9">
 						<input ng-model="house.getSetName" 
 							ng-model-options=" {getterSetter: true }" class="form-control"
 							name="name" id="name" required>
@@ -18,16 +18,16 @@
 					<label for="password"
 						class="col-sm-1 col-md-1 col-xs-1 col-lg-1 control-label"
 						id="cityLabel">Standort</label>
-					<div class="col-sm-12 col-md-4 col-lg-4 col-xs-12">
+					<div class="col-sm-9 col-md-4 col-lg-4 col-xs-9">
 						<autocomplete ng-model="house.city" data="cities" id="city" name="city"></autocomplete>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="confirmPin" class="col-sm-3 control-label"
 						id="confirmPinLabel">Komponenten</label>
-					<div class="col-sm-12 col-md-12 col-xs-12">
+					<div class="col-sm-12 col-md-12 col-xs-12" style="padding:0px;">
 						<div class="col-md-3 col-sm-3 col-xs-11 card"
-							ng-repeat="component in house.getComponents()">
+							ng-repeat="component in houses[houseIndex].getComponents()">
 							<div
 								class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
 								<button class="btn-primary" ng-click="editComponent($index)" aria-label="Komponente bearbeiten">
@@ -39,24 +39,25 @@
 							</div>
 							<div class="col-md-12 col-xs-11 col-sm-12">
 								<div class="col-md-7" style="margin-top: 5px;">
-									<span class="card-name-settings col-md-offset-2">{{component.name}}</span>
+									<span class="card-name-settings col-md-offset-2">{{component.getName()}}</span>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 col-sm-3 col-xs-11 add-card" style="height: 100px;">
-							<button class="add-btn" aria-label="Komponente hinzufügen">
+						<div class="col-md-3 col-sm-3 col-xs-10 add-card" style="height: 100px;margin-left:15px;">
+							<button class="add-btn" aria-label="Komponente hinzufügen" ng-click="addComponent()">
 								<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 							</button>
 						</div>
 					</div>
 				</div>
-				<div class="form-group col-sm-9">
+				<div class="form-group col-xs-11 col-sm-10">
 					<button ng-disabled="editHouseForm.$invalid" aria-label="Speichern"
-						class="btn btn-default" ng-click="save()">Speichern</button>
-					<button class="btn btn-default" aria-label="Abbrechen"
+						class="btn btn-default col-xs-2 col-sm-2 col-md-3 col-lg-2" ng-click="save()">Speichern</button>
+					<button class="btn btn-default col-xs-2 col-sm-2 col-md-3 col-lg-2"aria-label="Abbrechen"
 						ng-click="cancel()">Abbrechen</button>
 				</div>
 			</form>
 		</div>
+		<div ui-view="ComponentContent"></div>
 	</div>
 </div>

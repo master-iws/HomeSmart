@@ -77,12 +77,17 @@
 <script src="app/controller/Ctr_AddQuicklink.js"></script>
 <script src="app/controller/Ctr_EditHouse.js"></script>
 <script src="app/controller/Ctr_AddHouse.js"></script>
+<script src="app/controller/Ctr_AddHouseComponent.js"></script>
+<script src="app/controller/Ctr_EditHouseComponent.js"></script>
 <script src="app/controller/Ctr_AddFloor.js"></script>
 <script src="app/controller/Ctr_EditRoom.js"></script>
 <script src="app/controller/Ctr_AddRoom.js"></script>
+<script src="app/controller/Ctr_AddRoomComponent.js"></script>
+<script src="app/controller/Ctr_EditRoomComponent.js"></script>
 <script src="app/controller/Ctr_AlarmTest.js"></script>
 <script src="app/controller/Ctr_DeleteHouse.js"></script>
 <script src="app/controller/Ctr_DeleteFloor.js"></script>
+<script src="app/controller/Ctr_DeleteRoom.js"></script>
 <script src="app/controller/Ctr_Floors.js"></script>
 <script src="app/controller/Ctr_Rooms.js"></script>
 <script src="app/controller/Ctr_Dashboard.js"></script>
@@ -94,7 +99,14 @@
 <script src="app/controller/Ctr_Activity.js"></script>
 <script src="app/controller/Ctr_PowerConsumption.js"></script>
 <script src="app/controller/Ctr_PVConsumption.js"></script>
+<script src="app/controller/Ctr_WaterConsumption.js"></script>
 <script src="app/controller/Ctr_CoolingAutopilot.js"></script>
+<script src="app/controller/Ctr_InfoDialog.js"></script>
+<script src="app/controller/Ctr_AddControl.js"></script>
+<script src="app/controller/Ctr_EditControl.js"></script>
+<script src="app/controller/Ctr_DeleteControl.js"></script>
+<script src="app/controller/Ctr_DeleteQuicklink.js"></script>
+
 
 <!--APP-Services-->
 <script src="app/services/Serv_Main.js"></script>
@@ -104,18 +116,18 @@
 
 </head>
 <body ng-controller="MainController">
-	<toast></toast>
+	
 	
 	<div
-		class="mainContent col-xs-12 col-sm-12 col-md-11 col-lg-8 col-lg-offset-2"
+		class="mainContent col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2"
 		style="padding: 0px;">
-		<div>
+		 <div>
 			<header class="content">
 				<div ui-view="Nav1"></div>
 				<div ui-view="Nav2"></div>
 			</header>
 			<main>
-					<ol class="breadcrumb" ng-if="!$state.includes('index') && !$state.includes('login') && !$state.includes('loginAdminArea')" >
+					<ol class="breadcrumb col-xs-10 col-sm-10 col-md-11 col-lg-11" ng-if="!$state.includes('index') && !$state.includes('login') && !$state.includes('loginAdminArea')" >
 						<li>
 							<a ui-sref="dashboard" >Start</a>
 						</li>

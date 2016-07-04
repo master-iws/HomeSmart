@@ -2,7 +2,16 @@
 
 app.controller('WaterConsumptionController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
 	
-console.log(d3.time.format);
+
+$scope.roomId = -1;
+	
+	$scope.rooms = [];
+	$scope.fakeRoom = new Mod_Room();
+	$scope.fakeRoom.setId(-1);
+	$scope.fakeRoom.setName("Alle Räume");
+	$scope.rooms.push($scope.fakeRoom);
+	$scope.rooms = $scope.rooms.concat($rootScope.houses[$rootScope.houseIndex].getRooms());
+	
 	var d3_locale_deDE = d3.locale({
 	  decimal: ",",
 	  thousands: ".",
@@ -249,7 +258,7 @@ console.log(d3.time.format);
 	};
 	
 	
-	$scope.nextTab();
+	$scope.roomChanged();
 	
 	$scope.nextTab = function()
 	{

@@ -28,7 +28,7 @@ app.controller('AddTimePeriodController',["$scope", "$rootScope", "$state", "$st
 	
 	$scope.validate = function()
 	{
-		
+		return true;
 	}
 	
 	$scope.cancel = function()

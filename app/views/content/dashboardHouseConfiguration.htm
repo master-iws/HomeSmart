@@ -37,9 +37,9 @@
 			<h2>Funktionseinheiten</h2>
 			<div dragula='"second-bag"'>
 				<div
-					ng-repeat="control in houses[houseIndex].getDashboard().controls"
+					ng-repeat="control in controls track by $index"
 					class="col-md-6 col-sm-6 col-xs-11 card"
-					style="height: 50px; margin-left: 15px;">
+					style="height: 100px; margin-left: 15px;">
 					<div style="height: 40px;"
 						class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
 						<button class="edit-btn btn-primary class" style="z-index: 3000;"
@@ -53,7 +53,7 @@
 					</div>
 					<div class="col-md-12 col-xs-11 col-sm-12">
 						<div class="col-md-7" style="margin-top: 5px;">
-							<span class="card-name-settings col-md-offset-2">{{control.name}}</span>
+							<span class="card-name-settings col-md-offset-2">{{control.getName()}}</span>
 						</div>
 					</div>
 				</div>

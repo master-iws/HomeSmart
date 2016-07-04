@@ -42,12 +42,10 @@
 							ng-repeat="component in room.getComponents() track by $index">
 							<div
 								class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
-								<button class="settings-btn btn-primary" aria-label="Komponente bearbeiten"
-									ng-click="editComponent($index)">
+								<button class="btn-primary" ng-click="editComponent(component.getId())" aria-label="Komponente bearbeiten">
 									<i class="fa fa-wrench" aria-hidden="true"></i>
 								</button>
-								<button class="settings-btn btn-primary" aria-label="Komponente löschen"
-									ng-click="deleteComponent($index)">
+								<button class="btn-primary" ng-click="deleteComponent($index)" aria-label="Komponente löschen">
 									<i class="fa fa-remove" aria-hidden="true"></i>
 								</button>
 							</div>

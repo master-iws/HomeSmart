@@ -3,9 +3,11 @@
 app.controller('EditControlController',["$scope", "$rootScope", "$state", "$stateParams","vibrator",
                                       function($scope, $rootScope, $state, $stateParams,vibrator) {
 	
-	$scope.originalControl = $rootScope.dashboard.controls[$stateParams.controlId];
+	
+	$scope.originalControl = $rootScope.houses[$rootScope.houseIndex].getDashboard().controls[$stateParams.controlId];
+	
 	$scope.control = {};
-	$scope.control.roomId = $scope.orginalControl.roomId;
+	$scope.control.roomId = $scope.originalControl.roomId;
 	$scope.control.componentId = $scope.originalControl.componentId;	
 	
 	$scope.save = function() {

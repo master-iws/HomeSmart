@@ -4,17 +4,16 @@
 		<li><a showtab="" ui-sref="activities">Aktivit&auml;ten</a></li>
 		<li><a showtab="" ui-sref="pv">Photovoltaikanlage</a></li>
 		<li><a showtab="" ui-sref="water">Wasserverbrauch</a></li>
-		<li class="active" ng-swipe-right="prevTab()"><a showtab="" ui-sref="powerconsumption">Stromverbrauch</a></li>
+		<li class="active" ng-swipe-right="prevTab()"><a showtab=""
+			ui-sref="powerconsumption">Stromverbrauch</a></li>
 	</ul>
 
 	<div class="row row-centered">
 		<br>
 		<div class="col-lg-4">
 			<h4 class="col-lg-2">Raum</h4>
-			<select style="width: 50%;" ng-change="roomChanged()"
-				ng-model="roomId">
-				<option value="-1" ng-selected="roomId">Alle R&auml;ume</option>
-				<option ng-selected="roomId" ng-repeat="room in houses[houseIndex].getRooms()" value="{{room.getId()}}">{{room.getName()}}</option>
+			<select ng-model="roomId"
+				ng-options="room.getId() as room.getName() for room in rooms">
 			</select>
 		</div>
 		<div class="col-lg-3">
@@ -29,32 +28,35 @@
 			</div>
 		</div>
 		<div class="actionbar heading center-actionbarr col-lg-3">
-					<a class="navigation_button" ng-click="periodBack()"> <img
-						src="app/icons/Back-64.png" alt="Zurück"> <span>Zur&uuml;ck</span>
-					</a> <a style="text-align: center;" ng-click="showSelectType()">{{period.display}}</a>
-					<a id="clear-button" ng-click="periodNow()"> Jetzt </a> <a
-						class="navigation_button" ng-click="periodForward()"> <span>Weiter</span>
-						<img src="app/icons/Forward-64.png" alt="Weiter">
-					</a>
-				</div>
+			<a class="navigation_button" ng-click="periodBack()"> <img
+				src="app/icons/Back-64.png" alt="Zurück"> <span>Zur&uuml;ck</span>
+			</a> <a style="text-align: center;" ng-click="showSelectType()">{{period.display}}</a>
+			<a id="clear-button" ng-click="periodNow()"> Jetzt </a> <a
+				class="navigation_button" ng-click="periodForward()"> <span>Weiter</span>
+				<img src="app/icons/Forward-64.png" alt="Weiter">
+			</a>
+		</div>
 		<br>
 		<div>
 
-			<br><br/><br/>
+			<br>
+			<br />
+			<br />
 			<div id="charts" ng-class="{visibilityHidden: loading}">
 				<button ng-show="periodTypeHistory.length > 1"
 					ng-click="drillUpClick()"
 					style="background-color: buttonface; border: 2px outset buttonface;">
 					<img src="images/icons/Up-26.png" height="16" width="16" />
 				</button>
-				<div style="height: 400px;">
+				<div>
 					<linechart data="chartData" options="chartOptions" height="450"
 						on-click="onClick"></linechart>
 				</div>
 				<br>
-				
+
 			</div>
-			<br/><br/>
+			<br />
+			<br />
 		</div>
 	</div>
 </div>

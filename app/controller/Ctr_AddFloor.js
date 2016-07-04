@@ -4,6 +4,7 @@ app.controller('AddFloorController',["$scope", "$rootScope", "$state", "$statePa
                                       function($scope, $rootScope, $state, $stateParams, mainService,vibrator) {
 	
 	$scope.floor = new Mod_Floor();
+	$scope.floor.setHouse($rootScope.houses[$rootScope.houseIndex]);
 	
 	$scope.save = function() {
 		vibrator.vibrate(10);

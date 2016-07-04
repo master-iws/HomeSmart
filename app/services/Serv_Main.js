@@ -69,8 +69,22 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	    home.setId($rootScope.nextHouseId++);
 	    home.setName("Home sweet home");
 	    home.setDescription("This is our Home!");
-	    home.setCity("Naila");
+	    home.setCity("10115 Berlin");
 	    home.setZip("95119");
+	    
+	    //Dashboard
+	    var dashboard = {};
+	    dashboard.quicklinks = [];
+	    dashboard.controls = [];
+	    var quicklink = {};//auf rootScope setzen
+		quicklink.category='Raum';
+		quicklink.typ={};
+		quicklink.typ.id = 0;
+		quicklink.typ.name = "Küche";
+		dashboard.quicklinks.push(quicklink);
+		
+	    
+	    
 	    //Erdgeschoss
 	    var floor = new Mod_Floor();
 		floor.setId($rootScope.nextFloorId++);
@@ -101,7 +115,12 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Fenster spüle");
+			//c.setRoom(room);
 		    room.addComponent(c);
+		    
+		    //dashboard.controls.push(c);
+		    home.setDashboard(dashboard);
+		    
 		    var c = componentService.getNewComponentInstanceById(8004); //Beschattung
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Fenster Garten");

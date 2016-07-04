@@ -5,29 +5,33 @@ app.controller('EditHouseComponentController',["$scope", "$rootScope", "$state",
                                       function($scope, $rootScope, $state, $stateParams, mainService,componentService,vibrator) {
 	
 	$scope.componentIdx = $stateParams.componentIdx;
+	
 	$scope.originalComponent = $rootScope.houses[$rootScope.houseIndex].getComponents()[$scope.componentIdx];
-	$scope.component = new Mod_Component();
-	$scope.component.setHouse($scope.originalComponent.getHouse());
-	$scope.component.setTyp($scope.originalComponent.getTyp());
-	$scope.category = $scope.originalComponent.getCategory();
-	$scope.component.setName($scope.originalComponent.getName());
+	
+	$scope.name = $scope.originalComponent.getName();
+	$scope.serialId = $scope.originalComponent.getSerialId();
+	$scope.category = $scope.originalComponent.getCategory()
+	$scope.categorys = componentService.getCategorys();
+	$scope.components;
+
 
 	$scope.save = function() {
 		vibrator.vibrate(10);
-		 //$scope.room.setId($rootScope.nextId);
-		$scope.component.setCategory($scope.category);
-		$rootScope.houses[$rootScope.houseIndex].getComponents()[$scope.componentIdx]=$scope.component;
+		
+		$rootScope.houses[$rootScope.houseIndex].getComponents()[$scope.componentIdx].setName($scope.name);
 		mainService.saveHouses($rootScope.houses);
-		$state.go("houseconfiguration.rooms.detail",{roomId:$scope.roomId});
+		$state.go("houseconfiguration.house");
     };
     
     $scope.cancel = function() {
     	vibrator.vibrate(10);
-		$state.go("houseconfiguration.rooms.detail",{roomId:$scope.roomId});
+		$state.go("houseconfiguration.house");
    };
    
-   $scope.categoryChanged = function($id) {
-		$state.components = componentService.getComponentsByCategory($id);
-  };
+   $scope.categoryChanged = function() {
+		$scope.components = componentService.getComponentsByCategory($scope.category.getId());
+ };
+  
+
    
 }]);
