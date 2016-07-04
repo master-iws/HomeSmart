@@ -29,6 +29,10 @@ app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$statePa
 		for(var count=0; count < $scope.floorCount; count++)
 		{
 			$scope.floor = new Mod_Floor();
+			$scope.floor.setId($rootScope.nextFloorId);
+			$scope.floor.setHouse($scope.house);
+			$rootScope.nextFloorId++;
+			$scope.floor.setName("Etage_"+count);
 			$scope.house.addFloor($scope.floor);
 		}
 		

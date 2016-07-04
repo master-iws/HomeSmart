@@ -2,16 +2,15 @@
 	<div class="row row-centered">
 		<div class="col-lg-12">
 <ul class="nav nav-tabs">
-    <li class="active"><a showtab="" ui-sref="rooms.detail.heatingAutopilot">Heizen</a></li>
-    <li ng-swipe-right="prevTab()"><a showtab="" ui-sref="rooms.detail.coolingAutopilot">Kühlen</a></li>
+    <li ><a showtab="" ui-sref="rooms.detail.heatingAutopilot">Heizen</a></li>
+    <li class="active" ng-swipe-right="prevTab()"><a showtab="" ui-sref="rooms.detail.coolingAutopilot">K&uuml;hlen</a></li>
 </ul>
 
 			
 			<form class="form-horizontal" name="changePinForm" novalidate>
 				<div class="form-group">
-					<h2 class="col-lg-2">Kühlen</h2>
 					<div class="col-lg-12">
-						<span class="col-lg-1" style="padding-left: 0px;">Kühlperiode</span>
+						<span class="col-lg-1" style="padding-left: 0px;">Periode</span>
 						<div class="col-lg-2">
 							<span>Von: </span> <select style="width: 50%;"
 								ng-model="component.getSettings()[3].start"
@@ -26,7 +25,7 @@
 						</div>
 					</div>
 					<div class="col-lg-12">
-						<h3 style="padding-left: 0px;">Heizzeiten</h3>
+						<h3 style="padding-left: 0px;">Zeiten</h3>
 					</div>
 
 					<div class="col-lg-12">

@@ -1,26 +1,35 @@
-<div class="row row-centered">
+<div class="row">
 	<br /> <br /> <br />
-	<div ng-repeat="house in houses" 
-		class="col-md-4 col-sm-5 col-lg-4 col-xs-11 card col-lg-offset-1 col-sm-offset-0-5 col-md-offset-1"
-		style="height: 220px;" ng-class="{'not-configured': deleted}">
-		<div class="col-md-12 col-xs-11 col-sm-11 col-lg-11" 
-			style="margin-top: 20px;">
-			<button ng-click="selectHouse($index)" aria-label="Haus anzeigen" style="border-style:none ! important; background-color: transparent ! important; text-overflow: ellipsis;white-space: nowrap;margin-left:0px;"
-				class="card-name noBackground click col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-offset-2">
-				{{house.getName()}} in {{house.getZip()}} {{house.getCity()}} </button>
-		</div>
-		<div class="col-md-12 col-xs-11 col-sm-12 col-lg-11 click" ng-click="selectHouse($index)">
+	 <div ng-repeat="house in houses"
+		class="col-xs-11 col-sm-5 col-md-4 col-lg-4 col-lg-offset-1 col-xs-offset col-sm-offset-0-5 col-md-offset-1 card"
+		style="height: 220px;padding:0px;">
+		<div class="col-xs-10 col-sm-11 col-md-12  col-lg-11"
+			style="margin-top: 20px;padding:0px;">
+			<button ng-click="selectHouse($index)" aria-label="Haus anzeigen"
+				style="border-style: none ! important; background-color: transparent ! important; overflow: hidden;white-space: nowrap;display: block;text-overflow: ellipsis;"
+				class="card-name click col-xs-10 col-xs-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-offset-1">
+				{{house.getName()}} in {{house.getZip()}} {{house.getCity()}}
+			</button>
+		</div> 
+		<div class="col-md-12 col-xs-11 col-sm-12 col-lg-11 click"
+			ng-click="selectHouse($index)">
 			<span
 				class="house-description col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-lg-offset-3">
 				{{house.getDescription()}} </span>
 		</div>
-		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:0px;">
-			<div class="col-md-9 col-lg-9 col-xs-11 col-sm-9" style="margin-top: 15px;">
-			<span class="component-text">Beschattung: </span>
-			<button class="btn btn-primary" aria-label="Beschattung zu"><i class="fa fa-arrow-down"></i> </button>
-			<button class="btn btn-primary" aria-label="Beschattung auf"><i class="fa fa-arrow-up"></i> </button>
+		  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12"
+			style="padding: 0px;">
+			<div class="col-md-9 col-lg-9 col-xs-11 col-sm-9"
+				style="margin-top: 15px;">
+				<span class="component-text">Beschattung: </span>
+				<button class="btn btn-primary" aria-label="Beschattung zu">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+				<button class="btn btn-primary" aria-label="Beschattung auf">
+					<i class="fa fa-arrow-up"></i>
+				</button>
 			</div>
-			<button ng-click="lightOff()" aria-label="Licht aus" 
+			<button ng-click="lightOff()" aria-label="Licht aus"
 				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-5 house-card-btn">
 				Licht aus</button>
 			<button ng-click="consumerOff()" aria-label="Verbraucher aus"
@@ -39,9 +48,10 @@
 		</div>
 	</div>
 	<div
-		class="col-md-4 col-sm-5 col-lg-4 col-xs-11 add-card col-lg-offset-1 col-md-offset-1 col-sm-offset-0-5"
-		style="height: 200px;">
-		<button class="add-btn" ng-click="addHouse()" aria-label="Haus hinzufügen" >
+		class="col-xs-11 col-sm-5 col-md-4 col-lg-4 col-xs-offset col-lg-offset-1 col-md-offset-1 col-sm-offset-0-5 add-card"
+		style="height: 210px; padding: 0px;">
+		<button class="add-btn" ng-click="addHouse()"
+			aria-label="Haus hinzufügen" style="margin-bottom: 0px;">
 			<i class="fa fa-plus fa-3x"></i>
 		</button>
 	</div>

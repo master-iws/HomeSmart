@@ -32,5 +32,11 @@ app.controller('WLANController',["$scope", "$rootScope", "$state","MainService",
     	$scope.wlan.status = $rootScope.houses[$rootScope.houseIndex].getWlan().status;
     	$rootScope.houses[$rootScope.houseIndex].setWlan($scope.wlan);
     	mainService.saveHouses($rootScope.houses);
+    	
+    	var modalInstance = $uibModal.open({
+		      animation: $scope.animationsEnabled,
+		      templateUrl: 'app/views/dialog/infoDialog.htm',
+		      scope: $scope
+		    });
     }
 }]);

@@ -5,15 +5,18 @@ app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$sta
 	
 	$scope.types = [];
 	$scope.categories = ['Kategorie', 'Etage', 'Raum'];
-	$scope.quicklink = {};//auf rootScope setzen
+	$scope.quicklink = {};
 	$scope.quicklink.category='Kategorie';
 	$scope.quicklink.typ={};
+	$scope.quicklink.typ.id="";
 	$scope.typ;
 	
 	$scope.types = componentService.getCategorys();
 	
 	$scope.save = function() {
 		vibrator.vibrate(10);
+		$scope.quicklink.typ = {};
+		console.log($scope.typ.getId());
 		$scope.quicklink.typ.id = $scope.typ.getId();
 		$scope.quicklink.typ.name = $scope.typ.getName();
 		$rootScope.houses[$rootScope.houseIndex].getDashboard().quicklinks.push($scope.quicklink);

@@ -1,13 +1,26 @@
 'use strict';
 
-app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$state","dragulaService",	function($scope, $rootScope, $state,dragulaService) {
+app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$state","dragulaService","$uibModal",	
+                                                   function($scope, $rootScope, $state,dragulaService,$uibModal) {
+	
+	$scope.controls = [];
+	
+	for(var c  in $rootScope.houses[$rootScope.houseIndex].getDashboard().controls)
+	{
+		var control = $rootScope.houses[$rootScope.houseIndex].getDashboard().controls[c];
+		
+		var room = $rootScope.houses[$rootScope.houseIndex].getRoomById(control.roomId);
+		var component = room.getComponentById(control.componentId);
+		
+		$scope.controls.push(component);
+	}
 	
 	 dragulaService.options($scope, 'fifth-bag', {
 	      copy: true
 	 });
 	 
 	 $scope.deleteQuicklink = function($quicklinkIdx) {
-			
+			console.log("qucjlink");
 			var size = 0;
 			$scope.deleteIdx = $quicklinkIdx;
 			
@@ -22,7 +35,7 @@ app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$sta
  $scope.deleteControl = function($controlIdx) {
 			
 			var size = 0;
-			$scope.deleteIdx = $quicklinkIdx;
+			$scope.deleteIdx = $controlIdx;
 			
 			var modalInstance = $uibModal.open({
 			      animation: $scope.animationsEnabled,
@@ -48,20 +61,24 @@ app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$sta
     	$state.go("houseconfiguration.dashboard.addQuicklink");
     };
     
-    $scope.deleteQuicklink = function($houseIdx) {
-    	//löschen
+    $scope.deleteQuicklink = function($quicklinkIdx) {
+    	$scope.deleteIdx = $quicklinkIdx;
+		
+		var modalInstance = $uibModal.open({
+		      animation: $scope.animationsEnabled,
+		      templateUrl: 'app/views/dialog/deleteQuicklinkDialog.htm',
+		      controller: 'DeleteQuicklinkController',
+		      scope: $scope
+		 });
     };
     
     $scope.editControl = function($index) {
-    	$state.go("houseconfiguration.dashboard.editControl", {quicklinkId: $index});
+    	$state.go("houseconfiguration.dashboard.editControl", {controlId: $index});
     };
     
     $scope.addControl = function() {
     	$state.go("houseconfiguration.dashboard.addControl");
     };
-    
-    $scope.deleteControl = function($houseIdx) {
-    	//löschen
-    };
+   
 
 }]);

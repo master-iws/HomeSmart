@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('RegistrationController',["$scope", "$rootScope", "$state", "MainService","vibrator",	
-                                         function($scope, $rootScope, $state, mainService,vibrator) {
+app.controller('RegistrationController',["$scope", "$rootScope", "$state", "MainService","vibrator","$uibModal",	
+                                         function($scope, $rootScope, $state, mainService,vibrator,$uibModal) {
 	
 	$scope.oldPin;
 	$scope.pin;
@@ -14,7 +14,13 @@ app.controller('RegistrationController',["$scope", "$rootScope", "$state", "Main
         {
 			$rootScope.globalSettings.setAdminPin($scope.pin);
 			mainService.saveSettings($rootScope.globalSettings);
-			$scope.validationMessage ="PIN wurde geändert.";
+			
+			var modalInstance = $uibModal.open({
+			      animation: $scope.animationsEnabled,
+			      templateUrl: 'app/views/dialog/infoDialog.htm',
+			      scope: $scope
+			    });
+			
         }
         else{
         	vibrator.vibrate(1000);

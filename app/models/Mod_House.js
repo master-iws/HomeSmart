@@ -69,6 +69,16 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		return undefined;
 	}
 	
+	this.setRoomById = function(roomId,room) {
+		var rooms = this.getRooms();
+		
+		for(var r in rooms)
+		{
+			if(rooms[r].getId() == roomId)
+				rooms[r]=room;
+		}
+	}
+	
 	this.getFloorById = function(floorId) {
 		var floors = this.getFloors();
 		
@@ -162,6 +172,15 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		}
 	    }
 	};
+	
+	this.setFloors = function(floors) {
+	    this._floors = floors;
+	};
+	
+	this.setComponents = function(components) {
+	    this._components = components;
+	};
+
 
 	this.toJSON = function() {
 	    var json = {
@@ -192,6 +211,8 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    this.setCity(json["city"]);
 	    
 	    this.setDashboard(json["dashboard"]);
+	    
+	   
 	    
 	    this.setWlan(json["wlan"]);
 	    
@@ -450,15 +471,15 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			for(var d in response.dataset)
 			{
 				var name = "series_0";
-				if(response.dataset[d].x <= new Date())
-				{
+				//if(response.dataset[d].x <= new Date())
+				//{
 				if(typ === "year")
-					response.dataset[d][name] = Math.round((Math.random() * (4.3 - 3.9) + 3.9));
+					response.dataset[d][name] = Math.round((Math.random() * (5 - 3.5) + 3.5));
 				else if(typ === "month")
 					response.dataset[d][name] = Math.round((Math.random() * (140 - 120) + 120)*100)/100;
 				else if(typ === "day")
 					response.dataset[d][name] = Math.round((Math.random() * (6 - 5) + 5)*100)/100;
-				}	
+				//}	
 			}
 			response.label.push("PV-Anlage");
 			

@@ -7,7 +7,7 @@ app.controller('MainController',
 		$rootScope.houseIndex = 0;
 		
 		$rootScope.houses = mainService.getHouses();
-		$rootScope.gloabelSettings = mainService.getSettings();
+		$rootScope.globalSettings = mainService.getSettings();
 		
 		var test = mainService.getHouses();
 		mainService.saveHouses(test);
@@ -61,10 +61,7 @@ app.controller('MainController',
 	    };
 	    
 		$scope.setNextIds();
-		console.log("houseid"+$rootScope.nextHouseId);
-		console.log("floorid"+$rootScope.nextFloorId);
-		console.log("roomid"+$rootScope.nextRoomId);
-	    
+
 	    
 	    $scope.selectHouse = function($houseIdx) {
 	    	

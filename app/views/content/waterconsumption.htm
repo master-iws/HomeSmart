@@ -11,10 +11,8 @@
 		<br>
 		<div class="col-lg-4">
 			<h4 class="col-lg-2">Raum</h4>
-			<select style="width: 50%;" ng-change="roomChanged()"
-				ng-model="roomId">
-				<option value="-1" ng-selected="roomId">Alle R&auml;ume</option>
-				<option ng-selected="roomId" ng-repeat="room in houses[houseIndex].getRooms()" value="{{room.getId()}}">{{room.getName()}}</option>
+			<select ng-model="roomId"
+				ng-options="room.getId() as room.getName() for room in rooms">
 			</select>
 		</div>
 		<div class="col-lg-3">
