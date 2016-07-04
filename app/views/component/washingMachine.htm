@@ -6,6 +6,8 @@
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
 			<toggle-switch
+					ng-model="component.getSetSettings()[0]"
+					ng-model-options="{getterSetter: true }"
 					on-label="Ein"
 					off-label="Aus"
 					style="height: 30px; margin-top: 10px;">

@@ -6,13 +6,15 @@
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
 			<toggle-switch
+					ng-model="component.getSetSettings()[0]"
+					ng-model-options="{getterSetter: true }"
 					on-label="Ein"
 					off-label="Aus"
 					style="height: 30px; margin-top: 10px;">
 			</toggle-switch>
 		</div>
 		<div class="col-md-4 col-lg-5 col-xs-11 col-sm-11" style="margin-top: 15px;">
-			<span class="component-text">Stromverbrauch Heute:&nbsp;0,5&nbsp;&nbsp;kWh</span>
+			<span class="component-text">Stromverbrauch Heute:&nbsp;&nbsp;{{component.getSetSettings()[1]}}&nbsp;&nbsp;kWh</span>
 		</div>
 	</div>
 	<button ng-click="configureComponent($index)"

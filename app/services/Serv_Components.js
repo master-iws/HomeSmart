@@ -23,7 +23,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Haushaltsgeräte");
-	fillComponents(cat,[["Kaffeemaschine",8,[0]],
+	fillComponents(cat,[["Kaffeemaschine",8,[1,2,4]],
 			    ["Herd",9,[0,null,0,0]],
 			    ["Spülmaschine",10,[0,null,0]],
 			    ["Kühlschrank",11,[0]],
@@ -35,7 +35,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Wellness");
-	fillComponents(cat,[["Badewanne",14,[0,0,0,0]],
+	fillComponents(cat,[["Badewanne",14,[1,20,35,1]],
 			    ["Pool",15,[0,0,0,0]],
 			    ["Sauna",16,[0,0,0,0]]]);
 	cats.push(cat);
@@ -51,7 +51,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Heimkino");
-	fillComponents(cat,[["Beamer",19,[0,null]],
+	fillComponents(cat,[["Beamer",19,[1,1]],
 			    ["TV",18,[0,0,0]],
 			    ["Leinwand",20,[0]]]);
 	cats.push(cat);
@@ -60,29 +60,29 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Verbraucher");
-	fillComponents(cat,[["Stromverbraucher - aktiv",21,[0]],
-			    ["Stromverbraucher - passiv",22,[0]],
-			    ["Wasserverbraucher",23,[0]]]);
+	fillComponents(cat,[["Stromverbraucher - aktiv",21,[1,"0,5"]],
+			    ["Stromverbraucher - passiv",22,["0,5"]],
+			    ["Wasserverbraucher",23,[2]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Klima");
-	fillComponents(cat,[["Termometer",24,[0,0]],
-			    ["Niederschlagsmesser",25,[0,0]],
-			    ["Luftdruck",26,[0,0]],
-			    ["Windgeschwindigkeit",27,[0,0]]]);
+	fillComponents(cat,[["Termometer",24,[1,24]],
+			    ["Niederschlagsmesser",25,[1,"0,5"]],
+			    ["Luftdruck",26,[1,1]],
+			    ["Windgeschwindigkeit",27,[1,22]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Beleuchtung");
-	fillComponents(cat,[["Licht normal",1,[0]],
-			    ["Licht dimmer",2,[0,0]],
-			    ["Licht Effekt",3,[0,"#ff55bb"]],
-			    ["Licht Komplett",4,[0,0]]]);
+	fillComponents(cat,[["Licht normal",1,[1]],
+			    ["Licht dimmer",2,[1,30]],
+			    ["Licht Effekt",3,[1,"#ff55bb"]],
+			    ["Licht Komplett",4,[1,50,"#ff55bb"]]]);
 	cats.push(cat);
 	increaseId();
 	

@@ -195,7 +195,7 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	    if (angular.isDefined(value)) {
 		    this.setSettings(value);
 	    } else {
-		    return this.getSetSettings();
+		    return this.getSettings();
 	    }
     };
 

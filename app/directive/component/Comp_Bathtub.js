@@ -1,18 +1,9 @@
-app.directive('compBathtub', function($timeout) {
+app.directive('compBathtub', function() {
 
 	function link(scope, element, attrs) {
 
 		scope.componentId = scope.component.getId();
 		scope.componentName = scope.component.getName();
-
-		$timeout(function(){
-			scope.slider = new Slider('#slider-' + scope.componentId, {
-				formatter: function (value) {
-					$('#soll-temp-' + scope.componentId).html('&nbsp;&nbsp;' + value + ' °C');
-					return 'Gewünschte Temperatur: ' + value + ' °C';
-				}
-			});
-		});
 	}
 
 	return {

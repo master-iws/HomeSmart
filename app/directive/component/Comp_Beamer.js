@@ -4,7 +4,7 @@ app.directive('compBeamer', function() {
 
 		scope.componentId = scope.component.getId();
 		scope.componentName = scope.component.getName();
-		
+		scope.inputs = ['HDMI 1', 'HDMI 2', 'VGA', 'DVI'];
 	}
 
 	return {

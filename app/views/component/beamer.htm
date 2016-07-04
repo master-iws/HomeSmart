@@ -6,6 +6,8 @@
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
 			<toggle-switch
+					ng-model="component.getSetSettings()[0]"
+					ng-model-options="{getterSetter: true }"
 					on-label="Ein"
 					off-label="Aus"
 					style="height: 30px; margin-top: 10px;">
@@ -13,13 +15,7 @@
 		</div>
 		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 13px;">
 			<span class="component-text">Eingang:&nbsp;&nbsp;</span>
-			<select style="width: 120px;">
-				<option value="0">--Bitte wählen--</option>
-				<option value="1">HDMI 1</option>
-				<option value="2">HDMI 2</option>
-				<option value="3">VGA</option>
-				<option value="4">DVI</option>
-			</select>
+			<select style="width: 120px;" ng-model="component.getSetSettings()[1]" ng-options="inputs.indexOf(input) as input for input in inputs"></select>
 		</div>
 	</div>
 	<button ng-click="configureComponent($index)"

@@ -4,15 +4,15 @@ app.directive('compCoffeeMachine', function($timeout) {
 
 		scope.componentId = scope.component.getId();
 		scope.componentName = scope.component.getName();
+		scope.drinks = ['Kaffee', 'Cappuccino', 'Espresso', 'Milchkaffee'];
 
-		$timeout(function(){
-			scope.slider = new Slider('#slider-' + scope.componentId, {
-				formatter: function (value) {
-					$('#coffeeStrength-' + scope.componentId).html('&nbsp;&nbsp;' + value);
-					return 'Gewünschte Temperatur: ' + value + ' °C';
-				}
-			});
-		});
+		$timeout(function() {
+			if ((scope.component.getSetSettings()[0] == true) || (scope.component.getSetSettings()[0] == 1)) {
+				$('#start-' + scope.componentId).prop('disabled', false);
+			} else {
+				$('#start-' + scope.componentId).prop('disabled', true);
+			}
+		})
 	}
 
 	return {
@@ -21,6 +21,27 @@ app.directive('compCoffeeMachine', function($timeout) {
 		},
 		transclude: true,
 		templateUrl: 'app/views/component/coffeeMachine.htm',
-		link: link
+		link: link,
+		controller: ['$scope', function($scope) {
+
+			$scope.$watch('component.getSetSettings()[0]', function() {
+				if(($scope.component.getSetSettings()[0] == true) || ($scope.component.getSetSettings()[0] == 1)) {
+					$('#start-' + $scope.componentId).prop('disabled', false);
+				} else {
+					$('#start-' + $scope.componentId).prop('disabled', true);
+				}
+			});
+
+			$scope.startDrink = function() {
+				$('#statusWait-' + $scope.componentId).show();
+				$('#statusDone-' + $scope.componentId).hide();
+				setTimeout(function()
+					{
+						$('#statusWait-' + $scope.componentId).hide();
+						$('#statusDone-' + $scope.componentId).show();
+					}, 5000);
+			}
+
+		}]
 	};
 });
