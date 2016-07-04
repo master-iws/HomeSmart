@@ -41,9 +41,10 @@
 							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
 							<span class="component-name">Heizung</span>
 						</div>
-						<div class="col-md-2 col-lg-5 col-xs-6 col-sm-2"
+						<div class="col-md-2 col-lg-5 col-xs-8 col-sm-6"
 							style="margin-top: 15px;">
-							<span class="component-text" style="padding: 0px;">Modus</span> <select
+							<span class="component-text" style="padding: 0px;">Modus</span> 
+							<select
 								style="width: 50%;" ng-model="component.getSettings()[1]"
 								ng-selected="component.getSettings()[1]"
 								ng-options="modes.indexOf(mode) as mode for mode in modes"></select>

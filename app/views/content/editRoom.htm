@@ -1,12 +1,13 @@
 <div>
-	<div class="row row-centered">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="row">
+		<div class="col-xs-10 col-sm-10 col-md-12 col-lg-12"
+			ng-show="!$state.includes('houseconfiguration.rooms.editComponent') && !$state.includes('houseconfiguration.rooms.addComponent')">
 			<h1>{{$title}}</h1>
 			<form class="form-horizontal" name="editRoomForm" novalidate>
 				<div class="form-group">
-					<label for="name"
-						class="col-sm-3 col-md-3 col-lg-1 control-label" id="nameLabel">Name</label>
-					<div class="col-sm-12 col-md-7 col-xs-12 col-lg-2">
+					<label for="name" class="col-sm-3 col-md-3 col-lg-1 control-label"
+						id="nameLabel">Name</label>
+					<div class="col-sm-10 col-md-7 col-xs-10">
 						<input ng-model="room.getSetName" class="form-control" name="name"
 							id="name" ng-model-options=" {getterSetter: true }"
 							ng-class="{'has-error': editRoomForm.name.$invalid}" required>
@@ -15,7 +16,7 @@
 				<div class="form-group">
 					<label id="iconLabel" name="iconLabel" for="icon"
 						class="col-sm-3 col-md-3 col-lg-1 control-label">Icon</label>
-					<div class="col-sm-12 col-md-7 col-xs-12">
+					<div class="col-sm-11 col-md-7 col-xs-11">
 						<div class="box">
 							<input type="file" name="icon" id="icon"
 								ng-file-select="onFileSelect($files)"
@@ -35,17 +36,24 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="confirmPin" class="col-sm-3 control-label"
+					<label for="confirmPin"
+						class="col-xs-10 col-sm-8 col-md-6 col-lg-6 control-label"
 						id="confirmPinLabel">Komponenten</label>
-					<div class="col-sm-12 col-md-12 col-xs-12">
+					<div class="col-sm-10 col-md-12 col-xs-10">
 						<div class="col-md-3 col-sm-3 col-xs-11 card"
 							ng-repeat="component in room.getComponents() track by $index">
-							<div
-								class="col-xs-4 col-xs-offset-9 col-md-5 col-md-offset-9 col-sm-6 col-sm-offset-7">
-								<button class="btn-primary" ng-click="editComponent(component.getId())" aria-label="Komponente bearbeiten">
-									<i class="fa fa-wrench" aria-hidden="true"></i>
+
+							<div style="height: 40px;"
+								class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
+								<button class="edit-btn btn-primary class"
+									style="z-index: 3000;"
+									ng-click="editComponent(component.getId())"
+									aria-label="Komponente bearbeiten">
+									<i class="fa fa-wrench"></i>
 								</button>
-								<button class="btn-primary" ng-click="deleteComponent($index)" aria-label="Komponente löschen">
+								<button class="settings-btn btn-primary" style="z-index: 3000;"
+									ng-click="deleteComponent($index)"
+									aria-label="Komponente löschen">
 									<i class="fa fa-remove" aria-hidden="true"></i>
 								</button>
 							</div>
@@ -57,16 +65,18 @@
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-11 add-card"
 							style="height: 100px;">
-							<button class="add-btn" ng-click="addComponent()" aria-label="Komponente hinzufügen">
+							<button class="add-btn" ng-click="addComponent()"
+								aria-label="Komponente hinzufügen">
 								<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 							</button>
 						</div>
 					</div>
 				</div>
 				<div class="form-group col-sm-9">
-					<button ng-disabled="editRoomForm.$invalid" class="btn btn-default" aria-label="Speichern"
-						ng-click="save()">Speichern</button>
-					<button class="btn btn-default" ng-click="cancel()" aria-label="Abbrechen">Abbrechen</button>
+					<button ng-disabled="editRoomForm.$invalid" class="btn btn-default"
+						aria-label="Speichern" ng-click="save()">Speichern</button>
+					<button class="btn btn-default" ng-click="cancel()"
+						aria-label="Abbrechen">Abbrechen</button>
 				</div>
 			</form>
 		</div>

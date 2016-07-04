@@ -8,19 +8,18 @@ app.controller('AddTimePeriodController',["$scope", "$rootScope", "$state", "$st
 	$scope.time.start;
 	$scope.time.end;
 	$scope.time.temp;
-	//$scope.room = $rootScope.houses[$rootScope.houseIndex].getRoomById($rootScope.roomId);
-	//$scope.component = $room.getComponents()[$rootScope.componentIdx];
-	//day
-	//cold warm
 	
 	$scope.save = function()
 	{
 		
 		if($scope.validate())
 		{
-		$scope.component.getSettings()[$scope.mode].times.push($scope.time);
-		mainService.saveHouses($rootScope.houses);
-		$state.go("rooms.detail.heatingAutopilot");
+			$rootScope.component.getSettings()[$rootScope.mode].times[$rootScope.day].push($scope.time);
+			mainService.saveHouses($rootScope.houses);
+			if($rootScope.mode == 2)
+				$state.go("rooms.detail.heatingAutopilot",{componentId: $rootScope.component.getId()});
+			else
+				$state.go("rooms.detail.coolingAutopilot",{componentId: $rootScope.component.getId()});
 		}
 		else
 			$scope.validationMessage ="Zeiten überschneiden sich.";
@@ -35,9 +34,7 @@ app.controller('AddTimePeriodController',["$scope", "$rootScope", "$state", "$st
 	{
 		$state.go("rooms.detail.heatingAutopilot");
 	}
-	
-	
-	
+		
 	$scope.mytime = new Date();
 
 	  $scope.hstep = 1;
@@ -58,13 +55,5 @@ app.controller('AddTimePeriodController',["$scope", "$rootScope", "$state", "$st
 	    d.setHours( 14 );
 	    d.setMinutes( 0 );
 	    $scope.mytime = d;
-	  };
-
-	  $scope.changed = function () {
-	    
-	  };
-
-	  $scope.clear = function() {
-	    $scope.mytime = null;
 	  };
 }]);

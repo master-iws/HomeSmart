@@ -169,7 +169,7 @@ app.config(
 				"DetailsContent": { templateUrl: "app/views/content/room.htm", controller: 'RoomController'}
 			}
 		}).state("rooms.detail.heatingAutopilot", {
-			url: "/heatingAutopilot",
+			url: "/heatingAutopilot/:componentId",
 			authenticate: true,
 			adminArea: false,
 			resolve: {
@@ -181,7 +181,7 @@ app.config(
 				"AutopilotContent": { templateUrl: "app/views/content/heatingAutopilot.htm", controller: 'HeatingAutopilotController'}
 			}
 		}).state("rooms.detail.coolingAutopilot", {
-			url: "/coolingAutopilot",
+			url: "/coolingAutopilot/:componentId",
 			authenticate: true,
 			adminArea: false,
 			resolve: {
@@ -469,7 +469,7 @@ app.config(
 				"EditRoom": { templateUrl: "app/views/content/addRoom.htm", controller: 'AddRoomController'}
 			}
 		}).state("houseconfiguration.rooms.editRoom", {
-			url: "/:roomId",
+			url: "/edit/:roomId",
 			authenticate: true,
 			adminArea: true,
 			resolve: {
@@ -481,7 +481,7 @@ app.config(
 				"EditRoom": { templateUrl: "app/views/content/editRoom.htm", controller: 'EditRoomController'}
 			}
 		}).state("houseconfiguration.rooms.addComponent", {
-			url: "/component/add",
+			url: "/component/add/:roomId",
 			authenticate: true,
 			adminArea: true,
 			resolve: {
@@ -490,7 +490,7 @@ app.config(
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
-				"ComponentContent": { templateUrl: "app/views/content/addComponent.htm", controller: 'AddRoomComponentController'}
+				"EditRoom": { templateUrl: "app/views/content/addComponent.htm", controller: 'AddRoomComponentController'}
 			}
 		}).state("houseconfiguration.rooms.editComponent", {
 			url: "/component/edit/:componentId",
@@ -502,7 +502,7 @@ app.config(
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houseconfiguration.htm"},
-				"ComponentContent": { templateUrl: "app/views/content/editComponent.htm", controller: 'EditRoomComponentController'}
+				"EditRoom": { templateUrl: "app/views/content/editComponent.htm", controller: 'EditRoomComponentController'}
 			}
 		}).state("houseconfiguration.dashboard", {
 			url: "/dashboard",

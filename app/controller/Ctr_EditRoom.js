@@ -29,11 +29,17 @@ app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$statePa
     };
     
     $scope.addComponent = function() {
-		$state.go("houseconfiguration.rooms.addComponent");
+		$state.go("houseconfiguration.rooms.addComponent",{roomId:$scope.roomId});
    };
    
    $scope.editComponent = function($id) {
 		$state.go("houseconfiguration.rooms.editComponent",{componentId:$id});
   };
+  
+  $scope.deleteComponent = function($idx) {
+	  $scope.originalRoom.getComponents().splice($idx,1);
+		mainService.saveHouses($rootScope.houses);
+	    
+};
    
 }]);

@@ -69,6 +69,34 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		return undefined;
 	}
 	
+	this.getComponentById = function(componentId) {
+		
+		var rooms = this.getRooms();
+		
+		for(var r in rooms)
+		{
+			var room = rooms[r];
+			
+			for(var c in room.getComponents())
+			{
+				var component = room.getComponents()[c];
+				
+				if(component.getId() == componentId)
+					return component;
+			}
+		}
+		
+		for(var c in this.getComponents())
+		{
+			var component = this.getComponents()[c];
+			
+			if(component.getId() == componentId)
+				return component;
+		}
+		
+		return undefined;
+	}
+	
 	this.setRoomById = function(roomId,room) {
 		var rooms = this.getRooms();
 		

@@ -61,5 +61,11 @@ app.controller('EditHouseController',["$scope", "$rootScope", "$state", "$stateP
    $scope.editComponent = function($index) {
 		$state.go("houseconfiguration.house.editComponent",{componentIdx:$index});
   };
+  
+  $scope.deleteComponent = function($idx) {
+	  $rootScope.houses[$rootScope.houseIndex].getComponents().splice($idx,1);
+		mainService.saveHouses($rootScope.houses);
+	    
+};
    
 }]);

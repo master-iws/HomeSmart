@@ -122,11 +122,11 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Heizung");
-	fillComponents(cat,[["Heizung",32,[23,null,null,null]]]);
+	fillComponents(cat,[["Heizung",32,[23,0,{start:0,end:0,times:[[{start: '10:00', end: '13:00', temp: '20'}],[],[],[],[],[],[]]},{start:0,end:0,times:[[],[],[],[],[],[],[]]}]]]);
 	cats.push(cat);
 	increaseId();
 	
-    var cat = new Mod_Category();
+	var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Sicherheit");
 	fillComponents(cat,[["Alarmanlage",33,[0]],

@@ -3,50 +3,29 @@
 app.controller('HeatingAutopilotController',["$scope", "$rootScope", "$state", "MainService",	
                                          function($scope, $rootScope, $state, mainService) {
 	
-	//$scope.room = $rootScope.houses[$rootScope.houseIndex].getRoomById($rootScope.roomId);
-	//$scope.component = $room.getComponents()[$rootScope.componentIdx];
+	$scope.componentId = $stateParams.componentId;
+	$scope.component = $rootScope.houses[$rootScope.houseIndex].getComponentById($rootScope.componentId);
 	
 	$scope.months =['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 	
-	$scope.component = new Mod_Component();
-	$scope.settings = [];
-	$scope.settings[0] = 23;
-	$scope.settings[1] = 0;
-	$scope.settings[2] = {};
-	$scope.settings[2].start = 0;
-	
-	$scope.settings[2].end = 0;
-	$scope.settings[2].times = [];
-	$scope.settings[3] = {};
-	$scope.settings[3].start = 0;
-	$scope.settings[3].end = 0;
-	$scope.settings[3].times = [];
-	$scope.monday = [];
-	$scope.time = {start: '10:00', end: '13:00', temp: '20'};
-	$scope.monday.push($scope.time);
-	$scope.settings[2].times.push($scope.monday);
-	$scope.component.setSettings($scope.settings);
-	
+		
 	$scope.deleteTime = function(day, timeIdx)
 	{
 		$scope.component.getSettings()[2].times[day].splice(timeIdx,1)
-	}
-	
-	$scope.deleteColdTime = function(day, timeIdx)
-	{
-		$scope.component.getSettings()[3].times[day].splice(timeIdx,1)
+		mainService.saveHouses($rootScope.houses);
 	}
 	
 	$scope.addTime = function(day)
 	{
-		//console.log($scope.heatTimes);
-		//componente in rootscope
+		$rootScope.component = $scope.component;
+		$rootScope.mode = 2;
+		$rootScope.day = day;
 		$state.go("rooms.detail.addTimePeriod");
 	};
 	
 	$scope.nextTab = function()
 	{
-		$state.go("coolingAutopilot");
+		$state.go("rooms.detail.coolingAutopilot",{componentId: $scope.componentId});
 	}
 	
 }]);
