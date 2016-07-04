@@ -2,21 +2,23 @@
 	<div class="row row-centered"
 		ng-show="!$state.includes('houseconfiguration.dashboard.editQuicklink.*') && !$state.includes('houseconfiguration.dashboard.addQuicklink') &&
 	!$state.includes('houseconfiguration.dashboard.addControl') && !$state.includes('houseconfiguration.dashboard.editControl.*')">
-		
+
 		<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Dashboard</h1>
 
 		<h2 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Quick Links</h2>
-		<div ng-repeat="quicklink in houses[houseIndex].getDashboard().quicklinks track by $index" ng-click="showQuicklink($index)"
-			style="margin-left: 15px;" class="col-lg-2 col-md-2 col-sm-2 col-xs-4 card click text-center center-block">
-				
-				<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
-						style="padding: 0px;margin-top:40px;">
-						<span class="card-name-settings">{{quicklink.typ.name}}</span>
-					</div>
-			
+		<div
+			ng-repeat="quicklink in houses[houseIndex].getDashboard().quicklinks track by $index"
+			ng-click="showQuicklink($index)" style="margin-left: 15px;"
+			class="col-lg-2 col-md-2 col-sm-2 col-xs-4 card click text-center center-block">
+
+			<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
+				style="padding: 0px; margin-top: 40px;">
+				<span class="card-name-settings">{{quicklink.typ.name}}</span>
+			</div>
+
 		</div>
 
-		<h2  class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Funktionseinheiten</h2>
+		<h2 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Funktionseinheiten</h2>
 		<div ng-repeat="control in houses[houseIndex].getDashboard().controls"
 			class="col-md-6 col-sm-6 col-xs-11 card" style="height: 50px;">
 			<div class="col-md-12 col-xs-11 col-sm-12">

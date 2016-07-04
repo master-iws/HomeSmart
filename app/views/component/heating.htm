@@ -1,44 +1,34 @@
-<div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
+<div class="col-md-12 col-xs-12 col-sm-12 component"
+	style="padding: 0px;">
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
-		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-			<span class="component-name">{{componentName}}</span>
+		<div class="col-md-3 col-lg-2 col-xs-6 col-sm-3 card-name"
+			style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+			<span class="component-name">Heizung</span>
 		</div>
-		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
-			<select style="width:100%;" >
-				<option>Autopilot</option>
-				<option>Manueller Betrieb</option>
-			</select>
+		<div class="col-md-2 col-lg-5 col-xs-6 col-sm-2"
+			style="margin-top: 15px;">
+			<span class="component-text" style="padding: 0px;">Modus</span> <select
+				style="width: 50%;" ng-model="component.getSettings()[1]"
+				ng-selected="component.getSettings()[1]"
+				ng-options="modes.indexOf(mode) as mode for mode in modes"></select>
+		</div>
+		<div class="col-md-6 col-lg-8 col-lg-offset-2 col-xs-7 col-sm-6"
+			style="margin-top: 15px;" ng-show="component.getSettings()[1] == 1">
+			<span class="component-text">Temperatur:&nbsp;&nbsp;</span> <input
+				id="slider9" data-slider-class='slider' type="text"
+				data-slider-tooltip="hide" data-slider-min="10" data-slider-max="30"
+				data-slider-step="1" data-slider-value="22" /> <span
+				id="heating-temp" class="component-text">&nbsp;&nbsp;50</span>
+		</div>
+		<div class="col-md-6 col-lg-8 col-lg-offset-2 col-xs-7 col-sm-6"
+			style="margin-top: 15px;" ng-show="component.getSettings()[1] == 0">
+			<button ng-click="configureHeatingAutopilot()"
+				class="btn btn-primary">Autopilot konfigurieren&nbsp;&nbsp;</button>
 		</div>
 	</div>
-	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-7 col-lg-7 col-xs-12 col-sm-7" style="margin-top: 15px;">
-			<span class="component-text">Dimmer:&nbsp;&nbsp;</span>
-			<input id="slider1" data-slider-class='slider' type="text" data-slider-tooltip="hide" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
-			<span id="ist-percent" class="component-text">&nbsp;&nbsp;50 %</span>
-		</div>
-		<div class="col-md-4 col-lg-4 col-xs-12 col-sm-4" style="margin-top: 10px;">
-			<span class="component-text">Farbe:&nbsp;</span>
-			<input id="color1" type="text" class="color" />
-		</div>
-	</div>
+
 	<button ng-click="configureComponent($index)"
-	        class="btn-primary settings-btn">
+		class="btn-primary settings-btn">
 		<i class="fa fa-wrench" aria-hidden="true"></i>
 	</button>
 </div>
-
-<script>
-	var slider = new Slider('#slider1', {
-		formatter: function(value) {
-			$('#ist-percent').html('&nbsp;&nbsp;' + value + ' %');
-			return 'Aktueller Wert: ' + value;
-		}
-	});
-	$(function() {
-		$('#color1').colorpicker().on('changeColor', function(e) {
-			$('#color1')[0].style.backgroundColor = e.color.toHex();
-			$('#color1').val("");
-		});
-	});
-</script>

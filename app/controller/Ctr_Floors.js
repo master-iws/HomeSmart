@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('FloorsController',["$scope", "$rootScope", "$state","dragulaService","$uibModal",	
-                                                     function($scope, $rootScope, $state,dragulaService,$uibModal) {
+app.controller('FloorsController',["$scope", "$rootScope", "$state","dragulaService","$uibModal","vibrator",	
+                                                     function($scope, $rootScope, $state,dragulaService,$uibModal,vibrator) {
     //$rootScope.houseIndex = 0;
 	
     $scope.addFloor = function() {
@@ -13,14 +13,17 @@ app.controller('FloorsController',["$scope", "$rootScope", "$state","dragulaServ
     };
     
     $scope.lightOff = function($floorIdx) {
+    	vibrator.vibrate(1000);
     	$rootScope.houses[$rootScope.houseIndex].getFloors()[$floorIdx].setLight(0);
     };	
     
     $scope.consumerOff = function($floorIdx) {
+    	vibrator.vibrate(1000);
     	$rootScope.houses[$rootScope.houseIndex].getFloors()[$floorIdx].setConsumer(0);
     };	
 	
     $scope.setShadowing = function($floorIdx, $value) {
+    	vibrator.vibrate(1000);
     	$rootScope.houses[$rootScope.houseIndex].getFloors()[$floorIdx].setShadowing($value);
     };
     

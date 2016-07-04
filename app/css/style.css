@@ -27,6 +27,13 @@ h3
     color:#666666;
 }
 
+.activitySpan
+{
+    font-style: italic;
+    font-size:12pt;
+    color:#666666;
+}
+
 h4
 {
     font-style: italic;
@@ -765,9 +772,26 @@ input.cmn-toggle-round:checked + label:after {
 	width: 60px;
 }
 
+.noBackground
+{
+	background-color:transparent ! important;
+	border-style: none ! important;
+}
 
 
+}
 
-
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 80%;
+    font-weight: 700;
+    line-height: 1;
+    color: #000000;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
 
 

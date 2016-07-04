@@ -8,17 +8,17 @@
 				ng-class="{'not-configured': deleted}">
 
 
-			<button ng-click="configureRoom(room.getId())"
+			<button ng-click="configureRoom(room.getId())" aria-label="Raum konfigurieren"
 			        class="btn-primary settings-btn">
-				<i class="fa fa-wrench" aria-hidden="true"></i>
+				<i class="fa fa-wrench" ></i>
 			</button>
 
 			<div class="col-md-12 col-xs-11 col-sm-12" style="padding: 0px;">
 			
-				<!-- <img ng-src="{{room.getIcon()}}" width="50" height="50"/>-->
-				<div class="col-md-4 col-lg-6 col-xs-6 col-sm-6 card-name click" ng-click="showRoom(room.getId())"
+				<!-- <img alt="Raumicon" ng-src="{{room.getIcon()}}" width="50" height="50"/>-->
+				<div class="col-md-4 col-lg-6 col-xs-6 col-sm-6 card-name"
 					style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-					<span class="card-name">{{room.getName()}}</span>
+					<button class="card-name noBackground click" style="border-style:none ! important; background-color: transparent ! important;margin-left:0px;" aria-label="Raum anzeigen" ng-click="showRoom(room.getId())">{{room.getName()}}</button>
 				</div>
 
 
@@ -26,21 +26,21 @@
 			</div>
 			<div class="col-md-9 col-lg-9 col-xs-11 col-sm-12" style="margin-top: 15px;padding-left:4px;">
 			<span class="component-text">Beschattung: </span>
-			<button class="btn btn-primary"><i class="fa fa-arrow-down"></i> </button>
-			<button class="btn btn-primary"><i class="fa fa-arrow-up"></i> </button>
+			<button class="btn btn-primary" aria-label="Beschattung zu"><i class="fa fa-arrow-down"></i> </button>
+			<button class="btn btn-primary" aria-label="Beschattung auf"><i class="fa fa-arrow-up"></i> </button>
 			</div>
-			<button ng-click="lightOff($index)"
+			<button ng-click="lightOff($index)" aria-label="Licht aus"
 				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-4 floors-card-btn">
 				Licht aus</button>
-			<button ng-click="consumerOff($index)"
+			<button ng-click="consumerOff($index)" aria-label="Verbraucher aus"
 				class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-6 floors-card-btn">
 				Verbraucher aus</button>
 
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-11 add-card col-lg-3"
 				style="height: 120px; margin-left: 15px;">
-				<button class="add-btn" ng-click="addRoom()">
-					<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+				<button class="add-btn" ng-click="addRoom()" aria-label="Raum hinzufügen">
+					<i class="fa fa-plus fa-3x"></i>
 				</button>
 			</div>
 		</div>

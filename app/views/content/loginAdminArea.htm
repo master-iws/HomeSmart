@@ -3,11 +3,11 @@
 		<div class="form-group">
 			<h1>Login Adminbereich</h1>
 			<div class="row">
-				<label for="adminPin"> PIN <input name="adminPin"
-					class="form-control" id="adminPin" ng-model="adminPin" required>
+				<label for="adminPin"> PIN <input name="adminPin" type="password"
+					class="form-control" id="adminPin" name="adminPin" ng-model="adminPin" required>
 				</label>
 			</div>
-			<button ng-click="login()" class="btn btn-default">Login</button>
+			<button ng-click="login()" class="btn btn-default" aria-label="Login">Login</button>
 			<div class="row">
 				<span ng-show="validationMessage">{{validationMessage}}</span>
 			</div>

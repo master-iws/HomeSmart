@@ -18,7 +18,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="password" class="col-sm-3 control-label" id="pinLabel">Neuer
+					<label for="pin" class="col-sm-3 control-label" id="pinLabel">Neuer
 						PIN</label>
 					<div class="col-sm-12 col-md-7 col-xs-12">
 						<input type="password" ng-model="pin" class="form-control"
@@ -48,9 +48,9 @@
 					</div>
 				</div>
 				<div class="form-group col-sm-9">
-					<button ng-disabled="changePinForm.$invalid"
+					<button ng-disabled="changePinForm.$invalid" aria-label="Speichern"
 						class="btn btn-default" ng-click="changePin()">Speichern</button>
-					<button class="btn btn-default"
+					<button class="btn btn-default" aria-label="Abbrechen"
 						ng-click="cancel()">Abbrechen</button>
 				</div>
 			</form>

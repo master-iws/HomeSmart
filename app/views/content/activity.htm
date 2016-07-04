@@ -1,14 +1,16 @@
 <div>
 
 <ul class="nav nav-tabs">
-    <li class="active"><a showtab="" ui-sref="activities" ng-swipe-left="nextTab()">Aktivit&auml;ten</a></li>
-    <li><a showtab="" ui-sref="pv" >Photovoltaikanlage</a></li>
+    <li class="active"><a showtab="" ui-sref="activities">Aktivit&auml;ten</a></li>
+    <li><a showtab="" ui-sref="pv">Photovoltaikanlage</a></li>
     <li><a showtab="" ui-sref="water">Wasserverbrauch</a></li>
     <li><a showtab="" ui-sref="powerconsumption">Stromverbrauch</a></li>
 </ul>
-	<!-- <div class="row row-centerd">
-		<h1>Aktivit&auml;ten</h1>
-		<span>Letze Aktivit&auml;t: {{lastActivity}}</span>
+	 <div class="row row-centerd">
+	 	<div class="col-lg-12" style="margin-top:30px;">
+		<span class="activitySpan">Letze Aktivit&auml;t:</span><span> {{lastActivity}}</span>
+		</div>
+		<h3 class="col-lg-12">Bewegungsprofil</h3>
 		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
 			<div ng-repeat="activity in lastActivitys">
 				<span>{{activity.ts}}: {{activity.text	}}</span>
@@ -16,7 +18,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row row-centered">
+	<!-- <div class="row row-centered">
 		<h1 class="col-md-12 col-lg-12 col-sm-12 col-xs-12">Statistiken</h1>
 
 		
