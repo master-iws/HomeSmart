@@ -141,6 +141,13 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     }
     
     function getCategoryById(id) {
+	for(var cat in cats) {
+	    for(var comp in cats[cat].getComponents()) {
+		if(cats[cat].getComponents()[comp].getCategory().getId() === id) {
+		    return cats[cat].getComponents()[comp].getCategory();
+		}
+	    }
+	}
     }
     
     function getComponentsByCategory(id) {
