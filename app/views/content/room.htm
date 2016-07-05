@@ -3,10 +3,9 @@
 	<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12"
 		ng-show="!$state.includes('rooms.detail.heatingAutopilot') &&!$state.includes('rooms.detail.coolingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">R&auml;ume</h1>
 	<aside>
-		<div class="col-md-2 col-sm-2 col-lg-2 hidden-xs subnav"
+		<div class="col-md-2 col-sm-2 col-lg-2 hidden-xs"
 			ng-show="!$state.includes('rooms.detail.heatingAutopilot') && !$state.includes('rooms.detail.coolingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">
-
-			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding: 0;">
 				<button class="btn btn-default" ng-click="addRoom()">Raum
 					hinzufügen</button>
 			</div>
@@ -24,7 +23,7 @@
 		</div>
 	</aside>
 
-	<div class="col-md-9 col-sm-9 col-lg-9 col-xs-11" style="padding: 0px;"
+	<div class="col-md-9 col-sm-9 col-lg-9 col-xs-11 border-left" style="padding: 0px;" ng-controller="ComponentController"
 		ng-show="!$state.includes('rooms.detail.heatingAutopilot') && !$state.includes('rooms.detail.coolingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">
 		<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12"
 		     ng-repeat="(category, components) in componentsByCategory"
@@ -49,8 +48,8 @@
 			</div>
 			<div ng-repeat="component in components"
 					class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
-				<!--<div comp-factory component="component"></div>-->
-				<comp-front-door component="component"></comp-front-door>
+				<div comp-factory component="component"></div>
+				<!--<comp-front-door component="component"></comp-front-door>-->
 				<div class="col-md-11 col-sm-11 col-lg-11 col-xs-12"></div>
 				<!--<comp-bathtub component="{id: '2', name: 'Fenster'}"></comp-bathtub>-->
 				<!--<div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
@@ -75,14 +74,7 @@
 					</button>-->
 				</div>
 			</div>
-		</div>
-		<div>
-		<!-- <div ng-repeat="(key, components) in houses[houseIndex].getRoomById(roomId).getComponentsByCategory()">
-			<h2>{{key}}</h2>
-			<div ng-repeat="c in components track by $index">
-				<span>Komponente: {{c.getName()}}</span>
-			</div>
-		</div>-->
+			<div class="col-md-11 col-sm-11 col-lg-11 col-xs-12" style="margin-bottom: 20px;"></div>
 		</div>
 	</div>
 </div>

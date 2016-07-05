@@ -14,8 +14,12 @@ app.directive('compShading', function($interval) {
 		transclude: true,
 		templateUrl: 'app/views/component/shading.htm',
 		link: link,
-		controller: ['$scope', function($scope) {
+		controller: ['$scope', '$state', function($scope, $state) {
 			var timeoutId;
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
 
 			$scope.down = function() {
 				$interval.cancel(timeoutId);

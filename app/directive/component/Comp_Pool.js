@@ -14,8 +14,12 @@ app.directive('compPool', function($interval) {
 		transclude: true,
 		templateUrl: 'app/views/component/pool.htm',
 		link: link,
-		controller: ['$scope', function($scope) {
+		controller: ['$scope', '$state', function($scope, $state) {
 			var timeoutId;
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
 
 			$scope.close = function() {
 				$interval.cancel(timeoutId);

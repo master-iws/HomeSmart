@@ -23,8 +23,12 @@ app.directive('compCameraInside', function() {
 		transclude: true,
 		templateUrl: 'app/views/component/cameraInside.htm',
 		link: link,
-		controller: ['$scope', '$uibModal', function($scope, $uibModal) {
+		controller: ['$scope', '$uibModal', '$state', function($scope, $uibModal, $state) {
 
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
+			
 			$scope.openView = function() {
 
 				var modalInstance = $uibModal.open({

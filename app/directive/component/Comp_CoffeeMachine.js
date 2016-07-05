@@ -26,7 +26,11 @@ app.directive('compCoffeeMachine', function($timeout) {
 		transclude: true,
 		templateUrl: 'app/views/component/coffeeMachine.htm',
 		link: link,
-		controller: ['$scope', function($scope) {
+		controller: ['$scope', '$state', function($scope, $state) {
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
 
 			$scope.$watch('component.getSetSettings()[0]', function() {
 				$('#statusWait-' + $scope.componentId).hide();

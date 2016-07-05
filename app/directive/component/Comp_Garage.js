@@ -14,8 +14,12 @@ app.directive('compGarage', function($interval) {
 		transclude: true,
 		templateUrl: 'app/views/component/garage.htm',
 		link: link,
-		controller: ['$scope', function($scope) {
+		controller: ['$scope', '$state', function($scope, $state) {
 			var timeoutId;
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
 
 			$scope.down = function() {
 				$interval.cancel(timeoutId);

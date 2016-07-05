@@ -13,6 +13,12 @@ app.directive('compFridge', function() {
 		},
 		transclude: true,
 		templateUrl: 'app/views/component/fridge.htm',
-		link: link
+		link: link,
+		controller: ['$scope', '$state', function($scope, $state) {
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
+		}]
 	};
 });

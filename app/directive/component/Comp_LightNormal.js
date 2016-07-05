@@ -12,6 +12,12 @@ app.directive('compLightNormal', function() {
 		},
 		transclude: true,
 		templateUrl: 'app/views/component/lightNormal.htm',
-		link: link
+		link: link,
+		controller: ['$scope', '$state', function($scope, $state) {
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
+		}]
 	};
 });

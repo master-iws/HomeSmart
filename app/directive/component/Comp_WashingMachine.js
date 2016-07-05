@@ -37,7 +37,11 @@ app.directive('compWashingMachine', function($timeout) {
 		transclude: true,
 		templateUrl: 'app/views/component/washingMachine.htm',
 		link: link,
-		controller: ['$scope', function($scope) {
+		controller: ['$scope', '$state', function($scope, $state) {
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
 
 			$scope.$watch('component.getSetSettings()[0]', function() {
 				if(($scope.component.getSetSettings()[0] == true) || ($scope.component.getSetSettings()[0] == 1)) {

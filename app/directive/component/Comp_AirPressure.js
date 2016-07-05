@@ -13,6 +13,12 @@ app.directive('compAirPressure', function() {
 		},
 		transclude: true,
 		templateUrl: 'app/views/component/airPressure.htm',
-		link: link
+		link: link,
+		controller: ['$scope', '$state', function($scope, $state) {
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
+		}]
 	};
 });

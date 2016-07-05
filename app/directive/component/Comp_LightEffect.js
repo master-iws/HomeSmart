@@ -18,7 +18,11 @@ app.directive('compLightEffect', function($timeout) {
 		transclude: true,
 		templateUrl: 'app/views/component/lightEffect.htm',
 		link: link,
-		controller: ['$scope', function($scope) {
+		controller: ['$scope', '$state', function($scope, $state) {
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
 
 			$scope.$watch('component.getSetSettings()[1]', function(){
 				var input = $('#color-' + $scope.componentId);

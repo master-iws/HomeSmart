@@ -37,7 +37,11 @@ app.directive('compDryer', function($timeout) {
 		transclude: true,
 		templateUrl: 'app/views/component/dryer.htm',
 		link: link,
-		controller: ['$scope', function($scope) {
+		controller: ['$scope', '$state', function($scope, $state) {
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
 
 			$scope.$watch('component.getSetSettings()[0]', function() {
 				if(($scope.component.getSetSettings()[0] == true) || ($scope.component.getSetSettings()[0] == 1)) {
