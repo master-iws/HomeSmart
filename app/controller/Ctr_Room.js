@@ -5,7 +5,8 @@ app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams
 
 	$scope.roomId = $stateParams.roomId;
 	$scope.selectedRoom = $rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId);
-	
+	$scope.componentsByCategory = $scope.selectedRoom.getComponentsByCategory();
+	                                      
 	$scope.modes = ['Autopilot','Manueller Betrieb'];
 	
 	$scope.component = new Mod_Component();

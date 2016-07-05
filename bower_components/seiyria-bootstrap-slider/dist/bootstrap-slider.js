@@ -1,5 +1,5 @@
 /*! =======================================================
-                      VERSION  7.1.1              
+                      VERSION  6.1.8              
 ========================================================= */
 "use strict";
 
@@ -39,11 +39,7 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
 
 (function (factory) {
 	if (typeof define === "function" && define.amd) {
-		try {
-			define(["jquery"], factory);
-		} catch (err) {
-			define([], factory);
-		}
+		define(["jquery"], factory);
 	} else if ((typeof module === "undefined" ? "undefined" : _typeof(module)) === "object" && module.exports) {
 		var jQuery;
 		try {
@@ -1181,7 +1177,6 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
 					var diff1 = Math.abs(this._state.percentage[0] - percentage);
 					var diff2 = Math.abs(this._state.percentage[1] - percentage);
 					this._state.dragged = diff1 < diff2 ? 0 : 1;
-					this._adjustPercentageForRangeSliders(percentage);
 				} else {
 					this._state.dragged = 0;
 				}

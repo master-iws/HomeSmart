@@ -24,428 +24,60 @@
 		</div>
 	</aside>
 
-	<div class="col-md-8 col-sm-8 col-lg-8 col-xs-11" style="padding: 0px;"
+	<div class="col-md-9 col-sm-9 col-lg-9 col-xs-11" style="padding: 0px;"
 		ng-show="!$state.includes('rooms.detail.heatingAutopilot') && !$state.includes('rooms.detail.coolingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">
 		<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12"
-			style="padding: 0px;">
-			<!-- ng-repeat="(category, components) in houses[houseIndex].getRooms()[roomId].getComponentsByCategory()" -->
+		     ng-repeat="(category, components) in componentsByCategory"
+		     style="padding: 0px;">
 			<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12">
-				<h2>Beleuchtung</h2>
+				<h2>{{category}}</h2>
+				<!--<toggle-switch
+						ng-model="switchStatus" on-label="Ein"
+						off-label="Aus" style="height: 30px;">
+				</toggle-switch>
+				<input colorpicker type="text" />
+				<slider
+						ng-model="switchStatus"
+				        value="14"
+				        min="1"
+				        max="100"
+				        step="1"
+				>
+					If you can see this then slider did not get compiled by Angular.
+					Check that all necessary files are included, did you run "bower install"?
+				</slider>-->
 			</div>
-			<div
-				class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
+			<div ng-repeat="component in components"
+					class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
+				<!--<div comp-factory component="component"></div>-->
+				<comp-camera-outside component="component"></comp-camera-outside>
+				<div class="col-md-11 col-sm-11 col-lg-11 col-xs-12"></div>
+				<!--<comp-bathtub component="{id: '2', name: 'Fenster'}"></comp-bathtub>-->
+				<!--<div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
 					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-3 col-lg-2 col-xs-6 col-sm-3 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="component-name">Heizung</span>
+						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
+						     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+							<span class="card-name">Garage</span>
 						</div>
-						<div class="col-md-2 col-lg-5 col-xs-8 col-sm-6"
-							style="margin-top: 15px;">
-							<span class="component-text" style="padding: 0px;">Modus</span> 
-							<select
-								style="width: 50%;" ng-model="component.getSettings()[1]"
-								ng-selected="component.getSettings()[1]"
-								ng-options="modes.indexOf(mode) as mode for mode in modes"></select>
-						</div>
-						<div class="col-md-6 col-lg-8 col-lg-offset-2 col-xs-7 col-sm-6"
-							style="margin-top: 15px;"
-							ng-show="component.getSettings()[1] == 1">
-							<span class="component-text">Temperatur:&nbsp;&nbsp;</span> <input
-								id="slider9" data-slider-class='slider' type="text"
-								data-slider-tooltip="hide" data-slider-min="10"
-								data-slider-max="30" data-slider-step="1" data-slider-value="22" />
-							<span id="heating-temp" class="component-text">&nbsp;&nbsp;50</span>
-						</div>
-						<div class="col-md-6 col-lg-8 col-lg-offset-2 col-xs-7 col-sm-6"
-							style="margin-top: 15px;"
-							ng-show="component.getSettings()[1] == 0">
-							<button ng-click="configureHeatingAutopilot()"
-								class="btn btn-primary">Autopilot
-								konfigurieren&nbsp;&nbsp;</button>
-						</div>
-					</div>
+						<div class="col-md-9 col-lg-9 col-xs-11 col-sm-9" style="margin-top: 15px;">
 
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-			</div>
-			<div class="col-md-12 col-xs-12 col-sm-12"></div>
-			<div
-				class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Hauptlicht</span>
-						</div>
-						<div class="col-md-2 col-lg-2 col-xs-6 col-sm-2">
-							<div class="switch">
-								<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
-									type="checkbox"> <label for="cmn-toggle-1"></label>
-								<div class="on-span">Ein</div>
-								<div class="off-span">Aus</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-6 col-xs-7 col-sm-6"
-							style="margin-top: 15px;">
-							<span class="component-text">Dimmer: </span> <input id="slider1"
-								data-slider-class='slider' type="text" data-slider-min="0"
-								data-slider-max="20" data-slider-step="1" data-slider-value="14" />
-						</div>
-						<div class="col-md-4 col-lg-4 col-xs-3 col-sm-4"
-							style="margin-top: 10px;">
-							<span class="component-text">Farbe: </span> <input id="color1"
-								type="text" class="color" />
+							<span class="component-text">Beschattung:&nbsp;</span>
+							<button class="btn btn-primary"><i class="fa fa-arrow-down"></i> </button>
+							<button class="btn btn-primary"><i class="fa fa-square"></i> </button>
+							<button class="btn btn-primary"><i class="fa fa-arrow-up"></i> </button>
+							<span class="component-text">&nbsp;&nbsp;&nbsp;Status:&nbsp;</span>
+							<div class="garage" data-index="9" style="height: 16px; width: 16px;"></div>
 						</div>
 					</div>
 					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
+					        class="btn-primary settings-btn">
 						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-				<div class="col-md-12 col-xs-12 col-sm-12"></div>
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Leselampe</span>
-						</div>
-						<div class="col-md-2 col-lg-2 col-xs-6 col-sm-2">
-							<div class="switch">
-								<input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round"
-									type="checkbox"> <label for="cmn-toggle-2"></label>
-								<div class="on-span">Ein</div>
-								<div class="off-span">Aus</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-6 col-xs-7 col-sm-6"
-							style="margin-top: 15px;">
-							<span class="component-text">Dimmer: </span> <input id="slider2"
-								data-slider-class='slider' type="text" data-slider-min="0"
-								data-slider-max="20" data-slider-step="1" data-slider-value="14" />
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-				<div class="col-md-12 col-xs-12 col-sm-12"></div>
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Balkon</span>
-						</div>
-						<div class="col-md-2 col-lg-2 col-xs-6 col-sm-2">
-							<div class="switch">
-								<input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round"
-									type="checkbox"> <label for="cmn-toggle-3"></label>
-								<div class="on-span">Ein</div>
-								<div class="off-span">Aus</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-6 col-xs-7 col-sm-6"
-							style="margin-top: 15px;">
-							<span class="component-text">Farbe: </span> <input id="color3"
-								type="text" class="color" style="background-color: orangered;" />
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
+					</button>-->
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12"
-			style="padding: 0px;">
-			<!-- ng-repeat="(category, components) in houses[houseIndex].getRooms()[roomId].getComponentsByCategory()" -->
-			<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12">
-				<h2>Beschattung</h2>
-			</div>
-			<div
-				class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Fenster</span>
-						</div>
-						<div class="col-md-9 col-lg-9 col-xs-11 col-sm-9"
-							style="margin-top: 15px;">
-							<span class="component-text">Beschattung: </span>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-circle-down"></i>
-							</button>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-down"></i>
-							</button>
-							<div class="btn btn-primary">
-								<i class="fa fa-square"></i>
-							</div>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-up"></i>
-							</button>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-circle-up"></i>
-							</button>
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-				<div class="col-md-12 col-xs-12 col-sm-12"></div>
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Balkontür</span>
-						</div>
-						<div class="col-md-9 col-lg-9 col-xs-11 col-sm-9"
-							style="margin-top: 15px;">
-							<span class="component-text">Beschattung: </span>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-circle-down"></i>
-							</button>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-down"></i>
-							</button>
-							<div class="btn btn-primary">
-								<i class="fa fa-square"></i>
-							</div>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-up"></i>
-							</button>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-circle-up"></i>
-							</button>
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-				<div class="col-md-12 col-xs-12 col-sm-12"></div>
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Balkonfenster</span>
-						</div>
-						<div class="col-md-9 col-lg-9 col-xs-11 col-sm-9"
-							style="margin-top: 15px;">
-							<span class="component-text">Beschattung: </span>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-circle-down"></i>
-							</button>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-down"></i>
-							</button>
-							<div class="btn btn-primary">
-								<i class="fa fa-square-o"></i>
-							</div>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-up"></i>
-							</button>
-							<button class="btn btn-primary">
-								<i class="fa fa-arrow-circle-up"></i>
-							</button>
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12"
-			style="padding: 0px;">
-			<!-- ng-repeat="(category, components) in houses[houseIndex].getRooms()[roomId].getComponentsByCategory()" -->
-			<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12">
-				<h2>Verbraucher</h2>
-			</div>
-			<div
-				class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">TV</span>
-						</div>
-						<div class="col-md-8 col-lg-8 col-xs-6 col-sm-8">
-							<div class="switch">
-								<input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round"
-									type="checkbox"> <label for="cmn-toggle-4"></label>
-								<div class="on-span">Ein</div>
-								<div class="off-span">Aus</div>
-							</div>
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-				<div class="col-md-12 col-xs-12 col-sm-12"></div>
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Spielekonsole</span>
-						</div>
-						<div class="col-md-8 col-lg-8 col-xs-6 col-sm-8">
-							<div class="switch">
-								<input id="cmn-toggle-5" class="cmn-toggle cmn-toggle-round"
-									type="checkbox"> <label for="cmn-toggle-5"></label>
-								<div class="on-span">Ein</div>
-								<div class="off-span">Aus</div>
-							</div>
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-				<div class="col-md-12 col-xs-12 col-sm-12"></div>
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Ladegerät</span>
-						</div>
-						<div class="col-md-8 col-lg-8 col-xs-6 col-sm-8">
-							<div class="switch">
-								<input id="cmn-toggle-6" class="cmn-toggle cmn-toggle-round"
-									type="checkbox"> <label for="cmn-toggle-6"></label>
-								<div class="on-span">Ein</div>
-								<div class="off-span">Aus</div>
-							</div>
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12"
-			style="padding: 0px;">
-			<!-- ng-repeat="(category, components) in houses[houseIndex].getRooms()[roomId].getComponentsByCategory()" -->
-			<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12">
-				<h2>Haushaltsgeräte</h2>
-			</div>
-			<div
-				class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Kaffeemaschine</span>
-						</div>
-						<div class="col-md-2 col-lg-2 col-xs-6 col-sm-2">
-							<div class="switch">
-								<input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-round"
-									type="checkbox"> <label for="cmn-toggle-7"></label>
-								<div class="on-span">Ein</div>
-								<div class="off-span">Aus</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6"
-							style="margin-top: 15px;">
-							<span class="component-text">Getränk: </span> <select>
-								<option>--Bitte wählen--</option>
-								<option>Kaffee</option>
-								<option>Cappuccino</option>
-								<option>Espresso</option>
-								<option>Milchkaffee</option>
-							</select>
-						</div>
-						<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6"
-							style="margin-top: 15px;">
-							<span class="component-text">Stärke: </span> <input id="slider7"
-								data-slider-class='slider' type="text" data-slider-min="0"
-								data-slider-max="20" data-slider-step="1" data-slider-value="14" />
-						</div>
-						<div
-							class="col-md-4 col-lg-4 col-xs-11 col-sm-4 col-md-offset-4 col-lg-offset-4 col-sm-offset-4"
-							style="margin-top: 10px;">
-							<button class="btn btn-primary" id="start">Start</button>
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12"
-			style="padding: 0px;">
-			<!-- ng-repeat="(category, components) in houses[houseIndex].getRooms()[roomId].getComponentsByCategory()" -->
-			<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12">
-				<h2>Wellness</h2>
-			</div>
-			<div
-				class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
-				<div class="col-md-12 col-xs-12 col-sm-12 component"
-					style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-							style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Badewanne</span>
-						</div>
-						<div class="col-md-2 col-lg-2 col-xs-6 col-sm-2">
-							<div class="switch">
-								<input id="cmn-toggle-8" class="cmn-toggle cmn-toggle-round"
-									type="checkbox"> <label for="cmn-toggle-8"></label>
-								<div class="on-span">Ein</div>
-								<div class="off-span">Aus</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6"
-							style="margin-top: 15px;">
-							<span class="component-text">Soll Temp: </span> <input
-								id="slider8" data-slider-class='slider' type="text"
-								data-slider-min="20" data-slider-max="35" data-slider-step="1"
-								data-slider-value="28" /> <span id="ist-temp"
-								class="component-text">28 °C</span>
-						</div>
-						<div class="col-md-4 col-lg-4 col-xs-11 col-sm-4"
-							style="margin-top: 10px;">
-							<span class="component-text">Ist Temp: 25°C</span>
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-						class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-
 		<div>
-			<!-- <div ng-repeat="(key, components) in houses[houseIndex].getRoomById(roomId).getComponentsByCategory()">
+		<!-- <div ng-repeat="(key, components) in houses[houseIndex].getRoomById(roomId).getComponentsByCategory()">
 			<h2>{{key}}</h2>
 			<div ng-repeat="c in components track by $index">
 				<span>Komponente: {{c.getName()}}</span>
@@ -453,44 +85,4 @@
 		</div>-->
 		</div>
 	</div>
-	<div ui-view="AutopilotContent"></div>
 </div>
-
-<script>
-	var slider = new Slider('#slider1', {
-		formatter : function(value) {
-			return 'Aktueller Wert: ' + value;
-		}
-	});
-	$(function() {
-		$('#color1').colorpicker().on('changeColor', function(e) {
-			$('#color1')[0].style.backgroundColor = e.color.toHex();
-			$('#color1').val("");
-		});
-	});
-	var slider2 = new Slider('#slider2', {
-		formatter : function(value) {
-			return 'Aktueller Wert: ' + value;
-		}
-	});
-	$(function() {
-		$('#color3').colorpicker().on('changeColor', function(e) {
-			$('#color3')[0].style.backgroundColor = e.color.toHex();
-			$('#color3').val("");
-		});
-	});
-	var slider7 = new Slider('#slider7', {});
-	var slider8 = new Slider('#slider8', {
-		formatter : function(value) {
-			$('#ist-temp').html(value + ' °C');
-			return 'Gewünschte Temperatur: ' + value + ' °C';
-		}
-	});
-
-	var slider9 = new Slider('#slider9', {
-		formatter : function(value) {
-			$('#heating-temp').html(value + ' °C');
-			return value + ' °C';
-		}
-	});
-</script>

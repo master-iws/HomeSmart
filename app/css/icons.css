@@ -1,0 +1,81 @@
+/* 
+    Author     : René Lottes
+*/
+
+.battery {
+    border: none;
+    margin:0;
+    padding:1px;
+    padding-bottom: 0;
+}
+.battery::after {
+    display: block;
+    content: "";
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.battery[data-index="0"]::after {
+     background-image: url('../icons/Batterie_0.svg');
+}
+.battery[data-index="1"]::after {
+     background-image: url('../icons/Batterie_1.svg');
+}
+.battery[data-index="2"]::after {
+     background-image: url('../icons/Batterie_2.svg');
+}
+.battery[data-index="3"]::after {
+     background-image: url('../icons/Batterie_3.svg');
+}
+.battery[data-index="4"]::after {
+     background-image: url('../icons/Batterie_4.svg');
+}
+
+.door {
+    border: none;
+    margin:0;
+    padding:1px;
+    padding-bottom: 0;
+}
+.door::after {
+    display: block;
+    content: "";
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.door[data-index="0"]::after {
+     background-image: url('../icons/Tür.svg');
+}
+.door[data-index="1"]::after {
+     background-image: url('../icons/Tür_2.svg');
+}
+
+.cistern {
+    border: none;
+    margin:0;
+    padding:1px;
+    padding-bottom: 0;
+}
+.cistern::after {
+    display: block;
+    content: "";
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.cistern[data-index="0"]::after {
+     background-image: url('../icons/zisterne_0.svg');
+}
+.cistern[data-index="1"]::after {
+     background-image: url('../icons/zisterne_1.svg');
+}
+.cistern[data-index="2"]::after {
+     background-image: url('../icons/zisterne_2.svg');
+}
+.cistern[data-index="3"]::after {
+     background-image: url('../icons/zisterne_3.svg');
+}
+.cistern[data-index="4"]::after {
+     background-image: url('../icons/zisterne_4.svg');
+}

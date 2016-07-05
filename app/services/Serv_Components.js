@@ -14,93 +14,93 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Garten");
-	fillComponents(cat,[["Rasenroboter",6,[0,null,null]],
-			    ["Zisterne",5,[0]],
-			    ["Sprenkelanlage",7,[0,null,null]]]);
+	fillComponents(cat,[["Rasenroboter",6,[0,0,0]],
+			    ["Zisterne",5,[3]],
+			    ["Sprenkelanlage",7,[0,0,0]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Haushaltsgeräte");
-	fillComponents(cat,[["Kaffeemaschine",8,[0]],
-			    ["Herd",9,[0,null,0,0]],
-			    ["Spülmaschine",10,[0,null,0]],
-			    ["Kühlschrank",11,[0]],
-			    ["Waschmaschine",12,[0,null,0]],
-			    ["Wäschetrockner",13,[0,null,0]]]);
+	fillComponents(cat,[["Kaffeemaschine",8,[1,2,4]],
+			    ["Herd",9,[1,3,200,40,20]],
+			    ["Spülmaschine",10,[1,2,40]],
+			    ["Kühlschrank",11,[8]],
+			    ["Waschmaschine",12,[1,1,60,30]],
+			    ["Wäschetrockner",13,[1,1,35]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Wellness");
-	fillComponents(cat,[["Badewanne",14,[0,0,0,0]],
-			    ["Pool",15,[0,0,0,0]],
-			    ["Sauna",16,[0,0,0,0]]]);
+	fillComponents(cat,[["Badewanne",14,[1,20,35,1]],
+			    ["Pool",15,[20,28,10,0]],
+			    ["Sauna",16,[1,20,60,40,80]]]);
 	cats.push(cat);
 	increaseId();
 
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Zentral");
-	fillComponents(cat,[["Photovoltaikanlage",17,[0]]]);
+	fillComponents(cat,[["Photovoltaikanlage",17,[8]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Heimkino");
-	fillComponents(cat,[["Beamer",19,[0,null]],
-			    ["TV",18,[0,0,0]],
-			    ["Leinwand",20,[0]]]);
+	fillComponents(cat,[["Beamer",19,[1,1]],
+			    ["TV",18,[1,20,3]],
+			    ["Leinwand",20,[5]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Verbraucher");
-	fillComponents(cat,[["Stromverbraucher - aktiv",21,[0]],
-			    ["Stromverbraucher - passiv",22,[0]],
-			    ["Wasserverbraucher",23,[0]]]);
+	fillComponents(cat,[["Stromverbraucher - aktiv",21,[1,"0,5"]],
+			    ["Stromverbraucher - passiv",22,["0,5"]],
+			    ["Wasserverbraucher",23,[2]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Klima");
-	fillComponents(cat,[["Termometer",24,[0,0]],
-			    ["Niederschlagsmesser",25,[0,0]],
-			    ["Luftdruck",26,[0,0]],
-			    ["Windgeschwindigkeit",27,[0,0]]]);
+	fillComponents(cat,[["Termometer",24,[1,24]],
+			    ["Niederschlagsmesser",25,[1,"0,5"]],
+			    ["Luftdruck",26,[1,1]],
+			    ["Windgeschwindigkeit",27,[1,22]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Beleuchtung");
-	fillComponents(cat,[["Licht normal",1,[0]],
-			    ["Licht dimmer",2,[0,0]],
-			    ["Licht Effekt",3,[0,"#ff55bb"]],
-			    ["Licht Komplett",4,[0,0]]]);
+	fillComponents(cat,[["Licht normal",1,[1]],
+			    ["Licht dimmer",2,[1,30]],
+			    ["Licht Effekt",3,[1,"#ff55bb"]],
+			    ["Licht Komplett",4,[1,60,"#ff55bb"]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Fenster, Türen & Tore");
-	fillComponents(cat,[["Garagentor",35,[0]],
-			    ["Fensterkontakt",36,null],
-			    ["Haustür",37,[0,null]],
-			    ["Beschattung",38,[0,null]]]);
+	fillComponents(cat,[["Garagentor",35,[4]],
+			    ["Fensterkontakt",36,[1]],
+			    ["Haustür",37,[0,0]],
+			    ["Beschattung",38,[5]]]);
 	cats.push(cat);
 	increaseId();
 	
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Kamera");
-	fillComponents(cat,[["Innenkamera",28,null],
-			    ["Außenkamera",29,null]]);
+	fillComponents(cat,[["Innenkamera",28,[1]],
+			    ["Außenkamera",29,[1]]]);
 	cats.push(cat);
 	increaseId();
 	
@@ -115,7 +115,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Multi Room Audio");
-	fillComponents(cat,[["Multi Room Audio",39,null]]);
+	fillComponents(cat,[["Multi Room Audio",39,[0]]]);
 	cats.push(cat);
 	increaseId();
 	
@@ -130,7 +130,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	cat.setId(getNextId());
 	cat.setName("Sicherheit");
 	fillComponents(cat,[["Alarmanlage",33,[0]],
-			    ["Rauchmelder",34,[0,0]]]);
+			    ["Rauchmelder",34,[1,2]]]);
 	cats.push(cat);
 	increaseId();
 
@@ -161,7 +161,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     function getComponentById(id) {
 	for(var cat in cats) {
 	    for(var comp in cats[cat].getComponents()) {
-		if(cats[cat].getComponents()[comp].getId() === id) {
+		if(cats[cat].getComponents()[comp].getComponentId() === id) {
 		    return cats[cat].getComponents()[comp];
 		}
 	    }
@@ -171,7 +171,8 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     function fillComponents(cat,comp_arr) {
 	for(var i in comp_arr) {
 	    var comp = new Mod_Component();
-	    comp.setId(getNextId());
+	    comp.setComponentId(getNextId());
+	    comp.setId(-1);
 	    comp.setName(comp_arr[i][0]);
 	    comp.setType(comp_arr[i][1]);
 	    comp.setSettings(comp_arr[i][2]);
@@ -191,8 +192,8 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     function increaseId() {
 	//1xxx per cat
 	//xYYY per comp
-	id = base_id*1000;
 	base_id++;
+	id = base_id*1000;
     }
     
     return {

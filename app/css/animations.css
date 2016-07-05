@@ -149,3 +149,57 @@
 .pool[data-index="10"]::after {
     width: 100%;
 }
+
+.screen {
+    border: 0px;
+    border-top: solid white 2px;
+    margin:0;
+    padding:1px;
+    padding-bottom: 0;
+    background-image: url('../icons/tripod.svg');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.screen::after {
+    display: block;
+    content: "";
+    height: 2px;
+    background-image: url('../icons/white_px.png');
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+}
+.screen[data-index="0"]::after {
+    height: 0;
+}
+.screen[data-index="1"]::after {
+    height: 10%;
+}
+.screen[data-index="2"]::after {
+    height: 20%;
+}
+.screen[data-index="3"]::after {
+    height: 30%;
+}
+.screen[data-index="4"]::after {
+    height: 40%;
+}
+.screen[data-index="5"]::after {
+    height: 50%;
+}
+.screen[data-index="6"]::after {
+    height: 60%;
+}
+.screen[data-index="7"]::after {
+    height: 70%;
+}
+.screen[data-index="8"]::after {
+    height: 80%;
+}
+.screen[data-index="9"]::after {
+    height: 90%;
+}
+.screen[data-index="10"]::after {
+    height: 100%;
+}
