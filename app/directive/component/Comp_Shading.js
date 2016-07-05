@@ -1,4 +1,4 @@
-app.directive('compShading', function() {
+app.directive('compShading', function($interval) {
 
 	function link(scope, element, attrs) {
 
@@ -13,6 +13,38 @@ app.directive('compShading', function() {
 		},
 		transclude: true,
 		templateUrl: 'app/views/component/shading.htm',
-		link: link
+		link: link,
+		controller: ['$scope', function($scope) {
+			var timeoutId;
+
+			$scope.down = function() {
+				$interval.cancel(timeoutId);
+				var index = $scope.component.getSetSettings()[0];
+				timeoutId = $interval(function() {
+					if(index <= 10) {
+						$scope.component.getSetSettings()[0] = index++;
+					} else {
+						$interval.cancel(timeoutId);
+					}
+				}, 1000);
+			};
+
+			$scope.up = function() {
+				$interval.cancel(timeoutId);
+				var index = $scope.component.getSetSettings()[0];
+				timeoutId = $interval(function () {
+					if (index >= 0) {
+						$scope.component.getSetSettings()[0] = index--;
+					} else {
+						$interval.cancel(timeoutId);
+					}
+				}, 1000);
+			};
+
+			$scope.stop = function() {
+				$interval.cancel(timeoutId);
+			};
+
+		}]
 	};
 });

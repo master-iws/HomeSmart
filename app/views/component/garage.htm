@@ -4,14 +4,14 @@
 		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
 			<span class="card-name">{{componentName}}</span>
 		</div>
-		<div class="col-md-9 col-lg-9 col-xs-11 col-sm-9" style="margin-top: 15px;">
-			<span class="component-text">Beschattung:&nbsp;</span>
-			<button class="btn btn-primary"><i class="fa fa-arrow-down"></i> </button>
-			<button class="btn btn-primary"><i class="fa fa-square"></i> </button>
-			<button class="btn btn-primary"><i class="fa fa-arrow-up"></i> </button>
-			<span class="component-text">&nbsp;&nbsp;&nbsp;Status:&nbsp;</span>
-			<div class="btn btn-primary"><i class="garage" data-index="5" style="height: 16px; width: 16px;"></i></div>
+		<div class="col-md-6 col-lg-4 col-xs-8 col-sm-5" style="margin-top: 15px;">
+			<span class="component-text">Garagentor:&nbsp;</span>
+			<button class="btn btn-primary" ng-click="down()"><i class="fa fa-arrow-down"></i> </button>
+			<button class="btn btn-primary" ng-click="stop()"><i class="fa fa-square"></i> </button>
+			<button class="btn btn-primary" ng-click="up()"><i class="fa fa-arrow-up"></i> </button>
+			<span class="component-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status:</span>
 		</div>
+		<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1 garage" id="icon-{{componentId}}" data-index="{{component.getSetSettings()[0]}}" style="height: 25px; width: 25px; margin-top: 13px; margin-left:-10px;"></div>
 	</div>
 	<button ng-click="configureComponent($index)"
 	        class="btn-primary settings-btn">

@@ -21,14 +21,15 @@
 	<div class="row" style="margin-bottom: 10px;">
 		<div class="col-md-12 col-lg-4 col-xs-12 col-sm-12" style="margin-top: 15px;">
 			<span class="component-text">Getränk:&nbsp;&nbsp;</span>
-			<select style="width: 120px;" ng-model="component.getSetSettings()[1]" ng-options="drinks.indexOf(drink) as drink for drink in drinks"></select>
+			<select style="width: 120px;" id="select-{{componentId}}" ng-model="component.getSetSettings()[1]" ng-options="drinks.indexOf(drink) as drink for drink in drinks"></select>
 		</div>
-		<div class="col-md-12 col-lg-5 col-xs-12 col-sm-12" style="margin-top: 22px;">
+		<div class="col-md-12 col-lg-5 col-xs-12 col-sm-12" style="margin-top: 22px; padding: 0;">
 			<div class="col-md-1 col-lg-1 col-xs-3 col-sm-1">
 				<span class="component-text">Stärke:&nbsp;&nbsp;</span>
 			</div>
 			<div class="col-md-5 col-lg-5 col-xs-4 col-sm-5">
 				<span slider
+				      id="slider-{{componentId}}"
 				      ng-model="component.getSetSettings()[2]"
 				      min="1"
 				      max="10"

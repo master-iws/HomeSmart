@@ -15,23 +15,49 @@
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="margin-top: 15px;">
-			<span class="component-text">Soll Temperatur:&nbsp;&nbsp;</span>
-			<input id="slider" data-slider-class='slider' type="text" data-slider-min="30" data-slider-max="80" data-slider-step="1" data-slider-value="60"/>
-			<span id="ist-temp" class="component-text">&nbsp;&nbsp;28 °C</span>
+		<div class="col-md-7 col-lg-7 col-xs-11 col-sm-7" style="margin-top: 15px; padding: 0;">
+			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+				<span class="component-text">Soll Temperatur:&nbsp;&nbsp;</span>
+			</div>
+			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+				<span slider
+				      id="slider-{{componentId}}"
+				      ng-model="component.getSetSettings()[2]"
+				      min="30"
+				      max="80"
+				      step="1"
+				      tooltip="hide"
+				></span>
+			</div>
+			<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
+				<span class="component-text">&nbsp;&nbsp;{{component.getSetSettings()[2]}}&nbsp;°C</span>
+			</div>
 		</div>
-		<div class="col-md-4 col-lg-4 col-xs-11 col-sm-4" style="margin-top: 15px;">
-			<span class="component-text">Ist Temperatur: 70°C</span>
+		<div class="col-md-3 col-lg-3 col-xs-11 col-sm-3" style="margin-top: 15px;">
+			<span class="component-text">Ist Temperatur:&nbsp;&nbsp;{{component.getSetSettings()[1]}}&nbsp;°C</span>
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="margin-top: 15px;">
-			<span class="component-text">Soll Luftfeuchtigkeit:&nbsp;&nbsp;</span>
-			<input id="slider2" data-slider-class='slider' type="text" data-slider-min="50" data-slider-max="100" data-slider-step="1" data-slider-value="70"/>
-			<span id="ist-luft" class="component-text">&nbsp;&nbsp;28 %</span>
+		<div class="col-md-7 col-lg-7 col-xs-11 col-sm-7" style="margin-top: 15px; padding: 0;">
+			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+				<span class="component-text">Soll Luftfeuchtigkeit:&nbsp;&nbsp;</span>
+			</div>
+			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+				<span slider
+				      id="slider2-{{componentId}}"
+				      ng-model="component.getSetSettings()[4]"
+				      min="50"
+				      max="100"
+				      step="1"
+				      tooltip="hide"
+				></span>
+			</div>
+			<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
+				<span class="component-text">&nbsp;&nbsp;{{component.getSetSettings()[4]}}&nbsp;%</span>
+			</div>
 		</div>
-		<div class="col-md-4 col-lg-4 col-xs-11 col-sm-4" style="margin-top: 15px;">
-			<span class="component-text">Ist Luftfeuchtigkeit: 60 %</span>
+		<div class="col-md-3 col-lg-3 col-xs-11 col-sm-3" style="margin-top: 15px;">
+			<span class="component-text">Ist Luftfeuchtigkeit:&nbsp;&nbsp;{{component.getSetSettings()[3]}}&nbsp;%</span>
 		</div>
 	</div>
 	<button ng-click="configureComponent($index)"
@@ -39,18 +65,3 @@
 		<i class="fa fa-wrench" aria-hidden="true"></i>
 	</button>
 </div>
-
-<script>
-	var slider = new Slider('#slider', {
-		formatter: function(value) {
-			$('#ist-temp').html('&nbsp;&nbsp;' + value + ' °C');
-			return 'Gewünschte Temperatur: ' + value + ' °C';
-		}
-	});
-	var slider2 = new Slider('#slider2', {
-		formatter: function(value) {
-			$('#ist-luft').html('&nbsp;&nbsp;' + value + ' %');
-			return 'Gewünschte Temperatur: ' + value + ' %';
-		}
-	});
-</script>

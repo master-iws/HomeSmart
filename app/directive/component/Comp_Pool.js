@@ -1,4 +1,4 @@
-app.directive('compPool', function() {
+app.directive('compPool', function($interval) {
 
 	function link(scope, element, attrs) {
 
@@ -13,6 +13,38 @@ app.directive('compPool', function() {
 		},
 		transclude: true,
 		templateUrl: 'app/views/component/pool.htm',
-		link: link
+		link: link,
+		controller: ['$scope', function($scope) {
+			var timeoutId;
+
+			$scope.close = function() {
+				$interval.cancel(timeoutId);
+				var index = $scope.component.getSetSettings()[2];
+				timeoutId = $interval(function() {
+					if(index <= 10) {
+						$scope.component.getSetSettings()[2] = index++;
+					} else {
+						$interval.cancel(timeoutId);
+					}
+				}, 1000);
+			};
+
+			$scope.open = function() {
+				$interval.cancel(timeoutId);
+				var index = $scope.component.getSetSettings()[2];
+				timeoutId = $interval(function () {
+					if (index >= 0) {
+						$scope.component.getSetSettings()[2] = index--;
+					} else {
+						$interval.cancel(timeoutId);
+					}
+				}, 1000);
+			};
+
+			$scope.stop = function() {
+				$interval.cancel(timeoutId);
+			};
+
+		}]
 	};
 });

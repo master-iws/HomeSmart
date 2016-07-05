@@ -13,22 +13,22 @@
 					style="height: 30px; margin-top: 10px;">
 			</toggle-switch>
 		</div>
-		<div class="col-md-6 col-lg-6 col-xs-12 col-sm-6" style="margin-top: 15px;">
+		<div class="col-md-6 col-lg-6 col-xs-12 col-sm-6" style="margin-top: 15px; padding: 0;">
 			<div class="row">
-				<div class="col-lg-1">
+				<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
 					<span class="component-text">Dimmer:&nbsp;&nbsp;</span>
 				</div>
-				<slider
-						ng-model="component.getSettings()[1]"
-						min="1"
-						max="100"
-						step="1"
-						tooltip="hide"
-						onSlide="updateIstTemp($event,value)"
-				        class="col-lg-6">
-				</slider>
-				<div class="col-lg-2">
-					<span id="ist-percent-{{componentId}}" class="component-text">&nbsp;&nbsp;{{component.getSettings()[0]}} %</span>
+				<div class="col-md-5 col-lg-5 col-xs-5 col-sm-5" style="margin-left: 12px;">
+					<slider
+							ng-model="component.getSettings()[1]"
+							min="1"
+							max="100"
+							step="1"
+							tooltip="hide">
+					</slider>
+				</div>
+				<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2" style="margin-left: 0px;">
+					<span id="ist-percent-{{componentId}}" class="component-text">&nbsp;&nbsp;{{component.getSettings()[1]}} %</span>
 				</div>
 			</div>
 		</div>

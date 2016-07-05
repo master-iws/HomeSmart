@@ -13,9 +13,9 @@
 					style="height: 30px; margin-top: 10px;">
 			</toggle-switch>
 		</div>
-		<div class="col-md-4 col-lg-4 col-xs-12 col-sm-4" style="margin-top: 17px;">
+		<div class="col-md-4 col-lg-4 col-xs-12 col-sm-4" style="margin-top: 12px;">
 			<span class="component-text">Farbe:&nbsp;</span>
-			<input id="color1" type="text" class="color" />
+			<input colorpicker type="text" id="color-{{componentId}}" ng-model="component.getSetSettings()[1]" class="color"/>
 		</div>
 	</div>
 	<button ng-click="configureComponent($index)"
@@ -23,12 +23,3 @@
 		<i class="fa fa-wrench" aria-hidden="true"></i>
 	</button>
 </div>
-
-<script>
-	$(function() {
-		$('#color').colorpicker().on('changeColor', function(e) {
-			$('#color')[0].style.backgroundColor = e.color.toHex();
-			$('#color').val("");
-		});
-	});
-</script>

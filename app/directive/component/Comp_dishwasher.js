@@ -7,18 +7,25 @@ app.directive('compDishwasher', function($timeout) {
 		scope.modus = ['Automatik', 'Hygiene-Funktion', 'Multi-Tab', 'Beschleunigung', 'Halbe Beladung'];
 
 		$timeout(function() {
-			if(scope.component.getSetSettings()[2] > 0) {
 
-				$('#timeLeft-' + scope.componentId).show();
-				
-				if ((scope.component.getSetSettings()[0] == true) || (scope.component.getSetSettings()[0] == 1)) {
-					$('#start-' + scope.componentId).prop('disabled', false);
-				} else {
+			if ((scope.component.getSetSettings()[0] == true) || (scope.component.getSetSettings()[0] == 1)) {
+
+				if(scope.component.getSetSettings()[2] > 0) {
+					$('#timeLeft-' + scope.componentId).show();
 					$('#start-' + scope.componentId).prop('disabled', true);
+					$('#select-' + scope.componentId).prop('disabled', true);
+					$('#stop-' + scope.componentId).prop('disabled', false);
+				} else {
+					$('#timeLeft-' + scope.componentId).hide();
+					$('#start-' + scope.componentId).prop('disabled', false);
+					$('#select-' + scope.componentId).prop('disabled', false);
+					$('#stop-' + scope.componentId).prop('disabled', true);
 				}
 			} else {
 				$('#timeLeft-' + scope.componentId).hide();
-				$('#start-' + scope.componentId).prop('disabled', false);
+				$('#select-' + scope.componentId).prop('disabled', true);
+				$('#start-' + scope.componentId).prop('disabled', true);
+				$('#stop-' + scope.componentId).prop('disabled', true);
 			}
 		})
 	}
@@ -34,16 +41,32 @@ app.directive('compDishwasher', function($timeout) {
 
 			$scope.$watch('component.getSetSettings()[0]', function() {
 				if(($scope.component.getSetSettings()[0] == true) || ($scope.component.getSetSettings()[0] == 1)) {
+					$('#timeLeft-' + $scope.componentId).hide();
 					$('#start-' + $scope.componentId).prop('disabled', false);
+					$('#select-' + $scope.componentId).prop('disabled', false);
+					$('#stop-' + $scope.componentId).prop('disabled', true);
 				} else {
+					$('#timeLeft-' + $scope.componentId).hide();
 					$('#start-' + $scope.componentId).prop('disabled', true);
+					$('#select-' + $scope.componentId).prop('disabled', true);
+					$('#stop-' + $scope.componentId).prop('disabled', true);
 				}
 			});
 
 			$scope.start = function() {
 				$scope.component.getSetSettings()[2] = 60;
 				$('#timeLeft-' + $scope.componentId).show();
-			}
+				$('#start-' + $scope.componentId).prop('disabled', true);
+				$('#select-' + $scope.componentId).prop('disabled', true);
+				$('#stop-' + $scope.componentId).prop('disabled', false);
+			};
+
+			$scope.stop = function() {
+				$('#timeLeft-' + $scope.componentId).hide();
+				$('#start-' + $scope.componentId).prop('disabled', false);
+				$('#select-' + $scope.componentId).prop('disabled', false);
+				$('#stop-' + $scope.componentId).prop('disabled', true);
+			};
 
 		}]
 	};

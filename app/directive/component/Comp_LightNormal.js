@@ -4,8 +4,6 @@ app.directive('compLightNormal', function() {
 
 		scope.componentId = scope.component.getId();
 		scope.componentName = scope.component.getName();
-
-		console.log('WERT: '+scope.component.getSetSettings()[0]);
 	}
 
 	return {
