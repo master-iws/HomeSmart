@@ -203,4 +203,15 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	
     };
 
-    }
+    /**
+     * @author Matthias Jakob
+     */
+    this.getSetSettings = function (value) {
+	    if (angular.isDefined(value)) {
+		    this.setSettings(value);
+	    } else {
+		    return this.getSettings();
+	    }
+    };
+
+}

@@ -1,34 +1,48 @@
 <div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
+		<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
 		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-			<span class="card-name">{{component.getName()}}</span>
+			<span class="component-name">{{componentName}}</span>
 		</div>
-		<div class="col-md-2 col-lg-2 col-xs-6 col-sm-2">
-			<div class="switch">
-				<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
-				       type="checkbox" ng-model="component.settings.onoff"> <label
-					for="cmn-toggle-1"></label>
-				<div class="on-span">Ein</div>
-				<div class="off-span">Aus</div>
+		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
+			<toggle-switch
+					ng-model="component.getSetSettings()[0]"
+					ng-model-options="{getterSetter: true }"
+					on-label="Ein"
+					off-label="Aus"
+					style="height: 30px; margin-top: 10px;">
+			</toggle-switch>
+		</div>
+		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 20px;">
+			<span class="component-text" id="statusWait-{{componentId}}" hidden="hidden"><i class="fa fa-warning fa-lg fa-2x text-warning"></i>&nbsp;&nbsp;Getränk wird zubereitet</span>
+			<span class="component-text" id="statusDone-{{componentId}}" hidden="hidden"><i class="fa fa-warning fa-lg fa-2x text-success"></i>&nbsp;&nbsp;Getränk ist fertig</span>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col-md-12 col-lg-4 col-xs-12 col-sm-12" style="margin-top: 15px;">
+			<span class="component-text">Getränk:&nbsp;&nbsp;</span>
+			<select style="width: 120px;" id="select-{{componentId}}" ng-model="component.getSetSettings()[1]" ng-options="drinks.indexOf(drink) as drink for drink in drinks"></select>
+		</div>
+		<div class="col-md-12 col-lg-5 col-xs-12 col-sm-12" style="margin-top: 22px; padding: 0;">
+			<div class="col-md-1 col-lg-1 col-xs-3 col-sm-1">
+				<span class="component-text">Stärke:&nbsp;&nbsp;</span>
+			</div>
+			<div class="col-md-5 col-lg-5 col-xs-4 col-sm-5">
+				<span slider
+				      id="slider-{{componentId}}"
+				      ng-model="component.getSetSettings()[2]"
+				      min="1"
+				      max="10"
+				      step="1"
+				      tooltip="hide"
+				></span>
+			</div>
+			<div class="col-md-2 col-lg-1 col-xs-2 col-sm-2">
+				<span id="coffeeStrength-{{componentId}}" class="component-text">&nbsp;&nbsp;{{component.getSetSettings()[2]}}</span>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="margin-top: 15px;">
-			<span class="component-text">Getränk: </span>
-			<select>
-				<option>--Bitte wählen--</option>
-				<option>Kaffee</option>
-				<option>Cappuccino</option>
-				<option>Espresso</option>
-				<option>Milchkaffee</option>
-			</select>
-		</div>
-		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="margin-top: 15px;">
-			<span class="component-text">Stärke: </span>
-			<input id="slider" data-slider-class='slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-		</div>
-		<div class="col-md-4 col-lg-4 col-xs-11 col-sm-4 col-md-offset-5 col-lg-offset-5 col-sm-offset-5" style="margin-top: 10px;">
-			<button class="btn btn-primary" id="start">Start</button>
+		<div class="col-md-1 col-lg-1 col-xs-12 col-sm-1" style="margin-top: 15px;">
+			<button class="btn btn-primary" id="start-{{componentId}}" ng-click="startDrink()">Start</button>
 		</div>
 	</div>
 	<button ng-click="configureComponent($index)"
@@ -36,8 +50,3 @@
 		<i class="fa fa-wrench" aria-hidden="true"></i>
 	</button>
 </div>
-
-<script>
-	var slider = new Slider('#slider', {
-	});
-</script>

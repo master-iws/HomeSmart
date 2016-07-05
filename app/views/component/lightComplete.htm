@@ -1,25 +1,42 @@
 <div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
+		<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
 		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-			<span class="card-name">{{component.getName()}}</span>
+			<span class="component-name">{{componentName}}</span>
 		</div>
-		<div class="col-md-2 col-lg-2 col-xs-6 col-sm-2">
-			<div class="switch">
-				<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round"
-				       type="checkbox" ng-model="component.settings.onoff"> <label
-					for="cmn-toggle-1"></label>
-				<div class="on-span">Ein</div>
-				<div class="off-span">Aus</div>
+		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
+			<toggle-switch
+					ng-model="component.getSetSettings()[0]"
+					ng-model-options="{getterSetter: true }"
+					on-label="Ein"
+					off-label="Aus"
+					style="height: 30px; margin-top: 10px;">
+			</toggle-switch>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col-md-7 col-lg-7 col-xs-12 col-sm-7" style="margin-top: 15px; padding: 0;">
+			<div class="row">
+				<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
+					<span class="component-text">Dimmer:&nbsp;&nbsp;</span>
+				</div>
+				<div class="col-md-5 col-lg-5 col-xs-5 col-sm-5" style="margin-left: 12px;">
+					<slider
+							ng-model="component.getSettings()[1]"
+							min="1"
+							max="100"
+							step="1"
+							tooltip="hide">
+					</slider>
+				</div>
+				<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2" style="margin-left: 0px;">
+					<span id="ist-percent-{{componentId}}" class="component-text">&nbsp;&nbsp;{{component.getSettings()[1]}} %</span>
+				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-6 col-xs-7 col-sm-6" style="margin-top: 15px;">
-			<span class="component-text">Dimmer: </span>
-			<input id="slider" data-slider-class='slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-		</div>
-		<div class="col-md-4 col-lg-4 col-xs-3 col-sm-4" style="margin-top: 10px;">
-			<span class="component-text">Farbe: </span>
-			<input id="color" type="text" class="color" />
+		<div class="col-md-4 col-lg-4 col-xs-12 col-sm-4" style="margin-top: 10px;">
+			<span class="component-text">Farbe:&nbsp;</span>
+			<input colorpicker type="text" id="color-{{componentId}}" ng-model="component.getSetSettings()[2]" class="color"/>
 		</div>
 	</div>
 	<button ng-click="configureComponent($index)"
@@ -27,16 +44,3 @@
 		<i class="fa fa-wrench" aria-hidden="true"></i>
 	</button>
 </div>
-
-<script>
-	var slider = new Slider('#slider', {
-		formatter: function(value) {
-			return 'Aktueller Wert: ' + value;
-		}
-	}); $(function() {
-		$('#color').colorpicker().on('changeColor', function(e) {
-			$('#color')[0].style.backgroundColor = e.color.toHex();
-			$('#color').val("");
-		});
-	});
-</script>
