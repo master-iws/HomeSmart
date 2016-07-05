@@ -44,7 +44,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Zentral");
-	fillComponents(cat,[["Photovoltaikanlage",17,[0]]]);
+	fillComponents(cat,[["Photovoltaikanlage",17,[8]]]);
 	cats.push(cat);
 	increaseId();
 	
@@ -99,8 +99,8 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Kamera");
-	fillComponents(cat,[["Innenkamera",28,[0]],
-			    ["Außenkamera",29,[0]]]);
+	fillComponents(cat,[["Innenkamera",28,[1]],
+			    ["Außenkamera",29,[1]]]);
 	cats.push(cat);
 	increaseId();
 	
