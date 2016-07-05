@@ -11,7 +11,6 @@
 .battery::after {
     display: block;
     content: "";
-    /*background-image: url('../icons/Batterie_0.svg');*/
     height: 100%;
     background-repeat: no-repeat;
     background-size: contain;
@@ -30,4 +29,24 @@
 }
 .battery[data-index="4"]::after {
      background-image: url('../icons/Batterie_4.svg');
+}
+
+.door {
+    border: none;
+    margin:0;
+    padding:1px;
+    padding-bottom: 0;
+}
+.door::after {
+    display: block;
+    content: "";
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.door[data-index="0"]::after {
+     background-image: url('../icons/Tür.svg');
+}
+.door[data-index="1"]::after {
+     background-image: url('../icons/Tür_2.svg');
 }
