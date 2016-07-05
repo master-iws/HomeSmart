@@ -1,0 +1,26 @@
+<div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
+		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+			<span class="component-name">{{componentName}}</span>
+		</div>
+		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="padding: 0;">
+			<div class="col-md-1 col-lg-1 col-xs-2 col-sm-1" style="margin-top: 25px;">
+				<span class="component-text">Status:&nbsp;&nbsp;</span>
+			</div>
+			<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1 door" id="icon-{{componentId}}" data-index="{{component.getSetSettings()[0]}}" style="height: 50px; width: 50px; margin-top: 10px;"></div>
+			<div class="col-md-7 col-lg-7 col-xs-6 col-sm-7" style="margin-top: 25px;">
+				<span class="component-text">Letzter Zutritt:&nbsp;&nbsp;{{component.getSetSettings()[1]}}</span>
+			</div>
+		</div>
+		<div class="col-md-11 col-lg-11 col-xs-11 col-sm-11" style="margin-top: 25px;">
+			<button class="btn btn-primary" ng-click="openView()">Ansicht</button>&nbsp;&nbsp;
+			<button id="talk-{{componentId}}" class="btn btn-primary" ng-click="talk()"><i id="talkIcon-{{componentId}}" class="fa fa-microphone-slash"></i>&nbsp;&nbsp;Gegensprechen</button>&nbsp;&nbsp;
+			<button class="btn btn-danger" id="openDoor-{{componentId}}" ng-click="openDoor()">Tür öffnen</button>
+		</div>
+	</div>
+	<button ng-click="configureComponent($index)"
+	        class="btn-primary settings-btn">
+		<i class="fa fa-wrench" aria-hidden="true"></i>
+	</button>
+</div>

@@ -1,10 +1,11 @@
 
 <div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	<h3 class="modal-title">Außenkamera:&nbsp;&nbsp;{{componentName}}</h3>
 </div>
 <div class="modal-body text-center" style="width: 100%;padding-left:0">
 	<img src="app/images/cameraOutside.jpg" alt="Außenkamera-{{componentName}}" style="width: 95%;" />
 </div>
 <div class="modal-footer">
-	<button class="btn btn-primary" type="button" ng-click="cancel()">OK</button>
+	<button class="btn btn-danger" type="button" ng-click="cancel()">Schließen</button>
 </div>

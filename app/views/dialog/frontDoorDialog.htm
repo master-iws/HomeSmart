@@ -1,0 +1,13 @@
+
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<h3 class="modal-title">Haustür</h3>
+</div>
+<div class="modal-body text-center" style="width: 100%;padding-left:0;">
+	<img src="app/images/frontDoor.jpg" alt="Haustür" style="width: 95%;" />
+</div>
+<div class="modal-footer text-center">
+	<button id="talkModal-{{componentId}}" class="btn btn-default" ng-click="talkModal()"><i id="talkIconModal-{{componentId}}" class="fa fa-microphone-slash"></i>&nbsp;&nbsp;Gegensprechen</button>&nbsp;&nbsp;
+	<button class="btn btn-danger" id="openDoorModal-{{componentId}}" ng-click="openDoorModal()">Tür öffnen</button>&nbsp;&nbsp;
+	<button class="btn btn-warning" type="button" ng-click="cancel()">Schließen</button>
+</div>

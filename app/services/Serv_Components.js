@@ -14,9 +14,9 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Garten");
-	fillComponents(cat,[["Rasenroboter",6,[0,0,0]],
+	fillComponents(cat,[["Rasenroboter",6,[1,"2016-07-05T06:00:16.567Z","2016-07-05T16:00:16.567Z"]],
 			    ["Zisterne",5,[3]],
-			    ["Sprenkelanlage",7,[0,0,0]]]);
+			    ["Sprenkelanlage",7,[1,"2016-07-05T16:00:16.567Z","2016-07-05T18:00:16.567Z"]]]);
 	cats.push(cat);
 	increaseId();
 	
@@ -91,7 +91,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	cat.setName("Fenster, Türen & Tore");
 	fillComponents(cat,[["Garagentor",35,[4]],
 			    ["Fensterkontakt",36,[1]],
-			    ["Haustür",37,[0,0]],
+			    ["Haustür",37,[0,"18:34 Uhr -- Anna"]],
 			    ["Beschattung",38,[5]]]);
 	cats.push(cat);
 	increaseId();
