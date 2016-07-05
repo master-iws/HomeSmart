@@ -1,11 +1,26 @@
-app.directive('compDishwasher', function() {
+app.directive('compDishwasher', function($timeout) {
 
 	function link(scope, element, attrs) {
 
 		scope.componentId = scope.component.getId();
 		scope.componentName = scope.component.getName();
-		scope.modus = 5;
-		console.log("Komponente: "+scope.component.getSettings());
+		scope.modus = ['Automatik', 'Hygiene-Funktion', 'Multi-Tab', 'Beschleunigung', 'Halbe Beladung'];
+
+		$timeout(function() {
+			if(scope.component.getSetSettings()[2] > 0) {
+
+				$('#timeLeft-' + scope.componentId).show();
+				
+				if ((scope.component.getSetSettings()[0] == true) || (scope.component.getSetSettings()[0] == 1)) {
+					$('#start-' + scope.componentId).prop('disabled', false);
+				} else {
+					$('#start-' + scope.componentId).prop('disabled', true);
+				}
+			} else {
+				$('#timeLeft-' + scope.componentId).hide();
+				$('#start-' + scope.componentId).prop('disabled', false);
+			}
+		})
 	}
 
 	return {
@@ -17,17 +32,16 @@ app.directive('compDishwasher', function() {
 		link: link,
 		controller: ['$scope', function($scope) {
 
-			$scope.updateModus = function() {
-				if($scope.modus > 0) {
+			$scope.$watch('component.getSetSettings()[0]', function() {
+				if(($scope.component.getSetSettings()[0] == true) || ($scope.component.getSetSettings()[0] == 1)) {
 					$('#start-' + $scope.componentId).prop('disabled', false);
 				} else {
 					$('#start-' + $scope.componentId).prop('disabled', true);
 				}
-			};
+			});
 
 			$scope.start = function() {
-				console.log("HALLO");
-
+				$scope.component.getSetSettings()[2] = 60;
 				$('#timeLeft-' + $scope.componentId).show();
 			}
 
