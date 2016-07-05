@@ -31,7 +31,7 @@ app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams
    
 	$scope.configureHeatingAutopilot = function()
 	{
-		$state.go("rooms.detail.heatingAutopilot");
+		$state.go("rooms.detail.heatingAutopilot",{componentId:2});
 	}
 	
 	$scope.nextRoom = function() {
@@ -51,6 +51,5 @@ app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams
 	    }
 	};
 	
-	//heizungssacchen
 	$scope.heatingMode=1;
 }]);

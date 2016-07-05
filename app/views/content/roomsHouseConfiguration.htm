@@ -1,10 +1,10 @@
 <div>
-	<div class="row row-centered"
-		ng-show="!$state.includes('houseconfiguration.rooms.editRoom.*') && !$state.includes('houseconfiguration.rooms.addRoom')">
-		<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">R&auml;ume</h1>
-		<div
-			ng-repeat="room in houses[houseIndex].getRooms()"
-			class="col-md-3 col-sm-3 col-xs-11 card" style="margin-left: 15px;"
+	<div class="row"
+		ng-show="!$state.includes('houseconfiguration.rooms.editRoom.*') && !$state.includes('houseconfiguration.rooms.addRoom') && !$state.includes('houseconfiguration.rooms.editComponent') && !$state.includes('houseconfiguration.rooms.addComponent')">
+		<h1 class="col-md-10 col-lg-10 col-xs-10 col-sm-10">R&auml;ume</h1>
+		<div ng-repeat="room in houses[houseIndex].getRooms()"
+			class="col-md-3 col-sm-3 col-lg-3 col-xs-10 card drag"
+			style="height: 110px; margin-left: 15px; "
 			ng-class="{'not-configured': deleted}">
 			<div style="height: 40px;"
 				class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
@@ -13,7 +13,7 @@
 					<i class="fa fa-wrench"></i>
 				</button>
 				<button class="settings-btn btn-primary" style="z-index: 3000;"
-					ng-click="deleteRoom(room.getId())" aria-label="Raum löschen">
+					ng-click="deleteRoom($index)" aria-label="Raum löschen">
 					<i class="fa fa-remove"></i>
 				</button>
 			</div>
@@ -27,9 +27,10 @@
 				<span class="card-name-settings">{{room.getName()}}</span>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-11 add-card"
+		<div class="col-md-3 col-sm-3 col-xs-11 add-card col-lg-3"
 			style="height: 100px; margin-left: 15px;">
-			<button class="add-btn" ng-click="addRoom()" aria-label="Raum hinzufügen">
+			<button class="add-btn" ng-click="addRoom()"
+				aria-label="Raum hinzufügen">
 				<i class="fa fa-plus fa-3x"></i>
 			</button>
 		</div>

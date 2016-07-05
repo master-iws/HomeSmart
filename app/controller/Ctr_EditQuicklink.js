@@ -4,21 +4,30 @@ app.controller('EditQuicklinkController',["$scope", "$rootScope", "$state", "$st
                                       function($scope, $rootScope, $state, $stateParams,componentService,mainService,vibrator) {
 	
 	$scope.quicklinkIdx = $stateParams.quicklinkId;
-	$scope.types = [];
-	$scope.typ;
 	
+	$scope.types = [];
 	$scope.categories = ['Kategorie', 'Etage', 'Raum'];
 	
-	$scope.quicklink = $rootScope.houses[$rootScope.houseIndex].getDashboard().quicklinks[$scope.quicklinkId];//auf rootScope setzen
+
+	$scope.originalQuicklink = $rootScope.houses[$rootScope.houseIndex].getDashboard().quicklinks[$scope.quicklinkIdx];//auf rootScope setzen
 	
-	$scope.typ ;
+	
+	$scope.quicklink = {};
+	$scope.quicklink.category=$scope.originalQuicklink.category;
+	$scope.quicklink.typ={};
+	$scope.quicklink.typ.id=$scope.originalQuicklink.typ.id;
+	$scope.quicklink.typ.name=$scope.originalQuicklink.typ.name;
+	
+	
+	$scope.typ;
 	
 	$scope.save = function() {
 		vibrator.vibrate(10);
 		$scope.quicklink.typ.id = $scope.typ.getId();
 		$scope.quicklink.typ.name = $scope.typ.getName();
-		 $rootScope.houses[$rootScope.houseIdx].getDashboard().quicklinks[$scope.quicklinkId] = $scope.quicklink;
+		 $rootScope.houses[$rootScope.houseIndex].getDashboard().quicklinks[$scope.quicklinkIdx] = $scope.quicklink;
 		 mainService.saveHouses($rootScope.houses);
+		 $state.go("houseconfiguration.dashboard");
 	};
     
     $scope.cancel = function() {
@@ -41,11 +50,11 @@ app.controller('EditQuicklinkController',["$scope", "$rootScope", "$state", "$st
 	   for(var t in $scope.types)
 	   {
 		   if($scope.types[t].getId() == $scope.quicklink.typ.id)
-			   $scope.type = $scope.types[t];
+			   $scope.typ = $scope.types[t];
 	   }
    }
    
-   //$scope.categoryChanged();
-   //$scope.getTyp();
+   $scope.categoryChanged();
+   $scope.getTyp();
    
 }]);

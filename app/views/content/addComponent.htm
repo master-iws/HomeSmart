@@ -1,0 +1,52 @@
+<div>
+	<div class="row row-centered">
+		<div
+			class="col-xs-10 col-sm-8 col-md-7 col-md-offset-3 ">
+			<h1>{{$title}}</h1>
+			<form class="form-horizontal" name="editComponentForm" novalidate>
+				<div class="form-group">
+					<label for="name" class="col-sm-3 col-md-3 control-label"
+						id="nameLabel">Name</label>
+					<divclass="col-sm-10 col-md-7 col-xs-10">
+						<input type="text" ng-model="name"
+							class="form-control"
+							name="name" id="name"
+							ng-class="{'has-error': editComponentForm.name.$invalid}" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="serialId" class="col-sm-3 col-md-3 control-label"
+						id="serialIdLabel">Seriennummer</label>
+					<div class="col-sm-10 col-md-7 col-xs-10">
+						<input type="text" ng-model="serialId" class="form-control"
+							name="serialId" id="serialId"
+							ng-class="{'has-error': editComponentForm.serialId.$invalid}" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 col-md-3 control-label" id="categoryLabel" for="category">Kategorie</label>
+					<div class="col-sm-10 col-md-7 col-xs-10">
+						<select style="width:100%;" id="category" name="category"
+						    ng-model="category" ng-change="categoryChanged()"
+						    ng-options="category as category.getName() for category in categorys"></select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="component" class="col-sm-3 col-md-3 control-label"
+						id="componentLabel">Komponente</label>
+					<div class="col-sm-10 col-md-7 col-xs-10">
+						<select style="width:100%;" id="component" name="component"
+						    ng-model="type" 
+						    ng-options="component as component.getName() for component in components"></select>
+					</div>
+				</div>
+				<div class="form-group col-xs-12 col-sm-11">
+					<button ng-disabled="eeditComponentForm.$invalid" aria-label="Speichern"
+						class="btn btn-default" ng-click="save()">Speichern</button>
+					<button class="btn btn-default" aria-label="Abbrechen"
+						ng-click="cancel()">Abbrechen</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

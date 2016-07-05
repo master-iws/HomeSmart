@@ -1,60 +1,66 @@
 <div>
 	<div class="row row-centered">
-		<div class="col-lg-12">
-<ul class="nav nav-tabs">
-    <li class="active"><a showtab="" ui-sref="rooms.detail.heatingAutopilot">Heizen</a></li>
-    <li ng-swipe-right="prevTab()"><a showtab="" ui-sref="rooms.detail.coolingAutopilot">K�hlen</a></li>
-</ul>
 
-			
+		<div class="col-lg-12">
+			<ul class="nav nav-tabs col-xs-10 col-sm-10 col-md-10 col-lg-10">
+				<li  ng-swipe-left="nextTab()"><a showtab=""
+					ui-sref="rooms.detail.heatingAutopilot({componentId:componentId})">Heizen</a></li>
+				<li class="active"><a showtab="" ui-sref="rooms.detail.coolingAutopilot({componentId: componentId})">K&uuml;hlen</a></li>
+			</ul>
+			<br/>
 			<form class="form-horizontal" name="changePinForm" novalidate>
 				<div class="form-group">
-					<h2 class="col-lg-2">K�hlen</h2>
-					<div class="col-lg-12">
-						<span class="col-lg-1" style="padding-left: 0px;">K�hlperiode</span>
-						<div class="col-lg-2">
-							<span>Von: </span> <select style="width: 50%;"
-								ng-model="component.getSettings()[3].start"
+					<br />
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<h3 class="col-xs-10 col-sm-10 col-md-1 col-lg-1"
+							>Periode</h3>
+						<div class="col-xs-5 col-sm-5 col-md-3 col-lg-2" style="margin-top:13px;">
+							<span>Von: </span> <select col-xs-5 col-sm-5 col-md-5
+								style="width: 50%;" ng-model="component.getSettings()[3].start"
 								ng-selected="component.getSettings()[3].start"
 								ng-options="months.indexOf(month) as month for month in months"></select>
 						</div>
-						<div class="col-lg-2">
+						<div class="col-xs-5 col-sm-5 col-md-3 col-lg-2" style="margin-top:13px;">
 							<span>Bis: </span> <select style="width: 50%;"
 								ng-model="component.getSettings()[3].start"
 								ng-selected="component.getSettings()[3].start"
 								ng-options="months.indexOf(month) as month for month in months"></select>
 						</div>
 					</div>
-					<div class="col-lg-12">
-						<h3 style="padding-left: 0px;">Heizzeiten</h3>
+					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-12">
+						<h3 class="col-xs-10 col-sm-10 col-md-10 col-lg-12">Zeiten</h3>
 					</div>
 
-					<div class="col-lg-12">
+					<div class="col-xs-10 col-sm-11 col-md-11 col-lg-12">
 						<div>
-							<span class="col-lg-1">Montag</span>
+							<span class="col-xs-10 col-sm-10 col-md-11 col-lg-10">Montag</span>
 							<div
 								ng-repeat="time in component.getSettings()[3].times[0] track by $index"
-								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
+								class="col-xs-11 col-sm-3 col-md-3 col-lg-2 card"
+								style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
 									ng-click="deleteTime(0,$index)">
 									<i class="fa fa-remove" aria-hidden="true"></i>
 								</button>
 								<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
-									style="padding: 0px; margin-top: 10px;position:absolute; top:15px;left:0px;">
-									<div class="text-center col-lg-12" style="padding-left: 0px;">
+									style="padding: 0px; margin-top: 10px; position: absolute; top: 15px; left: 0px;">
+									<div
+										class="text-center col-sm-12 col-xs-12 col-md-12 col-lg-12"
+										style="padding-left: 0px;">
 										<span class="component-text" style="font-size: 12pt;">{{time.temp}}
 											°C</span>
 									</div>
 									<div
 										class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
 										style="padding: 0px; margin-top: 10px;">
-										<span class="component-text col-lg-12" style="padding-left:0px;">{{time.start}} -
-											{{time.end}}</span>
+										<span class="component-text" style="padding-left: 0px;">{{time.start}}
+											- {{time.end}}</span>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-2 add-card"
+							<div
+								class="col-lg-2col-xs-11 col-sm-3 col-md-3 col-lg-2 add-card"
 								style="height: 80px; margin-left: 15px;">
 								<button class="add-btn" ng-click="addTime(0)">
 									<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
@@ -62,32 +68,36 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-12">
+					<div class="col-xs-10 col-sm-11 col-md-11 col-lg-12">
 						<div>
-							<span class="col-lg-1">Dienstag</span>
+							<span class="col-xs-10 col-sm-10 col-md-11 col-lg-10">Dienstag</span>
 							<div
 								ng-repeat="time in component.getSettings()[3].times[1] track by $index"
-								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
+								class="col-xs-11 col-sm-3 col-md-3 col-lg-2 card"
+								style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
 									ng-click="deleteTime(1,$index)">
 									<i class="fa fa-remove" aria-hidden="true"></i>
 								</button>
 								<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
-									style="padding: 0px; margin-top: 10px;position:absolute; top:15px;left:0px;">
-									<div class="text-center col-lg-12" style="padding-left: 0px;">
+									style="padding: 0px; margin-top: 10px; position: absolute; top: 15px; left: 0px;">
+									<div
+										class="text-center col-sm-12 col-xs-12 col-md-12 col-lg-12"
+										style="padding-left: 0px;">
 										<span class="component-text" style="font-size: 12pt;">{{time.temp}}
 											°C</span>
 									</div>
 									<div
 										class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
 										style="padding: 0px; margin-top: 10px;">
-										<span class="component-text col-lg-12" style="padding-left:0px;">{{time.start}} -
-											{{time.end}}</span>
+										<span class="component-text" style="padding-left: 0px;">{{time.start}}
+											- {{time.end}}</span>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-2 add-card"
+							<div
+								class="col-lg-2col-xs-11 col-sm-3 col-md-3 col-lg-2 add-card"
 								style="height: 80px; margin-left: 15px;">
 								<button class="add-btn" ng-click="addTime(1)">
 									<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
@@ -95,32 +105,39 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-12">
+
+
+
+					<div class="col-xs-10 col-sm-11 col-md-11 col-lg-12">
 						<div>
-							<span class="col-lg-1">Mittwoch</span>
+							<span class="col-xs-10 col-sm-10 col-md-11 col-lg-10">Mittwoch</span>
 							<div
 								ng-repeat="time in component.getSettings()[3].times[2] track by $index"
-								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
+								class="col-xs-11 col-sm-3 col-md-3 col-lg-2 card"
+								style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
 									ng-click="deleteTime(2,$index)">
 									<i class="fa fa-remove" aria-hidden="true"></i>
 								</button>
 								<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
-									style="padding: 0px; margin-top: 10px;position:absolute; top:15px;left:0px;">
-									<div class="text-center col-lg-12" style="padding-left: 0px;">
+									style="padding: 0px; margin-top: 10px; position: absolute; top: 15px; left: 0px;">
+									<div
+										class="text-center col-sm-12 col-xs-12 col-md-12 col-lg-12"
+										style="padding-left: 0px;">
 										<span class="component-text" style="font-size: 12pt;">{{time.temp}}
 											°C</span>
 									</div>
 									<div
 										class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
 										style="padding: 0px; margin-top: 10px;">
-										<span class="component-text col-lg-12" style="padding-left:0px;">{{time.start}} -
-											{{time.end}}</span>
+										<span class="component-text" style="padding-left: 0px;">{{time.start}}
+											- {{time.end}}</span>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-2 add-card"
+							<div
+								class="col-lg-2col-xs-11 col-sm-3 col-md-3 col-lg-2 add-card"
 								style="height: 80px; margin-left: 15px;">
 								<button class="add-btn" ng-click="addTime(2)">
 									<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
@@ -128,32 +145,39 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-12">
+
+
+
+					<div class="col-xs-10 col-sm-11 col-md-11 col-lg-12">
 						<div>
-							<span class="col-lg-1">Donnerstag</span>
+							<span class="col-xs-10 col-sm-10 col-md-11 col-lg-10">Donnerstag</span>
 							<div
 								ng-repeat="time in component.getSettings()[3].times[3] track by $index"
-								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
+								class="col-xs-11 col-sm-3 col-md-3 col-lg-2 card"
+								style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
 									ng-click="deleteTime(3,$index)">
 									<i class="fa fa-remove" aria-hidden="true"></i>
 								</button>
 								<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
-									style="padding: 0px; margin-top: 10px;position:absolute; top:15px;left:0px;">
-									<div class="text-center col-lg-12" style="padding-left: 0px;">
+									style="padding: 0px; margin-top: 10px; position: absolute; top: 15px; left: 0px;">
+									<div
+										class="text-center col-sm-12 col-xs-12 col-md-12 col-lg-12"
+										style="padding-left: 0px;">
 										<span class="component-text" style="font-size: 12pt;">{{time.temp}}
 											°C</span>
 									</div>
 									<div
 										class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
 										style="padding: 0px; margin-top: 10px;">
-										<span class="component-text col-lg-12" style="padding-left:0px;">{{time.start}} -
-											{{time.end}}</span>
+										<span class="component-text" style="padding-left: 0px;">{{time.start}}
+											- {{time.end}}</span>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-2 add-card"
+							<div
+								class="col-lg-2col-xs-11 col-sm-3 col-md-3 col-lg-2 add-card"
 								style="height: 80px; margin-left: 15px;">
 								<button class="add-btn" ng-click="addTime(3)">
 									<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
@@ -161,32 +185,38 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-12">
+
+
+					<div class="col-xs-10 col-sm-11 col-md-11 col-lg-12">
 						<div>
-							<span class="col-lg-1">Freitag</span>
+							<span class="col-xs-10 col-sm-10 col-md-11 col-lg-10">Freitag</span>
 							<div
 								ng-repeat="time in component.getSettings()[3].times[4] track by $index"
-								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
+								class="col-xs-11 col-sm-3 col-md-3 col-lg-2 card"
+								style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
 									ng-click="deleteTime(4,$index)">
 									<i class="fa fa-remove" aria-hidden="true"></i>
 								</button>
 								<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
-									style="padding: 0px; margin-top: 10px;position:absolute; top:15px;left:0px;">
-									<div class="text-center col-lg-12" style="padding-left: 0px;">
+									style="padding: 0px; margin-top: 10px; position: absolute; top: 15px; left: 0px;">
+									<div
+										class="text-center col-sm-12 col-xs-12 col-md-12 col-lg-12"
+										style="padding-left: 0px;">
 										<span class="component-text" style="font-size: 12pt;">{{time.temp}}
 											°C</span>
 									</div>
 									<div
 										class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
 										style="padding: 0px; margin-top: 10px;">
-										<span class="component-text col-lg-12" style="padding-left:0px;">{{time.start}} -
-											{{time.end}}</span>
+										<span class="component-text" style="padding-left: 0px;">{{time.start}}
+											- {{time.end}}</span>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-2 add-card"
+							<div
+								class="col-lg-2col-xs-11 col-sm-3 col-md-3 col-lg-2 add-card"
 								style="height: 80px; margin-left: 15px;">
 								<button class="add-btn" ng-click="addTime(4)">
 									<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
@@ -194,32 +224,39 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-12">
+
+
+
+					<div class="col-xs-10 col-sm-11 col-md-11 col-lg-12">
 						<div>
-							<span class="col-lg-1">Samstag</span>
+							<span class="col-xs-10 col-sm-3 col-md-11 col-lg-10">Samstag</span>
 							<div
 								ng-repeat="time in component.getSettings()[3].times[5] track by $index"
-								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
+								class="col-xs-11 col-sm-11 col-md-3 col-lg-2 card"
+								style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
 									ng-click="deleteTime(5,$index)">
 									<i class="fa fa-remove" aria-hidden="true"></i>
 								</button>
 								<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
-									style="padding: 0px; margin-top: 10px;position:absolute; top:15px;left:0px;">
-									<div class="text-center col-lg-12" style="padding-left: 0px;">
+									style="padding: 0px; margin-top: 10px; position: absolute; top: 15px; left: 0px;">
+									<div
+										class="text-center col-sm-12 col-xs-12 col-md-12 col-lg-12"
+										style="padding-left: 0px;">
 										<span class="component-text" style="font-size: 12pt;">{{time.temp}}
 											°C</span>
 									</div>
 									<div
 										class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
 										style="padding: 0px; margin-top: 10px;">
-										<span class="component-text col-lg-12" style="padding-left:0px;">{{time.start}} -
-											{{time.end}}</span>
+										<span class="component-text" style="padding-left: 0px;">{{time.start}}
+											- {{time.end}}</span>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-2 add-card"
+							<div
+								class="col-lg-2col-xs-11 col-sm-3 col-md-3 col-lg-2 add-card"
 								style="height: 80px; margin-left: 15px;">
 								<button class="add-btn" ng-click="addTime(5)">
 									<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
@@ -227,32 +264,38 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-12">
+
+
+					<div class="col-xs-10 col-sm-11 col-md-11 col-lg-12">
 						<div>
-							<span class="col-lg-1">Sonntag</span>
+							<span class="col-xs-10 col-sm-3 col-md-11 col-lg-10">Sonntag</span>
 							<div
 								ng-repeat="time in component.getSettings()[3].times[6] track by $index"
-								class="col-lg-2 card" style="height: 80px; margin-left: 15px;">
+								class="col-xs-11 col-sm-11 col-md-3 col-lg-2 card"
+								style="height: 80px; margin-left: 15px;">
 								<button class="settings-btn btn-primary"
 									style="z-index: 3000; background-color: transparent; color: #FFFFFF; border-style: none;"
 									ng-click="deleteTime(6,$index)">
 									<i class="fa fa-remove" aria-hidden="true"></i>
 								</button>
 								<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
-									style="padding: 0px; margin-top: 10px;position:absolute; top:15px;left:0px;">
-									<div class="text-center col-lg-12" style="padding-left: 0px;">
+									style="padding: 0px; margin-top: 10px; position: absolute; top: 15px; left: 0px;">
+									<div
+										class="text-center col-sm-12 col-xs-12 col-md-12 col-lg-12"
+										style="padding-left: 0px;">
 										<span class="component-text" style="font-size: 12pt;">{{time.temp}}
 											°C</span>
 									</div>
 									<div
 										class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
 										style="padding: 0px; margin-top: 10px;">
-										<span class="component-text col-lg-12" style="padding-left:0px;">{{time.start}} -
-											{{time.end}}</span>
+										<span class="component-text" style="padding-left: 0px;">{{time.start}}
+											- {{time.end}}</span>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-2 add-card"
+							<div
+								class="col-lg-2col-xs-11 col-sm-3 col-md-3 col-lg-2 add-card"
 								style="height: 80px; margin-left: 15px;">
 								<button class="add-btn" ng-click="addTime(6)">
 									<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
@@ -260,6 +303,7 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</form>
 		</div>

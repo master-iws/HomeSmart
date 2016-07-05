@@ -6,26 +6,34 @@ app.controller('AddRoomComponentController',["$scope", "$rootScope", "$state", "
 	
 	$scope.roomId = $stateParams.roomId;
 	
-	$scope.component = new Mod_Component();
-	$scope.component.setRoom($rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId));
+	$scope.name = "";
+	$scope.serialId = "";
+	$scope.category;
 	$scope.categorys = componentService.getCategorys();
 	$scope.components;
 
 	$scope.save = function() {
 		vibrator.vibrate(10);
-		 //$scope.room.setId($rootScope.nextId);
-		 $rootScope.houses[$rootScope.houseIndex].getFloors();
-		 mainService.saveHouses($rootScope.houses);
-		 $state.go("houseconfiguration.rooms.detail",{roomId:$scope.roomId});
+		$scope.newComponent = componentService.getNewComponentInstanceById($scope.type.getId());
+		$scope.newComponent.setType($scope.type.getId());
+		$scope.newComponent.setId($rootScope.nextComponentId);
+		$rootScope.nextComponentId++;
+		$scope.newComponent.setName($scope.name);
+		$scope.newComponent.setSerialId($scope.serialId);
+		$scope.newComponent.setCategory($scope.category);
+		 
+		$rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId).getComponents().push($scope.newComponent);
+		mainService.saveHouses($rootScope.houses);
+		$state.go("houseconfiguration.rooms");
     };
     
     $scope.cancel = function() {
     	vibrator.vibrate(10);
-		$state.go("houseconfiguration.rooms.detail",{roomId:$scope.roomId});
+		$state.go("houseconfiguration.rooms");
    };
    
-   $scope.categoryChanged = function($id) {
-		$state.components = componentService.getComponentsByCategory($id);
+   $scope.categoryChanged = function() {
+		$scope.components = componentService.getComponentsByCategory($scope.category.getId());
   };
    
 }]);

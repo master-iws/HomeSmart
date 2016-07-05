@@ -1,11 +1,17 @@
 'use strict';
 
-app.controller('WLANController',["$scope", "$rootScope", "$state","MainService",	
-                                 function($scope, $rootScope, $state, mainService) {
+app.controller('WLANController',["$scope", "$rootScope", "$state","MainService","$uibModal",	
+                                 function($scope, $rootScope, $state, mainService,$uibModal) {
 	
 	$rootScope.wlan = {};
 	$scope.showPassword = false;
 	$scope.inputType = 'password';
+	
+	
+	
+	$scope.inputs = ['est1','test2','test2'];
+	
+	$scope.test = 0;
 	
 	$scope.wlan = {};
 	$scope.wlan.ssid = $rootScope.houses[$rootScope.houseIndex].getWlan().ssid;
@@ -32,5 +38,11 @@ app.controller('WLANController',["$scope", "$rootScope", "$state","MainService",
     	$scope.wlan.status = $rootScope.houses[$rootScope.houseIndex].getWlan().status;
     	$rootScope.houses[$rootScope.houseIndex].setWlan($scope.wlan);
     	mainService.saveHouses($rootScope.houses);
+    	
+    	/*var modalInstance = $uibModal.open({
+		      animation: $scope.animationsEnabled,
+		      templateUrl: 'app/views/dialog/infoDialog.htm',
+		      scope: $scope
+		    });*/
     }
 }]);

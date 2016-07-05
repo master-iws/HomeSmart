@@ -22,11 +22,12 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	    _category,
 	    _room,
 	    _house,
-	    _serialId;
+	    _serialId,
+	    _componentId;
 
 	this.new = function() {
 	    var comp = new Mod_Component();
-	    comp.setId(this.getId());
+	    comp.setComponentId(this.getComponentId());
 	    comp.setName(this.getName());
 	    comp.setType(this.getType());
 	    comp.setCategory(this.getCategory());
@@ -44,6 +45,10 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	
 	this.getSerialId = function() {
 	    return _serialId;
+	};
+	
+	this.getComponentId = function() {
+	    return _componentId;
 	};
 
 	this.getSettings = function() {
@@ -82,6 +87,14 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	    }
 	};
 	
+	this.setComponentId = function(componentId) {
+	    if(this.checkNum(componentId)) {
+		_componentId = componentId;
+	    } else {
+		throw new TypeError();
+	    }
+	};
+	
 	this.setSettings = function(settings) {
 	    _settings = settings;
 	};
@@ -115,6 +128,7 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 		"type":this.getType(),
 		"settings":this.getSettings(),
 		"categoryId":this.getCategory().getId(),
+		"componentId":this.getComponentId(),
 		"serialId":this.getSerialId()
 //		"room":this.getRoom(),
 //		"house":this.getHouse()
@@ -138,6 +152,7 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	    this.setSerialId(json["serialId"]);
 	    
 	    this.setCategory(serv_components.getCategoryById(json["categoryId"]));
+	    this.setComponentId(json["componentId"]);
 	    
 	    
 	    if(who instanceof Mod_Room) {

@@ -7,7 +7,7 @@ app.controller('MainController',
 		$rootScope.houseIndex = 0;
 		
 		$rootScope.houses = mainService.getHouses();
-		$rootScope.gloabelSettings = mainService.getSettings();
+		$rootScope.globalSettings = mainService.getSettings();
 		
 		var test = mainService.getHouses();
 		mainService.saveHouses(test);
@@ -32,12 +32,20 @@ app.controller('MainController',
 	    	$rootScope.nextHouseId = -1;
 	    	$rootScope.nextFloorId = -1;
 	    	$rootScope.nextRoomId = -1;
+	    	$rootScope.nextComponentId = -1;
 	    	
 	    	for(h in $rootScope.houses)
 	    	{
 	    		var house = $rootScope.houses[h];
 	    		if(house.getId() > $rootScope.nextHouseId)
 	    			$rootScope.nextHouseId = house.getId();
+	    		
+	    		for(c in $rootScope.houses[h].getComponents())
+	    		{
+	    			var component = $rootScope.houses[h].getComponents()[c];
+	    			if(component.getId() > $rootScope.nextComponentId)
+	    				$rootScope.nextComponentId = component.getId();
+	    		}
 	    		
 	    		for(f in $rootScope.houses[h].getFloors())
 	    		{
@@ -52,6 +60,14 @@ app.controller('MainController',
 	    				
 	    				if(room.getId() > $rootScope.nextRoomId)
 	    					$rootScope.nextRoomId = room.getId();
+	    				
+	    				for(c in room.getComponents())
+	    	    		{
+	    	    			var component = room.getComponents()[c];
+	    	    			if(component.getId() > $rootScope.nextComponentId)
+	    	    				$rootScope.nextComponentId = component.getId();
+	    	    		}
+	    				
 	    			}
 	    		}
 	    	}
@@ -61,10 +77,7 @@ app.controller('MainController',
 	    };
 	    
 		$scope.setNextIds();
-		console.log("houseid"+$rootScope.nextHouseId);
-		console.log("floorid"+$rootScope.nextFloorId);
-		console.log("roomid"+$rootScope.nextRoomId);
-	    
+
 	    
 	    $scope.selectHouse = function($houseIdx) {
 	    	

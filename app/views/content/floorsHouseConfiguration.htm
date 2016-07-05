@@ -1,17 +1,17 @@
 <div>
-	<div class="row row-centered"
+	<div class="row"
 		ng-show="!$state.includes('houseconfiguration.floors.editFloor.*') && !$state.includes('houseconfiguration.floors.addFloor')">
-		<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Etagen</h1>
+		<h1 class="col-md-10 col-lg-10 col-xs-10 col-sm-10">Etagen</h1>
 		<div dragula='"first-bag"'
 			dragula-model="houses[houseIndex].getFloors()">
 			<div ng-repeat="floor in houses[houseIndex].getFloors()"
-				class="col-md-3 col-sm-3 col-xs-11 card drag" style="margin-left: 15px;height:110px;"
+				class="col-md-3 col-sm-3 col-lg-3 col-xs-10 card drag"style="height:110px;margin-left:15px"
 				ng-class="{'not-configured': deleted}">
 				<div style="height:40px;"
 					class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
 					<button class="room-config-btn btn-primary col-lg-5" style="z-index:3000;"
 						ng-click="editRooms()" aria-label="Etage konfigurieren">
-						<i class="fa fa-wrench"></i>R&auml;ume
+						<i class="fa fa-wrench" style="width:30px;"></i>R&auml;ume
 					</button>
 					<button class="edit-btn btn-primary class" style="z-index:3000;"
 						ng-click="editFloor(floor.getId())" aria-label="Etage löschen">
@@ -27,12 +27,13 @@
 					class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
 				<i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
 				</div>
-				<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center" style="padding:0px;margin-top:10px;">
+				<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center" style="margin-top:10px;padding:0px;">
 				<span class="card-name-settings">{{floor.getName()}}</span>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-11 add-card" style="height: 100px;margin-left:15px;">
+		<div class="col-md-3 col-sm-3 col-xs-10 add-card col-lg-3"
+			style="height: 100px; margin-left: 15px;">
 			<button class="add-btn" ng-click="addFloor()" aria-label="Etage hinzufügen">
 				<i class="fa fa-plus fa-3x" aria-hidden="true"></i>
 			</button>

@@ -122,11 +122,11 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Heizung");
-	fillComponents(cat,[["Heizung",32,[23,null,null,null]]]);
+	fillComponents(cat,[["Heizung",32,[23,0,{start:0,end:0,times:[[{start: '10:00', end: '13:00', temp: '20'}],[],[],[],[],[],[]]},{start:0,end:0,times:[[],[],[],[],[],[],[]]}]]]);
 	cats.push(cat);
 	increaseId();
 	
-    var cat = new Mod_Category();
+	var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Sicherheit");
 	fillComponents(cat,[["Alarmanlage",33,[0]],
@@ -161,7 +161,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     function getComponentById(id) {
 	for(var cat in cats) {
 	    for(var comp in cats[cat].getComponents()) {
-		if(cats[cat].getComponents()[comp].getId() === id) {
+		if(cats[cat].getComponents()[comp].getComponentId() === id) {
 		    return cats[cat].getComponents()[comp];
 		}
 	    }
@@ -171,7 +171,8 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     function fillComponents(cat,comp_arr) {
 	for(var i in comp_arr) {
 	    var comp = new Mod_Component();
-	    comp.setId(getNextId());
+	    comp.setComponentId(getNextId());
+	    comp.setId(-1);
 	    comp.setName(comp_arr[i][0]);
 	    comp.setType(comp_arr[i][1]);
 	    comp.setSettings(comp_arr[i][2]);
@@ -191,8 +192,8 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     function increaseId() {
 	//1xxx per cat
 	//xYYY per comp
-	id = base_id*1000;
 	base_id++;
+	id = base_id*1000;
     }
     
     return {

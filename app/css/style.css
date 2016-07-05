@@ -1,5 +1,5 @@
 @import url("animations.css");
-
+@import url("icons.css");
 body
 {
 	background-color: #E8E8E8;
@@ -63,7 +63,7 @@ option {
     color: #FFFFFF;
     background-color: #1A237E;
     border-color: #CCCCCC;
-    min-width: 119px;
+    min-width: 90px;
 }
 
 
@@ -189,7 +189,7 @@ option {
 	font-size:11pt;
 }
 
-#userNameLabel, #iconLabel,#passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
+#userNameLabel, #floorLabel,#endLabel, #startLabel, #cityLabel, #iconLabel,#passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
 {
 	text-align:left;
 }
@@ -477,13 +477,13 @@ input.cmn-toggle-round:checked + label:after {
  * note that styling gu-mirror directly is a bad practice because it's too generic.
  * you're better off giving the draggable elements a unique class and styling that directly!
  */
-.container div,
+/*.container div,
 .gu-mirror {
   margin: 10px;
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.2);
   transition: opacity 0.4s ease-in-out;
-}
+}*/
 
 .gu-mirror {
   cursor: grabbing;
@@ -568,10 +568,10 @@ input.cmn-toggle-round:checked + label:after {
   opacity: 0;
   padding: 0 10px;
 }
-.container {
+/*.container {
   width: 888px;
   height: 400px;
-}
+}*/
 
 /* Axis */
 .chart .axis > path,
@@ -794,4 +794,9 @@ input.cmn-toggle-round:checked + label:after {
     border-radius: .25em;
 }
 
+@media (max-width: 760px) {
+	.col-xs-offset{
+		margin-left:4%;
+	}	
+}
 

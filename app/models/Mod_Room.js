@@ -59,6 +59,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	};
 
 	this.addComponent = function(component) {
+		component.setRoom(this);
 	    if(!(component instanceof Mod_Component)) {
 		throw new TypeError();
 	    }
@@ -301,15 +302,15 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 				for(var d in response.dataset)
 				{
 					var name = "series_"+cnt;
-					if(response.dataset[d].x <= new Date())
-					{
+					//if(response.dataset[d].x <= new Date())
+					//{
 					if(typ === "year")
 						response.dataset[d][name] = Math.round(Math.random() * (125 - 120) + 120);
 					else if(typ === "month")
 						response.dataset[d][name] = Math.round((Math.random() * (4 - 3.5) + 3.5)*100)/100;
 					else if(typ === "day")
 						response.dataset[d][name] = Math.round((Math.random() * (170 - 150) + 150)*100)/100;
-					}
+					//}
 					
 				}
 				response.label.push(this.getComponents()[c].getName());
@@ -348,5 +349,15 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 		}
 		return response;
 	};
+	
+	this.getComponentById = function(componentId) {
+		
+		for(var c in this.getComponents())
+		{
+			if(this.getComponents()[r].getId() == componentId)
+				return this.getComponents[c];
+		}
+		return undefined;
+	}
 
 }

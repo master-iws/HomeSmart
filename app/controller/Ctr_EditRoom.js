@@ -16,9 +16,10 @@ app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$statePa
 	$scope.save = function() {
 		
 		vibrator.vibrate(10);
-		$rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId) = $scope.room;
+		$scope.floorIdx = $scope.houses[$rootScope.houseIndex].getFloors().indexOf($scope.room.getFloor());
+		$scope.roomIdx = $rootScope.houses[$rootScope.houseIndex].getFloors()[$scope.floorIdx].getRooms().indexOf($scope.originalRoom);
+		$rootScope.houses[$rootScope.houseIndex].getFloors()[$scope.floorIdx].getRooms()[$scope.roomIdx] = $scope.room;
 		mainService.saveHouses($rootScope.houses);
-		//$rootScope.houses[$rootScope.houseIdx].floors[$stateParams.floorId] = $scope.room;
 		$state.go("houseconfiguration.rooms");
     };
     
@@ -26,5 +27,19 @@ app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$statePa
     	vibrator.vibrate(10);
     	 
     };
+    
+    $scope.addComponent = function() {
+		$state.go("houseconfiguration.rooms.addComponent",{roomId:$scope.roomId});
+   };
+   
+   $scope.editComponent = function($id) {
+		$state.go("houseconfiguration.rooms.editComponent",{componentId:$id});
+  };
+  
+  $scope.deleteComponent = function($idx) {
+	  $scope.originalRoom.getComponents().splice($idx,1);
+		mainService.saveHouses($rootScope.houses);
+	    
+};
    
 }]);

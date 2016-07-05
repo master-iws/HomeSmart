@@ -1,32 +1,29 @@
-<div>
-	<div class="row row-centered"
-		ng-show="!$state.includes('houseconfiguration.dashboard.editQuicklink.*') && !$state.includes('houseconfiguration.dashboard.addQuicklink') &&
+
+<div class="row"
+	ng-show="!$state.includes('houseconfiguration.dashboard.editQuicklink.*') && !$state.includes('houseconfiguration.dashboard.addQuicklink') &&
 	!$state.includes('houseconfiguration.dashboard.addControl') && !$state.includes('houseconfiguration.dashboard.editControl.*')">
 
-		<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Dashboard</h1>
+	<h1 class="col-md-10 col-lg-10 col-xs-10 col-sm-10">Dashboard</h1>
 
-		<h2 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Quick Links</h2>
-		<div
-			ng-repeat="quicklink in houses[houseIndex].getDashboard().quicklinks track by $index"
-			ng-click="showQuicklink($index)" style="margin-left: 15px;"
-			class="col-lg-2 col-md-2 col-sm-2 col-xs-4 card click text-center center-block">
+	<h2 class="col-md-10 col-lg-10 col-xs-10 col-sm-10">Quick Links</h2>
+	<div
+		ng-repeat="quicklink in houses[houseIndex].getDashboard().quicklinks track by $index"
+		ng-click="showQuicklink($index)" style="margin-left: 15px;"
+		class="col-lg-2 col-md-2 col-sm-2 col-xs-4 card click text-center center-block">
 
-			<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
-				style="padding: 0px; margin-top: 40px;">
-				<span class="card-name-settings">{{quicklink.typ.name}}</span>
-			</div>
-
+		<div class="col-md-12 col-xs-11 col-sm-12 col-lg-12 text-center"
+			style="padding: 0px; margin-top: 40px;">
+			<span class="card-name-settings">{{quicklink.typ.name}}</span>
 		</div>
 
-		<h2 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Funktionseinheiten</h2>
-		<div ng-repeat="control in houses[houseIndex].getDashboard().controls"
-			class="col-md-6 col-sm-6 col-xs-11 card" style="height: 50px;">
-			<div class="col-md-12 col-xs-11 col-sm-12">
-				<div class="col-md-7" style="margin-top: 5px;">
-					<span class="card-name-settings col-md-offset-2">{{control.name}}</span>
-				</div>
-			</div>
-		</div>
+	</div>
+
+	<h2 class="col-md-10 col-lg-10 col-xs-10 col-sm-10">Funktionseinheiten</h2>
+
+	 <div
+		ng-repeat="control in controls"
+		class="col-md-11 col-sm-11 col-lg-11  col-lg-offset-1 col-xs-offset col-xs-10">
+		<div comp-factory component="control"></div>
 	</div>
 	<div ui-view="DashboardConfigurationContent"></div>
 </div>
