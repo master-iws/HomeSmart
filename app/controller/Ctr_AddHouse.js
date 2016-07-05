@@ -2,20 +2,20 @@
 
 app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, mainService,vibrator) {
-	$scope.cities = ["Berlin",
-                     "München",
-                     "Hamburg",
-                     "Köln",
-                     "Frankfurt am Main",
-                     "Stuttgart",
-                     "Düsseldorf",
-                     "Dortmund",
-                     "Essen",
-                     "Bremen",
-                     "Dresden",
-                     "Leipzig",
-                     "Hannover"
-                     ,"Naila"];
+	$scope.cities = ["10115 Berlin","10117 Berlin","10178 Berlin",
+                     "80335 München",
+                     "80336 München",
+                     "80337 München",
+                     "80469 München",
+                     "21035 Hamburg",
+                     "21037 Hamburg",
+                     "22113 Hamburg",
+                     "50667 Köln",
+                     "50668 Köln",
+                     "60308 Frankfurt am Main",
+                     "70173 Stuttgart",
+                     "40210 Düsseldorf",
+                     "28195 Bremen"];
 	
 	
 	

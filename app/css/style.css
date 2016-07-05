@@ -188,7 +188,7 @@ option {
 	font-size:11pt;
 }
 
-#userNameLabel, #floorLabel,#endLabel, #startLabel, #cityLabel, #iconLabel,#passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
+#userNameLabel, #descriptionLabel, #floorLabel,#endLabel, #startLabel, #cityLabel, #iconLabel,#passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
 {
 	text-align:left;
 }
@@ -792,3 +792,11 @@ input.cmn-toggle-round:checked + label:after {
 	}	
 }
 
+.checkboxSwitch {
+  background-image: url('app/icons/unchecked_checkbox-16.png') ! important;
+  background-repeat: no-repeat ! important;
+  background-position: right center ! important;
+}
+a.active.checkboxSwitch {
+  background-image: url('app/icons/checked_checkbox-16.png') ! important;
+}
