@@ -15,7 +15,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	cat.setId(getNextId());
 	cat.setName("Garten");
 	fillComponents(cat,[["Rasenroboter",6,[0,0,0]],
-			    ["Zisterne",5,[0]],
+			    ["Zisterne",5,[3]],
 			    ["Sprenkelanlage",7,[0,0,0]]]);
 	cats.push(cat);
 	increaseId();
@@ -53,7 +53,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	cat.setName("Heimkino");
 	fillComponents(cat,[["Beamer",19,[1,1]],
 			    ["TV",18,[0,0,0]],
-			    ["Leinwand",20,[0]]]);
+			    ["Leinwand",20,[5]]]);
 	cats.push(cat);
 	increaseId();
 	
