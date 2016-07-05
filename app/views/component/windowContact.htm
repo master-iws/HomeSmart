@@ -4,6 +4,10 @@
 		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
 			<span class="component-name">{{componentName}}</span>
 		</div>
+		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="margin-top: 12px;">
+			<span class="component-text" id="statusOpen-{{componentId}}"><i class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Fenster geöffnet</span>
+			<span class="component-text" id="statusClose-{{componentId}}"><i class="fa fa-warning fa-lg fa-2x text-success"></i>&nbsp;&nbsp;Fenster geschlossen</span>
+		</div>
 	</div>
 	<button ng-click="configureComponent($index)"
 	        class="btn-primary settings-btn">

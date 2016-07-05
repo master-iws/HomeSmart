@@ -24,10 +24,10 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	cat.setId(getNextId());
 	cat.setName("Haushaltsgeräte");
 	fillComponents(cat,[["Kaffeemaschine",8,[1,2,4]],
-			    ["Herd",9,[1,3,200,40]],
+			    ["Herd",9,[1,3,200,40,20]],
 			    ["Spülmaschine",10,[1,2,40]],
 			    ["Kühlschrank",11,[8]],
-			    ["Waschmaschine",12,[0,0,0]],
+			    ["Waschmaschine",12,[1,1,60,30]],
 			    ["Wäschetrockner",13,[1,1,35]]]);
 	cats.push(cat);
 	increaseId();
@@ -52,7 +52,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	cat.setId(getNextId());
 	cat.setName("Heimkino");
 	fillComponents(cat,[["Beamer",19,[1,1]],
-			    ["TV",18,[0,0,0]],
+			    ["TV",18,[1,20,3]],
 			    ["Leinwand",20,[5]]]);
 	cats.push(cat);
 	increaseId();
@@ -90,7 +90,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	cat.setId(getNextId());
 	cat.setName("Fenster, Türen & Tore");
 	fillComponents(cat,[["Garagentor",35,[4]],
-			    ["Fensterkontakt",36,[0]],
+			    ["Fensterkontakt",36,[1]],
 			    ["Haustür",37,[0,0]],
 			    ["Beschattung",38,[5]]]);
 	cats.push(cat);
@@ -130,7 +130,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	cat.setId(getNextId());
 	cat.setName("Sicherheit");
 	fillComponents(cat,[["Alarmanlage",33,[0]],
-			    ["Rauchmelder",34,[0,0]]]);
+			    ["Rauchmelder",34,[1,2]]]);
 	cats.push(cat);
 	increaseId();
 

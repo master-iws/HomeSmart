@@ -10,8 +10,8 @@ app.directive('compOven', function($timeout) {
 
 			if ((scope.component.getSetSettings()[0] == true) || (scope.component.getSetSettings()[0] == 1)) {
 
-				if(scope.component.getSetSettings()[3] > 0) {
-					$('#timeLeft-' + scope.componentId).html('<i class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Verbleibende Zeit:&nbsp;&nbsp;' + scope.component.getSetSettings()[3] + '&nbsp;Minuten').show();
+				if(scope.component.getSetSettings()[4] > 0) {
+					$('#timeLeft-' + scope.componentId).html('<i class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Verbleibende Zeit:&nbsp;&nbsp;' + scope.component.getSetSettings()[4] + '&nbsp;Minuten').show();
 					$('#start-' + scope.componentId).prop('disabled', true);
 					$('#select-' + scope.componentId).prop('disabled', true);
 					$('#stop-' + scope.componentId).prop('disabled', false);
@@ -54,7 +54,8 @@ app.directive('compOven', function($timeout) {
 			});
 
 			$scope.start = function() {
-				$('#timeLeft-' + $scope.componentId).html('<i class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Verbleibende Zeit:&nbsp;&nbsp;' + $scope.component.getSetSettings()[3] + '&nbsp;Minuten').show();
+				$scope.component.getSetSettings()[4] = $scope.component.getSetSettings()[3];
+				$('#timeLeft-' + $scope.componentId).html('<i class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Verbleibende Zeit:&nbsp;&nbsp;' + $scope.component.getSetSettings()[4] + '&nbsp;Minuten').show();
 				$('#start-' + $scope.componentId).prop('disabled', true);
 				$('#select-' + $scope.componentId).prop('disabled', true);
 				$('#stop-' + $scope.componentId).prop('disabled', false);
