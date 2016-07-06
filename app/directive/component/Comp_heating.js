@@ -13,6 +13,12 @@ app.directive('compHeating', function() {
 		},
 		transclude: true,
 		templateUrl: 'app/views/component/heating.htm',
-		link: link
+		link: link,
+		controller: ['$scope', '$state', function($scope, $state) {
+
+			$scope.configureComponent = function () {
+				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
+			};
+		}]
 	};
 });

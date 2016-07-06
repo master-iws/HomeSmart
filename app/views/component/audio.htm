@@ -1,0 +1,41 @@
+<div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 card-name"
+		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+			<span class="component-name">{{componentName}}</span>
+		</div>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<select style="width: 120px;" id="selectType-{{componentId}}" ng-change="selectType()" ng-model="component.getSetSettings()[1]" ng-options="types.indexOf(t) as t for t in types"></select>
+	</div>
+	<div class="row" style="margin-bottom: 10px;" id="selectAlbum-{{componentId}}">
+		<select style="width: 120px;" ng-model="component.getSetSettings()[3]" ng-change="selectAlbum()" ng-options="albums.indexOf(a) as a for a in albums"></select>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<button class="btn btn-primary" ng-click="previousAudio()"><i class="fa fa-fast-backward"></i></button>
+		<select style="width: 120px;" id="selectRadio-{{componentId}}" ng-model="component.getSetSettings()[2]" ng-options="radios.indexOf(r) as r for r in radios"></select>
+		<select style="width: 120px;" id="selectSong-{{componentId}}" ng-change="selectSong()" ng-model="component.getSetSettings()[4]" ng-options="songs[component.getSetSettings()[3]].indexOf(s) as s for s in songs[component.getSetSettings()[3]]"></select>
+		<button class="btn btn-primary" ng-click="nextAudio()"><i class="fa fa-fast-forward"></i> </button>
+	</div>
+	<div class="row" style="margin-bottom: 10px;" id="songLength-{{componentId}}">
+		<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
+			<button class="btn btn-primary" id="playPauseButton-{{componentId}}" ng-click="playPause()"><i id="iconPlayPause-{{componentId}}" class="fa fa-play"></i> </button>
+		</div>
+		<div class="col-md-5 col-lg-5 col-xs-5 col-sm-5" style="margin-left: 12px;">
+			<slider
+					ng-model="component.getSettings()[5]"
+					min="0"
+					max="180"
+					step="1"
+					tooltip="hide">
+			</slider>
+		</div>
+		<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2" style="margin-left: 0px;">
+			<span id="time-{{componentId}}" class="component-text"></span>
+		</div>
+	</div>
+	<button ng-click="configureComponent(componentId)"
+	        class="btn btn-primary settings-btn">
+		<i class="fa fa-wrench" aria-hidden="true"></i>
+	</button>
+</div>

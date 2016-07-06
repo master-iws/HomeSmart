@@ -115,7 +115,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Multi Room Audio");
-	fillComponents(cat,[["Multi Room Audio",39,[0]]]);
+	fillComponents(cat,[["Multi Room Audio",39,[1,1,1,1,2,30,20]]]);
 	cats.push(cat);
 	increaseId();
 	

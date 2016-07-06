@@ -121,12 +121,10 @@ app.directive('compFactory', function($compile) {
 				componentName = "shading";
 				break;
 			case 39:
-				componentName = "multi-room-audio";
+				componentName = "audio";
 				break;
 
 		}
-
-		// return '<comp-' + componentName + ' component="component"></comp-' + componentName + ">";
 		return "comp-" + componentName;
 	}
 
