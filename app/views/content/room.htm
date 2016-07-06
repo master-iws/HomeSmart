@@ -30,49 +30,11 @@
 		     style="padding: 0px;">
 			<div class="col-md-12 col-xs-12 col-sm-12 col-xs-12 col-lg-12">
 				<h2>{{category}}</h2>
-				<!--<toggle-switch
-						ng-model="switchStatus" on-label="Ein"
-						off-label="Aus" style="height: 30px;">
-				</toggle-switch>
-				<input colorpicker type="text" />
-				<slider
-						ng-model="switchStatus"
-				        value="14"
-				        min="1"
-				        max="100"
-				        step="1"
-				>
-					If you can see this then slider did not get compiled by Angular.
-					Check that all necessary files are included, did you run "bower install"?
-				</slider>-->
 			</div>
 			<div ng-repeat="component in components"
 					class="col-md-11 col-sm-11 col-lg-11 col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-12">
 				<div comp-factory component="component"></div>
-				<!--<comp-front-door component="component"></comp-front-door>-->
 				<div class="col-md-11 col-sm-11 col-lg-11 col-xs-12"></div>
-				<!--<comp-bathtub component="{id: '2', name: 'Fenster'}"></comp-bathtub>-->
-				<!--<div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
-					<div class="row" style="margin-bottom: 10px;">
-						<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2 card-name"
-						     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-							<span class="card-name">Garage</span>
-						</div>
-						<div class="col-md-9 col-lg-9 col-xs-11 col-sm-9" style="margin-top: 15px;">
-
-							<span class="component-text">Beschattung:&nbsp;</span>
-							<button class="btn btn-primary"><i class="fa fa-arrow-down"></i> </button>
-							<button class="btn btn-primary"><i class="fa fa-square"></i> </button>
-							<button class="btn btn-primary"><i class="fa fa-arrow-up"></i> </button>
-							<span class="component-text">&nbsp;&nbsp;&nbsp;Status:&nbsp;</span>
-							<div class="garage" data-index="9" style="height: 16px; width: 16px;"></div>
-						</div>
-					</div>
-					<button ng-click="configureComponent($index)"
-					        class="btn-primary settings-btn">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-					</button>-->
-				</div>
 			</div>
 			<div class="col-md-11 col-sm-11 col-lg-11 col-xs-12" style="margin-bottom: 20px;"></div>
 		</div>
