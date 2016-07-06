@@ -233,7 +233,7 @@ app.config(
 			authenticate: true,
 			adminArea: false,
 			resolve: {
-				$title: function() { return 'Kategorien'; }
+				$title: function() { return 'Wetter'; }
 			},
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
