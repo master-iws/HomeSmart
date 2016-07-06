@@ -76,13 +76,13 @@ app.directive('compAudio', function($timeout, $interval) {
 		link: link,
 		controller: ['$scope', '$state', function($scope, $state) {
 
-			startInterval = function() {
+			$scope.startInterfal = function() {
 				$scope.timeoutId = $interval(function() {
 					$scope.component.getSetSettings()[5]++;
 				}, 1000);
 			};
 
-			stopInterval = function() {
+			$scope.stopInterval = function() {
 				$interval.cancel($scope.timeoutId);
 			};
 
@@ -97,7 +97,7 @@ app.directive('compAudio', function($timeout, $interval) {
 					$('#songLength-' + $scope.componentId).hide();
 					$('#selectRadio-' + $scope.componentId).show();
 				} else {
-					stopInterval();
+					$scope.stopInterval();
 					$('#iconPlayPause-' + $scope.componentId).removeClass("fa-pause").addClass("fa-play");
 					$('#playPauseButton-' + $scope.componentId).removeClass("btn-success").addClass("btn-primary");
 					$('#selectAlbum-' + $scope.componentId).show();
@@ -171,10 +171,10 @@ app.directive('compAudio', function($timeout, $interval) {
 
 			$scope.selectType = function () {
 				if($scope.component.getSetSettings()[1] == 0) {
-					stopInterval();
+					$scope.stopInterval();
 				} else {
 					if($scope.component.getSetSettings()[0] == 1) {
-						startInterval();
+						$scope.startInterfal();
 					}
 				}
 				$scope.updateTitlePlayed();
@@ -195,11 +195,11 @@ app.directive('compAudio', function($timeout, $interval) {
 			$scope.playPause = function(){
 				if($scope.component.getSetSettings()[0] == 0) {
 					$scope.component.getSetSettings()[0] = 1;
-					startInterval();
+					$scope.startInterfal();
 					$('#iconPlayPause-' + $scope.componentId).removeClass("fa-play").addClass("fa-pause");
 					$('#playPauseButton-' + $scope.componentId).removeClass("btn-primary").addClass("btn-success");
 				} else {
-					stopInterval();
+					$scope.stopInterval();
 					$scope.component.getSetSettings()[0] = 0;
 					$('#iconPlayPause-' + $scope.componentId).removeClass("fa-pause").addClass("fa-play");
 					$('#playPauseButton-' + $scope.componentId).removeClass("btn-success").addClass("btn-primary");

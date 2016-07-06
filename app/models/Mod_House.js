@@ -67,7 +67,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 				return rooms[r];
 		}
 		return undefined;
-	}
+	};
 	
 	this.getComponentById = function(componentId) {
 		
@@ -303,7 +303,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	 */
 	this.getUsedCategorys= function () {
 		  
-		var categorys = []
+		var categorys = [];
 	    for (var f in _floors) {
 	    	var rooms = _floors[f].getRooms();
 	    	for(var r in rooms)
@@ -327,6 +327,82 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    return categorys;
 	
 	};
+
+    /**
+     * @author Matthias Jakob
+     */
+    this.getAllCategories = function() {
+	    var categories = [];
+	    var floors = this.getFloors();
+	    for (var f in floors) {
+		    var rooms = floors[f].getRooms();
+		    for(var r in rooms)
+		    {
+			    var components = rooms[r].getComponents();
+			    for(var c in components)
+			    {
+				    if(categories.indexOf(components[c].getCategory()) == -1) {
+					    categories.push(components[c].getCategory());
+				    }
+			    }
+		    }
+	    }
+	    return categories;
+    };
+
+    /**
+     * @author Matthias Jakob
+     */
+    this.getAllComponentsByCategorySortByRoom = function(categoryId) {
+	    var allComponents = {};
+	    var floors = this.getFloors();
+	    for (var f in floors) {
+		    var rooms = floors[f].getRooms();
+		    for(var r in rooms)
+		    {
+			    var components = rooms[r].getComponents();
+			    for(var c in components)
+			    {
+				    if(components[c].getCategory().getId() == categoryId) {
+					   /* if (allComponents.indexOf(components[c].getRoom().getName()) == -1) {
+						    allComponents.push(components[c].getRoom().getName());
+					    }
+					    allComponents[components[c].getRoom().getName()].push(components[c]);*/
+					    var roomName = components[c].getRoom().getName();
+					    if(!allComponents.hasOwnProperty(roomName)) {
+						    allComponents[roomName] = [];
+					    }
+					    allComponents[roomName].push(components[c]);
+				    }
+			    }
+		    }
+	    }
+	    var houseComponents = this.getComponents();
+	    for(var ch in houseComponents)
+	    {
+		    if(houseComponents[ch].getCategory().getId() == categoryId) {
+			    if(!allComponents.hasOwnProperty('Haus')) {
+				    allComponents['Haus'] = [];
+			    }
+			    allComponents['Haus'].push(houseComponents[ch]);
+		    }
+	    }
+	    return allComponents;
+    };
+	    
+    /**
+     * @author Matthias Jakob
+     */
+    this.getCategoryById = function(categoryId) {
+	    var categories = this.getAllCategories();
+
+	    for(var c in categories)
+	    {
+		    if(categories[c].getId() == categoryId)
+			    return categories[c];
+	    }
+	    return undefined;
+    };
 	
 	/**
 	 * @author Julia Thüroff

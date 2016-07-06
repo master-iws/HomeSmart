@@ -228,6 +228,21 @@ app.config(
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/categorys.htm",controller: 'CategorysController'}
 			}
+		}).state("categorys.detail", {
+			url: "/:categoryId",
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: ['$stateParams','$rootScope', function($stateParams,$rootScope) {
+					// var name = $rootScope.houses[$rootScope.houseIndex].getRoomById($stateParams.roomId).getName();
+					return "Kategorie: " + 1;
+				}]
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"DetailsContent": { templateUrl: "app/views/content/category.htm", controller: 'CategoryController'}
+			}
 		}).state("weather", {
 			url: "/weather",
 			authenticate: true,

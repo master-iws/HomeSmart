@@ -36,7 +36,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	cat.setId(getNextId());
 	cat.setName("Wellness");
 	fillComponents(cat,[["Badewanne",14,[1,20,35,1]],
-			    ["Pool",15,[20,28,10,0]],
+			    ["Pool",15,[1,20,28,10,0]],
 			    ["Sauna",16,[1,20,60,40,80]]]);
 	cats.push(cat);
 	increaseId();

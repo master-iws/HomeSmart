@@ -4,6 +4,15 @@
 		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
 			<span class="component-name">{{componentName}}</span>
 		</div>
+		<div class="col-md-2 col-lg-2 col-xs-4 col-sm-2">
+			<toggle-switch
+					ng-model="component.getSetSettings()[0]"
+					ng-model-options="{getterSetter: true }"
+					on-label="Ein"
+					off-label="Aus"
+					style="height: 30px; margin-top: 10px;">
+			</toggle-switch>
+		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
 		<div class="col-md-6 col-lg-4 col-xs-8 col-sm-7" style="margin-top: 15px;">
@@ -14,7 +23,7 @@
 			<span class="component-text">&nbsp;&nbsp;&nbsp;Status:&nbsp;</span>
 			<!--<div class="btn btn-primary"><i class="shutters" data-index="5"></i></div>-->
 		</div>
-		<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1 pool" id="icon-{{componentId}}" data-index="{{component.getSetSettings()[2]}}" style="height: 25px; width: 25px; margin-top: 13px; margin-left:-10px;"></div>
+		<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1 pool" id="icon-{{componentId}}" data-index="{{component.getSetSettings()[3]}}" style="height: 25px; width: 25px; margin-top: 13px; margin-left:-10px;"></div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
 		<div class="col-md-7 col-lg-7 col-xs-11 col-sm-7" style="margin-top: 15px; padding: 0;">
@@ -24,7 +33,7 @@
 			<div class="col-md-5 col-lg-5 col-xs-4 col-sm-5">
 				<span slider
 				      id="slider-{{componentId}}"
-				      ng-model="component.getSetSettings()[1]"
+				      ng-model="component.getSetSettings()[2]"
 				      min="15"
 				      max="40"
 				      step="1"
@@ -32,11 +41,11 @@
 				></span>
 			</div>
 			<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
-				<span id="ist-temp-{{componentId}}" class="component-text">&nbsp;&nbsp;{{component.getSetSettings()[1]}}&nbsp;°C</span>
+				<span id="ist-temp-{{componentId}}" class="component-text">&nbsp;&nbsp;{{component.getSetSettings()[2]}}&nbsp;°C</span>
 			</div>
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-11 col-sm-2" style="margin-top: 15px;">
-			<span class="component-text">Ist Temperatur:&nbsp;&nbsp;{{component.getSetSettings()[0]}}&nbsp;°C</span>
+			<span class="component-text">Ist Temperatur:&nbsp;&nbsp;{{component.getSetSettings()[1]}}&nbsp;°C</span>
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
@@ -47,7 +56,7 @@
 			<div class="col-md-5 col-lg-5 col-xs-4 col-sm-5">
 				<span slider
 				      id="slider2-{{componentId}}"
-				      ng-model="component.getSetSettings()[3]"
+				      ng-model="component.getSetSettings()[4]"
 				      min="0"
 				      max="100"
 				      step="1"
@@ -55,7 +64,7 @@
 				></span>
 			</div>
 			<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
-				<span id="ist-percent-{{componentId}}" class="component-text">&nbsp;&nbsp;{{component.getSetSettings()[3]}}&nbsp;%</span>
+				<span id="ist-percent-{{componentId}}" class="component-text">&nbsp;&nbsp;{{component.getSetSettings()[4]}}&nbsp;%</span>
 			</div>
 		</div>
 	</div>

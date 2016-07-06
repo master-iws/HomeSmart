@@ -4,7 +4,7 @@ app.directive('compGarage', function($interval) {
 
 		scope.componentId = scope.component.getId();
 		scope.componentName = scope.component.getName();
-		
+		scope.timeoutId = null;
 	}
 
 	return {
@@ -15,38 +15,37 @@ app.directive('compGarage', function($interval) {
 		templateUrl: 'app/views/component/garage.htm',
 		link: link,
 		controller: ['$scope', '$state', function($scope, $state) {
-			var timeoutId;
 
 			$scope.configureComponent = function () {
 				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
 			};
 
 			$scope.down = function() {
-				$interval.cancel(timeoutId);
+				$interval.cancel($scope.timeoutId);
 				var index = $scope.component.getSetSettings()[0];
-				timeoutId = $interval(function() {
+				$scope.timeoutId = $interval(function() {
 					if(index <= 10) {
 						$scope.component.getSetSettings()[0] = index++;
 					} else {
-						$interval.cancel(timeoutId);
+						$interval.cancel($scope.timeoutId);
 					}
 				}, 1000);
 			};
 
 			$scope.up = function() {
-				$interval.cancel(timeoutId);
+				$interval.cancel($scope.timeoutId);
 				var index = $scope.component.getSetSettings()[0];
-				timeoutId = $interval(function () {
+				$scope.timeoutId = $interval(function () {
 					if (index >= 0) {
 						$scope.component.getSetSettings()[0] = index--;
 					} else {
-						$interval.cancel(timeoutId);
+						$interval.cancel($scope.timeoutId);
 					}
 				}, 1000);
 			};
 
 			$scope.stop = function() {
-				$interval.cancel(timeoutId);
+				$interval.cancel($scope.timeoutId);
 			};
 
 		}]
