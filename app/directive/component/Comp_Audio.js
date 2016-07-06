@@ -3,8 +3,11 @@ app.directive('compAudio', function($timeout, $interval) {
 	function link(scope, element, attrs) {
 
 		scope.timeoutId = null;
+		scope.isOpenAccordion = false;
+		scope.titlePlayed = "";
 		scope.componentId = scope.component.getId();
 		scope.componentName = scope.component.getName();
+		scope.volume = scope.component.getSetSettings()[6];
 		scope.types = ["Radio", "Datei"];
 		scope.albums = ["Album 1", "Album 2", "Album 3"];
 		scope.radios = ["Radio 1", "Radio 2", "Radio 3", "Radio 4", "Radio 5"];
@@ -30,9 +33,16 @@ app.directive('compAudio', function($timeout, $interval) {
 
 			// Play pause button
 			if(scope.component.getSetSettings()[0] == 0) {
+				$('#statusInfo-' + scope.componentId).hide();
 				$('#iconPlayPause-' + scope.componentId).removeClass("fa-pause").addClass("fa-play");
 				$('#playPauseButton-' + scope.componentId).removeClass("btn-success").addClass("btn-primary");
 			} else {
+				if(scope.component.getSetSettings()[1] == 0) {
+					scope.titlePlayed = scope.radios[scope.component.getSetSettings()[2]];
+				} else {
+					scope.titlePlayed = scope.albums[scope.component.getSetSettings()[3]] + " : " + scope.songs[scope.component.getSetSettings()[3]][scope.component.getSetSettings()[4]];
+				}
+				$('#statusInfo-' + scope.componentId).html("Es läuft gerade: \"" + scope.titlePlayed + "\"");
 				$('#iconPlayPause-' + scope.componentId).removeClass("fa-play").addClass("fa-pause");
 				$('#playPauseButton-' + scope.componentId).removeClass("btn-primary").addClass("btn-success");
 
@@ -87,11 +97,15 @@ app.directive('compAudio', function($timeout, $interval) {
 					$('#songLength-' + $scope.componentId).hide();
 					$('#selectRadio-' + $scope.componentId).show();
 				} else {
+					stopInterval();
+					$('#iconPlayPause-' + $scope.componentId).removeClass("fa-pause").addClass("fa-play");
+					$('#playPauseButton-' + $scope.componentId).removeClass("btn-success").addClass("btn-primary");
 					$('#selectAlbum-' + $scope.componentId).show();
 					$('#selectSong-' + $scope.componentId).show();
 					$('#songLength-' + $scope.componentId).show();
 					$('#selectRadio-' + $scope.componentId).hide();
 				}
+				$scope.updateTitlePlayed();
 			});
 
 			// Time
@@ -128,6 +142,7 @@ app.directive('compAudio', function($timeout, $interval) {
 						}
 					}
 				}
+				$scope.updateTitlePlayed();
 			};
 
 			$scope.nextAudio = function () {
@@ -151,6 +166,7 @@ app.directive('compAudio', function($timeout, $interval) {
 						}
 					}
 				}
+				$scope.updateTitlePlayed();
 			};
 
 			$scope.selectType = function () {
@@ -161,15 +177,18 @@ app.directive('compAudio', function($timeout, $interval) {
 						startInterval();
 					}
 				}
+				$scope.updateTitlePlayed();
 			};
 
 			$scope.selectAlbum = function () {
 				$scope.component.getSetSettings()[5] = 0;
 				$scope.component.getSetSettings()[4] = 0;
+				$scope.updateTitlePlayed();
 			};
 
 			$scope.selectSong = function () {
 				$scope.component.getSetSettings()[5] = 0;
+				$scope.updateTitlePlayed();
 			};
 
 			// Play pause
@@ -184,6 +203,31 @@ app.directive('compAudio', function($timeout, $interval) {
 					$scope.component.getSetSettings()[0] = 0;
 					$('#iconPlayPause-' + $scope.componentId).removeClass("fa-pause").addClass("fa-play");
 					$('#playPauseButton-' + $scope.componentId).removeClass("btn-success").addClass("btn-primary");
+				}
+				$scope.updateTitlePlayed();
+			};
+
+			$scope.mute = function() {
+				if($scope.component.getSetSettings()[6] == 0) {
+					$("#mute-"+ $scope.componentId).css('background-color', 'white');
+					$scope.component.getSetSettings()[6] = $scope.volume;
+				} else {
+					$scope.volume = $scope.component.getSetSettings()[6];
+					$("#mute-"+ $scope.componentId).css('background-color', 'red');
+					$scope.component.getSetSettings()[6] = 0;
+				}
+			};
+
+			$scope.updateTitlePlayed = function() {
+				if($scope.component.getSetSettings()[0] == 0) {
+					$('#statusInfo-' + $scope.componentId).hide();
+				} else {
+					if($scope.component.getSetSettings()[1] == 0) {
+						$scope.titlePlayed = $scope.radios[$scope.component.getSetSettings()[2]];
+					} else {
+						$scope.titlePlayed = $scope.albums[$scope.component.getSetSettings()[3]] + " : " + $scope.songs[$scope.component.getSetSettings()[3]][$scope.component.getSetSettings()[4]];
+					}
+					$('#statusInfo-' + $scope.componentId).html("Es läuft gerade: \"" + $scope.titlePlayed + "\"").show();
 				}
 			};
 		}]

@@ -7,8 +7,8 @@ app.directive('compCoffeeMachine', function($timeout) {
 		scope.drinks = ['Kaffee', 'Cappuccino', 'Espresso', 'Milchkaffee'];
 
 		$timeout(function() {
-			$('#statusWait-' + $scope.componentId).hide();
-			$('#statusDone-' + $scope.componentId).hide();
+			$('#statusWait-' + scope.componentId).hide();
+			$('#statusDone-' + scope.componentId).hide();
 			if ((scope.component.getSetSettings()[0] == true) || (scope.component.getSetSettings()[0] == 1)) {
 				$('#start-' + scope.componentId).prop('disabled', false);
 				$('#select-' + scope.componentId).prop('disabled', false);

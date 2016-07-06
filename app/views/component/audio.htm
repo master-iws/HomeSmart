@@ -1,39 +1,84 @@
 <div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
-	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 card-name"
-		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-			<span class="component-name">{{componentName}}</span>
-		</div>
-	</div>
-	<div class="row" style="margin-bottom: 10px;">
-		<select style="width: 120px;" id="selectType-{{componentId}}" ng-change="selectType()" ng-model="component.getSetSettings()[1]" ng-options="types.indexOf(t) as t for t in types"></select>
-	</div>
-	<div class="row" style="margin-bottom: 10px;" id="selectAlbum-{{componentId}}">
-		<select style="width: 120px;" ng-model="component.getSetSettings()[3]" ng-change="selectAlbum()" ng-options="albums.indexOf(a) as a for a in albums"></select>
-	</div>
-	<div class="row" style="margin-bottom: 10px;">
-		<button class="btn btn-primary" ng-click="previousAudio()"><i class="fa fa-fast-backward"></i></button>
-		<select style="width: 120px;" id="selectRadio-{{componentId}}" ng-model="component.getSetSettings()[2]" ng-options="radios.indexOf(r) as r for r in radios"></select>
-		<select style="width: 120px;" id="selectSong-{{componentId}}" ng-change="selectSong()" ng-model="component.getSetSettings()[4]" ng-options="songs[component.getSetSettings()[3]].indexOf(s) as s for s in songs[component.getSetSettings()[3]]"></select>
-		<button class="btn btn-primary" ng-click="nextAudio()"><i class="fa fa-fast-forward"></i> </button>
-	</div>
-	<div class="row" style="margin-bottom: 10px;" id="songLength-{{componentId}}">
-		<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
-			<button class="btn btn-primary" id="playPauseButton-{{componentId}}" ng-click="playPause()"><i id="iconPlayPause-{{componentId}}" class="fa fa-play"></i> </button>
-		</div>
-		<div class="col-md-5 col-lg-5 col-xs-5 col-sm-5" style="margin-left: 12px;">
-			<slider
-					ng-model="component.getSettings()[5]"
-					min="0"
-					max="180"
-					step="1"
-					tooltip="hide">
-			</slider>
-		</div>
-		<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2" style="margin-left: 0px;">
-			<span id="time-{{componentId}}" class="component-text"></span>
-		</div>
-	</div>
+	<uib-accordion close-others="true">
+		<uib-accordion-group is-open="isOpenAccordion" panel-class="component">
+			<uib-accordion-heading>
+				<div class="row" style="margin-bottom: 10px;">
+					<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
+					     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+						<span class="component-name">{{componentName}}</span>
+					</div>
+					<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="margin-top: 12px;">
+						<span id="statusInfo-{{componentId}}" class="component-text"></span>
+					</div>
+				</div>
+				<i class="pull-right fa fa-2x component-text" style="margin-right: 45px; margin-top: -40px;" ng-class="{'fa-chevron-down': isOpenAccordion, 'fa-chevron-right': !isOpenAccordion}"></i>
+			</uib-accordion-heading>
+			<div class="row" style="margin-bottom: 10px;">
+				<div class="col-md-11 col-lg-6 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
+					<button class="btn btn-primary" id="playPauseButton-{{componentId}}" ng-click="playPause()"><i id="iconPlayPause-{{componentId}}" class="fa fa-play"></i> </button>
+				</div>
+			</div>
+			<div class="row" style="margin-bottom: 10px;">
+				<div class="col-md-11 col-lg-6 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
+					<select style="width: 120px;" id="selectType-{{componentId}}" ng-change="selectType()" ng-model="component.getSetSettings()[1]" ng-options="types.indexOf(t) as t for t in types"></select>
+				</div>
+			</div>
+			<div class="row" style="margin-bottom: 10px;" id="selectAlbum-{{componentId}}">
+				<div class="col-md-11 col-lg-6 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
+					<select style="width: 120px;" ng-model="component.getSetSettings()[3]" ng-change="selectAlbum()" ng-options="albums.indexOf(a) as a for a in albums"></select>
+				</div>
+			</div>
+			<div class="row" style="margin-bottom: 10px;">
+				<div class="col-md-11 col-lg-6 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
+					<button class="btn btn-primary" ng-click="previousAudio()"><i class="fa fa-fast-backward"></i></button>
+					<select style="width: 120px;" id="selectRadio-{{componentId}}" ng-model="component.getSetSettings()[2]" ng-options="radios.indexOf(r) as r for r in radios"></select>
+					<select style="width: 120px;" id="selectSong-{{componentId}}" ng-change="selectSong()" ng-model="component.getSetSettings()[4]" ng-options="songs[component.getSetSettings()[3]].indexOf(s) as s for s in songs[component.getSetSettings()[3]]"></select>
+					<button class="btn btn-primary" ng-click="nextAudio()"><i class="fa fa-fast-forward"></i> </button>
+				</div>
+			</div>
+			<div class="row" style="margin-bottom: 10px;" id="songLength-{{componentId}}">
+				<div class="col-md-11 col-lg-11 col-xs-11 col-sm-11" style="margin-top: 15px; padding: 0;">
+					<div class="col-md-5 col-lg-5 col-xs-7 col-sm-5">
+						<slider
+								ng-model="component.getSettings()[5]"
+								min="0"
+								max="180"
+								step="1"
+								tooltip="hide">
+						</slider>
+					</div>
+					<div class="col-md-2 col-lg-2 col-xs-3 col-sm-2" style="margin-left: 0px;">
+						<span id="time-{{componentId}}" class="component-text"></span>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-bottom: 10px;">
+				<div class="col-md-11 col-lg-11 col-xs-11 col-sm-11" style="margin-top: 15px; padding: 0;">
+					<div class="col-md-1 col-lg-1 col-xs-2 col-sm-1">
+						<span class="component-text">Lautstärke:&nbsp;&nbsp;</span>
+					</div>
+					<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1" style="margin-top: -5px;">
+						<button ng-click="mute()" class="btn btn-primary" id="mute-{{componentId}}">
+							<i id="iconVolumeOn" class="fa fa-volume-up"></i>
+						</button>
+					</div>
+					<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+				<span slider
+				      id="slider-{{componentId}}"
+				      ng-model="component.getSetSettings()[6]"
+				      min="1"
+				      max="50"
+				      step="1"
+				      tooltip="hide"
+				></span>
+					</div>
+					<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
+						<span class="component-text">&nbsp;&nbsp;{{component.getSetSettings()[6]}}</span>
+					</div>
+				</div>
+			</div>
+		</uib-accordion-group>
+	</uib-accordion>
 	<button ng-click="configureComponent(componentId)"
 	        class="btn btn-primary settings-btn">
 		<i class="fa fa-wrench" aria-hidden="true"></i>
