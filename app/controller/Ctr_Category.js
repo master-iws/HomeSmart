@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('CategoryController',["$scope", "$rootScope", "$state", "$stateParams","MainService",
-                                      function($scope, $rootScope, $state, $stateParams,mainService) {
+app.controller('CategoryController',["$scope", "$rootScope", "$state", "$stateParams","MainService", "shouldSwipe",
+                                      function($scope, $rootScope, $state, $stateParams,mainService, shouldSwipe) {
 
 	mainService.saveHouses($rootScope.houses);
 	
