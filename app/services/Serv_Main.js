@@ -111,14 +111,14 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.addComponent(c);
 		    var c = componentService.getNewComponentInstanceById(9002); //Fensterkontakt
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
-			c.setName("Fenster spüle");
+			c.setName("Fenster Spüle");
 		    room.addComponent(c);
 		    var c = componentService.getNewComponentInstanceById(9002); //Fensterkontakt
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Fenster Garten");
 		    var c = componentService.getNewComponentInstanceById(9004); //Beschattung
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
-			c.setName("Fenster spüle");
+			c.setName("Fenster Spüle");
 			//c.setRoom(room);
 		    room.addComponent(c);
 		    
@@ -142,21 +142,21 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Wasserkocher");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Kühlschrank");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Spülmaschine");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Kaffeemaschine");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
-			c.setName("Herd");
+			c.setName("Ofen");
 		    room.addComponent(c);
 		    var c = componentService.getNewComponentInstanceById(6003); //Wasserverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
@@ -229,11 +229,11 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Straßenfenster");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("TV");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Beamer");
 		    room.addComponent(c);
@@ -289,11 +289,11 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Fön");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Waschmaschine");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Wäschetrockner");
 		    room.addComponent(c);
@@ -307,11 +307,11 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.addComponent(c);
 		    var c = componentService.getNewComponentInstanceById(6003); //Wasserverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
-			c.setName("Waschbecken links");
+			c.setName("Waschbecken Links");
 		    room.addComponent(c);
 		    var c = componentService.getNewComponentInstanceById(6003); //Wasserverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
-			c.setName("Waschbecken rechts");
+			c.setName("Waschbecken Rechts");
 		    room.addComponent(c);
 		    var c = componentService.getNewComponentInstanceById(6003); //Wasserverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
@@ -351,11 +351,11 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    var c = componentService.getNewComponentInstanceById(13001); //Heizung
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromrverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromrverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Pool");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromrverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromrverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Rasenroboter");
 		    room.addComponent(c);
@@ -455,7 +455,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    var c = componentService.getNewComponentInstanceById(3003); //Sauna
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Sauna");
 		    room.addComponent(c);
@@ -501,7 +501,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Fenster Klein");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("TV");
 		    room.addComponent(c);
@@ -555,7 +555,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Fenster Klein");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("TV");
 		    room.addComponent(c);
@@ -617,7 +617,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("Straßenfenster");
 		    room.addComponent(c);
-		    var c = componentService.getNewComponentInstanceById(6001); //Stromverbraucher
+		    var c = componentService.getNewComponentInstanceById(6002); //Stromverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
 			c.setName("TV");
 		    room.addComponent(c);
@@ -673,11 +673,11 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		    room.addComponent(c);
 		    var c = componentService.getNewComponentInstanceById(6003); //Wasserverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
-			c.setName("Waschbecken links");
+			c.setName("Waschbecken Links");
 		    room.addComponent(c);
 		    var c = componentService.getNewComponentInstanceById(6003); //Wasserverbraucher
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
-			c.setName("Waschbecken rechts");
+			c.setName("Waschbecken Rechts");
 		    room.addComponent(c);
 		    var c = componentService.getNewComponentInstanceById(8004); //Lciht Komplett
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");
@@ -709,7 +709,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	    home.addComponent(c);
 	    var c = componentService.getNewComponentInstanceById(8001); //Licht normal
 		c.setId($rootScope.nextComponentId++);c.setSerialId("123");
-		c.setName("Außenbeleichtung");
+		c.setName("Außenbeleuchtung");
 	    home.addComponent(c);
 	    var c = componentService.getNewComponentInstanceById(11001); //Bewegunsmelder innen
 		c.setId($rootScope.nextComponentId++);c.setSerialId("123");
