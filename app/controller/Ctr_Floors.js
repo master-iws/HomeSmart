@@ -1,8 +1,12 @@
 'use strict';
-
-app.controller('FloorsController',["$scope", "$rootScope", "$state","dragulaService","$uibModal","vibrator",	
-                                                     function($scope, $rootScope, $state,dragulaService,$uibModal,vibrator) {
+/**
+ * @author Julia Thüroff
+ */
+app.controller('FloorsController',["$scope", "$rootScope", "$state","dragulaService","$uibModal","vibrator","MainService",	
+                                                     function($scope, $rootScope, $state,dragulaService,$uibModal,vibrator,mainService) {
     //$rootScope.houseIndex = 0;
+	
+	mainService.saveHouses($rootScope.houses);
 	
     $scope.addFloor = function() {
     	$state.go("houseconfiguration.floors.addFloor");

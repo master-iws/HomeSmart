@@ -1,13 +1,10 @@
 <style>
-
-.cardTime
-{
+.cardTime {
 	background-color: #1A237E;
 	color: #FFFFFF;
-	width:50px ! important;
-	height:35px ! important;
+	width: 50px ! important;
+	height: 35px ! important;
 }
-
 </style>
 <div>
 
@@ -20,39 +17,37 @@
 	</ul>
 
 	<div class="row row-centered">
-		<br>
-		<div class="col-lg-4">
-			<h4 class="col-lg-2">Raum</h4>
-			<select ng-model="roomId"
-				ng-options="room.getId() as room.getName() for room in rooms">
-			</select>
-		</div>
-		<div class="col-lg-3">
-			<div class="infoDiv light" style="">
-				<h4 class="col-lg-4">Zeitbereich</h4>
-				<a class="link cardTime" ng-class="{link_active:period.type == 'day'}"
-					ng-click="setPeriodType('day')">Tag</a> <a class="link"
-					ng-class="{link_active:period.type == 'month'}"
-					ng-click="setPeriodType('month')">Monat</a> <a class="link"
-					ng-class="{link_active:period.type == 'year'}"
-					ng-click="setPeriodType('year')">Jahr</a> <br> <br>
+		<br> <br /> <br>
+		<div
+			class="actionbar heading center-actionbarr col-xs-10 col-sm-10 col-md-10 col-lg-12"
+			style="margin-top: 15px; padding: 0px; padding-top: 5px;; background-color: #aeaba4;">
+			<div class="col-lg-4">
+				<h4 class="col-lg-2" style="color: #FFFFFF;">Raum</h4>
+				<select ng-model="roomId"
+					ng-options="room.getId() as room.getName() for room in rooms">
+				</select>
 			</div>
-		</div>
-		<div class="actionbar heading center-actionbarr col-lg-3">
-			<a class="navigation_button" ng-click="periodBack()"> <img
-				src="app/icons/Back-64.png" alt="Zurück"> <span>Zur&uuml;ck</span>
-			</a> <a style="text-align: center;" ng-click="showSelectType()">{{period.display}}</a>
-			<a id="clear-button" ng-click="periodNow()"> Jetzt </a> <a
-				class="navigation_button" ng-click="periodForward()"> <span>Weiter</span>
-				<img src="app/icons/Forward-64.png" alt="Weiter">
-			</a>
+			<div class="col-lg-3">
+				<div class="infoDiv light" style="">
+					<h4 class="col-lg-4" style="color: #FFFFFF;">Zeitbereich</h4>
+					<a ng-class="{link_active:period.type == 'day'}"
+						ng-click="setPeriodType('day')"
+						style="color: #FFFFFF ! important; position: relative; top: 7px; font-weight: bold;">Tag</a>
+					<a class="link" ng-class="{link_active:period.type == 'month'}"
+						ng-click="setPeriodType('month')"
+						style="color: #FFFFFF ! important; position: relative; top: 7px; font-weight: bold;">Monat</a>
+					<a class="link" ng-class="{link_active:period.type == 'year'}"
+						ng-click="setPeriodType('year')"
+						style="color: #FFFFFF ! important; position: relative; top: 7px; font-weight: bold;">Jahr</a>
+					<br> <br>
+				</div>
+			</div>
+
 		</div>
 		<br>
 		<div>
 
-			<br>
-			<br />
-			<br />
+			<br> <br /> <br />
 			<div id="charts" ng-class="{visibilityHidden: loading}">
 				<button ng-show="periodTypeHistory.length > 1"
 					ng-click="drillUpClick()"
@@ -60,14 +55,28 @@
 					<img src="images/icons/Up-26.png" height="16" width="16" />
 				</button>
 				<div>
-					<linechart data="chartData" options="chartOptions" height="450"
-						on-click="onClick"></linechart>
+					<linechart data="chartData" options="chartOptions" height="500px"
+						style="height:300px;" on-click="onClick"></linechart>
 				</div>
 				<br>
 
 			</div>
-			<br />
-			<br />
+			<br /> <br />
+			<div
+				class="actionbar heading center-actionbarr col-xs-10 col-sm-10 col-md-10 col-lg-12"
+				style="padding: 0px; background-color: #aeaba4; color: #FFFFFF;margin-bottom:50px;">
+				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-2 col-lg-offset-5">
+					<a class="navigation_button" ng-click="periodBack()"> <img
+						src="app/icons/Back-64.png" alt="Zurück">
+					</a> <a style="text-align: center;" ng-click="showSelectType()">{{period.display}}</a>
+					<a id="clear-button" ng-click="periodNow()"
+						style="color: #FFFFFF ! important; font-weight: bold;"> Jetzt
+					</a> <a class="navigation_button" ng-click="periodForward()"> <img
+						src="app/icons/Forward-64.png" alt="Weiter">
+					</a>
+				</div>
+			</div>
 		</div>
+		<br /> <br />
 	</div>
 </div>

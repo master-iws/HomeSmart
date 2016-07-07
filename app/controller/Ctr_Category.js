@@ -1,8 +1,10 @@
 'use strict';
 
-app.controller('CategoryController',["$scope", "$rootScope", "$state", "$stateParams",
-                                      function($scope, $rootScope, $state, $stateParams) {
+app.controller('CategoryController',["$scope", "$rootScope", "$state", "$stateParams","MainService",
+                                      function($scope, $rootScope, $state, $stateParams,mainService) {
 
+	mainService.saveHouses($rootScope.houses);
+	
 	$scope.categoryId = $stateParams.categoryId;
 	$scope.allCategories = $rootScope.houses[$rootScope.houseIndex].getAllCategories();
 	$scope.allComponentsByCategorySortByRoom = $rootScope.houses[$rootScope.houseIndex].getAllComponentsByCategorySortByRoom($scope.categoryId);

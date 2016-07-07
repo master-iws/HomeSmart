@@ -1,7 +1,11 @@
 'use strict';
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('EditFloorController',["$scope", "$rootScope", "$state", "$stateParams","MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams,mainService,vibrator) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.originalFloor = $rootScope.houses[$rootScope.houseIndex].getFloorById($stateParams.floorId);
 	

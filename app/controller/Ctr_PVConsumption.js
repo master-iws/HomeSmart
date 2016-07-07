@@ -1,6 +1,11 @@
 'use strict';
-
-app.controller('PVController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
+/**
+ * @author Julia Thüroff
+ */
+app.controller('PVController',["$scope", "$rootScope", "$state","MainService",	
+                               function($scope, $rootScope, $state,mainService) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	var d3_locale_deDE = d3.locale({
 		  decimal: ",",

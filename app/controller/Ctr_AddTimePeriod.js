@@ -1,7 +1,11 @@
 'use strict';
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('AddTimePeriodController',["$scope", "$rootScope", "$state", "$stateParams", "MainService",
                                       function($scope, $rootScope, $state, $stateParams, mainService) {
+	mainService.saveHouses($rootScope.houses);
+	
 	
 	$scope.validationMessage = null;
 	$scope.time = {};

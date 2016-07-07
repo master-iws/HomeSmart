@@ -1,7 +1,11 @@
 'use strict';
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('RegistrationController',["$scope", "$rootScope", "$state", "MainService","vibrator","$uibModal",	
                                          function($scope, $rootScope, $state, mainService,vibrator,$uibModal) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.oldPin;
 	$scope.pin;

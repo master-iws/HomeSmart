@@ -1,5 +1,7 @@
 'use strict';
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, mainService,vibrator) {
 	$scope.cities = ["10115 Berlin","10117 Berlin","10178 Berlin",
@@ -17,7 +19,7 @@ app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$statePa
                      "40210 Düsseldorf",
                      "28195 Bremen"];
 	
-	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.house = new Mod_House();
 	$scope.floorCount=1;

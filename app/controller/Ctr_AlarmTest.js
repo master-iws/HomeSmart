@@ -1,7 +1,11 @@
 
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('AlarmTestController', function($scope, $rootScope,ngToast, $state,$uibModal,ngAudio,vibrator) {
   
+	mainService.saveHouses($rootScope.houses);
+	
    $scope.$on('washerReady', function(event, data) {
 	   vibrator.vibrate(1000);
 	   $scope.sound = ngAudio.play("app/sounds/notificationSound.mp3"); 

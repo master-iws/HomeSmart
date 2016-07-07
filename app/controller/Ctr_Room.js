@@ -1,8 +1,10 @@
 'use strict';
 
-app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams",
-                                      function($scope, $rootScope, $state, $stateParams) {
+app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams","mainService",
+                                      function($scope, $rootScope, $state, $stateParams,MainService) {
 
+	mainService.saveHouses($rootScope.houses);
+	
 	$scope.roomId = $stateParams.roomId;
 	$scope.selectedRoom = $rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId);
 	$scope.componentsByCategory = $scope.selectedRoom.getComponentsByCategory();

@@ -41,7 +41,7 @@
 						id="confirmPinLabel">Komponenten</label>
 					<div class="col-sm-11 col-md-12 col-xs-10 col-lg-12">
 						<div class="col-md-3 col-sm-3 col-xs-11 card"
-							ng-repeat="component in room.getComponents() track by $index" style="marhin-left:15px;">
+							ng-repeat="component in room.getComponents() track by $index" style="margin-left:15px;">
 
 							<div style="height: 40px;"
 								class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
@@ -59,7 +59,7 @@
 							</div>
 							<div class="col-md-12 col-xs-11 col-sm-12">
 								<div class="col-md-7" style="margin-top: 5px;">
-									<span class="card-name-settings col-md-offset-2">{{component.getName()}}</span>
+									<span style="padding:0px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;" class="card-name-settings col-md-offset-2">{{component.getName()}}</span>
 								</div>
 							</div>
 						</div>

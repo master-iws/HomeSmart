@@ -1,7 +1,11 @@
 'use strict';
-
-app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$state","dragulaService","$uibModal",	
-                                                   function($scope, $rootScope, $state,dragulaService,$uibModal) {
+/**
+ * @author Julia Thüroff
+ */
+app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$state","dragulaService","$uibModal","MainService",	
+                                                   function($scope, $rootScope, $state,dragulaService,$uibModal,mainService) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.controls = [];
 	

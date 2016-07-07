@@ -1,8 +1,11 @@
 'use strict';
 
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('EditHouseComponentController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","ComponentService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, mainService,componentService,vibrator) {
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.componentIdx = $stateParams.componentIdx;
 	

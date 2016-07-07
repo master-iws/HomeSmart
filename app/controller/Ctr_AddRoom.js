@@ -1,8 +1,12 @@
 'use strict';
 
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('AddRoomController',["$scope", "$rootScope", "$state", "$stateParams", "fileReader","MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, fileReader, mainService,vibrator) {
+	mainService.saveHouses($rootScope.houses);
+	
 	$scope.room = new Mod_Room();
 	$scope.room.setIcon(undefined);
 

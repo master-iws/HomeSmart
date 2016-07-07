@@ -1,7 +1,11 @@
 'use strict';
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('EditHouseController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, mainService,vibrator) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.cities = ["10115 Berlin","10117 Berlin","10178 Berlin",
                      "80335 München",

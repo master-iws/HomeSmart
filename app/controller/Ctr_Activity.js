@@ -1,6 +1,11 @@
 'use strict';
+/**
+ * @author Julia Thüroff
+ */
 
-app.controller('ActivityController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
+app.controller('ActivityController',["$scope", "$rootScope", "$state","MainService",	function($scope, $rootScope, $state,mainService) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.period = {};
 	$scope.period.typ = "year";

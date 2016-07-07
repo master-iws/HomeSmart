@@ -82,7 +82,9 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		quicklink.typ.id = 0;
 		quicklink.typ.name = "Küche";
 		dashboard.quicklinks.push(quicklink);
-		
+	    var control = {roomId: 0,componentId: 14002};
+	    dashboard.controls.push(control);
+	    home.setDashboard(dashboard);
 	    
 	    
 	    //Erdgeschoss
@@ -117,9 +119,6 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 			c.setName("Fenster spüle");
 			//c.setRoom(room);
 		    room.addComponent(c);
-		    
-		    //dashboard.controls.push(c);
-		    home.setDashboard(dashboard);
 		    
 		    var c = componentService.getNewComponentInstanceById(9004); //Beschattung
 			c.setId($rootScope.nextComponentId++);c.setSerialId("123");

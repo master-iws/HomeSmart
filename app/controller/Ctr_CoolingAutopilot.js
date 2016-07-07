@@ -1,7 +1,11 @@
 'use strict';
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('CoolingAutopilotController',["$scope", "$rootScope", "$state", "MainService",	
                                          function($scope, $rootScope, $state, mainService) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.componentId = $stateParams.componentId;
 	$scope.component = $rootScope.houses[$rootScope.houseIndex].getComponentById($rootScope.componentId);

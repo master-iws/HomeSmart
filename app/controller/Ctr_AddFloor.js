@@ -1,7 +1,11 @@
 'use strict';
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('AddFloorController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, mainService,vibrator) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.floor = new Mod_Floor();
 	$scope.floor.setHouse($rootScope.houses[$rootScope.houseIndex]);
