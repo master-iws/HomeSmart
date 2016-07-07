@@ -379,7 +379,6 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    var types = [28, 29, 30, 31]; // Camera in/outside, motion-detector in/outside
 	    var allComponents = [];
 	    for (var t = 0; t < types.length; t++) {
-		    console.log('TYPE: ' + types[t]);
 		    allComponents = allComponents.concat(this.getAllComponentsByType(types[t]));
 	    }
 	    console.log("aslökdjflaösdjflasdf: " + allComponents.length);
@@ -505,7 +504,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setShadowing= function (value) {
 		  
-		this.setComponentsOfTypeToValue(37, value);
+		this.setComponentsOfTypeToValue(38, value);
 	};
 	
 	/**
@@ -513,6 +512,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setConsumer= function (value) {
 		  
+		this.setComponentsOfTypeToValue(39, value);
 		this.setComponentsOfTypeToValue(21, value);
 		this.setComponentsOfTypeToValue(14, value);
 		this.setComponentsOfTypeToValue(15, value);
@@ -526,7 +526,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	/**
 	 * @author Julia Thüroff
 	 */
-	this.setComponentsOfTypeToValue= function (typ, value) {
+	this.setComponentsOfTypeToValue= function (type, value) {
 		  
 		var categorys = []
 	    for (var f in _floors) {
