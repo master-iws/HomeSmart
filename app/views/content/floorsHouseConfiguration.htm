@@ -2,7 +2,7 @@
 	<div class="row"
 		ng-show="!$state.includes('houseconfiguration.floors.editFloor.*') && !$state.includes('houseconfiguration.floors.addFloor')">
 		<h1 class="col-md-10 col-lg-10 col-xs-10 col-sm-10">Etagen</h1>
-		<span class="col-md-10 col-lg-12 col-xs-10 col-sm-10">Die Etagen können mit drag und drop verschoben werden.</span>
+		<span class="col-md-10 col-lg-12 col-xs-10 col-sm-10 tip">Die Etagen k&ouml;nnen mit drag und drop verschoben werden.</span>
 		<div dragula='"first-bag"'
 			dragula-model="houses[houseIndex].getFloors()">
 			<div ng-repeat="floor in houses[houseIndex].getFloors()"

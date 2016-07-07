@@ -1,7 +1,11 @@
 'use strict';
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('CoolingAutopilotController',["$scope", "$rootScope", "$state", "MainService",	
                                          function($scope, $rootScope, $state, mainService) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.componentId = $stateParams.componentId;
 	$scope.component = $rootScope.houses[$rootScope.houseIndex].getComponentById($rootScope.componentId);
@@ -21,12 +25,12 @@ app.controller('CoolingAutopilotController',["$scope", "$rootScope", "$state", "
 		$rootScope.component = $scope.component;
 		$rootScope.mode = 3;
 		$rootScope.day = day;
-		$state.go("rooms.detail.addTimePeriod");
+		$state.go("addTimePeriod");
 	};
 	
 	$scope.prevTab = function()
 	{
-		$state.go("rooms.detail.heatingAutopilot",{componentId: $scope.componentId});
+		$state.go("heatingAutopilot",{componentId: $scope.componentId});
 	}
 	
 }]);

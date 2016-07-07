@@ -149,6 +149,12 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 	this.setConsumer= function (value) {
 		  
 		this.setComponentsOfTypeToValue(21, value);
+		this.setComponentsOfTypeToValue(14, value);
+		this.setComponentsOfTypeToValue(15, value);
+		this.setComponentsOfTypeToValue(16, value);
+		this.setComponentsOfTypeToValue(18, value);
+		this.setComponentsOfTypeToValue(19, value);
+		this.setComponentsOfTypeToValue(8, value);
 	};
 	
 	/**
@@ -260,7 +266,8 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 			for(var i=0; i < 11; i++)
 			{
 				var date = startDate.add(1,'month');
-				response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
+				if(date <= moment())
+					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
 			}
 		}
 		
@@ -271,7 +278,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 			for(var i=0; i < 31; i++)
 			{
 				var date = startDate.add(1,'days');
-				if(date.month() === beginMonth)
+				if(date.month() === beginMonth && date <= moment())
 					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
 				console.log(new Date(date.year(),date.month(),date.day(),0,0,0,0));
 			}
@@ -283,7 +290,8 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 			for(var i=0; i < 24; i++)
 			{
 				var date = startDate.add(1,'hours');
-				response.dataset.push({x: new Date(date.year(),date.month(),date.date(),date.hour(),0,0,0)});
+				if(date <= moment())
+					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),date.hour(),0,0,0)});
 			}
 		}
 		

@@ -122,7 +122,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
     var cat = new Mod_Category();
 	cat.setId(getNextId());
 	cat.setName("Heizung");
-	fillComponents(cat,[["Heizung",32,[23,0,{start:0,end:0,times:[[{start: '10:00', end: '13:00', temp: '20'}],[],[],[],[],[],[]]},{start:0,end:0,times:[[],[],[],[],[],[],[]]}]]]);
+	fillComponents(cat,[["Heizung",32,[23,0,{start:0,end:3,times:[[{start: '10:00', end: '13:00', temp: '20'}],[],[],[],[],[],[]]},{start:4,end:12,times:[[],[],[],[],[],[],[]]}]]]);
 	cats.push(cat);
 	increaseId();
 	

@@ -1,10 +1,19 @@
 'use strict';
-
-app.controller('HeatingAutopilotController',["$scope", "$rootScope", "$state", "MainService",	
-                                         function($scope, $rootScope, $state, mainService) {
+/**
+ * @auhtor Julia Thüroff
+ */
+app.controller('HeatingAutopilotController',["$scope", "$rootScope", "$state","$stateParams", "MainService",	
+                                         function($scope, $rootScope, $state,$stateParams, mainService) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.componentId = $stateParams.componentId;
-	$scope.component = $rootScope.houses[$rootScope.houseIndex].getComponentById($rootScope.componentId);
+	
+	console.log($scope.componentId);
+	
+	$scope.component = $rootScope.houses[$rootScope.houseIndex].getComponentById($scope.componentId);
+	
+	console.log($scope.component.getSettings());
 	
 	$scope.months =['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 	
@@ -20,12 +29,12 @@ app.controller('HeatingAutopilotController',["$scope", "$rootScope", "$state", "
 		$rootScope.component = $scope.component;
 		$rootScope.mode = 2;
 		$rootScope.day = day;
-		$state.go("rooms.detail.addTimePeriod");
+		$state.go("addTimePeriod");
 	};
 	
 	$scope.nextTab = function()
 	{
-		$state.go("rooms.detail.coolingAutopilot",{componentId: $scope.componentId});
+		$state.go("coolingAutopilot",{componentId: $scope.componentId});
 	}
 	
 }]);

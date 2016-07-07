@@ -1,8 +1,10 @@
 'use strict';
 
-app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams", "shouldSwipe",
-                                      function($scope, $rootScope, $state, $stateParams, shouldSwipe) {
+app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams","MainService", "shouldSwipe",
+                                      function($scope, $rootScope, $state, $stateParams,mainService, shouldSwipe) {
 
+	//mainService.saveHouses($rootScope.houses);
+	
 	$scope.roomId = $stateParams.roomId;
 	$scope.selectedRoom = $rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId);
 	$scope.componentsByCategory = $scope.selectedRoom.getComponentsByCategory();

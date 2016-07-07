@@ -15,6 +15,7 @@ app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal","
 	};
     
     $scope.editRoom = function($roomIdx) {
+    	console.log("edit room");
     	$state.go("houseconfiguration.rooms.editRoom",{'roomId':$roomIdx});
     };
     

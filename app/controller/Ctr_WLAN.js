@@ -1,7 +1,11 @@
 'use strict';
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('WLANController',["$scope", "$rootScope", "$state","MainService","$uibModal",	
                                  function($scope, $rootScope, $state, mainService,$uibModal) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$rootScope.wlan = {};
 	$scope.showPassword = false;

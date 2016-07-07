@@ -161,7 +161,6 @@ option {
 .notification-set
 {
 	color: #e8a80d ! important;
-	z-index: 4000;
 }
 
 .has-error:active
@@ -327,25 +326,27 @@ input.cmn-toggle-round:checked + label:after {
 
 .edit-btn
 {
-	width: 21;
-	height: 27;
-	border-radius: 2px;
-	margin-top:5px;
-	padding: 0px;
-	position: absolute;
-	top: 5px;
+	width: 22px;
+    height: 25px;
+    padding: 0px;
+    position: absolute;
+    top: 3px;
 	right:40px;
+}
+
+.tip
+{
+	margin-bottom:10px;
 }
 
 
 .room-config-btn
 {
-	height: 27;
-	border-radius: 2px;
-	margin-top:5px;
-	padding: 0px;
-	position: absolute;
-	top: 5px;
+	 height: 25px;
+    padding: 0px;
+    position: absolute;
+    top: 3px;
+    right: 3px;
 	right: 75px;
 }
 

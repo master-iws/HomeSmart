@@ -18,10 +18,13 @@
 						fertig</button>
 					<button ng-audio="app/sounds/notificationSound.mp3"
 						class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"
-						ng-click="$broadcast('washerReady')">Alarmanlage</button>
+						ng-click="$broadcast('frontDoor')">Haust&uuml;r Dialoag</button>
 					<button ng-audio="app/sounds/notificationSound.mp3"
 						class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"
-						ng-click="$broadcast('washerReady')">Rauchmelder</button>
+						ng-click="$broadcast('cameraInside')">Innenkamera</button>
+						<button ng-audio="app/sounds/notificationSound.mp3"
+						class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 alarm-btn"
+						ng-click="$broadcast('cameraOutside')">Au&szlig;enkamera</button>
 				</div>
 			</form>
 		</div>

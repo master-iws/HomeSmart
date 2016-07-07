@@ -1,8 +1,11 @@
 'use strict';
-
-app.controller('PowerConsumptionController',["$scope", "$rootScope", "$state",	function($scope, $rootScope, $state) {
+/**
+ * @author Julia Thüroff
+ */
+app.controller('PowerConsumptionController',["$scope", "$rootScope", "$state","MainService",	function($scope, $rootScope, $state,mainService) {
 	
-
+	mainService.saveHouses($rootScope.houses);
+	
 	$scope.roomId = -1;
 	
 	$scope.rooms = [];

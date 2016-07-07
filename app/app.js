@@ -22,17 +22,6 @@ app.run(function ($rootScope, $state, $stateParams, $log, MainService) {
 			    $rootScope.previousState.params = fromParams;
 			    $rootScope.currentState.params = toParams;
 		
-			if(toState.name === 'settings')
-			{
-				$state.go("settings.pin");
-				event.preventDefault();
-			}
-			
-			if(toState.name === 'houseconfiguration')
-			{
-				$state.go("houseconfiguration.house");
-				event.preventDefault();
-			}
 			
 			if(toState.name === 'statistic')
 			{
@@ -40,6 +29,7 @@ app.run(function ($rootScope, $state, $stateParams, $log, MainService) {
 				event.preventDefault();
 			}
 		
+			console.log($rootScope.loggedIn);
 			if (toState.authenticate && !$rootScope.loggedIn){
 			      // User isn’t authenticated
 				$state.go("login",{name: toState.name});
@@ -57,13 +47,29 @@ app.run(function ($rootScope, $state, $stateParams, $log, MainService) {
 				event.preventDefault();
 			}*/
 			
-			/*console.log("adminarea:"+toState.adminArea+"from"+fromState.adminArea+"from"+fromState.name);
-			if (toState.adminArea && (!fromState.adminArea && fromState.name !== "loginAdminArea")){
+			
+			if (toState.adminArea &&  !$rootScope.adminArea){
 			      // User isn’t authenticated
 				console.log("gotoadmin");
 				$state.go("loginAdminArea",{name: toState.name});
 				event.preventDefault();
-		  	}*/
+		  	}
+			
+			if(!toState.adminArea && toState.name != "loginAdminArea" && toState.name != ""){
+				$rootScope.adminArea = false;console.log("Testadminatea");}
+			
+			if(toState.name === 'settings')
+			{
+				$state.go("settings.pin");
+				event.preventDefault();
+			}
+			
+			if(toState.name === 'houseconfiguration')
+			{
+				$state.go("houseconfiguration.house");
+				event.preventDefault();
+			}
+				
 	});
 });
 
@@ -169,7 +175,7 @@ app.config(
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"DetailsContent": { templateUrl: "app/views/content/room.htm", controller: 'RoomController'}
 			}
-		}).state("rooms.detail.heatingAutopilot", {
+		}).state("heatingAutopilot", {
 			url: "/heatingAutopilot/:componentId",
 			authenticate: true,
 			adminArea: false,
@@ -179,9 +185,9 @@ app.config(
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": {templateUrl: "app/views/nav/nav2.houses.htm"},
-				"AutopilotContent": { templateUrl: "app/views/content/heatingAutopilot.htm", controller: 'HeatingAutopilotController'}
+				"Content": { templateUrl: "app/views/content/heatingAutopilot.htm", controller: 'HeatingAutopilotController'}
 			}
-		}).state("rooms.detail.coolingAutopilot", {
+		}).state("coolingAutopilot", {
 			url: "/coolingAutopilot/:componentId",
 			authenticate: true,
 			adminArea: false,
@@ -191,9 +197,9 @@ app.config(
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": {templateUrl: "app/views/nav/nav2.houses.htm"},
-				"AutopilotContent": { templateUrl: "app/views/content/coolingAutopilot.htm", controller: 'CoolingAutopilotController'}
+				"Content": { templateUrl: "app/views/content/coolingAutopilot.htm", controller: 'CoolingAutopilotController'}
 			}
-		}).state("rooms.detail.addTimePeriod", {
+		}).state("addTimePeriod", {
 			url: "/addTimePeriod",
 			authenticate: true,
 			adminArea: false,
@@ -203,7 +209,7 @@ app.config(
 			views: {
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": {templateUrl: "app/views/nav/nav2.houses.htm"},
-				"AutopilotContent": { templateUrl: "app/views/content/addTimePeriod.htm", controller: 'AddTimePeriodController'}
+				"Content": { templateUrl: "app/views/content/addTimePeriod.htm", controller: 'AddTimePeriodController'}
 			}
 		}).state("dashboard", {
 			url: "/dashboard",

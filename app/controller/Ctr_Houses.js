@@ -1,7 +1,12 @@
 'use strict';
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('HousesController',
-	["$scope", "$rootScope", "$state","vibrator",	function($scope, $rootScope, $state,vibrator) {
+	["$scope", "$rootScope", "$state","vibrator","MainService",
+	 function($scope, $rootScope, $state,vibrator,mainService) {
+		
+		mainService.saveHouses($rootScope.houses);
 		
 		$scope.lightOff = function($houdeIdx) {
 			vibrator.vibrate(1000);

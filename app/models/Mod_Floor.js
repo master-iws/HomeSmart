@@ -152,6 +152,12 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	this.setConsumer= function (value) {
 		  
 		this.setComponentsOfTypeToValue(21, value);
+		this.setComponentsOfTypeToValue(14, value);
+		this.setComponentsOfTypeToValue(15, value);
+		this.setComponentsOfTypeToValue(16, value);
+		this.setComponentsOfTypeToValue(18, value);
+		this.setComponentsOfTypeToValue(19, value);
+		this.setComponentsOfTypeToValue(8, value);
 	};
 	
 	/**

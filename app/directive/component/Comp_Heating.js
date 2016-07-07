@@ -4,6 +4,7 @@ app.directive('compHeating', function() {
 
 		scope.componentId = scope.component.getId();
 		scope.componentName = scope.component.getName();
+		console.log("componentName: "+scope.componentId);
 		
 	}
 
@@ -16,6 +17,15 @@ app.directive('compHeating', function() {
 		link: link,
 		controller: ['$scope', '$state', function($scope, $state) {
 
+			$scope.modes = ['Autopilot','Manueller Betrieb'];
+			
+			
+			$scope.configureHeatingAutopilot = function()
+			{
+				console.log("HEatingTest");
+				$state.go("heatingAutopilot",{componentId:$scope.componentId});
+			}
+			
 			$scope.configureComponent = function () {
 				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
 			};

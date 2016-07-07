@@ -1,7 +1,11 @@
 'use strict';
-
-app.controller('HousesSettingsController',["$scope", "$rootScope", "$state", "$uibModal",	
-                                           function($scope, $rootScope, $state,$uibModal) {
+/**
+ * @author Julia Thüroff
+ */
+app.controller('HousesSettingsController',["$scope", "$rootScope", "$state", "$uibModal","MainService",	
+                                           function($scope, $rootScope, $state,$uibModal,mainService) {
+	
+	mainService.saveHouses($rootScope.houses);
 	
 	$scope.deleteHouse = function($houseIdx) {
 		

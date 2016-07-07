@@ -1,12 +1,19 @@
 'use strict';
 
-
+/**
+ * @author Julia Thüroff
+ */
 app.controller('EditHouseComponentController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","ComponentService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, mainService,componentService,vibrator) {
+	mainService.saveHouses($rootScope.houses);
 	
-	$scope.componentIdx = $stateParams.componentIdx;
+	$scope.componentId = $stateParams.componentIdx;
 	
-	$scope.originalComponent = $rootScope.houses[$rootScope.houseIndex].getComponents()[$scope.componentIdx];
+	$scope.originalComponent = $rootScope.houses[$rootScope.houseIndex].getComponentById($scope.componentId);
+	
+	if($scope.originalComponent.getRoom() !== undefined)
+		$state.go("houseconfiguration.rooms.editComponent",{componentId: $scope.componentId});
+	
 	
 	$scope.name = $scope.originalComponent.getName();
 	$scope.serialId = $scope.originalComponent.getSerialId();
@@ -18,7 +25,7 @@ app.controller('EditHouseComponentController',["$scope", "$rootScope", "$state",
 	$scope.save = function() {
 		vibrator.vibrate(10);
 		
-		$rootScope.houses[$rootScope.houseIndex].getComponents()[$scope.componentIdx].setName($scope.name);
+		$rootScope.houses[$rootScope.houseIndex].getComponentsById($scope.componentId).setName($scope.name);
 		mainService.saveHouses($rootScope.houses);
 		$state.go("houseconfiguration.house");
     };

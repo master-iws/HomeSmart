@@ -8,12 +8,12 @@
 				ng-class="{'not-configured': deleted}">
 
 
-			<button ng-click="configureRoom(room.getId())" aria-label="Raum konfigurieren"
+			<button ng-click="editRoom(room.getId())" aria-label="Raum konfigurieren"
 			        class="btn-primary settings-btn">
 				<i class="fa fa-wrench" ></i>
 			</button>
 			
-			<div class="col-md-12 col-xs-11 col-sm-12" style="padding: 0px;color:#FFFFFF;">
+			<div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding: 0px;color:#FFFFFF;">
 				<i  ng-show="room.getIcon() === undefined" class="col-xs-2 col-sm-2 col-md-2 col-lg-1 fa fa-codepen" style="margin-top:10px;" alt="QR Code WLAN"  width="20" height="20" ></i>
 				<img ng-src="{{room.getIcon()}}" ng-show="room.getIcon() !== undefined" class="col-xs-2 col-sm-2 col-md-2 col-lg-1" style="margin-top:10px;" alt="QR Code WLAN"  width="20" height="20" />
 				

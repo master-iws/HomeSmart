@@ -14,10 +14,20 @@
 		</div>
 		<div class="col-md-6 col-lg-8 col-lg-offset-2 col-xs-7 col-sm-6"
 			style="margin-top: 15px;" ng-show="component.getSettings()[1] == 1">
-			<span class="component-text">Temperatur:&nbsp;&nbsp;</span> <input
-				id="slider9" data-slider-class='slider' type="text"
-				data-slider-tooltip="hide" data-slider-min="10" data-slider-max="30"
-				data-slider-step="1" data-slider-value="22" /> <span
+			<span class="component-text">Temperatur:&nbsp;&nbsp;</span> 
+				
+				<div class="col-md-5 col-lg-5 col-xs-4 col-sm-5">
+				<span slider
+				      id="slider-{{componentId}}"
+				      ng-model="component.getSetSettings()[1]"
+				      min="1"
+				      max="10"
+				      step="1"
+				      tooltip="hide"
+				></span>
+			</div>
+				
+				<span
 				id="heating-temp" class="component-text">&nbsp;&nbsp;50</span>
 		</div>
 		<div class="col-md-6 col-lg-8 col-lg-offset-2 col-xs-7 col-sm-6"

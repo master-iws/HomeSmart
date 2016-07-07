@@ -8,6 +8,7 @@ app.controller('MainController',
 		
 		$rootScope.houses = mainService.getHouses();
 		$rootScope.globalSettings = mainService.getSettings();
+		mainService.saveSettings($rootScope.globalSettings);
 		
 		var test = mainService.getHouses();
 		mainService.saveHouses(test);
