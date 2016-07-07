@@ -360,6 +360,13 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			    }
 		    }
 	    }
+	    var houseComponents = this.getComponents();
+	    for(var ch in houseComponents)
+	    {
+		    if(categories.indexOf(houseComponents[ch].getCategory()) == -1) {
+			    categories.push(houseComponents[ch].getCategory());
+		    }
+	    }
 	    return categories;
     };
 
@@ -399,6 +406,23 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			    }
 			    allComponents['Haus'].push(houseComponents[ch]);
 		    }
+	    }
+	    return allComponents;
+    };
+
+    /**
+     * @author Matthias Jakob
+     */
+    this.getAllComponentsByCategory = function() {
+	    var allComponents = {};
+	    var components = this.getComponents();
+	    for(var c in components)
+	    {
+		    var categoryName = components[c].getCategory().getName();
+		    if(!allComponents.hasOwnProperty(categoryName)) {
+			    allComponents[categoryName] = [];
+		    }
+		    allComponents[categoryName].push(components[c]);
 	    }
 	    return allComponents;
     };
