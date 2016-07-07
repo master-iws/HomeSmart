@@ -850,4 +850,8 @@ input.cmn-toggle-round:checked + label:after {
 	opacity: 0.4;
 }
 
+.inputcolor {
+	border: thin solid #fdfdfe;
+}
+
 
