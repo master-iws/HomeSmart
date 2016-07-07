@@ -375,6 +375,55 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
     /**
      * @author Matthias Jakob
      */
+    this.changeComponentsByAlarmSystemStatus = function(status) {
+	    var types = [28, 29, 30, 31]; // Camera in/outside, motion-detector in/outside
+	    var allComponents = [];
+	    for (var t = 0; t < types.length; t++) {
+		    console.log('TYPE: ' + types[t]);
+		    allComponents = allComponents.concat(this.getAllComponentsByType(types[t]));
+	    }
+	    console.log("aslökdjflaösdjflasdf: " + allComponents.length);
+	    for(var c in allComponents)
+	    {
+		    var settings = allComponents[c].getSettings();
+		    settings[0] = status;
+		    allComponents[c].setSettings(settings);
+	    }
+	    return true;
+    };
+
+    /**
+     * @author Matthias Jakob
+     */
+    this.getAllComponentsByType = function(type) {
+	    var allComponents = [];
+	    var floors = this.getFloors();
+	    for (var f in floors) {
+		    var rooms = floors[f].getRooms();
+		    for(var r in rooms)
+		    {
+			    var components = rooms[r].getComponents();
+			    for(var c in components)
+			    {
+				    if(components[c].getType() == type) {
+					    allComponents.push(components[c]);
+				    }
+			    }
+		    }
+	    }
+	    var houseComponents = this.getComponents();
+	    for(var ch in houseComponents)
+	    {
+		    if(houseComponents[ch].getType() == type) {
+			    allComponents.push(houseComponents[ch]);
+		    }
+	    }
+	    return allComponents;
+    };
+
+    /**
+     * @author Matthias Jakob
+     */
     this.getAllComponentsByCategorySortByRoom = function(categoryId) {
 	    var allComponents = {};
 	    var floors = this.getFloors();
@@ -415,7 +464,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
     /**
      * @author Matthias Jakob
      */
-    this.getAllComponentsByCategory = function() {
+    this.getAllHouseComponentsSortByCategory = function() {
 	    var allComponents = {};
 	    var components = this.getComponents();
 	    for(var c in components)
