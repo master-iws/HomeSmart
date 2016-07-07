@@ -8,6 +8,28 @@ body
 	font-wieght: normal;
 }
 
+.now-link
+{
+	cursor:pointer;
+	color: #FFFFFF ! important;
+	 font-weight: bold;
+}
+
+.statistic-link
+{
+	cursor:pointer;
+	color: #FFFFFF ! important;
+	 position: relative; 
+	 top: 7px; 
+	 font-weight: bold;
+}
+
+.navigation-button
+{
+	cursor:pointer;
+}
+
+
 h1
 {
     font-size:16pt;
@@ -473,6 +495,11 @@ input.cmn-toggle-round:checked + label:after {
   cursor: grabbing;
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
+}
+
+.pointer
+{
+	cursor: pointer;
 }
 .container .ex-moved {
   background-color: #e74c3c;

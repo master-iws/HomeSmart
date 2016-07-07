@@ -9,11 +9,11 @@
 <div>
 
 	<ul class="nav nav-tabs">
-		<li><a showtab="" ui-sref="activities">Aktivit&auml;ten</a></li>
-		<li><a showtab="" ui-sref="pv">Photovoltaikanlage</a></li>
-		<li><a showtab="" ui-sref="water">Wasserverbrauch</a></li>
-		<li class="active" ng-swipe-right="prevTab()"><a showtab=""
-			ui-sref="powerconsumption">Stromverbrauch</a></li>
+		<li><a showtab="" ui-sref="activities" class="pointer">Aktivit&auml;ten</a></li>
+		<li><a showtab="" ui-sref="pv" class="pointer">Photovoltaikanlage</a></li>
+		<li><a showtab="" ui-sref="water" class="pointer">Wasserverbrauch</a></li>
+		<li class="active" ng-swipe-right="prevTab()" class="pointer"><a
+			showtab="" ui-sref="powerconsumption" class="pointer">Stromverbrauch</a></li>
 	</ul>
 
 	<div class="row row-centered">
@@ -23,7 +23,7 @@
 			style="margin-top: 15px; padding: 0px; padding-top: 5px;; background-color: #aeaba4;">
 			<div class="col-lg-4">
 				<h4 class="col-lg-2" style="color: #FFFFFF;">Raum</h4>
-				<select ng-model="roomId"  class="form-control"
+				<select ng-model="roomId" class="form-control" style="width:50%;"
 					ng-options="room.getId() as room.getName() for room in rooms">
 				</select>
 			</div>
@@ -31,15 +31,12 @@
 				<div class="infoDiv light" style="">
 					<h4 class="col-lg-4" style="color: #FFFFFF;">Zeitbereich</h4>
 					<a ng-class="{link_active:period.type == 'day'}"
-						ng-click="setPeriodType('day')"
-						style="color: #FFFFFF ! important; position: relative; top: 7px; font-weight: bold;">Tag</a>
-					<a class="link" ng-class="{link_active:period.type == 'month'}"
-						ng-click="setPeriodType('month')"
-						style="color: #FFFFFF ! important; position: relative; top: 7px; font-weight: bold;">Monat</a>
-					<a class="link" ng-class="{link_active:period.type == 'year'}"
-						ng-click="setPeriodType('year')"
-						style="color: #FFFFFF ! important; position: relative; top: 7px; font-weight: bold;">Jahr</a>
-					<br> <br>
+						ng-click="setPeriodType('day')" class="statistic-link">Tag</a>
+					<a ng-class="{link_active:period.type == 'month'}"
+						ng-click="setPeriodType('month')" class="statistic-link">Monat</a>
+					<a ng-class="{link_active:period.type == 'year'}"
+						ng-click="setPeriodType('year')" class="statistic-link">Jahr</a> <br>
+					<br>
 				</div>
 			</div>
 
@@ -64,15 +61,14 @@
 			<br /> <br />
 			<div
 				class="actionbar heading center-actionbarr col-xs-10 col-sm-10 col-md-10 col-lg-12"
-				style="padding: 0px; background-color: #aeaba4; color: #FFFFFF;margin-bottom:50px;">
+				style="padding: 0px; background-color: #aeaba4; color: #FFFFFF; margin-bottom: 50px;">
 				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-2 col-lg-offset-5">
-					<a class="navigation_button" ng-click="periodBack()"> <img
+					<a class="navigation-button" ng-click="periodBack()"> <img
 						src="app/icons/Back-64.png" alt="Zurück">
 					</a> <a style="text-align: center;" ng-click="showSelectType()">{{period.display}}</a>
-					<a id="clear-button" ng-click="periodNow()"
-						style="color: #FFFFFF ! important; font-weight: bold;"> Jetzt
-					</a> <a class="navigation_button" ng-click="periodForward()"> <img
-						src="app/icons/Forward-64.png" alt="Weiter">
+					<a id="clear-button" class="now-link" ng-click="periodNow()">
+						Jetzt </a> <a class="navigation-button" ng-click="periodForward()">
+						<img src="app/icons/Forward-64.png" alt="Weiter">
 					</a>
 				</div>
 			</div>

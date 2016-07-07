@@ -36,7 +36,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	var floorId=1;
 	var house_arr=[];
 	
-	/*if(stored){
+	if(stored){
 		
 		$rootScope.loggedIn = true;
 	    $rootScope.nextHouseId = -1;
@@ -49,10 +49,10 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	    }
 	    $rootScope.nextHouseId++;
 	    
-	} else {*/
+	} else {
 		$rootScope.loggedIn = false;
 	    house_arr.push(getDemoHome());
-	//}
+	}
 	console.groupCollapsed("House Array");
 	console.info(JSON.parse(JSON.stringify(house_arr)));
 	console.groupEnd();
