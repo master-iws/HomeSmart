@@ -234,8 +234,8 @@ app.config(
 			adminArea: false,
 			resolve: {
 				$title: ['$stateParams','$rootScope', function($stateParams,$rootScope) {
-					// var name = $rootScope.houses[$rootScope.houseIndex].getRoomById($stateParams.roomId).getName();
-					return "Kategorie: " + 1;
+					var name = $rootScope.houses[$rootScope.houseIndex].getCategoryById($stateParams.categoryId).getName();
+					return "Kategorie: " + name;
 				}]
 			},
 			views: {
