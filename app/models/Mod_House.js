@@ -354,8 +354,10 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			    var components = rooms[r].getComponents();
 			    for(var c in components)
 			    {
-				    if(categories.indexOf(components[c].getCategory()) == -1) {
-					    categories.push(components[c].getCategory());
+				    if(components[c].getCategory().getName() != "Heizung") {
+					    if (categories.indexOf(components[c].getCategory()) == -1) {
+						    categories.push(components[c].getCategory());
+					    }
 				    }
 			    }
 		    }
@@ -383,7 +385,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			    var components = rooms[r].getComponents();
 			    for(var c in components)
 			    {
-				    if(components[c].getCategory().getId() == categoryId) {
+				    if(components[c].getCategory().getId() == categoryId && components[c].getCategory().getName() != "Heizung") {
 					   /* if (allComponents.indexOf(components[c].getRoom().getName()) == -1) {
 						    allComponents.push(components[c].getRoom().getName());
 					    }

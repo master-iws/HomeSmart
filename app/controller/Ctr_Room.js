@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams",
-                                      function($scope, $rootScope, $state, $stateParams) {
+app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams", "shouldSwipe",
+                                      function($scope, $rootScope, $state, $stateParams, shouldSwipe) {
 
 	$scope.roomId = $stateParams.roomId;
 	$scope.selectedRoom = $rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId);
@@ -34,21 +34,27 @@ app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams
 		$state.go("rooms.detail.heatingAutopilot",{componentId:2});
 	}
 	
-	$scope.nextRoom = function() {
-	    if($rootScope.houses[$rootScope.houseIndex].getRoomById(parseInt($scope.roomId)+1)) {
-		$state.go("rooms.detail", {'roomId':(parseInt($scope.roomId)+1)});
-	    } else {
-		$state.go("rooms.detail", {'roomId':$rootScope.houses[$rootScope.houseIndex].getRooms()[0].getId()});
-	    }
+	$scope.nextRoom = function($event) {
+		var element = $event.toElement || $event.srcElement;
+		if(shouldSwipe(element)) {
+			if ($rootScope.houses[$rootScope.houseIndex].getRoomById(parseInt($scope.roomId) + 1)) {
+				$state.go("rooms.detail", {'roomId': (parseInt($scope.roomId) + 1)});
+			} else {
+				$state.go("rooms.detail", {'roomId': $rootScope.houses[$rootScope.houseIndex].getRooms()[0].getId()});
+			}
+		}
 	};
 	
-	$scope.prevRoom = function() {
-	    if($rootScope.houses[$rootScope.houseIndex].getRoomById(parseInt($scope.roomId)-1)) {
-		$state.go("rooms.detail", {'roomId':(parseInt($scope.roomId)-1)});
-	    } else {
-		var romms=$rootScope.houses[$rootScope.houseIndex].getRooms();
-		$state.go("rooms.detail", {'roomId':romms[romms.length-1].getId()});
-	    }
+	$scope.prevRoom = function($event) {
+		var element = $event.toElement || $event.srcElement;
+		if(shouldSwipe(element)) {
+			if ($rootScope.houses[$rootScope.houseIndex].getRoomById(parseInt($scope.roomId) - 1)) {
+				$state.go("rooms.detail", {'roomId': (parseInt($scope.roomId) - 1)});
+			} else {
+				var rooms = $rootScope.houses[$rootScope.houseIndex].getRooms();
+				$state.go("rooms.detail", {'roomId': rooms[rooms.length - 1].getId()});
+			}
+		}
 	};
 	
 	$scope.heatingMode=1;
