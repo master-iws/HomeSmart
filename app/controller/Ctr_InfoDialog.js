@@ -10,4 +10,9 @@ app.controller('InfoDialogController',["$scope", "$rootScope", "$state", "$state
 	  $scope.ok = function () {
 		$uibModalInstance.close();
 	  };
+	  
+	  $scope.cancel = function () {
+		  vibrator.vibrate(10);
+	    $uibModalInstance.dismiss('cancel');
+	  };
 }]);

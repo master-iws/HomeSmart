@@ -17,19 +17,13 @@ app.controller('DashboardController',["$scope", "$rootScope", "$state","dragulaS
 		
 		var room = $rootScope.houses[$rootScope.houseIndex].getRoomById(control.roomId);
 		console.log(room);
-		var component = room.getComponentById(control.componentId);
+		
+		var component = $rootScope.houses[$rootScope.houseIndex].getComponentById(control.componentId);
 		console.log(component);
 		$scope.controls.push(component);
 	}
 	
 
-	    $scope.quicklink = {};//auf rootScope setzen
-		$scope.quicklink.category='Raum';
-		$scope.quicklink.typ={};
-		$scope.quicklink.typ.id = 0;
-		$scope.quicklink.typ.name = "Küche";
-		$rootScope.houses[$rootScope.houseIndex].getDashboard().quicklinks.push($scope.quicklink);
-	
 	  $scope.showQuicklink = function($index) {
 	    	
 		  $scope.quicklink = $rootScope.houses[$rootScope.houseIndex].getDashboard().quicklinks[$index];

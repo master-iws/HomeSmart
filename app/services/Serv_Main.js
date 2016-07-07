@@ -8,11 +8,9 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     
     function getStored(prefix) {
 	if(typeof(Storage) !== undefined){
-		$rootScope.loggedIn = true;
-	    return JSON.parse(localStorage.getItem("homeSmart-"+prefix));
+		return JSON.parse(localStorage.getItem("homeSmart-"+prefix));
 	} else {
-		$rootScope.loggedIn = false;
-	    return false;
+		return false;
 	}
     }
     
@@ -32,12 +30,15 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     
     
     function getHouses() {
+    	$rootScope.adminArea = false;
 	console.groupCollapsed("MainService::getHouses");
 	var stored = getStored("houses");
 	var floorId=1;
 	var house_arr=[];
 	
 	if(stored){
+		
+		$rootScope.loggedIn = true;
 	    $rootScope.nextHouseId = -1;
 	    for(var id in stored){
 			var house = new Mod_House();
@@ -49,6 +50,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	    $rootScope.nextHouseId++;
 	    
 	} else {
+		$rootScope.loggedIn = false;
 	    house_arr.push(getDemoHome());
 	}
 	console.groupCollapsed("House Array");
@@ -82,7 +84,7 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 		quicklink.typ.id = 0;
 		quicklink.typ.name = "Küche";
 		dashboard.quicklinks.push(quicklink);
-	    var control = {roomId: 0,componentId: 14002};
+	    var control = {roomId: 0,componentId: 10};
 	    dashboard.controls.push(control);
 	    home.setDashboard(dashboard);
 	    

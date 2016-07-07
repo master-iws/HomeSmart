@@ -25,12 +25,12 @@ app.controller('CoolingAutopilotController',["$scope", "$rootScope", "$state", "
 		$rootScope.component = $scope.component;
 		$rootScope.mode = 3;
 		$rootScope.day = day;
-		$state.go("rooms.detail.addTimePeriod");
+		$state.go("addTimePeriod");
 	};
 	
 	$scope.prevTab = function()
 	{
-		$state.go("rooms.detail.heatingAutopilot",{componentId: $scope.componentId});
+		$state.go("heatingAutopilot",{componentId: $scope.componentId});
 	}
 	
 }]);

@@ -439,6 +439,13 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	this.setConsumer= function (value) {
 		  
 		this.setComponentsOfTypeToValue(21, value);
+		this.setComponentsOfTypeToValue(14, value);
+		this.setComponentsOfTypeToValue(15, value);
+		this.setComponentsOfTypeToValue(16, value);
+		this.setComponentsOfTypeToValue(18, value);
+		this.setComponentsOfTypeToValue(19, value);
+		this.setComponentsOfTypeToValue(8, value);
+		
 	};
 	
 	/**
@@ -466,6 +473,8 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			if(components[c].getType() === type )
 				components[c].getSettings()[0]=value;
 	    }	
+		
+		//
 	};
 	
 	/**
@@ -482,7 +491,6 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    		
 	    		for(var c in components)
 	    		{
-	    			console.log(components[c].getCategory())
 	    			if(components[c].getCategory().getName() === category )
 	    				components[c].getSettings()[0]=value;
 	    		}
@@ -510,7 +518,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			for(var i=0; i < 11; i++)
 			{
 				var date = startDate.add(1,'month');
-				//if(date <= moment())
+				if(date <= moment())
 					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
 			}
 		}
@@ -522,7 +530,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			for(var i=0; i < 31; i++)
 			{
 				var date = startDate.add(1,'days');
-				if(date.month() === beginMonth)
+				if(date.month() === beginMonth && date <= moment())
 					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),0,0,0,0)});
 				
 			}
@@ -534,8 +542,12 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			for(var i=0; i < 24; i++)
 			{
 				var date = startDate.add(1,'hours');
-				//if(date <= moment())
+				console.log(date.format());
+				if(date <= moment())
+				{
+					console.log("Added:"+date.format())
 					response.dataset.push({x: new Date(date.year(),date.month(),date.date(),date.hour(),0,0,0)});
+				}
 			}
 		}
 		return response;
@@ -544,7 +556,6 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	this.getEnergyData = function(typ, startDate)
 	{
 		var response = this.getDataset(typ,startDate);
-		console.log("Test2");
 		for(var r in this.getRooms())
 		{
 			var roomCount =0;
@@ -555,7 +566,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 			{
 				if(room.getComponents()[c].getType() == 21 || room.getComponents()[c].getType() == 22 )
 					cCount++;
-			}console.log("Test");
+			}
 			
 			for(var d in response.dataset)
 			{
@@ -568,9 +579,7 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 					response.dataset[d][name] = Math.round((Math.random() * (4 - 3.5) + 3.5)*100*cCount)/100;
 				else if(typ === "day")
 					response.dataset[d][name] = Math.round((Math.random() * (170 - 150) + 150)*100*cCount)/100;
-				//}	
-				console.log(cCount);
-				console.log(response.dataset[d][name]);
+				//}	;
 			}
 			response.label.push(room.getName());
 			

@@ -161,7 +161,6 @@ option {
 .notification-set
 {
 	color: #e8a80d ! important;
-	z-index: 4000;
 }
 
 .has-error:active

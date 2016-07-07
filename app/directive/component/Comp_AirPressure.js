@@ -17,6 +17,8 @@ app.directive('compAirPressure', function() {
 		controller: ['$scope', '$state', function($scope, $state) {
 
 			$scope.configureComponent = function () {
+				
+				
 				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
 			};
 		}]
