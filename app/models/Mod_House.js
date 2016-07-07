@@ -286,6 +286,19 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 		  }
 	
     };
+    
+    /**
+	 * @author Julia Thüroff
+	 */
+	this.getSetDescription= function (value) {
+		  if (angular.isDefined(value)) {
+		    this.setDescription(value);
+		  } else {        
+		    return this.getDescription();
+		  }
+	
+    };
+    
     /**
 	 * @author Julia Thüroff
 	 */
