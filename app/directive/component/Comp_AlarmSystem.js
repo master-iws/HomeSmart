@@ -14,11 +14,15 @@ app.directive('compAlarmSystem', function() {
 		transclude: true,
 		templateUrl: 'app/views/component/alarmSystem.htm',
 		link: link,
-		controller: ['$scope', '$state', function($scope, $state) {
+		controller: ['$scope', '$rootScope', '$state', function($scope, $rootScope, $state) {
 
 			$scope.configureComponent = function () {
 				$state.go("houseconfiguration.house.editComponent", {'componentIdx':$scope.componentId});
 			};
+			
+			$scope.$watch('component.getSetSettings()[0]', function() {
+				var change = $rootScope.houses[$rootScope.houseIndex].changeComponentsByAlarmSystemStatus($scope.component.getSetSettings()[0]);
+			});
 		}]
 	};
 });
