@@ -1,3 +1,14 @@
+<style>
+
+.cardTime
+{
+	background-color: #1A237E;
+	color: #FFFFFF;
+	width:50px ! important;
+	height:35px ! important;
+}
+
+</style>
 <div>
 
 	<ul class="nav nav-tabs">
@@ -19,7 +30,7 @@
 		<div class="col-lg-3">
 			<div class="infoDiv light" style="">
 				<h4 class="col-lg-4">Zeitbereich</h4>
-				<a class="link" ng-class="{link_active:period.type == 'day'}"
+				<a class="link cardTime" ng-class="{link_active:period.type == 'day'}"
 					ng-click="setPeriodType('day')">Tag</a> <a class="link"
 					ng-class="{link_active:period.type == 'month'}"
 					ng-click="setPeriodType('month')">Monat</a> <a class="link"

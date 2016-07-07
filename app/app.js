@@ -4,10 +4,11 @@ var app = angular.module("HomeSmart", ["ng", "ui.router", "ui.router.title","aut
 					"angular-vibrator","ngAudio", "toggle-switch", "ui.bootstrap-slider", "colorpicker.module",angularDragula(angular),
 					"ngTouch"]);
 
-app.run(function ($rootScope, $state, $stateParams, $log) {
+app.run(function ($rootScope, $state, $stateParams, $log, MainService) {
 	$rootScope.$state = $state;
 	$rootScope.$stateParams = $stateParams;
-	
+	console.log("Testsavemainservice");
+		
 	$rootScope.$on('$stateChangeSuccess', 
 		function(event, toState, toParams, fromState, fromParams){
 			$log.info(new Date(), fromState.name +" -> "+ toState.name);
@@ -15,8 +16,7 @@ app.run(function ($rootScope, $state, $stateParams, $log) {
 	
 	$rootScope.$on('$stateChangeStart', 
 			function(event, toState, toParams, fromState, fromParams){
-		
-		
+			
 			    $rootScope.previousState = fromState;
 			    $rootScope.currentState = toState;
 			    $rootScope.previousState.params = fromParams;

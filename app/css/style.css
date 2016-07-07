@@ -156,9 +156,11 @@ option {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 }
 
+
+
 .notification-set
 {
-	color: #a94442 ! important;
+	color: #e8a80d ! important;
 	z-index: 4000;
 }
 
@@ -506,7 +508,7 @@ input.cmn-toggle-round:checked + label:after {
 .validation-message
 {
 	height: 30px;
-    background-color: #a94442;
+    color: #a94442;
 }
 	
 .form-control
@@ -800,11 +802,3 @@ input.cmn-toggle-round:checked + label:after {
 	}	
 }
 
-.checkboxSwitch {
-  background-image: url('app/icons/unchecked_checkbox-16.png') ! important;
-  background-repeat: no-repeat ! important;
-  background-position: right center ! important;
-}
-a.active.checkboxSwitch {
-  background-image: url('app/icons/checked_checkbox-16.png') ! important;
-}
