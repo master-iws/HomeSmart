@@ -8,14 +8,19 @@ app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$sta
 	mainService.saveHouses($rootScope.houses);
 	
 	$scope.controls = [];
+	console.log($rootScope.houses[$rootScope.houseIndex].getDashboard().controls)
 	
 	for(var c  in $rootScope.houses[$rootScope.houseIndex].getDashboard().controls)
 	{
 		var control = $rootScope.houses[$rootScope.houseIndex].getDashboard().controls[c];
 		
-		var room = $rootScope.houses[$rootScope.houseIndex].getRoomById(control.roomId);
-		var component = room.getComponentById(control.componentId);
+		console.log(control);
 		
+		var room = $rootScope.houses[$rootScope.houseIndex].getRoomById(control.roomId);
+		console.log(room);
+		
+		var component = $rootScope.houses[$rootScope.houseIndex].getComponentById(control.componentId);
+		console.log(component);
 		$scope.controls.push(component);
 	}
 	
