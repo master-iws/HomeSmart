@@ -48,21 +48,21 @@ app.directive('compAudio', function($timeout, $interval) {
 
 			}
 
+			// Time
+			var time = scope.component.getSetSettings()[5];
+			var seconds = time % 60;
+			var minutes = (time - seconds) / 60;
+			if (seconds < 10) {
+				seconds = "0" + seconds;
+			}
+			var text = "&nbsp;&nbsp;" + minutes + ":" + seconds + " / 3:00";
+			$('#time-' + scope.componentId).html(text);
+
 			// TimeIntervall
 			if(scope.component.getSetSettings()[0] == 1 && scope.component.getSetSettings()[1] == 1) {
 				scope.timeoutId = $interval(function () {
 					scope.component.getSetSettings()[5]++;
 				}, 1000);
-
-				// Time
-				var time = scope.component.getSetSettings()[5];
-				var seconds = time % 60;
-				var minutes = (time - seconds) / 60;
-				if (seconds < 10) {
-					seconds = "0" + seconds;
-				}
-				var text = "&nbsp;&nbsp;" + minutes + ":" + seconds + " / 3:00";
-				$('#time-' + scope.componentId).html(text);
 			}
 		});
 	}
@@ -98,6 +98,7 @@ app.directive('compAudio', function($timeout, $interval) {
 					$('#selectRadio-' + $scope.componentId).show();
 				} else {
 					$scope.stopInterval();
+					$scope.component.getSetSettings()[0] = 0;
 					$('#iconPlayPause-' + $scope.componentId).removeClass("fa-pause").addClass("fa-play");
 					$('#playPauseButton-' + $scope.componentId).removeClass("btn-success").addClass("btn-primary");
 					$('#selectAlbum-' + $scope.componentId).show();
