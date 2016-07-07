@@ -41,23 +41,6 @@ h4
     color:#666666;
 }
 
-select {
-  border-radius:3px;
-  padding:.5em 1em .5em 1em;
-  box-shadow: 0 2px 1px 0 rgba(0,0,0,0.2);
-  background-color:white;
-  background-image:url(select-arrow.png);
-  background-position: right;
-  background-repeat: no-repeat;
-}
-
-option {
-  border-radius: 2px;
-  border-top:1px solid #444;
-  padding:.3em 1em .3em 1em;
-}
-
-
 
 .btn-default {
     color: #FFFFFF;
@@ -190,7 +173,7 @@ option {
 	font-size:11pt;
 }
 
-#userNameLabel, #descriptionLabel, #floorLabel,#endLabel, #startLabel, #cityLabel, #iconLabel,#passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
+#userNameLabel,#serialIdLabel, #descriptionLabel, #floorLabel,#endLabel, #startLabel, #cityLabel, #iconLabel,#passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
 {
 	text-align:left;
 }

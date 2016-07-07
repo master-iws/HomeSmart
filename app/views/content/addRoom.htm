@@ -16,7 +16,7 @@
 					<label for="floor" class="col-sm-3 col-md-3 col-lg-1 control-label"
 						id="floorLabel">Etage</label>
 					<div class="col-sm-12 col-md-7 col-xs-12 col-lg-2">
-						<select style="width:100%;" ng-model-options=" {getterSetter: true }"
+						<select style="width:100%;" ng-model-options=" {getterSetter: true }"  class="form-control"
 						    ng-model="room.getSetFloor" ng-change="categoryChanged()" id="floor" name="floor"
 						    ng-options="floor as floor.getName() for floor in houses[houseIndex].getFloors()"></select>
 					</div>

@@ -14,7 +14,7 @@
 			<div ng-show="{{houses.length && !$state.includes('index') && $root.loggedIn}}"
 				class="nav navbar-nav col-xs-2 col-md-2 col-sm-1 col-lg-2"
 				style="padding-top: 19px;">
-				<select style="width:100%;"
+				<select style="width:100%;" class="form-control"
 			    ng-model="$root.houseIndex" ng-change="houseIndexChanged()"
 			    ng-options="houses.indexOf(house) as (house.getName() + ' in ' + house.city) for house in houses"></select>
 			</div>

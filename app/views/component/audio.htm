@@ -20,19 +20,19 @@
 			</div>
 			<div class="row" style="margin-bottom: 10px;">
 				<div class="col-md-11 col-lg-6 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
-					<select style="width: 120px;" id="selectType-{{componentId}}" ng-change="selectType()" ng-model="component.getSetSettings()[1]" ng-options="types.indexOf(t) as t for t in types"></select>
+					<select style="width: 120px;" id="selectType-{{componentId}}" ng-change="selectType()"  class="form-control" ng-model="component.getSetSettings()[1]" ng-options="types.indexOf(t) as t for t in types"></select>
 				</div>
 			</div>
 			<div class="row" style="margin-bottom: 10px;" id="selectAlbum-{{componentId}}">
 				<div class="col-md-11 col-lg-6 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
-					<select style="width: 120px;" ng-model="component.getSetSettings()[3]" ng-change="selectAlbum()" ng-options="albums.indexOf(a) as a for a in albums"></select>
+					<select  class="form-control" style="width: 120px;" ng-model="component.getSetSettings()[3]" ng-change="selectAlbum()" ng-options="albums.indexOf(a) as a for a in albums"></select>
 				</div>
 			</div>
 			<div class="row" style="margin-bottom: 10px;">
 				<div class="col-md-11 col-lg-6 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
 					<button class="btn btn-primary" ng-click="previousAudio()"><i class="fa fa-fast-backward"></i></button>
-					<select style="width: 120px;" id="selectRadio-{{componentId}}" ng-model="component.getSetSettings()[2]" ng-options="radios.indexOf(r) as r for r in radios"></select>
-					<select style="width: 120px;" id="selectSong-{{componentId}}" ng-change="selectSong()" ng-model="component.getSetSettings()[4]" ng-options="songs[component.getSetSettings()[3]].indexOf(s) as s for s in songs[component.getSetSettings()[3]]"></select>
+					<select  class="form-control" style="width: 120px;" id="selectRadio-{{componentId}}" ng-model="component.getSetSettings()[2]" ng-options="radios.indexOf(r) as r for r in radios"></select>
+					<select  class="form-control" style="width: 120px;" id="selectSong-{{componentId}}" ng-change="selectSong()" ng-model="component.getSetSettings()[4]" ng-options="songs[component.getSetSettings()[3]].indexOf(s) as s for s in songs[component.getSetSettings()[3]]"></select>
 					<button class="btn btn-primary" ng-click="nextAudio()"><i class="fa fa-fast-forward"></i> </button>
 				</div>
 			</div>

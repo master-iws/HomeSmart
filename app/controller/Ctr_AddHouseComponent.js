@@ -12,9 +12,12 @@ app.controller('AddHouseComponentController',["$scope", "$rootScope", "$state", 
 	
 	$scope.name = "";
 	$scope.serialId = "";
-	$scope.category;
+	
 	$scope.categorys = componentService.getCategorys();
+	$scope.category = $scope.categorys[0];
 	$scope.components;
+	
+	
 
 	$scope.save = function() {
 		vibrator.vibrate(10);
@@ -38,6 +41,10 @@ app.controller('AddHouseComponentController',["$scope", "$rootScope", "$state", 
    
    $scope.categoryChanged = function() {
 		$scope.components = componentService.getComponentsByCategory($scope.category.getId());
+		$scope.type = $scope.components[0];
   };
+  
+  $scope.categoryChanged();
+  $scope.component = $scope.components[0];
    
 }]);

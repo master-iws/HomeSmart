@@ -15,7 +15,7 @@
 		</div>
 		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 10px;">
 			<span class="component-text">Eingang:&nbsp;&nbsp;</span>
-			<select style="width: 120px;" ng-model="component.getSetSettings()[1]" ng-options="inputs.indexOf(input) as input for input in inputs"></select>
+			<select  class="form-control" style="width: 120px;" ng-model="component.getSetSettings()[1]" ng-options="inputs.indexOf(input) as input for input in inputs"></select>
 		</div>
 	</div>
 	<button ng-click="configureComponent(componentId)"

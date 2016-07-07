@@ -37,11 +37,11 @@
 						<input type="{{inputType}}" ng-model="wlan.password"
 							class="form-control " name="password" id="password"
 							ng-class="{'has-error': wlanForm.password.$invalid}" required>
-						<label for="showPassword"> <input type="checkbox" class="checkboxSwitch"
+						<div class="checkbox"><label for="showPassword"> <input type="checkbox" class="checkboxSwitch"
 							ng-click="hideShowPassword()" name="showPassword"
 							ng-model="showPassword" value="Passwort anzeigen">
 							Passwort anzeigen
-						</label>
+						</label></div>
 					</div>
 				</div>
 				<div class="form-group col-sm-9">

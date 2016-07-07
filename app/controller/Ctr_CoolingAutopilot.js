@@ -2,8 +2,8 @@
 /**
  * @author Julia Thüroff
  */
-app.controller('CoolingAutopilotController',["$scope", "$rootScope", "$state", "MainService",	
-                                         function($scope, $rootScope, $state, mainService) {
+app.controller('CoolingAutopilotController',["$scope", "$rootScope", "$state","$stateParams", "MainService",	
+                                         function($scope, $rootScope, $state,$stateParams, mainService) {
 	
 	mainService.saveHouses($rootScope.houses);
 	
