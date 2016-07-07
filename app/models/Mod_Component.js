@@ -68,9 +68,9 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	};
 
 	/*
-	 * setter TODO
+	 * setter
 	 */
-
+	
 	this.setType = function(type) {
 	    if(this.checkNum(type)) {
 		_type = type;
