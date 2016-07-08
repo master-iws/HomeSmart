@@ -1,0 +1,99 @@
+<div class="row">
+	<br /> <br /> <br />
+	 <div ng-repeat="playlist in playLists"
+		class="col-xs-11 col-sm-4 col-md-4 col-lg-4 col-lg-offset-1 col-sm-offset-1 col-md-offset-1 component"
+		style="padding:0px;margin-left: 20px; margin-bottom: 15px; min-height: 500px;">
+		 <div class="row" style="margin-bottom: 10px;">
+			 <div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 card-name"
+			      style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+				 <span class="component-name">Playlist: {{$index + 1}}</span>
+			 </div>
+		 </div>
+		 <button ng-click="deletePlayList($index)"
+		         class="btn btn-danger settings-btn">
+			 <i class="fa fa-trash" aria-hidden="true"></i>
+		 </button>
+		 <div class="row" style="margin-bottom: 10px;">
+			 <div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
+				 <button class="btn btn-primary" id="playPauseButton-{{$index}}" ng-click="playPause()"><i id="iconPlayPause-{{$index}}" class="fa fa-play"></i> </button>
+			 </div>
+		 </div>
+		 <div class="row" style="margin-bottom: 10px;">
+			 <div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
+				 <button class="btn" ng-class="{'btn-success': playlist.settings[1] == 0, 'btn-primary': playlist.settings[1] == 1}" ng-click="playRadio(playlist.id); playlist.settings[1] = 0">Radio</button>
+				 <button class="btn" ng-class="{'btn-success': playlist.settings[1] == 1, 'btn-primary': playlist.settings[1] == 0}" ng-click="playDatei(playlist.id); playlist.settings[1] = 1">Datei</button>
+			 </div>
+		 </div>
+		 <div class="row" style="margin-bottom: 10px;" id="selectAlbum-{{$index}}" ng-show="playlist.settings[0]">
+			 <div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
+				 <select  class="custom-form-control" style="width: 100px;" ng-model="playlist.settings[3]" ng-change="selectAlbum()" ng-options="albums.indexOf(a) as a for a in albums"></select>
+			 </div>
+		 </div>
+		 <div class="row" style="margin-bottom: 10px;">
+			 <div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 text-center" style="margin-top: 10px; padding: 0;">
+				 <button class="btn btn-primary" ng-click="previousAudio()"><i class="fa fa-fast-backward"></i></button>
+				 <select class="custom-form-control" style="width: 100px;" id="selectRadio-{{$index}}" ng-model="playlist.settings[2]" ng-options="radios.indexOf(r) as r for r in radios"
+				         ng-hide="playlist.settings[0]"></select>
+				 <select class="custom-form-control" style="width: 100px;" id="selectSong-{{$index}}" ng-change="selectSong()" ng-model="playlist.settings[4]" ng-options="songs[playlist.settings[3]].indexOf(s) as s for s in songs[playlist.settings[3]]"
+			            ng-show="playlist.settings[0]"></select>
+				 <button class="btn btn-primary" ng-click="nextAudio()"><i class="fa fa-fast-forward"></i> </button>
+			 </div>
+		 </div>
+		 <div class="row" style="margin-bottom: 10px;" id="songLength-{{$index}}">
+			 <div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 text-center" style="margin-top: 15px; padding: 0;">
+				 <div class="col-md-11 col-lg-11 col-xs-11 col-sm-11">
+					 <slider
+							 ng-model="playlist.settings[5]"
+							 min="0"
+							 max="180"
+							 step="1"
+							 tooltip="hide">
+					 </slider>
+				 </div>
+				 <div class="col-md-11 col-lg-11 col-xs-11 col-sm-11 text-center" style="margin-left: 0px;">
+					 <span id="time-{{$index}}" class="component-text">00:30 / 03:00</span>
+				 </div>
+			 </div>
+		 </div>
+		 <div class="row" style="margin-bottom: 10px;">
+			 <div class="col-md-11 col-lg-11 col-xs-11 col-sm-11" style="margin-top: 15px; padding: 0;">
+				 <div class="col-md-1 col-lg-1 col-xs-1 col-sm-1" style="margin-top: -5px;">
+					 <button ng-click="mute()" class="btn btn-primary" id="mute-{{$index}}">
+						 <i id="iconVolumeOn" class="fa fa-volume-up"></i>
+					 </button>
+				 </div>
+				 <div class="col-md-6 col-lg-5 col-xs-5 col-sm-5">
+				<span slider
+				      id="slider-{{$index}}"
+				      ng-model="playlist.settings[6]"
+				      min="1"
+				      max="50"
+				      step="1"
+				      tooltip="hide"
+				></span>
+				 </div>
+				 <div class="col-md-1 col-lg-1 col-xs-1 col-sm-1">
+					 <span class="component-text">&nbsp;&nbsp;{{playlist.settings[6]}}</span>
+				 </div>
+			 </div>
+		 </div>
+		 <div class="row" style="margin-bottom: 10px;">
+			 <div class="col-md-11 col-lg-11 col-xs-11 col-sm-11" style="margin-top: 15px; padding: 0; margin-left: 10px;">
+				 <ui-select multiple ng-model="playlist.rooms" theme="bootstrap" close-on-select="false" title="Raum wählen...">
+					 <ui-select-match placeholder="Raum wählen...">{{$item}}</ui-select-match>
+					 <ui-select-choices repeat="room in availableRooms | filter:$select.search">
+						 {{room}}
+					 </ui-select-choices>
+				 </ui-select>
+			 </div>
+		 </div>
+	</div>
+	<div
+		class="col-xs-11 col-sm-4 col-md-4 col-lg-4 col-lg-offset-1 col-sm-offset-1 col-md-offset-1 add-card"
+		style="height: 215px; padding: 0px;margin-left: 15px;">
+		<button class="add-btn" ng-click="addPlayList()"
+			aria-label="Haus hinzuf�gen" style="margin-bottom: 0px;">
+			<i class="fa fa-plus fa-3x"></i>
+		</button>
+	</div>
+</div>

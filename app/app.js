@@ -2,7 +2,7 @@
 var app = angular.module("HomeSmart", ["ng", "ui.router", "ui.router.title","autocomplete",
 					"n3-line-chart","ngToast","ngAnimate","ui.bootstrap",
 					"angular-vibrator","ngAudio", "toggle-switch", "ui.bootstrap-slider", "colorpicker.module",angularDragula(angular),
-					"ngTouch"]);
+					"ngTouch", "ui.select", "ngSanitize"]);
 
 app.run(function ($rootScope, $state, $stateParams, $log, MainService) {
 	$rootScope.$state = $state;
@@ -248,6 +248,18 @@ app.config(
 				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
 				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
 				"Content": { templateUrl: "app/views/content/categorys.htm",controller: 'CategorysController'}
+			}
+		}).state("multiRoomAudio", {
+			url: "/audio",
+			authenticate: true,
+			adminArea: false,
+			resolve: {
+				$title: function() { return 'Multi Room Audio'; }
+			},
+			views: {
+				"Nav1": {templateUrl: "app/views/nav/nav1.index.htm", controller: 'NavigationController'},
+				"Nav2": { templateUrl: "app/views/nav/nav2.houses.htm"},
+				"Content": { templateUrl: "app/views/content/multiRoomAudio.htm",controller: 'MultiRoomAudioController'}
 			}
 		}).state("categorys.detail", {
 			url: "/:categoryId",
