@@ -1,52 +1,66 @@
-<div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
+<div class="col-md-12 col-xs-12 col-sm-12 component"
+	style="padding: 0px;">
 	<div class="row" style="margin-bottom: 10px;">
 		<div class="col-md-3 col-lg-3 col-xs-11 col-sm-3 card-name"
-		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+			style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
 			<span class="component-name">{{componentName}}</span>
 		</div>
 		<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-			<toggle-switch
-					ng-model="component.getSetSettings()[0]"
-					ng-model-options="{getterSetter: true }"
-					on-label="Ein"
-					off-label="Aus"
-					style="height: 30px; margin-top: 10px;">
+			<toggle-switch ng-model="component.getSetSettings()[0]"
+				ng-model-options="{getterSetter: true }" on-label="Ein"
+				off-label="Aus" style="height: 30px; margin-top: 10px;">
 			</toggle-switch>
 		</div>
-		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6" style="margin-top: 20px;">
-			<span class="component-text" id="timeLeft-{{componentId}}"><i class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Verbleibende Zeit:&nbsp;&nbsp;{{component.getSetSettings()[3]}}&nbsp;Minuten</span>
+		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-6"
+			style="margin-top: 20px;">
+			<span class="component-text" id="timeLeft-{{componentId}}"><i
+				class="fa fa-warning fa-lg fa-2x text-danger"></i>&nbsp;&nbsp;Verbleibende
+				Zeit:&nbsp;&nbsp;{{component.getSetSettings()[3]}}&nbsp;Minuten</span>
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-7" style="margin-top: 15px;padding-left: 0;">
-			<span class="component-text col-xs-2" style="margin-top: 7px;">Modus:&nbsp;&nbsp;</span>
-			<select  class="form-control" style="width: 150px;" id="select-{{componentId}}" ng-model="component.getSetSettings()[1]" ng-options="modus.indexOf(m) as m for m in modus"></select>
+		<div class="col-md-6 col-lg-6 col-xs-11 col-sm-7"
+			style="margin-top: 15px; padding-left: 0;">
+
+
+
+			<div class="col-md-4 col-lg-2 col-xs-2 col-sm-3">
+				<span
+					class="component-text component-ellipsis col-xs-12 col-sm-9 col-md-12 col-lg-12"
+					style="margin-top: 7px;">Modus:&nbsp;&nbsp;</span>
+			</div>
+			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+				<select class="form-control" style="width: 130px;"
+					id="select-{{componentId}}"
+					ng-model="component.getSetSettings()[1]"
+					ng-options="modus.indexOf(m) as m for m in modus"></select>
+			</div>
 		</div>
-		<div class="col-md-12 col-lg-5 col-xs-11 col-sm-12" style="margin-top: 22px; padding: 0;">
-			<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2" style="padding-right: 20px;">
+		<div class="col-md-12 col-lg-5 col-xs-11 col-sm-12"
+			style="margin-top: 22px; padding: 0;">
+			<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2"
+				style="padding-right: 20px;">
 				<span class="component-text">Temperatur:&nbsp;&nbsp;</span>
 			</div>
 			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-				<span slider
-				      id="slider-{{componentId}}"
-				      ng-model="component.getSetSettings()[2]"
-				      min="30"
-				      max="90"
-				      step="10"
-				      tooltip="hide"
-				></span>
+				<span slider id="slider-{{componentId}}"
+					ng-model="component.getSetSettings()[2]" min="30" max="90"
+					step="10" tooltip="hide"></span>
 			</div>
 			<div class="col-md-2 col-lg-1 col-xs-1 col-sm-2">
 				<span class="component-text">&nbsp;&nbsp;{{component.getSetSettings()[2]}}&nbsp;°C</span>
 			</div>
 		</div>
-		<div class="col-md-3 col-lg-12 col-xs-11 col-sm-3" style="margin-top: 15px;">
-			<button class="btn btn-primary" id="start-{{componentId}}" ng-click="start()">Start</button>
-			<button class="btn btn-primary" id="stop-{{componentId}}" ng-click="stop()">Stop</button>
+		<div class="col-md-3 col-lg-12 col-xs-11 col-sm-3"
+			style="margin-top: 15px;">
+			<button class="btn btn-primary" id="start-{{componentId}}"
+				ng-click="start()">Start</button>
+			<button class="btn btn-primary" id="stop-{{componentId}}"
+				ng-click="stop()">Stop</button>
 		</div>
 	</div>
 	<button ng-click="configureComponent(componentId)"
-	        class="btn btn-primary settings-btn">
+		class="btn btn-primary settings-btn">
 		<i class="fa fa-wrench" aria-hidden="true"></i>
 	</button>
 </div>
