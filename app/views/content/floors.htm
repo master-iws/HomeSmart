@@ -5,6 +5,10 @@
 		style="margin-left: 15px; height: 140px;padding:0px;"
 		ng-class="{'not-configured': deleted}">
 		<button ng-click="editFloor(floor.getId())"
+			aria-label="Räume" class="btn btn-primary room-btn">
+			R&auml;ume
+		</button>
+		<button ng-click="editFloor(floor.getId())"
 			aria-label="Etage konfigurieren" class="btn btn-primary settings-btn">
 			<i class="fa fa-wrench" aria-hidden="true"></i>
 		</button>
@@ -22,20 +26,20 @@
 			<span class="component-text" id="shadingUpInfoText-{{$index}}" hidden="hidden"><i class="fa fa-warning fa-lg fa-2x text-success"></i>&nbsp;&nbsp;Beschattung zu</span>
 			<span class="component-text" id="shadingDownInfoText-{{$index}}" hidden="hidden"><i class="fa fa-warning fa-lg fa-2x text-success"></i>&nbsp;&nbsp;Beschattung auf</span>
 			</div>-->
-			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 col-lg-offset-1 text-right" style="margin-top: 18px;">
+			<div class="col-md-4 col-lg-3 col-xs-4 col-sm-4 text-right" style="margin-top: 18px;">
 				<span class="component-text">Beschattung: </span>
 			</div>
-			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-left" style="margin-top: 15px;">
-				<button ng-click="setShadowing($index, 10);$event.stopPropagation()" class="btn btn-primary" aria-label="Beschattung zu">
+			<div class="col-md-4 col-lg-5 col-xs-4 col-sm-4 text-left" style="margin-top: 15px;">
+				<button ng-click="setShadowing($index, 10);" class="btn btn-primary" aria-label="Beschattung zu">
 					<i class="fa fa-arrow-down"></i>
 				</button>
-				<button ng-click="setShadowing($index, 0);$event.stopPropagation()" class="btn btn-primary" aria-label="Beschattung auf">
+				<button ng-click="setShadowing($index, 0);" class="btn btn-primary" aria-label="Beschattung auf">
 					<i class="fa fa-arrow-up"></i>
 				</button>
 			</div>
 		</div>
 		<div class="row text-center">
-			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 col-lg-offset-1 text-right" style="margin-top: 15px;">
+			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-right" style="margin-top: 15px;">
 				<button ng-click="lightOff();$event.stopPropagation()" aria-label="Licht aus" class="btn btn-primary" style="width: 90%;">
 					<span><i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;aus</span>
 				</button>

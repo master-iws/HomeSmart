@@ -1,25 +1,40 @@
 <div class="row">
 	<div ng-show="!$state.includes('rooms.detail')">
 		<h1 class="col-md-10 col-lg-10 col-xs-10 col-sm-10">R&auml;ume</h1>
-		<div ng-repeat="room in houses[houseIndex].getRooms()"
+		<div class="col-xs-10 col-sm-10 col-md-12 col-lg-12" style="margin-bottom:10px;">
+			<h4 class="col-xs-3 col-sm-2 col-md-1 col-lg-1" style="padding:0px;">Etage: </h4>
+			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+			<select ng-model="floorId" class="form-control" style="width: 50%;"
+				ng-change="floorChanged()"
+				ng-options="floor.getId() as floor.getName() for floor in floors"
+				style="width:50%;">
+			</select>
+			</div>
+		</div>
+		<div ng-repeat="room in rooms"
 			class="col-md-3 col-sm-5 col-lg-3 col-xs-11 card pointer"
-			style="margin-left: 15px; height: 140px;padding:0px;"
-		    ng-click="showRoom(room.getId())"
+			style="margin-left: 15px; height: 140px; padding: 0px;"
+			ng-click="showRoom(room.getId())"
 			ng-class="{'not-configured': deleted}">
-			<button ng-click="editRoom(room.getId())" aria-label="Raum konfigurieren"
-			        class="btn btn-primary settings-btn">
-				<i class="fa fa-wrench" ></i>
+			<button ng-click="editRoom(room.getId())"
+				aria-label="Raum konfigurieren" class="btn btn-primary settings-btn">
+				<i class="fa fa-wrench"></i>
 			</button>
 			<div class="row">
-				<div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding: 0px;color:#FFFFFF;">
-					<i  ng-show="room.getIcon() === undefined" class="col-xs-2 col-sm-2 col-md-2 col-lg-1 fa fa-codepen room-default-icon"  alt="Room Icon"  width="25" height="25" ></i>
-					<img ng-src="{{room.getIcon()}}" ng-show="room.getIcon() !== undefined" class="col-xs-2 col-sm-2 col-md-2 col-lg-1 room-icon" alt="Room Icon"  width="25" height="25" />
+				<div class="col-md-11 col-xs-11 col-sm-11 col-lg-11"
+					style="padding: 0px; color: #FFFFFF;">
+					<i ng-show="room.getIcon() === undefined"
+						class="col-xs-2 col-sm-2 col-md-2 col-lg-1 fa fa-codepen room-default-icon"
+						alt="Room Icon" width="25" height="25"></i> <img
+						ng-src="{{room.getIcon()}}" ng-show="room.getIcon() !== undefined"
+						class="col-xs-2 col-sm-2 col-md-2 col-lg-1 room-icon"
+						alt="Room Icon" width="25" height="25" />
 
 					<!-- <img alt="Raumicon" ng-src="{{room.getIcon()}}" width="50" height="50"/>-->
 					<div class="col-md-7 col-lg-7 col-xs-8 col-sm-7 card-name"
-						style="padding:0px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+						style="padding: 0px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
 						<span class="card-name" ng-click="showRoom(room.getId())"
-							style="padding:0px;border-style: none ! important; background-color: transparent ! important; overflow: hidden;white-space: nowrap;display: block;text-overflow: ellipsis;">{{room.getName()}}</span>
+							style="padding: 0px; border-style: none ! important; background-color: transparent ! important; overflow: hidden; white-space: nowrap; display: block; text-overflow: ellipsis;">{{room.getName()}}</span>
 					</div>
 				</div>
 			</div>
@@ -28,34 +43,44 @@
 				<span class="component-text" id="shadingUpInfoText-{{$index}}" hidden="hidden"><i class="fa fa-warning fa-lg fa-2x text-success"></i>&nbsp;&nbsp;Beschattung zu</span>
 				<span class="component-text" id="shadingDownInfoText-{{$index}}" hidden="hidden"><i class="fa fa-warning fa-lg fa-2x text-success"></i>&nbsp;&nbsp;Beschattung auf</span>
 				</div>-->
-				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-right" style="margin-top: 18px;">
-					<span class="component-text" style="overflow: hidden;white-space: nowrap;display: block;text-overflow: ellipsis;">Beschattung: </span>
+				<div class="col-md-4 col-lg-3 col-xs-4 col-sm-4 text-right"
+					style="margin-top: 18px;">
+					<span class="component-text">Beschattung: </span>
 				</div>
-				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-left" style="margin-top: 15px;">
-					<button ng-click="setShadowing($index, 10);$event.stopPropagation()" class="btn btn-primary" aria-label="Beschattung zu">
+				<div class="col-md-4 col-lg-5 col-xs-4 col-sm-4 text-left"
+					style="margin-top: 15px;">
+					<button ng-click="setShadowing($index, 10);"
+						class="btn btn-primary" aria-label="Beschattung zu">
 						<i class="fa fa-arrow-down"></i>
 					</button>
-					<button ng-click="setShadowing($index, 0);$event.stopPropagation()" class="btn btn-primary" aria-label="Beschattung auf">
+					<button ng-click="setShadowing($index, 0);" class="btn btn-primary"
+						aria-label="Beschattung auf">
 						<i class="fa fa-arrow-up"></i>
 					</button>
 				</div>
 			</div>
 			<div class="row text-center">
-				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-right" style="margin-top: 15px;">
-					<button ng-click="lightOff();$event.stopPropagation()" aria-label="Licht aus" class="btn btn-primary" style="width: 90%;">
+				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-right"
+					style="margin-top: 15px;">
+					<button ng-click="lightOff();$event.stopPropagation()"
+						aria-label="Licht aus" class="btn btn-primary" style="width: 90%;">
 						<span><i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;aus</span>
 					</button>
 				</div>
-				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-left" style="margin-top: 15px;">
-					<button ng-click="consumerOff();$event.stopPropagation()" aria-label="Verbraucher aus" class="btn btn-primary" style="width: 90%;">
+				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-left"
+					style="margin-top: 15px;">
+					<button ng-click="consumerOff();$event.stopPropagation()"
+						aria-label="Verbraucher aus" class="btn btn-primary"
+						style="width: 90%;">
 						<span><i class="fa fa-plug" aria-hidden="true"></i>&nbsp;&nbsp;aus</span>
 					</button>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-5 col-xs-11 add-card col-lg-3"
-			style="height: 135px; margin-left: 15px;padding:0px;">
-			<button class="add-btn" ng-click="addRoom()" aria-label="Raum hinzuf�gen">
+			style="height: 135px; margin-left: 15px; padding: 0px;">
+			<button class="add-btn" ng-click="addRoom()"
+				aria-label="Raum hinzuf�gen">
 				<i class="fa fa-plus fa-3x"></i>
 			</button>
 		</div>

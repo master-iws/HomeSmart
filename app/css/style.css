@@ -355,6 +355,16 @@ input.cmn-toggle-round:checked + label:after {
 	right:40px;
 }
 
+.room-btn
+{
+	width: 60px;
+    height: 25px;
+    padding: 0px;
+    position: absolute;
+    top: 3px;
+	right:40px;
+}
+
 .tip
 {
 	margin-bottom:10px;
