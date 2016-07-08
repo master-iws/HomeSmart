@@ -29,11 +29,6 @@ app.controller('FloorsController',["$scope", "$rootScope", "$state","dragulaServ
     	$rootScope.houses[$rootScope.houseIndex].getFloors()[$floorIdx].setShadowing($value);
     };
     
-    $scope.addFloor = function() {
-    	
-    	$state.go("houseconfiguration.floors.addFloor");
-    };
-    
     $scope.configureFloor = function($floorIdx) {
     	
     	$state.go("houseconfiguration.floors.editFloor",{floorId: $floorIdx});
