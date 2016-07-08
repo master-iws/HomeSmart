@@ -4,6 +4,7 @@ app.controller('MainController',
 	["$scope", "$rootScope", "$state","MainService",
 	function($scope, $rootScope, $state, mainService) {
 		
+		$rootScope.floorId = -1;
 		$rootScope.houseIndex = 0;
 		
 		$rootScope.houses = mainService.getHouses();

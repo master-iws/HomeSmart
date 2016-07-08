@@ -46,10 +46,13 @@ app.run(function ($rootScope, $state, $stateParams, $log, MainService) {
 				event.preventDefault();
 			}*/
 			
+			console.log(toState);
+			console.log(toState.params)
 			
 			if (toState.adminArea &&  !$rootScope.adminArea){
 			      // User isn’t authenticated
 				console.log("gotoadmin");
+				console.log(toState.url);
 				$state.go("loginAdminArea",{name: toState.name});
 				event.preventDefault();
 		  	}

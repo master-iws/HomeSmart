@@ -14,7 +14,7 @@
 		<div ng-repeat="room in rooms"
 			class="col-md-3 col-sm-5 col-lg-3 col-xs-11 card pointer"
 			style="margin-left: 15px; height: 140px; padding: 0px;"
-			ng-click="showRoom(room.getId())"
+			
 			ng-class="{'not-configured': deleted}">
 			<button ng-click="editRoom(room.getId())"
 				aria-label="Raum konfigurieren" class="btn btn-primary settings-btn">
@@ -31,11 +31,13 @@
 						alt="Room Icon" width="25" height="25" />
 
 					<!-- <img alt="Raumicon" ng-src="{{room.getIcon()}}" width="50" height="50"/>-->
-					<div class="col-md-7 col-lg-7 col-xs-8 col-sm-7 card-name"
-						style="padding: 0px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-						<span class="card-name" ng-click="showRoom(room.getId())"
-							style="padding: 0px; border-style: none ! important; background-color: transparent ! important; overflow: hidden; white-space: nowrap; display: block; text-overflow: ellipsis;">{{room.getName()}}</span>
-					</div>
+					<div class="col-md-7 col-lg-8 col-xs-8 col-sm-8 card-name"
+					style="padding:0px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+					<button class="card-name noBackground click col-xs-10 col-sm-10 col-md-10 col-lg-10" ng-click="showRoom(room.getId())"
+						style="padding:0px;border-style: none ! important; background-color: transparent ! important; overflow: hidden;white-space: nowrap;display: block;text-overflow: ellipsis;"
+						aria-label="Etage anzeigen">{{room.getName()}}</button>
+				</div>
+
 				</div>
 			</div>
 			<div class="row text-center">

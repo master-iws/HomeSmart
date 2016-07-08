@@ -4,6 +4,13 @@ app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal","
                                                     function($scope, $rootScope, $state,$uibModal,vibrator) {
 	
 	$scope.floorId = -1;
+	
+	if($rootScope.floorId != -1)
+	{
+		$scope.floorId = $rootScope.floorId;
+		$rootScope.floorId = -1;
+	}
+	
     $scope.floors = [];
 	$scope.floor = new Mod_Room();
 	$scope.floor.setId(-1);
@@ -22,6 +29,7 @@ app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal","
 	};
     
     $scope.editRoom = function($roomIdx) {
+    	console.log($roomIdx);
     	$state.go("houseconfiguration.rooms.editRoom",{'roomId':$roomIdx});
     };
     
