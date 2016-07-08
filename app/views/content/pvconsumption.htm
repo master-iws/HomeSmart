@@ -1,69 +1,64 @@
-<div>
+<div ng-swipe-right="prevTab()" ng-swipe-left="nextTab()">
 
 	<ul class="nav nav-tabs">
-		<li><a showtab="" ui-sref="activities" class="pointer">Aktivit&auml;ten</a></li>
-		<li class="active" ng-swipe-left="nextTab()" class="pointer"
-			ng-swipe-right="prevTab()"><a showtab="" ui-sref="pv">Photovoltaikanlage</a></li>
-		<li><a showtab="" ui-sref="water" class="pointer">Wasserverbrauch</a></li>
-		<li><a showtab="" ui-sref="powerconsumption" class="pointer">Stromverbrauch</a></li>
+		<li><a showtab="" ui-sref="activities" class="pointer tab-link">Aktivit&auml;ten</a></li>
+		<li class="active pointer" ng-swipe-left="nextTab()"><a
+			class="active-tab" showtab="" ui-sref="pv">Photovoltaikanlage</a></li>
+		<li><a showtab="" ui-sref="water" class="pointer tab-link">Wasserverbrauch</a></li>
+		<li><a showtab="" ui-sref="powerconsumption"
+			class="pointer tab-link">Stromverbrauch</a></li>
 	</ul>
 
 	<div class="row row-centered">
 		<br>
 
 		<div
-			class="actionbar heading center-actionbarr col-xs-10 col-sm-10 col-md-10 col-lg-12"
+			class="actionbar heading center-actionbarr col-xs-11 col-sm-12 col-md-12 col-lg-12"
 			style="margin-top: 15px; padding: 0px; padding-top: 5px;; background-color: #aeaba4;">
 			
-			<div class="col-lg-3">
-				<div class="infoDiv light" style="">
-					<h4 class="col-lg-4" style="color: #FFFFFF;">Zeitbereich</h4>
-					<a ng-class="{link_active:period.type == 'day'}"
-						ng-click="setPeriodType('day')" class="statistic-link"
-						>Tag</a>
-					<a ng-class="{link_active:period.type == 'month'}"
-						ng-click="setPeriodType('month')"
-						class="statistic-link">Monat</a>
-					<a ng-class="{link_active:period.type == 'year'}"
-						ng-click="setPeriodType('year')"
-						class="statistic-link">Jahr</a>
-					<br> <br>
-				</div>
+
+			<div class="col-xs-10 col-sm-5 col-md-5 col-lg-4">
+
+				<h4 class="col-xs-3 col-sm-2 col-md-2 col-lg-2"
+					style="color: #FFFFFF;">Zeitbereich</h4>
+				<a ng-class="{link_active:period.type == 'day'}"
+					ng-click="setPeriodType('day')" class="statistic-link">Tag</a> <a
+					ng-class="{link_active:period.type == 'month'}"
+					ng-click="setPeriodType('month')" class="statistic-link">Monat</a>
+				<a ng-class="{link_active:period.type == 'year'}"
+					ng-click="setPeriodType('year')" class="statistic-link">Jahr</a> <br>
+				<br>
+
 			</div>
 
 		</div>
 		<br>
 		<div>
 
-			<br>
-			<br />
-			<br />
-			<div id="charts" ng-class="{visibilityHidden: loading}">
-				<button ng-show="periodTypeHistory.length > 1"
-					ng-click="drillUpClick()"
-					style="background-color: buttonface; border: 2px outset buttonface;">
-					<img src="images/icons/Up-26.png" height="16" width="16" />
-				</button>
-				<div style="height: 400px;">
-					<linechart data="chartData" options="chartOptions" height="450"
-						on-click="onClick"></linechart>
+			<br> <br /> <br />
+			<div style="margin-top: 20px;" id="charts"
+				ng-class="{visibilityHidden: loading}"
+				class="col-lg-12 col-md-12 col-xs-11 col-sm-12">
+				<div>
+					<linechart data="chartData" options="chartOptions" height="500px"
+						style="height:300px;" on-click="onClick"></linechart>
 				</div>
 				<br>
+				<br /></br>
 
 			</div>
-			<br />
-			<br />
+			<br /> <br />
 			<div
-				class="actionbar heading center-actionbarr col-xs-10 col-sm-10 col-md-10 col-lg-12"
-				style="padding: 0px; background-color: #aeaba4; color: #FFFFFF;margin-bottom:50px;">
-				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-2 col-lg-offset-5">
+				class="actionbar heading center-actionbarr col-xs-11 col-sm-12 col-md-12 col-lg-12"
+				style="padding: 0px; background-color: #aeaba4; color: #FFFFFF; margin-bottom: 50px; margin-top: 20px;">
+				<div
+					class="col-xs-6 col-xs-offset-3 col-sm-4 col-md-2 col-lg-2 col-sm-offset-4 col-md-offset-4 col-lg-offset-5">
 					<a class="navigation-button" ng-click="periodBack()"> <img
 						src="app/icons/Back-64.png" alt="Zurück">
 					</a> <a style="text-align: center;" ng-click="showSelectType()">{{period.display}}</a>
-					<a id="clear-button" ng-click="periodNow()" class="now-link"
-						> Jetzt
-					</a> <a class="navigation-button" ng-click="periodForward()" class="statistic-link"> <img
-						src="app/icons/Forward-64.png" alt="Weiter">
+					<a id="clear-button" class="now-link" ng-click="periodNow()">
+						Jetzt </a> <a class="navigation-button" ng-click="periodForward()">
+						<img src="app/icons/Forward-64.png" alt="Weiter">
 					</a>
 				</div>
 			</div>
