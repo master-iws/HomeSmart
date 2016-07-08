@@ -40,14 +40,11 @@ app.run(function ($rootScope, $state, $stateParams, $log, MainService) {
 				event.preventDefault();
 			}
 				
-			/*if((toState.name === "houses" || toState.name === "index") && $rootScope.houses.length == 1)
+			if((toState.name === "houses" || toState.name === "index") && $rootScope.houses.length == 1)
 			{
 				$state.go("dashboard");
 				event.preventDefault();
-			}*/
-			
-			console.log(toState);
-			console.log(toState.params)
+			}
 			
 			if (toState.adminArea)
 				$rootScope.previousState = toState;
