@@ -3,7 +3,7 @@
 	<h1 class="col-md-10 col-lg-12 col-xs-11 col-sm-10"
 		ng-show="!$state.includes('rooms.detail.heatingAutopilot') &&!$state.includes('rooms.detail.coolingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">Raum: {{selectedRoom.getName()}}</h1>
 	<aside>
-		<div class="col-md-2 col-sm-2 col-lg-2 hidden-xs subnav"
+		<div class="col-md-2 col-sm-2 col-lg-2 hidden-sm subnav"
 			ng-show="!$state.includes('rooms.detail.heatingAutopilot') && !$state.includes('rooms.detail.coolingAutopilot') && !$state.includes('rooms.detail.addTimePeriod')">
 			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding: 0;">
 				<button class="btn btn-default" ng-click="addRoom()">Raum
