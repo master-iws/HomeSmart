@@ -3,41 +3,49 @@
 		<h1 class="col-md-10 col-lg-10 col-xs-10 col-sm-10">Kategorien</h1>
 		<div>
 			<div ng-repeat="category in houses[houseIndex].getAllCategories()"
-			     class="col-md-3 col-sm-3 col-lg-3 col-xs-11 card"
-			     style="margin-left: 15px; height: 130px;padding:0px;"
-			     ng-class="{'not-configured': deleted}">
+				class="col-md-3 col-sm-3 col-lg-3 col-xs-12 "
+				style="margin-left: 15px; height: 130px; padding: 0px;"
+				ng-class="{'not-configured': deleted}">
+
+				<div class="card">
+					<button ng-click="configureCategory(category.getId())"
+						aria-label="Raum konfigurieren" class="btn-primary settings-btn">
+						<i class="fa fa-wrench"></i>
+					</button>
+
+					<div class="col-md-12 col-xs-11 col-sm-12" style="padding: 0px;">
+
+						<!-- <img alt="Raumicon" ng-src="{{room.getIcon()}}" width="50" height="50"/>-->
+						<div class="col-md-7 col-lg-6 col-xs-8 col-sm-8 card-name"
+							style="padding: 0px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
+							<button
+								class="card-name noBackground click col-xs-10 col-sm-10 col-md-10 col-lg-10"
+								ng-click="showCategory(category.getId())"
+								style="padding: 0px; border-style: none ! important; background-color: transparent ! important; overflow: hidden; white-space: nowrap; display: block; text-overflow: ellipsis;"
+								aria-label="Etage anzeigen">{{category.getName()}}</button>
+						</div>
 
 
-				<button ng-click="configureCategory(category.getId())" aria-label="Raum konfigurieren"
-				        class="btn-primary settings-btn">
-					<i class="fa fa-wrench" ></i>
-				</button>
-
-				<div class="col-md-12 col-xs-11 col-sm-12" style="padding: 0px;">
-
-					<!-- <img alt="Raumicon" ng-src="{{room.getIcon()}}" width="50" height="50"/>-->
-					<div class="col-md-7 col-lg-6 col-xs-8 col-sm-8 card-name"
-					     style="padding:0px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-						<button class="card-name noBackground click col-xs-10 col-sm-10 col-md-10 col-lg-10" ng-click="showCategory(category.getId())"
-						        style="padding:0px;border-style: none ! important; background-color: transparent ! important; overflow: hidden;white-space: nowrap;display: block;text-overflow: ellipsis;"
-						        aria-label="Etage anzeigen">{{category.getName()}}</button>
 					</div>
-
+					<div class="col-md-11 col-lg-11 col-xs-11 col-sm-12"
+						style="margin-top: 15px; padding-left: 4px;">
+						<span class="component-text">Beschattung: </span>
+						<button class="btn btn-primary" aria-label="Beschattung zu">
+							<i class="fa fa-arrow-down"></i>
+						</button>
+						<button class="btn btn-primary" aria-label="Beschattung auf">
+							<i class="fa fa-arrow-up"></i>
+						</button>
+					</div>
+					<button ng-click="lightOff($index)" aria-label="Licht aus"
+						class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-4 floors-card-btn">
+						Licht aus</button>
+					<button ng-click="consumerOff($index)" aria-label="Verbraucher aus"
+						class="btn-primary col-xs-5 col-sm6 col-md-5 col-lg-6 floors-card-btn"
+						style="padding: 0px; overflow: hidden; white-space: nowrap; display: block; text-overflow: ellipsis;">
+						Verbraucher aus</button>
 
 				</div>
-				<div class="col-md-11 col-lg-11 col-xs-11 col-sm-12" style="margin-top: 15px;padding-left:4px;">
-					<span class="component-text">Beschattung: </span>
-					<button class="btn btn-primary" aria-label="Beschattung zu"><i class="fa fa-arrow-down"></i> </button>
-					<button class="btn btn-primary" aria-label="Beschattung auf"><i class="fa fa-arrow-up"></i> </button>
-				</div>
-				<button ng-click="lightOff($index)" aria-label="Licht aus"
-				        class="btn-primary col-xs-5 col-sm-5 col-md-5 col-lg-4 floors-card-btn">
-					Licht aus</button>
-				<button ng-click="consumerOff($index)" aria-label="Verbraucher aus"
-				        class="btn-primary col-xs-5 col-sm6 col-md-5 col-lg-6 floors-card-btn"
-				        style="padding:0px; overflow: hidden;white-space: nowrap;display: block;text-overflow: ellipsis;">
-					Verbraucher aus</button>
-
 			</div>
 		</div>
 	</div>
