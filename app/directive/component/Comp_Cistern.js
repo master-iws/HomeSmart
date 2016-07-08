@@ -4,7 +4,8 @@ app.directive('compCistern', function() {
 
 		scope.componentId = scope.component.getId();
 		scope.componentName = scope.component.getName();
-		
+		scope.fillingLevel = ((scope.component.getSetSettings()[0] + 1) * 1000);
+
 	}
 
 	return {
