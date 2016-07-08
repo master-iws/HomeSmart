@@ -779,12 +779,17 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
     }
     
     function saveHouses(houses) {
-	console.groupCollapsed("MainService::getHouses");
-	console.groupCollapsed("House Array");
-	console.info(JSON.stringify(houses,null,2));
-	console.groupEnd();
-	store(JSON.stringify(houses),"houses");
-	console.groupEnd();
+	if (!angular.isDefined(houses)) {
+	    houses = $rootScope.houses;
+	}
+	if(angular.isDefined(houses)) {
+	    console.groupCollapsed("MainService::saveHouses");
+	    console.groupCollapsed("House Array");
+	    console.info(JSON.stringify(houses,null,2));
+	    console.groupEnd();
+	    store(JSON.stringify(houses),"houses");
+	    console.groupEnd();
+	}
     }
     
     function getSettings()

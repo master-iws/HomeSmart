@@ -1,13 +1,13 @@
 <div class="row row-centered">
-	<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Wetter</h1>
+	<h1 class="col-md-11 col-lg-12 col-xs-11 col-sm-11">Wetter</h1>
 	
 	<div class="col-xs-11 col-md-6 card" style="margin-left: 15px; height: 130px;padding:0px;">
 	    <div class="col-md-12 col-xs-11 col-sm-12" style="padding: 0px;">
 			
 		    <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 card-name"
-			    style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 10px; font-size: 4em;">
+			    style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 10px; font-size: 3.5em;">
 			<i class="wi col-xs-8" ng-class="weather.current.icon"></i>
-			<i class="wi wi-sunrise col-xs-6" style="font-size: 1.5rem; padding-top: 0.9rem;">  {{weather.current.sunrise}}</i>
+			<i class="wi wi-sunrise col-xs-6" style="font-size: 1.5rem; padding-top: 1.5rem;">  {{weather.current.sunrise}}</i>
 			<i class="wi wi-sunset col-xs-6" style="font-size: 1.5rem; padding-top: 0.7rem;"> {{weather.current.sunset}}</i>
 		    </div>
 		    <div class="row">
@@ -53,41 +53,41 @@
 	    </div> 
 	</div>
 	
-	<h1 class="col-md-12 col-lg-12 col-xs-12 col-sm-12">Wetter-Vorhersage</h1>
+	<h1 class="col-md-11 col-lg-12 col-xs-11 col-sm-11">Wetter-Vorhersage</h1>
 	
 	<div class="col-md-5 col-sm-5 col-lg-5 col-xs-11 card"
 	    style="margin-left: 15px; height: 130px;padding:0px;">
 	    <div class="col-xs-12 card-name"
-		style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 2px;">
+		style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 2px; padding-left: 7px;">
 		    Morgen
-		    <i class="wi wi-sunrise" style="font-size: 1.5rem;">  {{weather.tomorrow.sunrise}}</i>
+		    <i class="wi wi-sunrise" style="font-size: 1.5rem; padding-left: 7px;">  {{weather.tomorrow.sunrise}}</i>
 		    <i class="wi wi-sunset" style="font-size: 1.5rem;"> {{weather.tomorrow.sunset}}</i>
 	    </div>
 	    <div class="col-xs-5 card-name"
-		style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 2px; padding-top: 10px; font-size: 4em;">
-		<i class="wi col-xs-8" ng-class="weather.tomorrow.icon"></i>
+		style="text-overflow: ellipsis; white-space: nowrap; padding: 2px; padding-top: 10px; font-size: 4em;">
+		<i class="wi col-xs-8" ng-class="weather.tomorrow.icon" style="padding-top: 1.2rem;"></i>
 	    </div>
 	    <div class="col-xs-5 card-name">
 		<div>{{weather.tomorrow.temperature}}°C</div>
-		<div><i class="wi wi-raindrops" style="font-size: 1.3em;"></i> {{weather.tomorrow.rainchance}}%</div>
+		<div><i class="wi wi-raindrops" style="font-size: 1.1em;"></i> {{weather.tomorrow.rainchance}}%</div>
 		<div><i class="wi wi-wind" ng-class="weather.tomorrow.wind.icon"></i> {{weather.tomorrow.wind.dir}}, {{weather.tomorrow.wind.speed}} km/h</div>
 	    </div>
 	</div>
 	<div class="col-md-5 col-sm-5 col-lg-5 col-xs-11 card"
 	    style="margin-left: 15px; height: 130px;padding:0px;">
 	    <div class="col-xs-12 card-name"
-		style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 2px;">
+		style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 2px; padding-left: 7px;">
 		    Übermorgen
-		    <i class="wi wi-sunrise" style="font-size: 1.5rem;">  {{weather.tomorrow2.sunrise}}</i>
+		    <i class="wi wi-sunrise" style="font-size: 1.5rem; padding-left: 7px;">  {{weather.tomorrow2.sunrise}}</i>
 		    <i class="wi wi-sunset" style="font-size: 1.5rem;"> {{weather.tomorrow2.sunset}}</i>
 	    </div>
 	    <div class="col-xs-5 card-name"
-		style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 2px; padding-top: 10px; font-size: 4em;">
-		<i class="wi col-xs-8" ng-class="weather.tomorrow2.icon"></i>
+		style="text-overflow: ellipsis; white-space: nowrap; padding: 2px; padding-top: 10px; font-size: 4em;">
+		<i class="wi col-xs-8" ng-class="weather.tomorrow2.icon" style="padding-top: 1.2rem;"></i>
 	    </div>
 	    <div class="col-xs-5 card-name">
 		<div>{{weather.tomorrow2.temperature}}°C</div>
-		<div><i class="wi wi-raindrops" style="font-size: 1.3em;"></i> {{weather.tomorrow2.rainchance}}%</div>
+		<div><i class="wi wi-raindrops" style="font-size: 1.1em;"></i> {{weather.tomorrow2.rainchance}}%</div>
 		<div><i class="wi wi-wind" ng-class="weather.tomorrow2.wind.icon"></i> {{weather.tomorrow2.wind.dir}}, {{weather.tomorrow2.wind.speed}} km/h</div>
 	    </div>
 	</div>
