@@ -4,6 +4,7 @@ app.controller('CategoryController',["$scope", "$rootScope", "$state", "$statePa
                                       function($scope, $rootScope, $state, $stateParams,mainService, shouldSwipe) {
 
 	$scope.categoryId = $stateParams.categoryId;
+	$scope.categoryName = $rootScope.houses[$rootScope.houseIndex].getCategoryById($scope.categoryId).getName();
 	$scope.allCategories = $rootScope.houses[$rootScope.houseIndex].getAllCategories();
 	$scope.allComponentsByCategorySortByRoom = $rootScope.houses[$rootScope.houseIndex].getAllComponentsByCategorySortByRoom($scope.categoryId);
 
