@@ -16,7 +16,7 @@ app.controller('NavigationController',	["$scope", "$rootScope", "$state","MainSe
     };
     
     $scope.houseIndexChanged = function() {
-		
+		console.log("Changed")
 		if($state.includes('rooms.detail'))
 			$state.go("rooms");
 		else if($state.includes('floors.detail'))

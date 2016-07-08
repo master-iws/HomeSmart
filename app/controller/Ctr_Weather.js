@@ -3,8 +3,6 @@
 app.controller('WeatherController',["$scope", "$rootScope", "$state","MainService",	
                                     function($scope, $rootScope, $state,mainService) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	var windIcons=[];
 	windIcons["W"]="towards-90-deg";
 	windIcons["SW"]="towards-45-deg";

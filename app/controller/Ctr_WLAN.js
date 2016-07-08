@@ -5,8 +5,6 @@
 app.controller('WLANController',["$scope", "$rootScope", "$state","MainService","$uibModal",	
                                  function($scope, $rootScope, $state, mainService,$uibModal) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$rootScope.wlan = {};
 	$scope.showPassword = false;
 	$scope.inputType = 'password';
@@ -43,10 +41,11 @@ app.controller('WLANController',["$scope", "$rootScope", "$state","MainService",
     	$rootScope.houses[$rootScope.houseIndex].setWlan($scope.wlan);
     	mainService.saveHouses($rootScope.houses);
     	
-    	/*var modalInstance = $uibModal.open({
+    	var modalInstance = $uibModal.open({
 		      animation: $scope.animationsEnabled,
 		      templateUrl: 'app/views/dialog/infoDialog.htm',
+		      controller: 'InfoDialogController',
 		      scope: $scope
-		    });*/
+		    });
     }
 }]);

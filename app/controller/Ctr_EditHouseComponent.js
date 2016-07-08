@@ -5,13 +5,11 @@
  */
 app.controller('EditHouseComponentController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","ComponentService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, mainService,componentService,vibrator) {
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.componentId = $stateParams.componentIdx;
 	
 	$scope.originalComponent = $rootScope.houses[$rootScope.houseIndex].getComponentById($scope.componentId);
 	
-	if($scope.originalComponent.getRoom() !== undefined)
+	if($scope.originalComponent.getHouse() == null)
 		$state.go("houseconfiguration.rooms.editComponent",{componentId: $scope.componentId});
 	
 	

@@ -6,8 +6,6 @@
 app.controller('AddHouseComponentController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","ComponentService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, mainService,componentService,vibrator) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.roomId = $stateParams.roomId;
 	
 	$scope.name = "";
@@ -21,7 +19,7 @@ app.controller('AddHouseComponentController',["$scope", "$rootScope", "$state", 
 
 	$scope.save = function() {
 		vibrator.vibrate(10);
-		$scope.newComponent = componentService.getNewComponentInstanceById($scope.type.getId());
+		$scope.newComponent = componentService.getNewComponentInstanceByType($scope.type.getType());
 		$scope.newComponent.setType($scope.type.getId());
 		$scope.newComponent.setId($rootScope.nextComponentId);
 		$rootScope.nextComponentId++;

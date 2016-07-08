@@ -3,8 +3,6 @@
 app.controller('CategoryController',["$scope", "$rootScope", "$state", "$stateParams","MainService", "shouldSwipe",
                                       function($scope, $rootScope, $state, $stateParams,mainService, shouldSwipe) {
 
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.categoryId = $stateParams.categoryId;
 	$scope.allCategories = $rootScope.houses[$rootScope.houseIndex].getAllCategories();
 	$scope.allComponentsByCategorySortByRoom = $rootScope.houses[$rootScope.houseIndex].getAllComponentsByCategorySortByRoom($scope.categoryId);

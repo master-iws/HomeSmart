@@ -5,8 +5,6 @@
 app.controller('EditControlController',["$scope", "$rootScope", "$state", "$stateParams","vibrator",
                                       function($scope, $rootScope, $state, $stateParams,vibrator) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.originalControl = $rootScope.houses[$rootScope.houseIndex].getDashboard().controls[$stateParams.controlId];
 	
 	$scope.control = {};

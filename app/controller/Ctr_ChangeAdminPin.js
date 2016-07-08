@@ -5,8 +5,6 @@
 app.controller('RegistrationController',["$scope", "$rootScope", "$state", "MainService","vibrator","$uibModal",	
                                          function($scope, $rootScope, $state, mainService,vibrator,$uibModal) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.oldPin;
 	$scope.pin;
 	$scope.confirmPin;
@@ -22,6 +20,7 @@ app.controller('RegistrationController',["$scope", "$rootScope", "$state", "Main
 			var modalInstance = $uibModal.open({
 			      animation: $scope.animationsEnabled,
 			      templateUrl: 'app/views/dialog/infoDialog.htm',
+			      controller: 'InfoDialogController',
 			      scope: $scope
 			    });
 			

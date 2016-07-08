@@ -1,7 +1,7 @@
 
 <div>
 	<div class="row">
-		<div class="col-xs-10 col-sm-10 col-md-12 col-lg-12"
+		<div class="col-xs-10 col-sm-10 col-md-11 col-lg-12"
 			ng-show="!$state.includes('houseconfiguration.house.addComponent') && !$state.includes('houseconfiguration.house.editComponent')">
 			<h1 class="col-xs-11 col-sm-11 col-md-11 col-lg-12" style="padding-left: 0px;">Haus
 				konfigurieren</h1>
@@ -10,7 +10,7 @@
 				<div class="form-group">
 					<label for="name" class="col-sm-1 col-md-1 col-xs-1 col-lg-1 control-label"
 						id="nameLabel">Name</label>
-					<div class="col-sm-10 col-md-7 col-xs-10">
+					<div class="col-sm-5 col-md-4 col-xs-10 col-lg-3">
 						<input ng-model="house.getSetName"
 							ng-model-options=" {getterSetter: true }" class="form-control"
 							name="name" id="name" required>
@@ -20,7 +20,7 @@
 					<label for="description"
 						class="col-sm-1 col-md-1 col-xs-1 col-lg-1 control-label"
 						id="descriptionLabel">Beschreibung</label>
-					<div class="col-sm-10 col-md-7 col-xs-10">
+					<div class="col-sm-5 col-md-4 col-xs-10 col-lg-3 ">
 						<textarea ng-model="house.getSetDescription" style="height:100px;"
 							ng-model-options=" {getterSetter: true }" class="form-control"
 							name="description" id="description" required></textarea>
@@ -29,8 +29,8 @@
 				<div class="form-group">
 					<label for="city"
 						class="col-sm-1 col-md-1 col-xs-1 col-lg-1 control-label" id="cityLabel">Standort</label>
-					<div class="col-sm-10 col-md-7 col-xs-10">
-						<autocomplete ng-model="house.city" data="cities" id="city"
+					<div class="col-sm-5 col-md-4 col-xs-10 col-lg-3">
+						<autocomplete ng-model="house.city" data="cities" id="city" class="form-control"
 							name="city"></autocomplete>
 					</div>
 				</div>
@@ -43,7 +43,7 @@
 						<div style="height: 40px;"
 							class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
 							<button class="edit-btn btn-primary class" style="z-index: 3000;"
-								ng-click="editComponent($index)"
+								ng-click="editComponent(component.getId())"
 								aria-label="Komponente bearbeiten">
 								<i class="fa fa-wrench"></i>
 							</button>

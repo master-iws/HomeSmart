@@ -196,7 +196,7 @@ h4
 	font-size:11pt;
 }
 
-#userNameLabel,#serialIdLabel, #descriptionLabel, #floorLabel,#endLabel, #startLabel, #cityLabel, #iconLabel,#passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
+#userNameLabel,#roomLabel,#serialIdLabel, #descriptionLabel, #floorLabel,#endLabel, #startLabel, #cityLabel, #iconLabel,#passwordLabel, #oldPinLabel, #pinLabel, #confirmPinLabel, #ssidLabel, #nameLabel, #categoryLabel, #typLabel, #componentLabel
 {
 	text-align:left;
 }
@@ -306,6 +306,21 @@ input.cmn-toggle-round:checked + label:after {
 	height: 100px;
 	background-color: #1A237E;
 	margin-bottom: 30px;
+}
+
+.icon-container
+{
+	background-color:#1A237E;
+}
+
+.room-icon
+{
+	margin-top:5px;
+}
+
+.room-default-icon
+{
+	margin-top:8px;
 }
 
 .add-card
@@ -893,3 +908,13 @@ input.cmn-toggle-round:checked + label:after {
 	background-color: #1A237E ! important;
 	color: #FFFFFF ! important;
 }
+
+autocomplete input {
+    font-size: 1.2em;
+    /* width: 100%; */
+     padding: 0px ! important; 
+    border-style: none;
+    content: "";
+    top: 2px;
+    position: absolute;
+    margin-top: 2px;

@@ -6,8 +6,6 @@
 app.controller('AddRoomComponentController',["$scope", "$rootScope", "$state", "$stateParams", "MainService","ComponentService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, mainService,componentService,vibrator) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.roomId = $stateParams.roomId;
 	
 	$scope.name = "";
@@ -18,7 +16,7 @@ app.controller('AddRoomComponentController',["$scope", "$rootScope", "$state", "
 
 	$scope.save = function() {
 		vibrator.vibrate(10);
-		$scope.newComponent = componentService.getNewComponentInstanceById($scope.type.getId());
+		$scope.newComponent = componentService.getNewComponentInstanceByType($scope.type.getType());
 		$scope.newComponent.setType($scope.type.getId());
 		$scope.newComponent.setId($rootScope.nextComponentId);
 		$rootScope.nextComponentId++;
@@ -28,7 +26,7 @@ app.controller('AddRoomComponentController',["$scope", "$rootScope", "$state", "
 		 
 		$rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId).getComponents().push($scope.newComponent);
 		mainService.saveHouses($rootScope.houses);
-		$state.go("houseconfiguration.rooms");
+		$state.go("houseconfiguration.rooms.editRoom",{roomId: $scope.roomId});
     };
     
     $scope.cancel = function() {

@@ -20,13 +20,15 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	var _type,
 	    _settings = [],
 	    _category,
-	    _room,
-	    _house,
+	    _room=undefined,
+	    _house =undefined,
 	    _serialId,
 	    _componentId;
 
 	this.new = function() {
 	    var comp = new Mod_Component();
+	    comp.setHouse(null);
+	    comp.setRoom(null);
 	    comp.setComponentId(this.getComponentId());
 	    comp.setName(this.getName());
 	    comp.setType(this.getType());
@@ -157,7 +159,7 @@ app.factory("Mod_Component",["Mod_Abstract_Entity","$injector",
 	    
 	    if(who instanceof Mod_Room) {
 		this.setRoom(who);
-		this.setHouse(who.getFloor().getHouse());
+		this.setHouse(null);
 	    } else if(who instanceof Mod_House) {
 		this.setHouse(who);
 		this.setRoom(null);

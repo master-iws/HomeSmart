@@ -5,9 +5,6 @@
 app.controller('WaterConsumptionController',["$scope", "$rootScope", "$state","MainService"	,
                                              function($scope, $rootScope, $state,mainService) {
 	
-
-	mainService.saveHouses($rootScope.houses);
-	
 $scope.roomId = -1;
 	
 	$scope.rooms = [];
