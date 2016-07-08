@@ -918,3 +918,20 @@ autocomplete input {
     top: 2px;
     position: absolute;
     margin-top: 2px;
+    
+}
+
+.component-ellipsis
+{
+	padding:0px;
+	display:block;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}    
+
+.status-span{
+	margin-right:30px ! important;
+	margin-top:18px;
+}
+    

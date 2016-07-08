@@ -25,9 +25,9 @@ app.controller('NavigationController',	["$scope", "$rootScope", "$state","MainSe
 			$state.go("houseconfiguration.floors");
 		else if($state.includes('houseconfiguration.floors.editFloor'))
 			$state.go("houseconfiguration.floors");
-		else if($state.includes('houseconfiguration.floors.addRoom'))
+		else if($state.includes('houseconfiguration.rooms.addRoom'))
 			$state.go("houseconfiguration.rooms");
-		else if($state.includes('houseconfiguration.floors.editRoom'))
+		else if($state.includes('houseconfiguration.rooms.editRoom'))
 			$state.go("houseconfiguration.rooms");
 		else if($state.includes('houseconfiguration.dashboard.addQuicklink'))
 			$state.go("houseconfiguration.dashboard");
@@ -37,6 +37,22 @@ app.controller('NavigationController',	["$scope", "$rootScope", "$state","MainSe
 			$state.go("houseconfiguration.dashboard");
 		else if($state.includes('houseconfiguration.dashboard.editControl'))
 			$state.go("houseconfiguration.dashboard");
+		else if($state.includes('houseconfiguration.rooms.detail'))
+			$state.go("houseconfiguration.rooms");
+		else if($state.includes('heatingAutopilot'))
+			$state.go("rooms");
+		else if($state.includes('coolingAutipilot'))
+			$state.go("rooms");
+		else if($state.includes('addTimePeriod'))
+			$state.go("rooms");
+		else if($state.includes('houseconfiguration.house.addComponent'))
+			$state.go("houseconfiguration.house");
+		else if($state.includes('houseconfiguration.house.editComponent'))
+			$state.go("houseconfiguration.house");
+		else if($state.includes('houseconfiguration.rooms.addComponent'))
+			$state.go("houseconfiguration.rooms");
+		else if($state.includes('houseconfiguration.rooms.editComponent'))
+			$state.go("houseconfiguration.rooms");
 		
     };
     
