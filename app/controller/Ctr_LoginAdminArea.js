@@ -9,9 +9,8 @@ app.controller('LoginAdminAreaController',["$scope", "$rootScope", "$state", "$s
 		//pin auslesen
 		if($scope.adminPin == $rootScope.globalSettings.getAdminPin())//$rootScope.adminPin)
         {
-			///richtigen state setzen
-		$rootScope.adminArea = true;
-        	$state.go($stateParams.name);
+			console.log($rootScope.previousState);
+			$rootScope.adminArea = true;
         	
         }
         else

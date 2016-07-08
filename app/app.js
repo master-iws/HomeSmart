@@ -49,16 +49,16 @@ app.run(function ($rootScope, $state, $stateParams, $log, MainService) {
 			console.log(toState);
 			console.log(toState.params)
 			
+			if (toState.adminArea)
+				$rootScope.previousState = toState;
+			
 			if (toState.adminArea &&  !$rootScope.adminArea){
-			      // User isn’t authenticated
-				console.log("gotoadmin");
-				console.log(toState.url);
-				$state.go("loginAdminArea",{name: toState.name});
-				event.preventDefault();
+				$rootScope.adminArea = false;
 		  	}
 			
 			if(!toState.adminArea && toState.name != "loginAdminArea" && toState.name != ""){
-				$rootScope.adminArea = false;console.log("Testadminatea");}
+				$rootScope.adminArea = false;
+			}
 			
 			if(toState.name === 'settings')
 			{

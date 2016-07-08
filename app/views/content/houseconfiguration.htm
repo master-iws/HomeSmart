@@ -1,1 +1,2 @@
-<div ui-view="HouseConfigurationContent"></div>
+<div ng-show="adminArea" ui-view="HouseConfigurationContent"></div>
+<div ng-show="!adminArea" ng-include="'app/views/content/loginAdminArea.htm'"></div>
