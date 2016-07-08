@@ -19,8 +19,6 @@ app.controller('AddHouseController',["$scope", "$rootScope", "$state", "$statePa
                      "40210 Düsseldorf",
                      "28195 Bremen"];
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.house = new Mod_House();
 	$scope.floorCount=1;
 	

@@ -6,8 +6,6 @@
 app.controller('AddQuicklinkController',["$scope", "$rootScope", "$state", "$stateParams","ComponentService", "MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams, componentService, mainService,vibrator) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.types = [];
 	$scope.categories = ['Kategorie', 'Etage', 'Raum'];
 	$scope.quicklink = {};

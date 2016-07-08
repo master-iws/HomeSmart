@@ -5,9 +5,7 @@
 app.controller('DeleteRoomController',["$scope", "$rootScope", "$state", "$stateParams","$uibModalInstance","MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams,$uibModalInstance,mainService,vibrator) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
-	  $scope.ok = function () {
+	$scope.ok = function () {
 		vibrator.vibrate(10);
 		$scope.room = $rootScope.houses[$rootScope.houseIndex].getRooms()[$scope.deleteIdx];  
 		$scope.floorIdx = $scope.houses[$rootScope.houseIndex].getFloors().indexOf($scope.room.getFloor());

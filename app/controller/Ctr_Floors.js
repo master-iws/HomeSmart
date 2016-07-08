@@ -6,9 +6,7 @@ app.controller('FloorsController',["$scope", "$rootScope", "$state","dragulaServ
                                                      function($scope, $rootScope, $state,dragulaService,$uibModal,vibrator,mainService) {
     //$rootScope.houseIndex = 0;
 	
-	mainService.saveHouses($rootScope.houses);
-	
-    $scope.addFloor = function() {
+	$scope.addFloor = function() {
     	$state.go("houseconfiguration.floors.addFloor");
     };
     

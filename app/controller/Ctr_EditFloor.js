@@ -5,8 +5,6 @@
 app.controller('EditFloorController',["$scope", "$rootScope", "$state", "$stateParams","MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams,mainService,vibrator) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.originalFloor = $rootScope.houses[$rootScope.houseIndex].getFloorById($stateParams.floorId);
 	
 	$scope.floor = new Mod_Floor();
@@ -23,7 +21,7 @@ app.controller('EditFloorController',["$scope", "$rootScope", "$state", "$stateP
     
     $scope.cancel = function() {
     	vibrator.vibrate(10);
-    	$scope.floor.setName($scope.originalFloor.getName());
+    	$state.go("houseconfiguration.floors");
    };
    
 }]);

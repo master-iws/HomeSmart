@@ -5,8 +5,6 @@
  */app.controller('FloorsHouseConfigurationController',["$scope", "$rootScope", "$state","dragulaService","$uibModal","MainService",	
                                                      function($scope, $rootScope, $state,dragulaService,$uibModal, mainService) {
 	
-	 mainService.saveHouses($rootScope.houses);
-	 
 	$scope.deleteFloor = function($floorIdx) {
 		
 		$scope.deleteIdx = $floorIdx;

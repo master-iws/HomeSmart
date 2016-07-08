@@ -3,8 +3,8 @@
 app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal","vibrator",	
                                                     function($scope, $rootScope, $state,$uibModal,vibrator) {
 	
-	
 	$scope.rooms = $rootScope.houses[$rootScope.houseIndex].getRooms();
+	
 
     $scope.addRoom = function() {
     	$state.go("houseconfiguration.rooms.addRoom");

@@ -168,6 +168,16 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	}
     }
     
+    function getComponentByType(type) {
+    	for(var cat in cats) {
+    	    for(var comp in cats[cat].getComponents()) {
+    		if(cats[cat].getComponents()[comp].getType() === type) {
+    		    return cats[cat].getComponents()[comp].new();
+    		}
+    	    }
+    	}
+        }
+    
     function fillComponents(cat,comp_arr) {
 	for(var i in comp_arr) {
 	    var comp = new Mod_Component();
@@ -201,6 +211,7 @@ app.service("ComponentService", ["Mod_Category","Mod_Component",
 	getCategoryById:getCategoryById,
 	getComponentsByCategory:getComponentsByCategory,
 	getComponentById:getComponentById,
+	getNewComponentInstanceByType:getComponentByType,
 	getNewComponentInstanceById:getNewComponentInstanceById
     };
 }]);

@@ -5,8 +5,6 @@
 app.controller('DashboardConfigurationController',["$scope", "$rootScope", "$state","dragulaService","$uibModal","MainService",	
                                                    function($scope, $rootScope, $state,dragulaService,$uibModal,mainService) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.controls = [];
 	console.log($rootScope.houses[$rootScope.houseIndex].getDashboard().controls)
 	

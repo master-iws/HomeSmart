@@ -5,8 +5,6 @@
 app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$stateParams","fileReader","MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams,fileReader,mainService,vibrator) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.roomId = $stateParams.roomId;
 	$scope.originalRoom = $rootScope.houses[$rootScope.houseIndex].getRoomById($scope.roomId);
 	$scope.room = new Mod_Room();
@@ -19,18 +17,19 @@ app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$statePa
 	
 	$scope.save = function() {
 		
-		console.log("Image:"+$scope.room.getIcon());
-		
 		vibrator.vibrate(10);
-		$scope.floorIdx = $scope.houses[$rootScope.houseIndex].getFloors().indexOf($scope.room.getFloor());
-		$scope.roomIdx = $rootScope.houses[$rootScope.houseIndex].getFloors()[$scope.floorIdx].getRooms().indexOf($scope.originalRoom);
-		$rootScope.houses[$rootScope.houseIndex].getFloors()[$scope.floorIdx].getRooms()[$scope.roomIdx] = $scope.room;
+		//$scope.floorIdx = $scope.houses[$rootScope.houseIndex].getFloors().indexOf($scope.room.getFloor());
+		//$scope.roomIdx = $rootScope.houses[$rootScope.houseIndex].getFloors()[$scope.floorIdx].getRooms().indexOf($scope.originalRoom);
+		//$rootScope.houses[$rootScope.houseIndex].getFloors()[$scope.floorIdx].getRooms()[$scope.roomIdx] = $scope.room;
+		$scope.originalRoom.setName($scope.room.getName());
+		$scope.originalRoom.setIcon($scope.room.getIcon())
 		mainService.saveHouses($rootScope.houses);
 		$state.go("houseconfiguration.rooms");
     };
     
     $scope.cancel = function() {
     	vibrator.vibrate(10);
+    	$state.go("houseconfiguration.rooms");
     	 
     };
     
@@ -47,8 +46,6 @@ app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$statePa
       fileReader.readAsDataUrl($scope.file, $scope)
          .then(function(result) {
              $scope.room.setIcon( result);
-             $rootScope.houses[$rootScope.houseIndex].getFloors()[0].getRooms()[0].setIcon(result);
-             mainService.saveHouses($rootScope.houses);
           });
   };
   

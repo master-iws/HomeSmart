@@ -5,8 +5,6 @@
 app.controller('HousesSettingsController',["$scope", "$rootScope", "$state", "$uibModal","MainService",	
                                            function($scope, $rootScope, $state,$uibModal,mainService) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.deleteHouse = function($houseIdx) {
 		
 		var size = 0;

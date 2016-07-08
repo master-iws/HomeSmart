@@ -5,8 +5,6 @@
 app.controller('CoolingAutopilotController',["$scope", "$rootScope", "$state","$stateParams", "MainService",	
                                          function($scope, $rootScope, $state,$stateParams, mainService) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.componentId = $stateParams.componentId;
 	$scope.component = $rootScope.houses[$rootScope.houseIndex].getComponentById($rootScope.componentId);
 	

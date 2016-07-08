@@ -5,8 +5,6 @@
 
 app.controller('ActivityController',["$scope", "$rootScope", "$state","MainService",	function($scope, $rootScope, $state,mainService) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.period = {};
 	$scope.period.typ = "year";
 	$scope.period.startDate = moment().startOf('year');

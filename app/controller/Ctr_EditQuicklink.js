@@ -5,8 +5,6 @@
 app.controller('EditQuicklinkController',["$scope", "$rootScope", "$state", "$stateParams","ComponentService","MainService","vibrator",
                                       function($scope, $rootScope, $state, $stateParams,componentService,mainService,vibrator) {
 	
-	mainService.saveHouses($rootScope.houses);
-	
 	$scope.quicklinkIdx = $stateParams.quicklinkId;
 	
 	$scope.types = [];
