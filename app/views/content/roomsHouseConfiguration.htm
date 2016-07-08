@@ -3,7 +3,7 @@
 		ng-show="!$state.includes('houseconfiguration.rooms.editRoom.*') && !$state.includes('houseconfiguration.rooms.addRoom') && !$state.includes('houseconfiguration.rooms.editComponent') && !$state.includes('houseconfiguration.rooms.addComponent')">
 		<h1 class="col-md-10 col-lg-10 col-xs-10 col-sm-10">R&auml;ume</h1>
 		<div ng-repeat="room in houses[houseIndex].getRooms()"
-			class="col-md-3 col-sm-3 col-lg-3 col-xs-10 card drag"
+			class="col-md-3 col-sm-3 col-lg-3 col-xs-9 card drag"
 			style="height: 110px; margin-left: 15px; "
 			ng-class="{'not-configured': deleted}">
 			<div style="height: 40px;"
@@ -27,8 +27,8 @@
 				<span class="card-name-settings">{{room.getName()}}</span>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-11 add-card col-lg-3"
-			style="height: 100px; margin-left: 15px;">
+		<div class="col-md-3 col-sm-3 col-xs-10 add-card col-lg-3"
+			style="height: 105px; margin-left: 15px;padding:0px;">
 			<button class="add-btn" ng-click="addRoom()"
 				aria-label="Raum hinzufügen">
 				<i class="fa fa-plus fa-3x"></i>

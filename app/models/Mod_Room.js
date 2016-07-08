@@ -262,7 +262,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 		
 		if(typ === 'year')
 		{
-			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),startDate.minute(),startDate.second(),startDate.millisecond())});
+			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),0,0,0,0)});
 			for(var i=0; i < 11; i++)
 			{
 				var date = startDate.add(1,'month');
@@ -273,7 +273,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 		
 		if(typ === 'month')
 		{
-			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),startDate.minute(),startDate.second(),startDate.millisecond())});
+			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),0,0,0,0)});
 			var beginMonth = startDate.month();
 			for(var i=0; i < 31; i++)
 			{
@@ -286,7 +286,7 @@ app.factory("Mod_Room",["Mod_Abstract_Entity","$injector",
 		
 		if(typ === 'day')
 		{
-			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),startDate.minute(),startDate.second(),startDate.millisecond())});
+			response.dataset.push({x: new Date(startDate.year(),startDate.month(),startDate.date(),0,0,0,0)});
 			for(var i=0; i < 24; i++)
 			{
 				var date = startDate.add(1,'hours');

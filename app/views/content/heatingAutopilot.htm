@@ -1,11 +1,11 @@
-<div>
+<div ng-swipe-left="nextTab()">
 	<div class="row row-centered">
 
 		<div class="col-lg-12">
 			<ul class="nav nav-tabs col-xs-10 col-sm-10 col-md-10 col-lg-10">
-				<li class="active" ng-swipe-left="nextTab()"><a showtab=""
+				<li class="active" ><a showtab="" class="pointer active-tab"
 					ui-sref="heatingAutopilot({componentId: componentId})">Heizen</a></li>
-				<li><a showtab="" ui-sref="coolingAutopilot({componentId: componentId})">K&uuml;hlen</a></li>
+				<li><a showtab=""  class="tab-link pointer" ui-sref="coolingAutopilot({componentId: componentId})">K&uuml;hlen</a></li>
 			</ul>
 		<br/><br>
 			<form class="form-horizontal" name="changePinForm" novalidate>

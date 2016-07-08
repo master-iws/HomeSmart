@@ -39,4 +39,8 @@ app.controller('NavigationController',	["$scope", "$rootScope", "$state","MainSe
 			$state.go("houseconfiguration.dashboard");
 		
     };
+    
+    $scope.closeAlert = function(index) {
+        $scope.notifications.splice(index, 1);
+      };
 }]);

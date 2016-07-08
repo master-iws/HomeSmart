@@ -4,6 +4,7 @@ body
 {
 	background-color: #E8E8E8;
 	font-family: "arial";
+	height:100%;
 	min-height: 100%;
 	font-wieght: normal;
 }
@@ -420,6 +421,23 @@ input.cmn-toggle-round:checked + label:after {
 	margin-left: 2.6%;
 }
 }
+
+@media (min-width: 768px)
+{
+.status-span
+{
+	padding: 7px;
+}
+}
+
+@media (max-width: 767px)
+{
+.status-span-xs
+{
+	padding: 0px;
+}
+}
+
 
 
 .gu-mirror {
@@ -865,4 +883,13 @@ input.cmn-toggle-round:checked + label:after {
 	border: thin solid #fdfdfe;
 }
 
+.tab-link
+{
+	color: #1A237E ! important;
+}
 
+.active-tab
+{
+	background-color: #1A237E ! important;
+	color: #FFFFFF ! important;
+}

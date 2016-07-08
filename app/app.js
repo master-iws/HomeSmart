@@ -29,7 +29,6 @@ app.run(function ($rootScope, $state, $stateParams, $log, MainService) {
 				event.preventDefault();
 			}
 		
-			console.log($rootScope.loggedIn);
 			if (toState.authenticate && !$rootScope.loggedIn){
 			      // User isn’t authenticated
 				$state.go("login",{name: toState.name});

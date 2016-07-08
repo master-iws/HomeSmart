@@ -2,8 +2,8 @@
 /**
  * @author Julia Thüroff
  */
-app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$stateParams","MainService","vibrator",
-                                      function($scope, $rootScope, $state, $stateParams,mainService,vibrator) {
+app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$stateParams","fileReader","MainService","vibrator",
+                                      function($scope, $rootScope, $state, $stateParams,fileReader,mainService,vibrator) {
 	
 	mainService.saveHouses($rootScope.houses);
 	
@@ -18,6 +18,8 @@ app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$statePa
 	$scope.floorId = $scope.originalRoom.getFloor().getId();
 	
 	$scope.save = function() {
+		
+		console.log("Image:"+$scope.room.getIcon());
 		
 		vibrator.vibrate(10);
 		$scope.floorIdx = $scope.houses[$rootScope.houseIndex].getFloors().indexOf($scope.room.getFloor());
@@ -38,6 +40,16 @@ app.controller('EditRoomController',["$scope", "$rootScope", "$state", "$statePa
    
    $scope.editComponent = function($id) {
 		$state.go("houseconfiguration.rooms.editComponent",{componentId:$id});
+  };
+  
+  $scope.getFile = function () {
+
+      fileReader.readAsDataUrl($scope.file, $scope)
+         .then(function(result) {
+             $scope.room.setIcon( result);
+             $rootScope.houses[$rootScope.houseIndex].getFloors()[0].getRooms()[0].setIcon(result);
+             mainService.saveHouses($rootScope.houses);
+          });
   };
   
   $scope.deleteComponent = function($idx) {

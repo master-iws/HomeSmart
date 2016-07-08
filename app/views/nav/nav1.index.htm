@@ -46,11 +46,10 @@
 	<div
 		class="notification-popup col-md-5 col-lg-5 col-xs-6  col-sm-9 col-xs-offset-4 col-sm-offset-2 col-md-offset-6 col-lg-offset-6">
 		<br />
+		
+		
 		<div ng-show="$root.notifications.length > 0">
-			<div ng-repeat="notification in notifications track by $index" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
-				style="margin-bottom: 10px;">
-				<span class="notification-text">{{notification}}</span>
-			</div>
+			<uib-alert ng-repeat="notification in notifications track by $index" type="success" close="closeAlert($index)">{{notification}}</uib-alert>
 		</div>
 		<span ng-show="$root.notifications.length === 0">Keine Benachrichtigungen vorhanden.</span>
 	</div>
