@@ -52,9 +52,10 @@ app.service("MainService", ["Mod_House","Mod_Component","Mod_Floor","Mod_Categor
 	} else {
 		$rootScope.loggedIn = false;
 	    house_arr.push(getDemoHome());
-	    var home_2 = getDemoHouse();
+	    var home_2 = getDemoHome();
 	    home_2.setName("Landhaus");
 	    house_arr.push(home_2);
+	    console.log(home_2);
 	}
 	console.groupCollapsed("House Array");
 	console.info(JSON.parse(JSON.stringify(house_arr)));

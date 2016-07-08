@@ -12,7 +12,7 @@ app.controller('LoginController',["$scope", "$rootScope", "$state", "$stateParam
 				&& $scope.password == $rootScope.globalSettings.getUser().password)
         {
 			$rootScope.loggedIn= true;
-        	$state.go("index");
+        	$state.go("houses");
         }
         else
         	$scope.validationMessage = "Login nicht erfolgreich. Benutzername oder Passwort falsch.";
