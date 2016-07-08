@@ -13,9 +13,13 @@
 					style="height: 30px; margin-top: 10px;">
 			</toggle-switch>
 		</div>
-		<div class="col-md-4 col-lg-4 col-xs-12 col-sm-4" style="margin-top: 12px;">
-			<span class="component-text">Farbe:&nbsp;</span>
-			<input colorpicker type="text" id="color-{{componentId}}" ng-model="component.getSetSettings()[1]" class="color inputcolor"/>
+		<div class="col-md-4 col-lg-4 col-xs-12 col-sm-4" style="margin-top: 15px; padding:0;">
+			<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1"style="margin-top: 3px;">
+				<span class="component-text">Farbe:&nbsp;</span>
+			</div>
+			<div class="col-md-3 col-lg-4 col-xs-2 col-sm-3">
+				<div colorpicker type="text" style="height: 22px;" id="color-{{componentId}}" ng-model="component.getSetSettings()[1]" class="color inputcolor pointer"></div>
+			</div>
 		</div>
 	</div>
 	<button ng-click="configureComponent(componentId)"
