@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.directive('compFactory', function($compile) {
 
 	function getComponentTemplate (scope) {

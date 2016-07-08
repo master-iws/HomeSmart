@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.directive('compWindowContact', function($timeout) {
 
 	function link(scope, element, attrs) {

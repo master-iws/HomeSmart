@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.directive('compTemperature', function() {
 
 	function link(scope, element, attrs) {

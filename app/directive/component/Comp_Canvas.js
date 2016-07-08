@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.directive('compCanvas', function($interval) {
 
 	function link(scope, element, attrs) {

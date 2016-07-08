@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.directive('compCoffeeMachine', function($timeout) {
 
 	function link(scope, element, attrs) {
