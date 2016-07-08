@@ -753,6 +753,23 @@ input.cmn-toggle-round:checked + label:after {
     background-color: #3F51B5;
 }
 
+
+@media screen and (max-width: 767px) {
+    .subnav
+    {
+	    border-right: none;
+	    margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    .subnav
+    {
+	    border-right: thin solid #1A237E;
+	    margin-right: -1px;
+    }
+}
+
 @media screen and (max-width: 50em) {
 	.inputfile-6 + label strong {
 		display: block;
@@ -779,12 +796,6 @@ input.cmn-toggle-round:checked + label:after {
 .drag
 {
 	cursor: -webkit-grab; cursor: -moz-grab;
-}
-
-.subnav
-{
-	border-right: thin solid #1A237E;
-	height: 100%;
 }
 
 .subnav-component
