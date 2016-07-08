@@ -172,7 +172,7 @@
 
 
 </head>
-<body ng-controller="MainController">
+<body ng-controller="MainController" style="max-width:100%;">
 	
 	<toast></toast>
 	<div
@@ -184,7 +184,7 @@
 				<div ui-view="Nav2"></div>
 			</header>
 			<main>
-					<ol class="breadcrumb col-xs-10 col-sm-10 col-md-11 col-lg-11" ng-if="!$state.includes('index') && !$state.includes('login') && !$state.includes('loginAdminArea')" >
+					<!-- <ol class="breadcrumb col-xs-10 col-sm-10 col-md-11 col-lg-11" ng-if="!$state.includes('index') && !$state.includes('login') && !$state.includes('loginAdminArea')" >
 						<li>
 							<a ui-sref="dashboard" >Start</a>
 						</li>
@@ -194,7 +194,7 @@
 							<span ng-if="$last && $state.includes('rooms.detail')">Raum: {{houses[houseIndex].getRoomById($stateParams.roomId).getName()}}</span>
 							<span ng-if="$last && $state.includes('floors.detail')">Etage: {{houses[houseIndex].getFloorById($stateParams.floorId).getName()}}</span>
 						</li>
-					</ol>
+					</ol>-->
 					<div ui-view="Content"></div>
 			</main>
 		</div>
