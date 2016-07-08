@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.value('shouldSwipe', function(element){
 	var update = true;
 

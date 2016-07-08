@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.directive('compLightDimmer', function() {
 
 	function link(scope, element, attrs) {

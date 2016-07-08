@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.directive('compCistern', function() {
 
 	function link(scope, element, attrs) {

@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.directive('compShading', function($interval) {
 
 	function link(scope, element, attrs) {

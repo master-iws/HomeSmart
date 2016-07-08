@@ -1,5 +1,7 @@
 'use strict';
-
+/**
+ * @author Matthias Jakob
+ */
 app.controller('ComponentController',["$scope", "$rootScope", "$state", "$stateParams","MainService",
                                       function($scope, $rootScope, $state, $stateParams,mainService) {
 

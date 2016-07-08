@@ -136,6 +136,15 @@ app.factory("Mod_House",["Mod_Abstract_Entity","$injector",
 	    return rooms;
 	};
 
+    this.getAllRoomNames = function() {
+	    var roomNames = [];
+	    var rooms = this.getRooms();
+	    for (var r in rooms) {
+		    roomNames = roomNames.concat(rooms[r].getName());
+	    }
+	    return roomNames;
+    };
+
 	/*
 	 * setter
 	 */

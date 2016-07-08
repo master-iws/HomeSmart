@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.directive('compConsumerActive', function() {
 
 	function link(scope, element, attrs) {

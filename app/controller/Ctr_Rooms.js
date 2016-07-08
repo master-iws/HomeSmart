@@ -1,5 +1,8 @@
 'use strict';
-
+/**
+ * @author Matthias Jakob
+ * @author Julia Thüroff
+ */
 app.controller('RoomsController',["$scope", "$rootScope", "$state","$uibModal","vibrator",
                                                     function($scope, $rootScope, $state,$uibModal,vibrator) {
 	

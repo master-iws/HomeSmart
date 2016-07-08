@@ -1,5 +1,7 @@
 'use strict';
-
+/**
+ * @author Matthias Jakob
+ */
 app.controller('CategoryController',["$scope", "$rootScope", "$state", "$stateParams","MainService", "shouldSwipe",
                                       function($scope, $rootScope, $state, $stateParams,mainService, shouldSwipe) {
 

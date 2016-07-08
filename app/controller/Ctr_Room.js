@@ -1,5 +1,8 @@
 'use strict';
-
+/**
+ * @author Matthias Jakob
+ * @author Julia Thüroff
+ */
 app.controller('RoomController',["$scope", "$rootScope", "$state", "$stateParams","MainService", "shouldSwipe",
                                       function($scope, $rootScope, $state, $stateParams,mainService, shouldSwipe) {
 

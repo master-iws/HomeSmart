@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.controller('FrontDoorDialogController',["$scope", "$rootScope", "$state", "$stateParams","$uibModalInstance","vibrator","$timeout",
 	function($scope, $rootScope, $state, $stateParams,$uibModalInstance,vibrator,$timeout) {
 

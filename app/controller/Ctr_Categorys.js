@@ -1,6 +1,8 @@
 
 'use strict';
-
+/**
+ * @author Matthias Jakob
+ */
 app.controller('CategorysController',["$scope", "$rootScope", "$state","$uibModal","vibrator","MainService",
 	function($scope, $rootScope, $state,$uibModal,vibrator,mainService) {
 

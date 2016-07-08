@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.controller('CameraOutsideDialogController',["$scope", "$rootScope", "$state", "$stateParams","$uibModalInstance","vibrator",
 	function($scope, $rootScope, $state, $stateParams,$uibModalInstance,vibrator) {
 

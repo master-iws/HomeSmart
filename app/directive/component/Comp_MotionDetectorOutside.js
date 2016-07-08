@@ -1,3 +1,6 @@
+/**
+ * @author Matthias Jakob
+ */
 app.directive('compMotionDetectorOutside', function() {
 
 	function link(scope, element, attrs) {
