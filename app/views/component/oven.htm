@@ -1,6 +1,6 @@
 <div class="col-md-12 col-xs-12 col-sm-12 component" style="padding: 0px;">
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-3 col-lg-3 col-xs-6 col-sm-3 card-name"
+		<div class="col-md-3 col-lg-3 col-xs-4 col-sm-3 card-name"
 		     style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
 			<span class="component-name">{{componentName}}</span>
 		</div>
@@ -18,15 +18,15 @@
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-5 col-lg-4 col-xs-12 col-sm-5" style="margin-top: 15px;">
+		<div class="col-md-5 col-lg-3 col-xs-12 col-sm-11" style="margin-top: 15px;">
 			<span class="component-text">Modus:&nbsp;&nbsp;</span>
 			<select class="form-control" style="width: 130px;" id="select-{{componentId}}" ng-model="component.getSetSettings()[1]" ng-options="modus.indexOf(m) as m for m in modus"></select>
 		</div>
-		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 20px; padding: 0;">
+		<div class="col-md-12 col-lg-7 col-xs-12 col-sm-12" style="margin-top: 20px;padding-left: 0;">
 			<div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
 				<span class="component-text">Temperatur:&nbsp;&nbsp;</span>
 			</div>
-			<div class="col-md-5 col-lg-5 col-xs-4 col-sm-5">
+			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4" style="padding-left: 25px;">
 				<span slider
 				      id="slider-{{componentId}}"
 				      ng-model="component.getSetSettings()[2]"
@@ -42,11 +42,11 @@
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 10px;">
-		<div class="col-md-5 col-lg-5 col-xs-12 col-sm-5" style="margin-top: 20px; padding: 0;">
-			<div class="col-md-1 col-lg-1 col-xs-2 col-sm-1">
+		<div class="col-md-12 col-lg-6 col-xs-12 col-sm-12" style="margin-top: 20px; padding: 0;">
+			<div class="col-md-2 col-lg-1 col-xs-2 col-sm-2">
 				<span class="component-text">Zeit:&nbsp;&nbsp;</span>
 			</div>
-			<div class="col-md-5 col-lg-5 col-xs-4 col-sm-5">
+			<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4" style="padding-left: 25px;">
 				<span slider
 				      id="slider2-{{componentId}}"
 				      ng-model="component.getSetSettings()[3]"
@@ -60,7 +60,7 @@
 				<span id="ovenTime-{{componentId}}" class="component-text">&nbsp;&nbsp;{{component.getSetSettings()[3]}}&nbsp;Minuten</span>
 			</div>
 		</div>
-		<div class="col-md-2 col-lg-2 col-xs-12 col-sm-2" style="margin-top: 15px;">
+		<div class="col-md-12 col-lg-3 col-xs-12 col-sm-12" style="margin-top: 15px;">
 			<button class="btn btn-primary" id="start-{{componentId}}" ng-click="start()">Start</button>
 			<button class="btn btn-primary" id="stop-{{componentId}}" ng-click="stop()">Stop</button>
 		</div>
