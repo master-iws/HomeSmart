@@ -117,27 +117,47 @@
     -o-transition: all 1s ease-in-out;
 }
 .pool[data-index="0"]::after {
+    border-radius: 30px;
+    height: 70%;
+    margin-top: 15%;
     width: 0;
 }
 .pool[data-index="1"]::after {
+    border-radius: 30px;
+    height: 70%;
+    margin-top: 15%;
     width: 10%;
 }
 .pool[data-index="2"]::after {
+    border-radius: 30px;
+    height: 78%;
+    margin-top: 10%;
     width: 20%;
 }
 .pool[data-index="3"]::after {
+    border-radius: 30px;
+    height: 82%;
+    margin-top: 8%;
     width: 30%;
 }
 .pool[data-index="4"]::after {
+    border-radius: 30px;
+    height: 90%;
+    margin-top: 5%;
     width: 40%;
 }
 .pool[data-index="5"]::after {
+    border-radius: 30px;
+    height: 90%;
+    margin-top: 5%;
     width: 50%;
 }
 .pool[data-index="6"]::after {
+    border-radius: 30px;
     width: 60%;
 }
 .pool[data-index="7"]::after {
+    border-radius: 30px;
     width: 70%;
 }
 .pool[data-index="8"]::after {
