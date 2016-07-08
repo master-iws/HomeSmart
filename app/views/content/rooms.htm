@@ -18,7 +18,7 @@
 					<!-- <img alt="Raumicon" ng-src="{{room.getIcon()}}" width="50" height="50"/>-->
 					<div class="col-md-7 col-lg-7 col-xs-8 col-sm-7 card-name"
 						style="padding:0px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 5px;">
-						<span class="card-name noBackground col-xs-10 col-sm-10 col-md-10 col-lg-10" ng-click="showRoom(room.getId())"
+						<span class="card-name" ng-click="showRoom(room.getId())"
 							style="padding:0px;border-style: none ! important; background-color: transparent ! important; overflow: hidden;white-space: nowrap;display: block;text-overflow: ellipsis;">{{room.getName()}}</span>
 					</div>
 				</div>
@@ -28,8 +28,8 @@
 				<span class="component-text" id="shadingUpInfoText-{{$index}}" hidden="hidden"><i class="fa fa-warning fa-lg fa-2x text-success"></i>&nbsp;&nbsp;Beschattung zu</span>
 				<span class="component-text" id="shadingDownInfoText-{{$index}}" hidden="hidden"><i class="fa fa-warning fa-lg fa-2x text-success"></i>&nbsp;&nbsp;Beschattung auf</span>
 				</div>-->
-				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 col-lg-offset-1 text-right" style="margin-top: 18px;">
-					<span class="component-text">Beschattung: </span>
+				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-right" style="margin-top: 18px;">
+					<span class="component-text" style="overflow: hidden;white-space: nowrap;display: block;text-overflow: ellipsis;">Beschattung: </span>
 				</div>
 				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-left" style="margin-top: 15px;">
 					<button ng-click="setShadowing($index, 10);$event.stopPropagation()" class="btn btn-primary" aria-label="Beschattung zu">
@@ -41,7 +41,7 @@
 				</div>
 			</div>
 			<div class="row text-center">
-				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 col-lg-offset-1 text-right" style="margin-top: 15px;">
+				<div class="col-md-4 col-lg-4 col-xs-4 col-sm-4 text-right" style="margin-top: 15px;">
 					<button ng-click="lightOff();$event.stopPropagation()" aria-label="Licht aus" class="btn btn-primary" style="width: 90%;">
 						<span><i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;aus</span>
 					</button>
