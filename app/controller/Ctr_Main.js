@@ -94,9 +94,13 @@ app.controller('MainController',
 	    	$rootScope.houses[$rootScope.houseIndex].setConsumer(0);
 	    };	
 		
-	    $scope.setShadowing = function($value) {
-	    	$rootScope.houses[$rootScope.houseIndex].setShadowing($value);
+	    $scope.setShadowing = function($houseIdx, $value) {
+	    	$rootScope.houses[$houseIdx].setShadowing($value);
 	    };
+
+		$scope.addHouse = function() {
+			$state.go("settings.addHouse");
+		};
 	    
 		setInterval(function(){
 		    mainService.saveHouses();
