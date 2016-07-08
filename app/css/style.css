@@ -99,19 +99,6 @@ h4
 {
 	margin: 0;
 	padding: 0;
-	overflow-y: hidden;
-	white-space: nowrap;
-	-webkit-overflow-scrolling: touch;
-	max-height: 60px;
-	-webkit-overflow-scrolling: touch;
-	display: inline-block;
-	overflow-x: scroll;
-	max-width: 100%;
-}
-
-.navbar-nav>li {
-    float: none;
-    display: inline-block;
 }
 
 .navbar
