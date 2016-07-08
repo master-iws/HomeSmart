@@ -143,14 +143,15 @@ app.factory("Mod_Floor",["Mod_Abstract_Entity","$injector",
 	 */
 	this.setShadowing= function (value) {
 		  
-		this.setComponentsOfTypeToValue(37, value);
+		this.setComponentsOfTypeToValue(38, value);
 	};
 	
 	/**
 	 * @author Julia Thüroff
 	 */
 	this.setConsumer= function (value) {
-		  
+
+		this.setComponentsOfTypeToValue(39, value);
 		this.setComponentsOfTypeToValue(21, value);
 		this.setComponentsOfTypeToValue(14, value);
 		this.setComponentsOfTypeToValue(15, value);
